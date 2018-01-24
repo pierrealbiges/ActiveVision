@@ -8,20 +8,17 @@
 \contentsline {section}{\numberline {1.1}Vision naturelle}{1}{section.6}
 \contentsline {section}{\numberline {1.2}Vision artificielle}{1}{section.7}
 \contentsline {subsection}{\numberline {1.2.1}A Short Math Guide for \LaTeX {}}{1}{subsection.8}
-\contentsline {subsection}{\numberline {1.2.2}Common \LaTeX {} Math Symbols}{1}{subsection.9}
-\contentsline {subsection}{\numberline {1.2.3}Files}{1}{subsection.10}
-\contentsline {section}{\numberline {1.3}Filling in Your Information in the \texttt {\bfseries main.tex} File}{3}{section.11}
-\contentsline {section}{\numberline {1.4}The \texttt {main.tex} File Explained}{3}{section.12}
-\contentsline {section}{\numberline {1.5}Thesis Features and Conventions}{4}{section.13}
-\contentsline {subsection}{\numberline {1.5.1}Printing Format}{5}{subsection.14}
-\contentsline {subsection}{\numberline {1.5.2}Using US Letter Paper}{5}{subsection.15}
-\contentsline {subsection}{\numberline {1.5.3}References}{5}{subsection.16}
-\contentsline {subsubsection}{A Note on bibtex}{6}{section*.18}
-\contentsline {subsection}{\numberline {1.5.4}Tables}{6}{subsection.19}
-\contentsline {subsection}{\numberline {1.5.5}Figures}{7}{subsection.21}
-\contentsline {subsection}{\numberline {1.5.6}Typesetting mathematics}{8}{subsection.23}
-\contentsline {section}{\numberline {1.6}Sectioning and Subsectioning}{9}{section.25}
-\contentsline {section}{\numberline {1.7}In Closing}{10}{section.26}
-\contentsline {chapter}{Bibliography}{11}{chapter*.27}
-\contentsline {chapter}{\numberline {A}Frequently Asked Questions}{13}{appendix.28}
-\contentsline {section}{\numberline {A.1}How do I change the colors of links?}{13}{section.29}
+\contentsline {subsection}{\numberline {1.2.2}Common \LaTeX {} Math Symbols}{2}{subsection.9}
+\contentsline {subsection}{\numberline {1.2.3}Files}{2}{subsection.10}
+\contentsline {section}{\numberline {1.3}The \texttt {main.tex} File Explained}{3}{section.11}
+\contentsline {section}{\numberline {1.4}Thesis Features and Conventions}{4}{section.12}
+\contentsline {subsection}{\numberline {1.4.1}Printing Format}{5}{subsection.13}
+\contentsline {subsection}{\numberline {1.4.2}Using US Letter Paper}{5}{subsection.14}
+\contentsline {subsubsection}{A Note on bibtex}{5}{section*.15}
+\contentsline {subsection}{\numberline {1.4.3}Tables}{6}{subsection.16}
+\contentsline {subsection}{\numberline {1.4.4}Figures}{7}{subsection.18}
+\contentsline {subsection}{\numberline {1.4.5}Typesetting mathematics}{8}{subsection.20}
+\contentsline {section}{\numberline {1.5}Sectioning and Subsectioning}{9}{section.22}
+\contentsline {section}{\numberline {1.6}In Closing}{9}{section.23}
+\contentsline {chapter}{\numberline {A}Frequently Asked Questions}{11}{appendix.24}
+\contentsline {section}{\numberline {A.1}How do I change the colors of links?}{11}{section.25}
