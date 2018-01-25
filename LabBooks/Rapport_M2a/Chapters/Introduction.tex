@@ -18,10 +18,13 @@
 \section{Vision naturelle}
 >> Rôle de la vision
 
->> Structure générale d'une rétine (cones/bâtonnets + fovéa/rétine périphérique)\\
-Chez les vertébrés la vision débute à la surface de la rétine, où les cellules photovoltaïques réalisent la transduction des signaux lumineux qui les atteignent en signaux électriques, transmissibles à la suite du réseau nerveux.
-Les cônes et les bâtonnets sont les deux types de cellules photovoltaïques connues. Elles sont différenciées par un certain nombre de caractéristiques, notamment leur morphologie, leur sensibilité aux longueurs d'ondes lumineuses et leur distribution au sein de la rétine. Ces différences permettent à notre rétine de rester fonctionnelle dans de nombreuses situations, y compris lorsque la luminance est très faible (le seuil absolu de la rétine humaine correspondant à 70 photons).
-Les cônes sont divisés en sous-catégories sensibles à des longueurs d'onde différentes, caractéristique primordiale sous-jacent notre perception des couleurs.
+>> Structure générale d'une rétine (cônes/bâtonnets + fovéa/rétine périphérique)\\
+Chez les vertébrés la vision débute à la surface de la rétine, où les cellules photovoltaïques réalisent la transduction des signaux lumineux qui les atteignent en signaux électriques, transmissibles à la suite du réseau nerveux.\\
+Les cônes et les bâtonnets sont les deux types de cellules photovoltaïques connues. Elles sont différenciées par un certain nombre de caractéristiques, notamment leur morphologie, leur sensibilité aux longueurs d'ondes lumineuses et leur distribution au sein de la rétine. Ces différences permettent à notre rétine de rester fonctionnelle dans de nombreuses situations, y compris lorsque la luminance est très faible (le seuil absolu de la rétine humaine correspondant à 70 photons).\\
+Les cônes sont divisés en sous-catégories sensibles à des longueurs d'onde différentes, caractéristique primordiale sous-jacent notre perception des couleurs.\\
+Les bâtonnets sont plus nombreux et sensibles à des variations de luminance plus fines. Ils sont majoritairement responsables pour notre vision scotopique (dans des conditions de faible luminance, comme la nuit) et sont des acteurs majeurs de la vision périphérique.\\
+La fovea est la région rétinienne responsable de la vision centrale (environ \SI{2}{\degree}), où l'on observe l'acuité visuelle la plus importante (elle représente seulement 1\% de la rétine mais plus de 50\% du cortex visuel est attribué au traitement de son activité). Elle mesure environ 1.5mm et comprends uniquement des cônes.
+L'acuité visuelle diminue avec l'excentricité par rapport à cette fovéa.
 
 >> Notion de champs récépteurs
 
@@ -29,11 +32,13 @@ Les cônes sont divisés en sous-catégories sensibles à des longueurs d'onde d
 
 >>Voie dorsale (voie du "où/where"), rôle dans la localisation de cible
 
->> Notion de saccades oculaires
+>> Notion de saccades oculaires/Vision d'une cible en périphérie
 
 %----------------------------------------------------------------------------------------
 
 \section{Vision artificielle}
+>> Motivations
+
 
 \subsection{A Short Math Guide for \LaTeX{}}
 
@@ -44,62 +49,6 @@ under the \enquote{Additional Documentation} section towards the bottom of the p
 \subsection{Common \LaTeX{} Math Symbols}
 There are a multitude of mathematical symbols available for \LaTeX{} and it would take a great effort to learn the commands for them all. The most common ones you are likely to use are shown on this page:
 \url{http://www.sunilpatel.co.uk/latex-type/latex-math-symbols/}
-
-You can use this page as a reference or crib sheet, the symbols are rendered as large, high quality images so you can quickly find the \LaTeX{} command for the symbol you need.
-
-\subsection{Files}
-
-Included are also several files, most of them are plain text and you can see their contents in a text editor. After initial compilation, you will see that more auxiliary files are created by \LaTeX{} or BibTeX and which you don't need to delete or worry about:
-
-\keyword{example.bib} -- this is an important file that contains all the bibliographic information and references that you will be citing in the thesis for use with BibTeX. You can write it manually, but there are reference manager programs available that will create and manage it for you. Bibliographies in \LaTeX{} are a large subject and you may need to read about BibTeX before starting with this. Many modern reference managers will allow you to export your references in BibTeX format which greatly eases the amount of work you have to do.
-
-\keyword{MastersDoctoralThesis.cls} -- this is an important file. It is the class file that tells \LaTeX{} how to format the thesis. 
-
-\keyword{main.pdf} -- this is your beautifully typeset thesis (in the PDF file format) created by \LaTeX{}. It is supplied in the PDF with the template and after you compile the template you should get an identical version.
-
-\keyword{main.tex} -- this is an important file. This is the file that you tell \LaTeX{} to compile to produce your thesis as a PDF file. It contains the framework and constructs that tell \LaTeX{} how to layout the thesis. It is heavily commented so you can read exactly what each line of code does and why it is there. After you put your own information into the \emph{THESIS INFORMATION} block -- you have now started your thesis!
-
-Files that are \emph{not} included, but are created by \LaTeX{} as auxiliary files include:
-
-\keyword{main.aux} -- this is an auxiliary file generated by \LaTeX{}, if it is deleted \LaTeX{} simply regenerates it when you run the main \file{.tex} file.
-
-\keyword{main.bbl} -- this is an auxiliary file generated by BibTeX, if it is deleted, BibTeX simply regenerates it when you run the \file{main.aux} file. Whereas the \file{.bib} file contains all the references you have, this \file{.bbl} file contains the references you have actually cited in the thesis and is used to build the bibliography section of the thesis.
-
-\keyword{main.blg} -- this is an auxiliary file generated by BibTeX, if it is deleted BibTeX simply regenerates it when you run the main \file{.aux} file.
-
-\keyword{main.lof} -- this is an auxiliary file generated by \LaTeX{}, if it is deleted \LaTeX{} simply regenerates it when you run the main \file{.tex} file. It tells \LaTeX{} how to build the \emph{List of Figures} section.
-
-\keyword{main.log} -- this is an auxiliary file generated by \LaTeX{}, if it is deleted \LaTeX{} simply regenerates it when you run the main \file{.tex} file. It contains messages from \LaTeX{}, if you receive errors and warnings from \LaTeX{}, they will be in this \file{.log} file.
-
-\keyword{main.lot} -- this is an auxiliary file generated by \LaTeX{}, if it is deleted \LaTeX{} simply regenerates it when you run the main \file{.tex} file. It tells \LaTeX{} how to build the \emph{List of Tables} section.
-
-\keyword{main.out} -- this is an auxiliary file generated by \LaTeX{}, if it is deleted \LaTeX{} simply regenerates it when you run the main \file{.tex} file.
-
-So from this long list, only the files with the \file{.bib}, \file{.cls} and \file{.tex} extensions are the most important ones. The other auxiliary files can be ignored or deleted as \LaTeX{} and BibTeX will regenerate them.
-
-%----------------------------------------------------------------------------------------
-
-\section{The \code{main.tex} File Explained}
-
-The \file{main.tex} file contains the structure of the thesis. There are plenty of written comments that explain what pages, sections and formatting the \LaTeX{} code is creating. Each major document element is divided into commented blocks with titles in all capitals to make it obvious what the following bit of code is doing. Initially there seems to be a lot of \LaTeX{} code, but this is all formatting, and it has all been taken care of so you don't have to do it.
-
-Begin by checking that your information on the title page is correct. For the thesis declaration, your institution may insist on something different than the text given. If this is the case, just replace what you see with what is required in the \emph{DECLARATION PAGE} block.
-
-Then comes a page which contains a funny quote. You can put your own, or quote your favourite scientist, author, person, and so on. Make sure to put the name of the person who you took the quote from.
-
-Following this is the abstract page which summarises your work in a condensed way and can almost be used as a standalone document to describe what you have done. The text you write will cause the heading to move up so don't worry about running out of space.
-
-Next come the acknowledgements. On this page, write about all the people who you wish to thank (not forgetting parents, partners and your advisor/supervisor).
-
-The contents pages, list of figures and tables are all taken care of for you and do not need to be manually created or edited. The next set of pages are more likely to be optional and can be deleted since they are for a more technical thesis: insert a list of abbreviations you have used in the thesis, then a list of the physical constants and numbers you refer to and finally, a list of mathematical symbols used in any formulae. Making the effort to fill these tables means the reader has a one-stop place to refer to instead of searching the internet and references to try and find out what you meant by certain abbreviations or symbols.
-
-The list of symbols is split into the Roman and Greek alphabets. Whereas the abbreviations and symbols ought to be listed in alphabetical order (and this is \emph{not} done automatically for you) the list of physical constants should be grouped into similar themes.
-
-The next page contains a one line dedication. Who will you dedicate your thesis to?
-
-Finally, there is the block where the chapters are included. Uncomment the lines (delete the \code{\%} character) as you write the chapters. Each chapter should be written in its own file and put into the \emph{Chapters} folder and named \file{Chapter1}, \file{Chapter2}, etc\ldots Similarly for the appendices, uncomment the lines as you need them. Each appendix should go into its own file and placed in the \emph{Appendices} folder.
-
-After the preamble, chapters and appendices finally comes the bibliography. The bibliography style (called \option{authoryear}) is used for the bibliography and is a fully featured style that will even include links to where the referenced paper can be found online. Do not underestimate how grateful your reader will be to find that a reference to a paper is just a click away. Of course, this relies on you putting the URL information into the BibTeX file in the first place.
 
 %----------------------------------------------------------------------------------------
 
