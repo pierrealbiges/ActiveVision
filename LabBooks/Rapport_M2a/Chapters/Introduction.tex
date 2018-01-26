@@ -16,15 +16,16 @@
 %----------------------------------------------------------------------------------------
 
 \section{Vision naturelle}
->> Rôle de la vision
+>> Rôle de la vision\\
 
 >> Structure générale d'une rétine (cônes/bâtonnets + fovéa/rétine périphérique)\\
-Chez les vertébrés la vision débute à la surface de la rétine, où les cellules photovoltaïques réalisent la transduction des signaux lumineux qui les atteignent en signaux électriques, transmissibles à la suite du réseau nerveux.\\
-Les cônes et les bâtonnets sont les deux types de cellules photovoltaïques connues. Elles sont différenciées par un certain nombre de caractéristiques, notamment leur morphologie, leur sensibilité aux longueurs d'ondes lumineuses et leur distribution au sein de la rétine. Ces différences permettent à notre rétine de rester fonctionnelle dans de nombreuses situations, y compris lorsque la luminance est très faible (le seuil absolu de la rétine humaine correspondant à 70 photons).\\
-Les cônes sont divisés en sous-catégories sensibles à des longueurs d'onde différentes, caractéristique primordiale sous-jacent notre perception des couleurs.\\
-Les bâtonnets sont plus nombreux et sensibles à des variations de luminance plus fines. Ils sont majoritairement responsables pour notre vision scotopique (dans des conditions de faible luminance, comme la nuit) et sont des acteurs majeurs de la vision périphérique.\\
-La fovea est la région rétinienne responsable de la vision centrale (environ \SI{2}{\degree}), où l'on observe l'acuité visuelle la plus importante (elle représente seulement 1\% de la rétine mais plus de 50\% du cortex visuel est attribué au traitement de son activité). Elle mesure environ 1.5mm et comprends uniquement des cônes.
-L'acuité visuelle diminue avec l'excentricité par rapport à cette fovéa.
+Chez les vertébrés la vision débute à la surface de la rétine, où les cellules photovoltaïques (cônes et bâtonnets) réalisent la transduction des signaux lumineux qui les atteignent en signaux électriques, transmissibles à la suite du réseau nerveux.\\
+Les cônes et les bâtonnets sont différenciées par un certain nombre de caractéristiques, notamment leur sensibilité aux longueurs d'ondes lumineuses et leur distribution au sein de la rétine. Ces différences permettent à notre rétine de rester fonctionnelle dans de nombreuses situations, y compris lorsque la luminance est très faible (le seuil absolu de la rétine humaine correspondant à 70 photons) et donc à la modalité visuelle de nous fournir des informations pertinentes dans un large champs de contextes.\\
+Les cônes sont eux-mêmes divisés en sous-catégories sensibles à des longueurs d'onde différentes, caractéristique primordiale sous-jacent notre perception des couleurs.
+Les bâtonnets sont quant à eux plus nombreux et sensibles à des variations de luminance plus fines. Ils sont majoritairement responsables de notre vision scotopique (dans des conditions de faible luminance, tel que la nuit) et sont des acteurs majeurs de la vision périphérique.\\
+Le champs visuel peut être divisé en vision centrale et vision périphérique. La vision centrale (environ \SI{2}{\degree}) est soutenue par la région rétinienne appelée fovea, comprenant uniquement des cônes. On y observe l'acuité visuelle la plus importante (elle représente seulement 1\% de la rétine mais plus de 50\% du cortex visuel est attribué au traitement de son activité). Cette acuité visuelle diminue avec l'excentricité par rapport à la fovéa.
+
+>> Notion de saccades oculaires/Vision d'une cible en périphérie
 
 >> Notion de champs récépteurs
 
@@ -32,168 +33,25 @@ L'acuité visuelle diminue avec l'excentricité par rapport à cette fovéa.
 
 >>Voie dorsale (voie du "où/where"), rôle dans la localisation de cible
 
->> Notion de saccades oculaires/Vision d'une cible en périphérie
-
 %----------------------------------------------------------------------------------------
 
 \section{Vision artificielle}
 >> Motivations
 
-
-\subsection{A Short Math Guide for \LaTeX{}}
-
-If you are writing a technical or mathematical thesis, then you may want to read the document by the AMS (American Mathematical Society) called, \enquote{A Short Math Guide for \LaTeX{}}. It can be found online here:
-\url{http://www.ams.org/tex/amslatex.html}
-under the \enquote{Additional Documentation} section towards the bottom of the page.
-
-\subsection{Common \LaTeX{} Math Symbols}
-There are a multitude of mathematical symbols available for \LaTeX{} and it would take a great effort to learn the commands for them all. The most common ones you are likely to use are shown on this page:
-\url{http://www.sunilpatel.co.uk/latex-type/latex-math-symbols/}
-
-%----------------------------------------------------------------------------------------
-
-\section{Thesis Features and Conventions}\label{ThesisConventions}
-
-To get the best out of this template, there are a few conventions that you may want to follow.
-
-One of the most important (and most difficult) things to keep track of in such a long document as a thesis is consistency. Using certain conventions and ways of doing things (such as using a Todo list) makes the job easier. Of course, all of these are optional and you can adopt your own method.
-
-\subsection{Printing Format}
-
-This thesis template is designed for double sided printing (i.e. content on the front and back of pages) as most theses are printed and bound this way. Switching to one sided printing is as simple as uncommenting the \option{oneside} option of the \code{documentclass} command at the top of the \file{main.tex} file. You may then wish to adjust the margins to suit specifications from your institution.
-
-The headers for the pages contain the page number on the outer side (so it is easy to flick through to the page you want) and the chapter name on the inner side.
-
-The text is set to 11 point by default with single line spacing, again, you can tune the text size and spacing should you want or need to using the options at the very start of \file{main.tex}. The spacing can be changed similarly by replacing the \option{singlespacing} with \option{onehalfspacing} or \option{doublespacing}.
-
-\subsection{Using US Letter Paper}
-
-The paper size used in the template is A4, which is the standard size in Europe. If you are using this thesis template elsewhere and particularly in the United States, then you may have to change the A4 paper size to the US Letter size. This can be done in the margins settings section in \file{main.tex}.
-
-Due to the differences in the paper size, the resulting margins may be different to what you like or require (as it is common for institutions to dictate certain margin sizes). If this is the case, then the margin sizes can be tweaked by modifying the values in the same block as where you set the paper size. Now your document should be set up for US Letter paper size with suitable margins.
-
-\subsubsection{A Note on bibtex}
-
-The bibtex backend used in the template by default does not correctly handle unicode character encoding (i.e. "international" characters). You may see a warning about this in the compilation log and, if your references contain unicode characters, they may not show up correctly or at all. The solution to this is to use the biber backend instead of the outdated bibtex backend. This is done by finding this in \file{main.tex}: \option{backend=bibtex} and changing it to \option{backend=biber}. You will then need to delete all auxiliary BibTeX files and navigate to the template directory in your terminal (command prompt). Once there, simply type \code{biber main} and biber will compile your bibliography. You can then compile \file{main.tex} as normal and your bibliography will be updated. An alternative is to set up your LaTeX editor to compile with biber instead of bibtex, see \href{http://tex.stackexchange.com/questions/154751/biblatex-with-biber-configuring-my-editor-to-avoid-undefined-citations/}{here} for how to do this for various editors.
-
-\subsection{Tables}
-
-Tables are an important way of displaying your results, below is an example table which was generated with this code:
-
-{\small
-\begin{verbatim}
-\begin{table}
-\caption{The effects of treatments X and Y on the four groups studied.}
-\label{tab:treatments}
-\centering
-\begin{tabular}{l l l}
-\toprule
-\tabhead{Groups} & \tabhead{Treatment X} & \tabhead{Treatment Y} \\
-\midrule
-1 & 0.2 & 0.8\\
-2 & 0.17 & 0.7\\
-3 & 0.24 & 0.75\\
-4 & 0.68 & 0.3\\
-\bottomrule\\
-\end{tabular}
-\end{table}
-\end{verbatim}
-}
-
-\begin{table}
-\caption{The effects of treatments X and Y on the four groups studied.}
-\label{tab:treatments}
-\centering
-\begin{tabular}{l l l}
-\toprule
-\tabhead{Groups} & \tabhead{Treatment X} & \tabhead{Treatment Y} \\
-\midrule
-1 & 0.2 & 0.8\\
-2 & 0.17 & 0.7\\
-3 & 0.24 & 0.75\\
-4 & 0.68 & 0.3\\
-\bottomrule\\
-\end{tabular}
-\end{table}
-
-You can reference tables with \verb|\ref{<label>}| where the label is defined within the table environment. See \file{Chapter1.tex} for an example of the label and citation (e.g. Table~\ref{tab:treatments}).
-
-\subsection{Figures}
-
-There will hopefully be many figures in your thesis (that should be placed in the \emph{Figures} folder). The way to insert figures into your thesis is to use a code template like this:
-\begin{verbatim}
-\begin{figure}
-\centering
-\includegraphics{Figures/Electron}
-\decoRule
-\caption[An Electron]{An electron (artist's impression).}
-\label{fig:Electron}
-\end{figure}
-\end{verbatim}
-Also look in the source file. Putting this code into the source file produces the picture of the electron that you can see in the figure below.
-
 \begin{figure}[th]
 \centering
 \includegraphics{Figures/Electron}
-\decoRule
-\caption[An Electron]{An electron (artist's impression).}
+\decoRule %puts an aesthetic horizontal line below the image
+\caption[Figure  1]{An electron (artist's impression).}
 \label{fig:Electron}
 \end{figure}
 
-Sometimes figures don't always appear where you write them in the source. The placement depends on how much space there is on the page for the figure. Sometimes there is not enough room to fit a figure directly where it should go (in relation to the text) and so \LaTeX{} puts it at the top of the next page. Positioning figures is the job of \LaTeX{} and so you should only worry about making them look good!
-
-Figures usually should have captions just in case you need to refer to them (such as in Figure~\ref{fig:Electron}). The \verb|\caption| command contains two parts, the first part, inside the square brackets is the title that will appear in the \emph{List of Figures}, and so should be short. The second part in the curly brackets should contain the longer and more descriptive caption text.
-
-The \verb|\decoRule| command is optional and simply puts an aesthetic horizontal line below the image. If you do this for one image, do it for all of them.
-
-\LaTeX{} is capable of using images in pdf, jpg and png format.
-
-\subsection{Typesetting mathematics}
-
-If your thesis is going to contain heavy mathematical content, be sure that \LaTeX{} will make it look beautiful, even though it won't be able to solve the equations for you.
-
-The \enquote{Not So Short Introduction to \LaTeX} (available on \href{http://www.ctan.org/tex-archive/info/lshort/english/lshort.pdf}{CTAN}) should tell you everything you need to know for most cases of typesetting mathematics. If you need more information, a much more thorough mathematical guide is available from the AMS called, \enquote{A Short Math Guide to \LaTeX} and can be downloaded from:
-\url{ftp://ftp.ams.org/pub/tex/doc/amsmath/short-math-guide.pdf}
-
-There are many different \LaTeX{} symbols to remember, luckily you can find the most common symbols in \href{http://ctan.org/pkg/comprehensive}{The Comprehensive \LaTeX~Symbol List}.
-
-You can write an equation, which is automatically given an equation number by \LaTeX{} like this:
-\begin{verbatim}
-\begin{equation}
-E = mc^{2}
-\label{eqn:Einstein}
-\end{equation}
-\end{verbatim}
-
-This will produce Einstein's famous energy-matter equivalence equation:
 \begin{equation}
 E = mc^{2}
 \label{eqn:Einstein}
 \end{equation}
 
-All equations you write (which are not in the middle of paragraph text) are automatically given equation numbers by \LaTeX{}. If you don't want a particular equation numbered, use the unnumbered form:
+If you don't want a particular equation numbered, use the unnumbered form:
 \begin{verbatim}
 \[ a^{2}=4 \]
 \end{verbatim}
-
-%----------------------------------------------------------------------------------------
-
-\section{Sectioning and Subsectioning}
-
-You should break your thesis up into nice, bite-sized sections and subsections. \LaTeX{} automatically builds a table of Contents by looking at all the \verb|\chapter{}|, \verb|\section{}|  and \verb|\subsection{}| commands you write in the source.
-
-The Table of Contents should only list the sections to three (3) levels. A \verb|chapter{}| is level zero (0). A \verb|\section{}| is level one (1) and so a \verb|\subsection{}| is level two (2). In your thesis it is likely that you will even use a \verb|subsubsection{}|, which is level three (3). The depth to which the Table of Contents is formatted is set within \file{MastersDoctoralThesis.cls}. If you need this changed, you can do it in \file{main.tex}.
-
-%----------------------------------------------------------------------------------------
-
-\section{In Closing}
-
-You have reached the end of this mini-guide. You can now rename or overwrite this pdf file and begin writing your own \file{Chapter1.tex} and the rest of your thesis. The easy work of setting up the structure and framework has been taken care of for you. It's now your job to fill it out!
-
-Good luck and have lots of fun!
-
-\begin{flushright}
-Guide written by ---\\
-Sunil Patel: \href{http://www.sunilpatel.co.uk}{www.sunilpatel.co.uk}\\
-Vel: \href{http://www.LaTeXTemplates.com}{LaTeXTemplates.com}
-\end{flushright}
