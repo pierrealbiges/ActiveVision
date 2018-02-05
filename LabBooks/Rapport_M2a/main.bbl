@@ -16,6 +16,34 @@
   {}
 \endgroup
 
+\entry{Butko2010}{article}{}
+  \name{author}{2}{}{%
+    {{}%
+     {Butko}{B.}%
+     {Nicholas~J}{N.~J.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Movellan}{M.}%
+     {Javier~R}{J.~R.}%
+     {}{}%
+     {}{}}%
+  }
+  \strng{namehash}{BNJMJR1}
+  \strng{fullhash}{BNJMJR1}
+  \field{labelyear}{2010}
+  \field{sortinit}{B}
+  \field{number}{2}
+  \field{pages}{91\bibrangedash 107}
+  \field{title}{{Infomax control of eye movements}}
+  \field{volume}{2}
+  \verb{file}
+  \verb :home/pimt/Documents/Articles/Butko2010.pdf:pdf
+  \endverb
+  \field{journaltitle}{Autonomous Mental Development, IEEE Transactions on}
+  \field{year}{2010}
+\endentry
+
 \entry{Werner2014}{book}{}
   \name{editor}{2}{}{%
     {{}%

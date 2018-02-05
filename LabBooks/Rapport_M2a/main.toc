@@ -4,10 +4,11 @@
 \contentsline {chapter}{\numberline {1}Introduction}{1}{chapter.4}
 \contentsline {section}{\numberline {1.1}Vision naturelle}{1}{section.5}
 \contentsline {section}{\numberline {1.2}Vision artificielle}{3}{section.7}
-\contentsline {chapter}{\numberline {2}Mat\IeC {\'e}riel et m\IeC {\'e}thodes}{5}{chapter.9}
-\contentsline {section}{\numberline {2.1}Support physique et num\IeC {\'e}rique}{5}{section.10}
-\contentsline {section}{\numberline {2.2}Mod\IeC {\`e}le POMDP}{5}{section.11}
-\contentsline {section}{\numberline {2.3}R\IeC {\'e}gression lin\IeC {\'e}aire multivari\IeC {\'e}e}{5}{section.12}
-\contentsline {chapter}{Bibliography}{7}{chapter*.13}
-\contentsline {chapter}{\numberline {A}Frequently Asked Questions}{9}{appendix.14}
-\contentsline {section}{\numberline {A.1}How do I change the colors of links?}{9}{section.15}
+\contentsline {chapter}{\numberline {2}Mat\IeC {\'e}riel et m\IeC {\'e}thodes}{5}{chapter.8}
+\contentsline {section}{\numberline {2.1}Support physique et num\IeC {\'e}rique}{5}{section.9}
+\contentsline {section}{\numberline {2.2}Mod\IeC {\`e}le POMDP}{5}{section.10}
+\contentsline {section}{\numberline {2.3}Champs r\IeC {\'e}tinien}{6}{section.15}
+\contentsline {section}{\numberline {2.4}Apprentissage supervis\IeC {\'e}}{6}{section.16}
+\contentsline {chapter}{Bibliography}{9}{chapter*.20}
+\contentsline {chapter}{\numberline {A}Frequently Asked Questions}{11}{appendix.21}
+\contentsline {section}{\numberline {A.1}How do I change the colors of links?}{11}{section.22}

@@ -62,13 +62,5 @@ L'identification de ces points et la démonstration de ces théories peut passer
 %Valider l'une des théories neurofonctionnelles de la détection de cible visuelle.
 Dans cette étude, nous avons tenté de créer un modèle simple de localisation de cible visuelle dans un champs rétinien : le modèle possède une vision centrale où son acuité est maximale et une vision périphérique dont l'acuité diminue avec son excentricité).\\
 Le modèle doit être capable de détecter dans sa vision périphérique une cible visuelle aux caractéristiques simples (représentée par un stimulus provenant le base de données MNIST), de prédire précisémment sa position et de réaliser une saccade oculaire afin de la placer dans sa fovea, ce qui lui permet alors de l'identifier avec une certitude élevée.\\
-
-\begin{equation}
-E = mc^{2}
-\label{eqn:Einstein}
-\end{equation}
-
-If you don't want a particular equation numbered, use the unnumbered form:
-\begin{verbatim}
-\[ a^{2}=4 \]
-\end{verbatim}
+Pour cela plusieurs méthodes (comprenant elles-mêmes plusieurs sous-méthodes) s'offrent à nous. Parmi elles, on peut compter les \textbf{modèles de saillance} où l'on tente de décrire une image en fonction des régions (ou pixels) qui présentent la plus grande probabilité de fournir des informations pertinentes et donc qui devraient attirer les saccades. Ces modèles permettent donc de créer des histogrammes de probabilité de fixations oculaires. Ces modèles présentent un certain nombre de limites, dont le fait qu'ils ne vont pas cibler d'objets partiellement ou entièrements cachés (\cite{Butko2010}).\\
+Les \textbf{modèles de contrôle}, tentent quant à eux de prédire quelles politiques le système devra suivre pour répondre au mieux à une tache. A chaque saccade, de nouvelles informations sur l'environnement sont collectées et permettent de changer l'opinion de l'agent sur le monde (\cite{Butko2010}).
