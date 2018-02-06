@@ -1,25 +1,30 @@
 % Appendix A
 
-\chapter{Frequently Asked Questions} % Main appendix title
+\chapter{Figures} % Main appendix title
 
-\label{AppendixA} % For referencing this appendix elsewhere, use \ref{AppendixA}
+\label{Figures} % For referencing this appendix elsewhere, use \ref{AppendixA}
 
-\section{How do I change the colors of links?}
+\begin{figure}[th]
+\centering
+\includegraphics[scale=0.45]{Figures/POMDP}
+\decoRule %puts an aesthetic horizontal line below the image
+\caption[Figure]{Schéma des interations entre l'agent et son environnement au cours du temps dans un modèle POMDP}
+\label{fig:POMDP}
+\end{figure}
 
-The color of links can be changed to your liking using:
+\begin{figure}[th]
+\centering
+\includegraphics[scale=0.3]{Figures/mnist_reshape}
+\decoRule %puts an aesthetic horizontal line below the image
+\caption[Figure]{\textbf{A.} Image originale tirée de MNIST ; \textbf{B.} Image après transformation géométrique et placé aux coordonnées $(i=-20,j=25)$}
+\label{fig:mnist_reshape}
+\end{figure}
 
-{\small\verb!\hypersetup{urlcolor=red}!}, or
+\begin{figure}[th]
+\centering
+\includegraphics[scale=0.3]{Figures/wavelet_effect}
+\decoRule %puts an aesthetic horizontal line below the image
+\caption[Figure]{\textbf{A.} Image avant application d'un filtre et placé aux coordonnées $(i=-6,j=6)$ ; \textbf{B.} Image après transformation par vaguelettes (\textit{filtre Wavelets})}
+\label{fig:wavelet_effect}
+\end{figure}
 
-{\small\verb!\hypersetup{citecolor=green}!}, or
-
-{\small\verb!\hypersetup{allcolor=blue}!}.
-
-\noindent If you want to completely hide the links, you can use:
-
-{\small\verb!\hypersetup{allcolors=.}!}, or even better: 
-
-{\small\verb!\hypersetup{hidelinks}!}.
-
-\noindent If you want to have obvious links in the PDF but not the printed text, use:
-
-{\small\verb!\hypersetup{colorlinks=false}!}.

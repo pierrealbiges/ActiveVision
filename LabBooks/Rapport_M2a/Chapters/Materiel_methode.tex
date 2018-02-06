@@ -26,15 +26,7 @@ La base de données \href{http://yann.lecun.com/exdb/mnist/}{MNIST} a été util
 
 \section{Modèle POMDP} %Description du modèle perception-action, schéma explicatif
 Le problème de recherche d'information dans un contexte d'exploration de l'environnement visuel peut être formulé comme un \textbf{processus de décision Markovien partiellement observable} (POMDP) \autocite{Butko2010}. \\
-Dans un POMDP, l'agent perçoit partiellement l'\textbf{état de l'environnement} \textit{S} à un temps \textit{t} (dans ce travail l'environnement visuel, perçut au travers d'un champs rétinien) et peut réaliser des \textbf{actions} \textit{A} (ici des saccades oculaires) qui peuvent avoir des conséquences l'environnement et sa perception \textit{O}. L'agent va ainsi construire un \textbf{état de croyance} \textit{B} (ici la catégorie prédite du stimulus) en fonction des observations et des actions réalisées jusqu'ici \autocite{Butko2010}.
-
-\begin{figure}[th]
-\centering
-\includegraphics[scale=0.5]{Figures/POMDP}
-\decoRule %puts an aesthetic horizontal line below the image
-\caption[Figure]{Schéma des interations entre l'agent et son environnement au cours du temps dans un modèle POMDP}
-\label{fig:POMDP}
-\end{figure}
+Dans un POMDP (figure~\ref{fig:POMDP}), l'agent perçoit partiellement l'\textbf{état de l'environnement} \textit{S} à un temps \textit{t} (dans ce travail l'environnement visuel, perçut au travers d'un champs rétinien) et peut réaliser des \textbf{actions} \textit{A} (ici des saccades oculaires) qui peuvent avoir des conséquences l'environnement et sa perception \textit{O}. L'agent va ainsi construire un \textbf{état de croyance} \textit{B} (ici la catégorie prédite du stimulus) en fonction des observations et des actions réalisées jusqu'ici \autocite{Butko2010}.
 
 Un tel système doit satisfaire la \textbf{propriété de Markov}, qui décrit que la distribution de probabilité des futurs états ne dépends que de l'état précédent et pas de toute la séquence d'états les précédents.\\
 Ainsi lors de l'évolution du système dans le temps, on considère que l'état suivant de l'environnement est uniquement influencé par son état actuel et l'action (éventuelle) réalisée par l'agent (équation~\ref{eqn:POMDP_sta}) \autocite{Butko2010}. 
@@ -47,7 +39,7 @@ p(s_{t+1}|s_{1:t},a_{1:t},o_{1:t}) = p(s_{t+1}|s_{t},a_{t})
 De même, les observations actuelles de l'agent ne dépendent que de l'état actuel de l'environnement et de l'action (éventuelle) qu'il réalise (équation~\ref{eqn:POMDP_obs}) \autocite{Butko2010}.
 
 \begin{equation}
-p(o_{t}|s_{1:t},a_{1:t}) = p(o_{t}|s_{t},a_{t})
+p(o_{t}|s_{1:t},a_{1:t}) = p(o_{t}|s_{t},a_{t})L'obser
 \label{eqn:POMDP_obs}
 \end{equation}
 
@@ -61,13 +53,18 @@ B_{t}^i = p(S_{t} = i|A_{1:t},O_{1:t})
 
 \section{Champs rétinien} %Description du modèle logpolar
 
+Avant d'être utilisée par le modèle, l'image provenant de la base MNIST subit un certain nombre de transformations.\\
+Chaque image présente originellement des niveaux de gris sur 28x28 pixels. Cette image est placée au hasard (mais de façon normocentrée) sur une image de 128x128 pixels (figure~\ref{fig:mnist_reshape}) dont le fond est blanc (ne contient pas d'informations).\\
+A cette image est ensuite appliqué un \textit{filtre Wavelets} ou un \textit{filtre LogGabor}, deux méthodes permettant d'obtenir un champs rétinien, c'est à dire un filtre visuel dont l'acuité est maximale en son centre (simulant la fovea) et diminuant avec l'excentricité (simulant la vision périphérique).\\
+Les effets du \textit{filtre Wavelets} sont visibles sur la figure~\ref{fig:wavelet_effect}.
+
 %----------------------------------------------------------------------------------------
 
 \section{Apprentissage supervisé} %Formules du modèle mathématiques soutenant la Régression linéaire multivariée
-                                                                    %Prétraitements de l'image (whitening, resize et déplacement cible
+                                                                    %Prétraitements de l'image (whitening, resize et déplacement cible)
 
 Afin d'obtenir un modèle à la fois performant et adaptable, nous l'avons soumis à un apprentissage supervisé sous la forme d'une \textbf{régression linéaire multivariée} optimisée par \textbf{descente de gradient}.\\
-Pour cela, nous avons calculé une hypothèse (équation~\ref{eqn:Hypo}
+Pour cela, nous calculons une hypothèse $h_{\theta}$ (équation~\ref{eqn:Hypo}) sur la répartition des stimuli en multipliant chacune des valeurs \textit{x} de l'entrée à un poids $\theta$ qui lui est spécifique. Ces poids sont ensuite optimisés par descente de gradient, où ils sont comparés aux labels \textit{y} des entrées (équation~\ref{eqn:Grad_desc}) pour un nombre d'exemples et d'itérations fixées. L'optimisation du paramètre d'apprentissage $\alpha$ est nécessaire au bon déroulement de l'apprentissage et sa valeur doit être adaptée pour éviter un sous- ou un sur-apprentissage (révélant respectivement une valeur trop faible ou trop importante).\\
 
 \begin{equation}
 h_{\theta}(x) = \theta^{T}x + b
@@ -75,11 +72,16 @@ h_{\theta}(x) = \theta^{T}x + b
 \end{equation}
 
 \begin{equation}
+\theta_j := \theta_j - \alpha \frac{1}{m} \sum_{i=1}^m (h_\theta(x^i) - y^i)x_{j}^i
+\label{eqn:Grad_desc}
+\end{equation}
+
+L'évolution du coût $J(\theta)$ (équation~\ref{eqn:Cost}) est un indicateur de l'efficacité de l'apprentissage, sa valeur devant décroitre au fil de l'entraînement.
+
+\begin{equation}
 J(\theta) = \frac{1}{2m} \sum_{i=1}^m (h_\theta(x^i)-y^i)^2
 \label{eqn:Cost}
 \end{equation}
 
-\begin{equation}
-\theta_j := \theta_j - \alpha \frac{1}{m} \sum_{i=1}^m (h_\theta(x^i) - y^i)x_{j}^i
-\label{eqn:Grad_desc}
-\end{equation}
+Nous construisons un modèle en deux couches. La première, \textit{détecteur}, est entraînée à prédire la position du stimulus dans l'image, perçu au travers du champs rétinien et permet de réaliser une saccade jusqu'à ces coordonnées prédites, permettant d'approcher le stimulus de la vision fovéale. \\
+La seconde, \textit{classifier}, est entraînée à prédire la catégorie du stimulus dans l'image, perçu au travers du champs rétinien et permet d'arrêter l'exploration de l'image lorsque sa prédiction présente une certitude assez élevée.
