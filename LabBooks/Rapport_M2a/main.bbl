@@ -43,6 +43,130 @@
   \field{year}{2010}
 \endentry
 
+\entry{Denison2014}{article}{}
+  \name{author}{5}{}{%
+    {{}%
+     {Denison}{D.}%
+     {Rachel~N.}{R.~N.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Vu}{V.}%
+     {An~T.}{A.~T.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Yacoub}{Y.}%
+     {Essa}{E.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Feinberg}{F.}%
+     {David~A.}{D.~A.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Silver}{S.}%
+     {Michael~A.}{M.~A.}%
+     {}{}%
+     {}{}}%
+  }
+  \keyw{7T,FMRI,Lateral geniculate nucleus,Magnocellular,Parallel
+  processing,Parvocellular}
+  \strng{namehash}{DRN+1}
+  \strng{fullhash}{DRNVATYEFDASMA1}
+  \field{sortinit}{D}
+  \field{abstract}{%
+  The magnocellular (M) and parvocellular (P) subdivisions of primate LGN are
+  known to process complementary types of visual stimulus information, but a
+  method for noninvasively defining these subdivisions in humans has proven
+  elusive. As a result, the functional roles of these subdivisions in humans
+  have not been investigated physiologically. To functionally map the M and P
+  subdivisions of human LGN, we used high-resolution fMRI at high field (7. T
+  and 3. T) together with a combination of spatial, temporal, luminance, and
+  chromatic stimulus manipulations. We found that stimulus factors that
+  differentially drive magnocellular and parvocellular neurons in primate LGN
+  also elicit differential BOLD fMRI responses in human LGN and that these
+  responses exhibit a spatial organization consistent with the known anatomical
+  organization of the M and P subdivisions. In test-retest studies, the
+  relative responses of individual voxels to M-type and P-type stimuli were
+  reliable across scanning sessions on separate days and across sessions at
+  different field strengths. The ability to functionally identify magnocellular
+  and parvocellular regions of human LGN with fMRI opens possibilities for
+  investigating the functions of these subdivisions in human visual perception,
+  in patient populations with suspected abnormalities in one of these
+  subdivisions, and in visual cortical processing streams arising from parallel
+  thalamocortical pathways. {\textcopyright} 2014 Elsevier Inc.%
+  }
+  \verb{doi}
+  \verb 10.1016/j.neuroimage.2014.07.019
+  \endverb
+  \verb{eprint}
+  \verb 15334406
+  \endverb
+  \field{isbn}{1095-9572 (Electronic) 1053-8119 (Linking)}
+  \field{issn}{10959572}
+  \field{number}{P2}
+  \field{pages}{358\bibrangedash 369}
+  \field{title}{{Functional mapping of the magnocellular and parvocellular
+  subdivisions of human LGN}}
+  \field{volume}{102}
+  \verb{file}
+  \verb :home/pimt/Documents/Articles/Denison2014.pdf:pdf
+  \endverb
+  \field{journaltitle}{NeuroImage}
+  \field{eprinttype}{arXiv}
+  \field{year}{2014}
+\endentry
+
+\entry{Freeman2011}{article}{}
+  \name{author}{2}{}{%
+    {{}%
+     {Freeman}{F.}%
+     {Jeremy}{J.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Simoncelli}{S.}%
+     {Eero~P.}{E.~P.}%
+     {}{}%
+     {}{}}%
+  }
+  \strng{namehash}{FJSEP1}
+  \strng{fullhash}{FJSEP1}
+  \field{sortinit}{F}
+  \field{abstract}{%
+  The human capacity to recognize complex visual patterns emerges in a sequence
+  of brain areas known as the ventral stream, beginning with primary visual
+  cortex (V1). We developed a population model for mid-ventral processing, in
+  which nonlinear combinations of V1 responses are averaged in receptive fields
+  that grow with eccentricity. To test the model, we generated novel forms of
+  visual metamers, stimuli that differ physically but look the same. We
+  developed a behavioral protocol that uses metameric stimuli to estimate the
+  receptive field sizes in which the model features are represented. Because
+  receptive field sizes change along the ventral stream, our behavioral results
+  can identify the visual area corresponding to the representation.
+  Measurements in human observers implicate visual area V2, providing a new
+  functional account of neurons in this area. The model also explains deficits
+  of peripheral vision known as crowding, and provides a quantitative framework
+  for assessing the capabilities and limitations of everyday vision.%
+  }
+  \verb{doi}
+  \verb 10.1038/nn.2889
+  \endverb
+  \field{isbn}{1546-1726 (Electronic)$\backslash$r1097-6256 (Linking)}
+  \field{issn}{10976256}
+  \field{number}{9}
+  \field{pages}{1195\bibrangedash 1204}
+  \field{title}{{Metamers of the ventral stream}}
+  \field{volume}{14}
+  \verb{file}
+  \verb :home/pimt/Documents/Articles/Freeman2011.pdf:pdf
+  \endverb
+  \field{journaltitle}{Nature Neuroscience}
+  \field{year}{2011}
+\endentry
+
 \entry{Werner2014}{book}{}
   \name{editor}{2}{}{%
     {{}%
