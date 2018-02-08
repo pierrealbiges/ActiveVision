@@ -232,6 +232,107 @@
   \field{year}{2012}
 \endentry
 
+\entry{Goodale2004}{article}{}
+  \name{author}{2}{}{%
+    {{}%
+     {Goodale}{G.}%
+     {Melvyn~A.}{M.~A.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Westwood}{W.}%
+     {David~A.}{D.~A.}%
+     {}{}%
+     {}{}}%
+  }
+  \keyw{AIP,Anterior intraparietal sulcus,Area LO,Functional magnetic resonance
+  imaging,LOC,Lateral occipital area,Lateral occipital complex,MRI,Magnetic
+  resonance imaging,RF,Rod-and-frame,ST,Simultaneous tilt,TMS,Transcranial
+  magnetic stimulation,fMRI}
+  \strng{namehash}{GMAWDA1}
+  \strng{fullhash}{GMAWDA1}
+  \field{sortinit}{G}
+  \field{abstract}{%
+  In 1992, Goodale and Milner proposed a division of labour in the visual
+  pathways of the primate cerebral cortex between a dorsal stream specialised
+  for the visual control of action and a ventral stream dedicated to the
+  perception of the visual world. In the years since this original proposal,
+  support for the perception-action hypothesis has come from neuroimaging
+  experiments, human neuropsychology, monkey neurophysiology, and human
+  psychophysical experiments. Indeed, some of the strongest support for this
+  hypothesis has come from behavioural experiments showing that visually guided
+  actions are largely refractory to perceptual illusions. Although
+  controversial, the findings from this literature both support the original
+  hypothesis and suggest important modifications. The ongoing challenge for
+  neurobiologists is to map these behavioural findings onto their corresponding
+  neural substrates.%
+  }
+  \verb{doi}
+  \verb 10.1016/j.conb.2004.03.002
+  \endverb
+  \field{isbn}{0959-4388 (Print)$\backslash$r0959-4388 (Linking)}
+  \field{issn}{09594388}
+  \field{number}{2}
+  \field{pages}{203\bibrangedash 211}
+  \field{title}{{An evolving view of duplex vision: Separate but interacting
+  cortical pathways for perception and action}}
+  \field{volume}{14}
+  \verb{file}
+  \verb :home/pimt/Documents/Articles/Goodale2004.pdf:pdf
+  \endverb
+  \field{journaltitle}{Current Opinion in Neurobiology}
+  \field{year}{2004}
+\endentry
+
+\entry{Itti2000}{article}{}
+  \name{author}{2}{}{%
+    {{}%
+     {Itti}{I.}%
+     {Laurent}{L.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Koch}{K.}%
+     {Christof}{C.}%
+     {}{}%
+     {}{}}%
+  }
+  \keyw{saliency,vision systems,visual attention}
+  \strng{namehash}{ILKC1}
+  \strng{fullhash}{ILKC1}
+  \field{sortinit}{I}
+  \field{abstract}{%
+  Most models of visual search, whether involving overt eye movements or covert
+  shifts of attention, are based on the concept of a saliency map, that is, an
+  explicit two-dimensional map that encodes the saliency or conspicuity of
+  objects in the visual environment. Competition among neurons in this map
+  gives rise to a single winning location that corresponds to the next attended
+  target. Inhibiting this location automatically allows the system to attend to
+  the next most salient location. We describe a detailed computer
+  implementation of such a scheme, focusing on the problem of combining
+  information across modalities, here orientation, intensity and color
+  information, in a purely stimulus-driven manner. The model is applied to
+  common psychophysical stimuli as well as to a very demanding visual search
+  task. Its successful performance is used to address the extent to which the
+  primate visual system carries out visual search via one or more such saliency
+  maps and how this can be tested.%
+  }
+  \verb{doi}
+  \verb 10.1016/S0042-6989(99)00163-7
+  \endverb
+  \field{issn}{0042-6989}
+  \field{number}{10-12}
+  \field{pages}{1489\bibrangedash 1506}
+  \field{title}{{A saliency-based search mechanism for overt and covert hifts
+  of visual attention}}
+  \field{volume}{40}
+  \verb{file}
+  \verb :home/pimt/Documents/Articles/Itti1999.pdf:pdf
+  \endverb
+  \field{journaltitle}{Vision Research}
+  \field{year}{2000}
+\endentry
+
 \entry{Werner2014}{book}{}
   \name{editor}{2}{}{%
     {{}%

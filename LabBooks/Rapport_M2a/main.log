@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2018.1.15)  8 FEB 2018 11:30
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2018.1.15)  8 FEB 2018 14:04
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1726,8 +1726,9 @@ Underfull \hbox (badness 10000) in paragraph at lines 20--21
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 30--32
-
+Overfull \hbox (24.26651pt too wide) in paragraph at lines 23--29
+\T1/ppl/m/n/12 Le champs vi-suel peut être di-visé en deux par-ties. Cette dis-
+so-ci-a-tion per-met de lim-iter le flux d'informations
  []
 
 1: section
@@ -1735,11 +1736,16 @@ Underfull \hbox (badness 10000) in paragraph at lines 30--32
 
 
 ]
-Underfull \hbox (badness 10000) in paragraph at lines 49--53
+Underfull \hbox (badness 10000) in paragraph at lines 31--33
 
  []
 
-[2]) [3] [4]
+[2]
+Underfull \hbox (badness 10000) in paragraph at lines 50--54
+
+ []
+
+) [3] [4]
 \openout2 = `Chapters/Materiel_methode.aux'.
 
  (./Chapters/Materiel_methode.tex
@@ -1798,14 +1804,14 @@ ry, mod-els and data\T1/ppl/m/n/12 . Ox-ford Uni. 2014, p. 383. \T1/ppl/m/sc/12
 
 ]
 Appendix A.
-<Figures/visual_system.jpg, id=213, 234.8775pt x 215.1237pt>
+<Figures/visual_system.jpg, id=229, 234.8775pt x 215.1237pt>
 File: Figures/visual_system.jpg Graphic file (type jpg)
 
 <use Figures/visual_system.jpg>
 Package pdftex.def Info: Figures/visual_system.jpg used on input line 9.
 (pdftex.def)             Requested size: 234.87692pt x 215.12317pt.
 
-<Figures/visual_system_simple.pdf, id=214, 722.7pt x 180.675pt>
+<Figures/visual_system_simple.pdf, id=230, 722.7pt x 180.675pt>
 File: Figures/visual_system_simple.pdf Graphic file (type pdf)
 
 <use Figures/visual_system_simple.pdf>
@@ -1817,13 +1823,13 @@ Overfull \hbox (1.42126pt too wide) in paragraph at lines 17--19
  [][] 
  []
 
-<Figures/POMDP.pdf, id=217, 845.1575pt x 597.23125pt>
+<Figures/POMDP.pdf, id=233, 845.1575pt x 597.23125pt>
 File: Figures/POMDP.pdf Graphic file (type pdf)
  <use Figures/POMDP.pdf>
 Package pdftex.def Info: Figures/POMDP.pdf used on input line 25.
 (pdftex.def)             Requested size: 380.31737pt x 268.75157pt.
 
-<Figures/mnist_reshape.pdf, id=218, 1084.05pt x 1084.05pt>
+<Figures/mnist_reshape.pdf, id=234, 1084.05pt x 1084.05pt>
 File: Figures/mnist_reshape.pdf Graphic file (type pdf)
 
 <use Figures/mnist_reshape.pdf>
@@ -1838,7 +1844,7 @@ e orig-i-nale tirée de MNIST ; \T1/ppl/b/n/10.95 B. \T1/ppl/m/n/10.95 Im-age ap
 rès trans-for-ma-tion 
  []
 
-<Figures/wavelet_effect.pdf, id=219, 1445.4pt x 1445.4pt>
+<Figures/wavelet_effect.pdf, id=235, 1445.4pt x 1445.4pt>
 File: Figures/wavelet_effect.pdf Graphic file (type pdf)
 
 <use Figures/wavelet_effect.pdf>
@@ -1877,10 +1883,10 @@ Package logreq Info: Writing requests to 'main.run.xml'.
  )
 (\end occurred when \iftrue on line 90 was incomplete) 
 Here is how much of TeX's memory you used:
- 30730 strings out of 494351
- 618251 string characters out of 6163906
- 716428 words of memory out of 5000000
- 33659 multiletter control sequences out of 15000+600000
+ 30753 strings out of 494351
+ 618801 string characters out of 6163906
+ 715428 words of memory out of 5000000
+ 33680 multiletter control sequences out of 15000+600000
  59602 words of font info for 119 fonts, out of 8000000 for 9000
  350 hyphenation exceptions out of 8191
  56i,21n,78p,10377b,1739s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -1894,10 +1900,10 @@ e/texlive/texmf-dist/fonts/type1/urw/palatino/uplb8a.pfb></usr/share/texlive/te
 xmf-dist/fonts/type1/urw/palatino/uplr8a.pfb></usr/share/texlive/texmf-dist/fon
 ts/type1/urw/palatino/uplr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw
 /palatino/uplri8a.pfb>
-Output written on main.pdf (23 pages, 297446 bytes).
+Output written on main.pdf (23 pages, 301164 bytes).
 PDF statistics:
- 395 PDF objects out of 1000 (max. 8388607)
- 275 compressed objects within 3 object streams
- 55 named destinations out of 1000 (max. 500000)
+ 416 PDF objects out of 1000 (max. 8388607)
+ 291 compressed objects within 3 object streams
+ 57 named destinations out of 1000 (max. 500000)
  114 words of extra memory for PDF output out of 10000 (max. 10000000)
 
