@@ -167,6 +167,71 @@
   \field{year}{2011}
 \endentry
 
+\entry{Friston2012}{article}{}
+  \name{author}{4}{}{%
+    {{}%
+     {Friston}{F.}%
+     {Karl}{K.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Adams}{A.}%
+     {Rick~A.}{R.~A.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Perrinet}{P.}%
+     {Laurent}{L.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Breakspear}{B.}%
+     {Michael}{M.}%
+     {}{}%
+     {}{}}%
+  }
+  \keyw{Active inference,Bayesian inference,Exploration,Free
+  energy,Perception,Salience,Surprise,Visual search}
+  \strng{namehash}{FK+1}
+  \strng{fullhash}{FKARAPLBM1}
+  \field{sortinit}{F}
+  \field{abstract}{%
+  If perception corresponds to hypothesis testing (Gregory, 1980); then visual
+  searches might be construed as experiments that generate sensory data. In
+  this work, we explore the idea that saccadic eye movements are optimal
+  experiments, in which data are gathered to test hypotheses or beliefs about
+  how those data are caused. This provides a plausible model of visual search
+  that can be motivated from the basic principles of self-organized behavior:
+  namely, the imperative to minimize the entropy of hidden states of the world
+  and their sensory consequences. This imperative is met if agents sample
+  hidden states of the world efficiently. This efficient sampling of salient
+  information can be derived in a fairly straightforward way, using approximate
+  Bayesian inference and variational free-energy minimization. Simulations of
+  the resulting active inference scheme reproduce sequential eye movements that
+  are reminiscent of empirically observed saccades and provide some
+  counterintuitive insights into the way that sensory evidence is accumulated
+  or assimilated into beliefs about the world.%
+  }
+  \verb{doi}
+  \verb 10.3389/fpsyg.2012.00151
+  \endverb
+  \verb{eprint}
+  \verb NIHMS150003
+  \endverb
+  \field{isbn}{1664-1078 (Electronic)}
+  \field{issn}{16641078}
+  \field{number}{MAY}
+  \field{pages}{1\bibrangedash 20}
+  \field{title}{{Perceptions as hypotheses: Saccades as experiments}}
+  \field{volume}{3}
+  \verb{file}
+  \verb :home/pimt/Documents/Articles/Friston2012.pdf:pdf
+  \endverb
+  \field{journaltitle}{Frontiers in Psychology}
+  \field{eprinttype}{arXiv}
+  \field{year}{2012}
+\endentry
+
 \entry{Werner2014}{book}{}
   \name{editor}{2}{}{%
     {{}%

@@ -8,7 +8,7 @@
 \contentsline {section}{\numberline {2.1}Support physique et num\IeC {\'e}rique}{5}{section.8}
 \contentsline {section}{\numberline {2.2}Mod\IeC {\`e}le POMDP}{5}{section.9}
 \contentsline {section}{\numberline {2.3}Champs r\IeC {\'e}tinien}{6}{section.13}
-\contentsline {section}{\numberline {2.4}Apprentissage supervis\IeC {\'e}}{6}{section.14}
+\contentsline {section}{\numberline {2.4}Apprentissage supervis\IeC {\'e}}{7}{section.14}
 \contentsline {chapter}{Bibliography}{9}{chapter*.18}
 \contentsline {chapter}{\numberline {A}Figures}{11}{appendix.19}
-\contentsline {chapter}{\numberline {B}Code source}{15}{appendix.24}
+\contentsline {chapter}{\numberline {B}Code source}{15}{appendix.25}

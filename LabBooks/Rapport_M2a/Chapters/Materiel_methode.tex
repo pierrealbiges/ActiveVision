@@ -48,6 +48,8 @@ B_{t}^i = p(S_{t} = i|A_{1:t},O_{1:t})
 \label{eqn:POMDP_bel}
 \end{equation}
 
+Nous construisons ainsi un modèle en deux couches. La première, \textit{détecteur}, est entraînée à prédire la position du stimulus dans l'image, perçu au travers du champs rétinien et permet de réaliser une saccade jusqu'aux coordonnées prédites, permettant d'approcher la cible de la vision fovéale. Chaque saccade permet donc d'optimiser la détection du signal.\autocite{Friston2012}\\
+La seconde, \textit{classifieur}, est entraînée à prédire la catégorie du stimulus dans l'image, perçu au travers du champs rétinien et permet d'arrêter l'exploration de l'image lorsque sa prédiction présente une certitude assez élevée.
 
 %----------------------------------------------------------------------------------------
 
@@ -58,7 +60,8 @@ Chaque image présente originellement des niveaux de gris sur 28x28 pixels. Cett
 A cette image est ensuite appliqué un \textit{filtre Wavelets} ou un \textit{filtre LogGabor}, deux méthodes permettant d'obtenir un champs rétinien, c'est à dire un filtre visuel dont l'acuité est maximale en son centre (simulant la fovea) et diminuant avec l'excentricité (simulant la vision périphérique).\\
 !!! Description filtre wavelets!!! \\
 Les effets du \textit{filtre Wavelets} sont visibles sur la figure~\ref{fig:wavelet_effect}.\\
-!!! Description filtre logGabor !!!
+!!! Description filtre logGabor !!!\\
+L'une des forces du filtre LogGabor est sa capacité à modéliser la distribution des champs récepteurs rétinien, mais aussi -en modifiant seulement quelques paramètres- celle d'aires corticales visuelles primaires et associatives \autocite{Freeman2011} et peut donc être ré-utilisé dans le cadre d'un modèle visuel multi-couches neuromimétique, notamment pour la modélisation de la voie visuelle ventrale \autocite{Freeman2011}.
 
 %----------------------------------------------------------------------------------------
 
@@ -86,6 +89,3 @@ En parallèle de l'entraînement peut être calculé le coût $J(\theta)$ (équa
 J(\theta) = \frac{1}{2m} \sum_{i=1}^m (h_\theta(x^i)-y^i)^2
 \label{eqn:Cost}
 \end{equation}
-
-Nous construisons un modèle en deux couches. La première, \textit{détecteur}, est entraînée à prédire la position du stimulus dans l'image, perçu au travers du champs rétinien et permet de réaliser une saccade jusqu'aux coordonnées prédites, permettant d'approcher la cible de la vision fovéale. \\
-La seconde, \textit{classifieur}, est entraînée à prédire la catégorie du stimulus dans l'image, perçu au travers du champs rétinien et permet d'arrêter l'exploration de l'image lorsque sa prédiction présente une certitude assez élevée.
