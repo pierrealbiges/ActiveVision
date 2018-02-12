@@ -4,6 +4,8 @@
 
 \label{Figures} % For referencing this appendix elsewhere, use \ref{AppendixA}
 
+%%%%% Introduction %%%%%
+
 \begin{figure}[th]
 \centering
 \includegraphics{Figures/visual_system}
@@ -19,6 +21,8 @@
 \caption[Figure]{Schéma simplifié du fonctionnement du système visuel avec son \textit{équivalence dans le modèle} (adapté de \cite{Zhaoping2014})}
 \label{fig:visual_system_simple}
 \end{figure}
+
+%%%%% Matériel et méthodes %%%%%
 
 \begin{figure}[th]
 \centering
@@ -38,9 +42,50 @@
 
 \begin{figure}[th]
 \centering
-\includegraphics[scale=0.3]{Figures/wavelet_effect}
+\includegraphics[scale=0.25]{Figures/wavelet_effect}
 \decoRule %puts an aesthetic horizontal line below the image
-\caption[Figure]{\textbf{A.} Image avant application d'un filtre et placé aux coordonnées $(i=-6,j=6)$ ; \textbf{B.} Image après transformation par vaguelettes (\textit{filtre Wavelets})}
+\caption[Figure]{\textbf{A.} Image avant application d'un filtre et placé aux coordonnées $(i=-6,j=6)$ ; \textbf{B.} Image après transformation par vaguelettes (filtre \textit{Wavelets})}
 \label{fig:wavelet_effect}
 \end{figure}
 
+%%%%% Résultats %%%%%
+
+\begin{figure}[th]
+\centering
+\includegraphics{Figures/Benchmarking_para_alpha_2}
+\decoRule %puts an aesthetic horizontal line below the image
+\caption[Figure]{Effet du paramètre alpha sur l'apprentissage dans le cadre d'un filtre \textit{Wavelets}}
+\label{fig:benchmark_surApp1}
+\end{figure}
+
+\begin{figure}[th]
+\centering
+\includegraphics{Figures/Benchmarking_para_alpha_3}
+\decoRule %puts an aesthetic horizontal line below the image
+\caption[Figure]{Effet du paramètre alpha sur l'apprentissage dans le cadre d'un filtre \textit{Wavelets}}
+\label{fig:benchmark_surApp2}
+\end{figure}
+
+\begin{figure}[th]
+\centering
+\includegraphics{Figures/Benchmarking_para_alpha}
+\decoRule %puts an aesthetic horizontal line below the image
+\caption[Figure]{Effet du paramètre alpha sur l'apprentissage dans le cadre d'un filtre \textit{Wavelets}}
+\label{fig:benchmark_alpha}
+\end{figure}
+
+\begin{figure}[th]
+\centering
+\includegraphics[scale=0.4]{Figures/logpolar_cost_learning}
+\decoRule %puts an aesthetic horizontal line below the image
+\caption[Figure]{Réduction du coût des couches \textit{détecteur} et \textit{classifieur} lors de l'apprentissage, dans le cadre d'un filtre \textit{LogPolar} (taille de la base d'apprentissage :  1000, nombre d'itérations : 100, $\alpha_{detect}=0.0015$, $\alpha_{classif}=0.3$)}
+\label{fig:logpolar_cost}
+\end{figure}
+
+\begin{figure}[th]
+\centering
+\includegraphics[scale=0.5]{Figures/saccades}
+\decoRule %puts an aesthetic horizontal line below the image
+\caption[Figure]{Perception et comportement saccadique du modèle entraîné, dans le cadre d'un filtre \textit{Wavelets}}
+\label{fig:saccades}
+\end{figure}

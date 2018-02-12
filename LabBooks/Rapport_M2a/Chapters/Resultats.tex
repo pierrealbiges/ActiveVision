@@ -1,0 +1,26 @@
+% Chapter Template
+
+\chapter{Résultats} % Main chapter title
+ 
+\label{Résultats} % Change X to a consecutive number; for referencing this chapter elsewhere, use \ref{ChapterX}
+
+%----------------------------------------------------------------------------------------
+
+\section{Apprentissage supervisé}
+
+L'étape de benchmarking du paramètre d'apprentissage $\alpha$ (équation~\ref{eqn:Grad_desc}) permet de rendre compte de son importance sur l'efficacité de l'apprentissage et du modèle. \\
+Dans le cadre du filtre \textit{Wavelets}, on peut ainsi observer qu'une valeur $\alpha\geq0.4$ entraîne un sur-apprentissage très important (le coût augmente fortement au cours de l'entraînement, figures~\ref{fig:benchmark_surApp1} et \ref{fig:benchmark_surApp2}), tandis que $\alpha=0.3$ semble représenter une valeur optimale pour l'apprentissage (figure~\ref{fig:benchmark_alpha}).\\
+Dans le cadre du filtre \textit{LogPolar}, deux jeux de poids indépendants doivent être optimisés pendant l'apprentissage,  correspondant respectivement aux couches \textit{détecteur} et \textit{classifieur}. Chaque couche possède ainsi son propre paramètre $\alpha$ ($\alpha_{detect}$ et $\alpha_{classif}$) et l'on peut donc calculer leurs coûts indépendamments (figure~\ref{fig:logpolar_cost}).
+
+%----------------------------------------------------------------------------------------
+
+\section{Prédiction de la position}
+
+Après entraînement, le modèle est capable de détecter la cible dans son environnement et de prédire précisemment sa position (figure~\ref{fig:saccades}). Il est ensuite capable d'utiliser cette prédiction pour réaliser une saccade les coordonnées prédites de la cible visuelle, ce qui modifie en conséquence sa perception de son environnement.\\
+Mais une seule saccade n'est pas toujours suffisante pour atteindre la cible (:::figure:::) et le nombre de saccades nécessaires augmente avec la distance initiale de la cible à la fovéa (:::figure:::). Cette relation pourrait provenir de la diminution de l'acuité avec l'excentricité dans la champs visuel (provoquée par le champs rétinien), entraînant une diminution de la précision des prédictions (:::figure:::)
+
+%----------------------------------------------------------------------------------------
+
+\section{Prédiction de la catégorie}
+
+%----------------------------------------------------------------------------------------
