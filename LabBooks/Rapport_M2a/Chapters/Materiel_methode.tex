@@ -6,19 +6,7 @@
 %----------------------------------------------------------------------------------------
 
 \section{Support physique et numérique} %Spécificités ordinateur/machine virtuelle, python/libraries versions
-L'ensemble des modélisations ont été réalisés sur un ordinateur portable hébergeant une machine virtuelle. Leurs caractéristiques sont rassemblées dans le tableau suivant :\\
-
-\resizebox{19cm}{!}{
-\begin{tabular}{| p{4cm} || l | l | p{5cm} | l | l |}
-\hline
-& Identifiant & Système d'explotation & Processeur & Mémoire vive & Carte graphique\\ \hline
-Machine physique & ASUS ROG G75VW & Windows 7 64-bit SP1 & Intel Core I7-3610QM 2,30GHz (8CPU) &  
-8 GB (DDR3) & NVIDIA GeForce GTX670M\\ \hline
-Machine virtuelle (ressources allouées) & VirtualBox v.5.2.6 & Ubuntu 16.04 & 4 CPU, 90\% des ressources & 
-5298 Mo & Support GPU non-utilisé\\ \hline
-\end{tabular}
-}
-
+L'ensemble des modélisations ont été réalisés sur un ordinateur portable hébergeant une machine virtuelle. Leurs caractéristiques sont rassemblées dans le tableau~\ref{tab:materiel}.\\
 Les modélisation ont été réalisées à l'aide du language de programmation \href{https://www.python.org/}{Python} (version 3.6.4) renforcé de la librairie \href{https://www.tensorflow.org/}{TensorFlow} (version 1.4) et de l'interface graphique \href{https://jupyter.org/}{Jupyter}.\\
 La base de données \href{http://yann.lecun.com/exdb/mnist/}{MNIST} a été utilisée pour l'apprentissage et l'évaluation du modèle. Elle contient 70.000 images de chiffres manuscrits (60.000 pour l'entraînement, 10.000 pour l'évaluation), centrés et dont la taille a été normalisée. Chaque image est accompagnée d'un label décrivant quel chiffre elle contient.
 
@@ -26,7 +14,7 @@ La base de données \href{http://yann.lecun.com/exdb/mnist/}{MNIST} a été util
 
 \section{Modèle POMDP} %Description du modèle perception-action, schéma explicatif
 Le problème de recherche d'information dans un contexte d'exploration de l'environnement visuel peut être formulé comme un \textbf{processus de décision Markovien partiellement observable} (POMDP) \autocite{Butko2010}. \\
-Dans un POMDP (figure~\ref{fig:POMDP}), l'agent perçoit partiellement l'\textbf{état de l'environnement} \textit{S} à un temps \textit{t} (dans ce travail, l'environnement visuel) et peut réaliser des \textbf{actions} \textit{A} (ici des saccades oculaires) qui peuvent avoir des conséquences sur l'environnement et sa perception \textit{O} (l'environnement visuel perçut au travers du champs rétinien). L'agent va ainsi construire un \textbf{état de croyance} \textit{B} (ici la position et la catégorie prédites du stimulus) en fonction des observations et des actions réalisées jusqu'ici \autocite{Butko2010}.
+Dans un POMDP (figure~\ref{fig:POMDP}), l'agent perçoit partiellement l'\textbf{état de l'environnement} \textit{S} à un temps \textit{t} (dans ce travail, l'environnement visuel) et peut réaliser des \textbf{actions} \textit{A} (ici des saccades oculaires) qui peuvent avoir des conséquences sur l'environnement et sa perception \textit{O} (l'environnement visuel perçut au travers du champs rétinien). L'agent va ainsi construire un \textbf{état de croyance} \textit{B} (ici les prédictions de position et de catégorie du stimulus) en fonction des observations et des actions réalisées jusqu'ici \autocite{Butko2010}.
 
 Un tel système doit satisfaire la \textbf{propriété de Markov}, qui décrit que la distribution de probabilité des futurs états ne dépends que de l'état précédent et pas de toute la séquence d'états en amont.\\
 Ainsi lors de l'évolution du système dans le temps, on considère que l'état suivant de l'environnement est uniquement influencé par son état actuel et l'action (éventuelle) réalisée par l'agent (équation~\ref{eqn:POMDP_sta}) \autocite{Butko2010}. 
@@ -48,7 +36,7 @@ B_{t}^i = p(S_{t} = i|A_{1:t},O_{1:t})
 \label{eqn:POMDP_bel}
 \end{equation}
 
-Nous construisons ainsi un modèle en deux couches. La première, \textit{détecteur}, est entraînée à prédire la position du stimulus dans l'image, perçu au travers du champs rétinien et permet de réaliser une saccade jusqu'aux coordonnées prédites, permettant d'approcher la cible de la vision fovéale. Chaque saccade permet donc d'optimiser la détection du signal.\autocite{Friston2012}\\
+Nous construisons ainsi un modèle en deux couches. La première, \textit{détecteur}, est entraînée à prédire la position du stimulus dans l'image perçu au travers du champs rétinien, permettant de réaliser une saccade jusqu'aux coordonnées prédites et donc d'approcher la cible de la vision fovéale. Chaque saccade permet d'optimiser la détection du signal.\autocite{Friston2012}\\
 La seconde, \textit{classifieur}, est entraînée à prédire la catégorie du stimulus dans l'image, perçu au travers du champs rétinien et permet d'arrêter l'exploration de l'image lorsque sa prédiction présente une certitude assez élevée.
 
 %----------------------------------------------------------------------------------------
@@ -61,7 +49,7 @@ A cette image est ensuite appliqué un \textit{filtre Wavelets} ou un \textit{fi
 !!! Description filtre wavelets!!! \\
 Les effets du \textit{filtre Wavelets} sont visibles sur la figure~\ref{fig:wavelet_effect}.\\
 !!! Description filtre LogPolar !!!\\
-L'une des forces du filtre LogPolar est sa capacité à modéliser la distribution des champs récepteurs rétinien, mais aussi -en modifiant seulement quelques paramètres- celle d'aires corticales visuelles primaires et associatives \autocite{Freeman2011} et peut donc être ré-utilisé dans le cadre d'un modèle visuel multi-couches neuromimétique, notamment pour la modélisation de la voie visuelle ventrale \autocite{Freeman2011}.
+L'une des forces du filtre LogPolar est sa capacité à modéliser la distribution des champs récepteurs rétinien, mais aussi (en modifiant seulement quelques paramètres) celle d'aires corticales visuelles primaires et associatives et peut donc être ré-utilisé dans le cadre d'un modèle visuel multi-couches neuromimétique, notamment pour la modélisation de la voie visuelle ventrale \autocite{Freeman2011}.
 
 %----------------------------------------------------------------------------------------
 
@@ -83,7 +71,7 @@ Ces poids sont ensuite optimisés par descente de gradient (équation~\ref{eqn:G
 \label{eqn:Grad_desc}
 \end{equation}
 
-En parallèle de l'entraînement peut être calculé le coût $J(\theta)$ (équation~\ref{eqn:Cost}), dont l'évolution au cours de l'entraînement est un indicateur de l'efficacité de l'apprentissage. Sa valeur devant décroitre au cours du temps, l'optimisation du modèle peut se faire en tentant de la réduire au maximum.
+En parallèle peut être calculé le coût $J(\theta)$ (équation~\ref{eqn:Cost}), dont l'évolution au cours de l'entraînement est un indicateur de l'efficacité de l'apprentissage. Sa valeur devant décroitre au cours du temps, l'optimisation du modèle peut se faire en tentant de la réduire au maximum.
 
 \begin{equation}
 J(\theta) = \frac{1}{2m} \sum_{i=1}^m (h_\theta(x^i)-y^i)^2

@@ -24,6 +24,21 @@
 
 %%%%% Matériel et méthodes %%%%%
 
+\begin{table}
+\resizebox{19cm}{!}{
+\begin{tabular}{| p{4cm} || l | l | p{5cm} | l | l |}
+\hline
+& Identifiant & Système d'explotation & Processeur & Mémoire vive & Carte graphique\\ \hline
+Machine physique & ASUS ROG G75VW & Windows 7 64-bit SP1 & Intel Core I7-3610QM 2,30GHz (8CPU) &  
+8 GB (DDR3) & NVIDIA GeForce GTX670M\\ \hline
+Machine virtuelle (ressources allouées) & VirtualBox v.5.2.6 & Ubuntu 16.04 & 4 CPU, 90\% des ressources & 
+5298 Mo & Support GPU non-utilisé\\ \hline
+\end{tabular}
+}
+\caption[Tableau]{Matériel physique et numérique utilisé pour réaliser les modélisations}
+\label{tab:materiel}
+\end{table}
+
 \begin{figure}[th]
 \centering
 \includegraphics[scale=0.45]{Figures/POMDP}
@@ -88,4 +103,20 @@
 \decoRule %puts an aesthetic horizontal line below the image
 \caption[Figure]{Perception et comportement saccadique du modèle entraîné, dans le cadre d'un filtre \textit{Wavelets}}
 \label{fig:saccades}
+\end{figure}
+
+\begin{figure}[th]
+\centering
+\includegraphics{Figures/sacc_nombre}
+\decoRule %puts an aesthetic horizontal line below the image
+\caption[Figure]{Nombre de saccades nécessaires pour atteindre la position de la cible au cours de 1000 essais, dans le cadre d'un filtre \textit{LogPolar} (taille de la base d'apprentissage :  1000, nombre d'itérations : 100, $\alpha_{detect}=0.0015$, $\alpha_{classif}=0.3$)}
+\label{fig:sacc_nombre}
+\end{figure}
+
+\begin{figure}[th]
+\centering
+\includegraphics{Figures/sacc_distance}
+\decoRule %puts an aesthetic horizontal line below the image
+\caption[Figure]{Nombre moyen de saccades nécessaires pour atteindre la position de la cible en fonction de sa distance initiale du point de fixation au cours de 1000 essais, dans le cadre d'un filtre \textit{LogPolar} (taille de la base d'apprentissage :  1000, nombre d'itérations : 100, $\alpha_{detect}=0.0015$, $\alpha_{classif}=0.3$)}
+\label{fig:sacc_distance}
 \end{figure}
