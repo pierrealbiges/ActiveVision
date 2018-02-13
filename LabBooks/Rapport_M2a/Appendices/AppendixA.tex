@@ -59,8 +59,24 @@ Machine virtuelle (ressources allouées) & VirtualBox v.5.2.6 & Ubuntu 16.04 & 4
 \centering
 \includegraphics[scale=0.25]{Figures/wavelet_effect}
 \decoRule %puts an aesthetic horizontal line below the image
-\caption[Figure]{\textbf{A.} Image avant application d'un filtre et placé aux coordonnées $(i=-6,j=6)$ ; \textbf{B.} Image après transformation par vaguelettes (filtre \textit{Wavelets})}
-\label{fig:wavelet_effect}
+\caption[Figure]{\textbf{A.} Image avant application d'un filtre et placé aux coordonnées $(i=-6,j=6)$ ; \textbf{B.} Image après transformation par le filtre \textit{Wavelets}}
+\label{fig:Wavelet_effect}
+\end{figure}
+
+\begin{figure}[th]
+\centering
+\includegraphics[scale=0.35]{Figures/LogPolar_shape}
+\decoRule %puts an aesthetic horizontal line below the image
+\caption[Figure]{Représentation graphique du filtre \textit{LogPolar} ($N_{theta}=6$,$N_{orient}=8$,$N_{scale}=5$,$N_{phase}=2$) }
+\label{fig:LogPolar_shape}
+\end{figure}
+
+\begin{figure}[th]
+\centering
+\includegraphics[scale=0.35]{Figures/LogPolar_effect}
+\decoRule %puts an aesthetic horizontal line below the image
+\caption[Figure]{Image après transformation par le filtre \textit{LogPolar} ($N_{theta}=6$,$N_{orient}=8$,$N_{scale}=5$,$N_{phase}=2$) }
+\label{fig:LogPolar_effect}
 \end{figure}
 
 %%%%% Résultats %%%%%
@@ -119,4 +135,12 @@ Machine virtuelle (ressources allouées) & VirtualBox v.5.2.6 & Ubuntu 16.04 & 4
 \decoRule %puts an aesthetic horizontal line below the image
 \caption[Figure]{Nombre moyen de saccades nécessaires pour atteindre la position de la cible en fonction de sa distance initiale du point de fixation au cours de 1000 essais, dans le cadre d'un filtre \textit{LogPolar} (taille de la base d'apprentissage :  1000, nombre d'itérations : 100, $\alpha_{detect}=0.0015$, $\alpha_{classif}=0.3$)}
 \label{fig:sacc_distance}
+\end{figure}
+
+\begin{figure}[th]
+\centering
+\includegraphics[scale=0.95]{Figures/err_distance}
+\decoRule %puts an aesthetic horizontal line below the image
+\caption[Figure]{Erreur moyenne lors de la prédiction de la position de la cible en fonction de sa distance du point de fixation au cours de 1000 essais, dans le cadre d'un filtre \textit{LogPolar} (taille de la base d'apprentissage :  1000, nombre d'itérations : 100, $\alpha_{detect}=0.0015$, $\alpha_{classif}=0.3$)}
+\label{fig:err_distance}
 \end{figure}

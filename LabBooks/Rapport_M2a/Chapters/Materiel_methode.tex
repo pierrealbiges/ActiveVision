@@ -47,9 +47,10 @@ Avant d'être utilisée par le modèle, l'image provenant de la base MNIST subit
 Chaque image présente originellement des niveaux de gris sur 28x28 pixels. Cette image est placée au hasard (mais de façon normocentrée) sur une image au fond blanc de 128x128 pixels (figure~\ref{fig:mnist_reshape}).\\
 A cette image est ensuite appliqué un \textit{filtre Wavelets} ou un \textit{filtre LogPolar}, deux méthodes permettant d'obtenir un champs rétinien, c'est à dire un filtre visuel dont l'acuité est maximale en son centre (simulant la fovea) et diminuant avec l'excentricité (simulant la vision périphérique). Les produits de ces méthodes et leurs théories sous-jacentes seront décrits dans ce document, mais leurs résultats ne peuvent pas être comparés tels quels, leurs architectures n'étant pas au même niveau d'aboutissement (la couche \textit{classifieur} étant par exemple seulement intégré avec la filtre LogPolar pour le moment).\\
 !!! Description filtre wavelets!!! \\
-Les effets du \textit{filtre Wavelets} sont visibles sur la figure~\ref{fig:wavelet_effect}.\\
+Les effets du \textit{filtre Wavelets} sont visibles sur la figure~\ref{fig:Wavelet_effect}.\\
 !!! Description filtre LogPolar !!!\\
-L'une des forces du filtre LogPolar est sa capacité à modéliser la distribution des champs récepteurs rétinien, mais aussi (en modifiant seulement quelques paramètres) celle d'aires corticales visuelles primaires et associatives et peut donc être ré-utilisé dans le cadre d'un modèle visuel multi-couches neuromimétique, notamment pour la modélisation de la voie visuelle ventrale \autocite{Freeman2011}.
+La représentation graphique du filtre \textit{LogPolar} utilisé dans ces travaux et ses effets sur l'un de nos stimuli visuels sont visibles sur les figures~\ref{fig:LogPolar_shape} et~\ref{fig:LogPolar_effect} .\\
+L'une des forces du filtre \textit{LogPolar} est sa capacité à modéliser la distribution des champs récepteurs rétinien, mais aussi (en modifiant seulement quelques paramètres) celle d'aires corticales visuelles primaires et associatives et peut donc être ré-utilisé dans le cadre d'un modèle visuel multi-couches neuromimétique, notamment pour la modélisation de la voie visuelle ventrale \autocite{Freeman2011}.
 
 %----------------------------------------------------------------------------------------
 
