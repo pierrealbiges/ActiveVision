@@ -43,6 +43,350 @@
   \field{year}{2010}
 \endentry
 
+\entry{Denison2014}{article}{}
+  \name{author}{5}{}{%
+    {{}%
+     {Denison}{D.}%
+     {Rachel~N.}{R.~N.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Vu}{V.}%
+     {An~T.}{A.~T.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Yacoub}{Y.}%
+     {Essa}{E.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Feinberg}{F.}%
+     {David~A.}{D.~A.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Silver}{S.}%
+     {Michael~A.}{M.~A.}%
+     {}{}%
+     {}{}}%
+  }
+  \keyw{7T,FMRI,Lateral geniculate nucleus,Magnocellular,Parallel
+  processing,Parvocellular}
+  \strng{namehash}{DRN+1}
+  \strng{fullhash}{DRNVATYEFDASMA1}
+  \field{sortinit}{D}
+  \field{abstract}{%
+  The magnocellular (M) and parvocellular (P) subdivisions of primate LGN are
+  known to process complementary types of visual stimulus information, but a
+  method for noninvasively defining these subdivisions in humans has proven
+  elusive. As a result, the functional roles of these subdivisions in humans
+  have not been investigated physiologically. To functionally map the M and P
+  subdivisions of human LGN, we used high-resolution fMRI at high field (7. T
+  and 3. T) together with a combination of spatial, temporal, luminance, and
+  chromatic stimulus manipulations. We found that stimulus factors that
+  differentially drive magnocellular and parvocellular neurons in primate LGN
+  also elicit differential BOLD fMRI responses in human LGN and that these
+  responses exhibit a spatial organization consistent with the known anatomical
+  organization of the M and P subdivisions. In test-retest studies, the
+  relative responses of individual voxels to M-type and P-type stimuli were
+  reliable across scanning sessions on separate days and across sessions at
+  different field strengths. The ability to functionally identify magnocellular
+  and parvocellular regions of human LGN with fMRI opens possibilities for
+  investigating the functions of these subdivisions in human visual perception,
+  in patient populations with suspected abnormalities in one of these
+  subdivisions, and in visual cortical processing streams arising from parallel
+  thalamocortical pathways. {\textcopyright} 2014 Elsevier Inc.%
+  }
+  \verb{doi}
+  \verb 10.1016/j.neuroimage.2014.07.019
+  \endverb
+  \verb{eprint}
+  \verb 15334406
+  \endverb
+  \field{isbn}{1095-9572 (Electronic) 1053-8119 (Linking)}
+  \field{issn}{10959572}
+  \field{number}{P2}
+  \field{pages}{358\bibrangedash 369}
+  \field{title}{{Functional mapping of the magnocellular and parvocellular
+  subdivisions of human LGN}}
+  \field{volume}{102}
+  \verb{file}
+  \verb :home/pimt/Documents/Articles/Denison2014.pdf:pdf
+  \endverb
+  \field{journaltitle}{NeuroImage}
+  \field{eprinttype}{arXiv}
+  \field{year}{2014}
+\endentry
+
+\entry{Freeman2011}{article}{}
+  \name{author}{2}{}{%
+    {{}%
+     {Freeman}{F.}%
+     {Jeremy}{J.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Simoncelli}{S.}%
+     {Eero~P.}{E.~P.}%
+     {}{}%
+     {}{}}%
+  }
+  \strng{namehash}{FJSEP1}
+  \strng{fullhash}{FJSEP1}
+  \field{sortinit}{F}
+  \field{abstract}{%
+  The human capacity to recognize complex visual patterns emerges in a sequence
+  of brain areas known as the ventral stream, beginning with primary visual
+  cortex (V1). We developed a population model for mid-ventral processing, in
+  which nonlinear combinations of V1 responses are averaged in receptive fields
+  that grow with eccentricity. To test the model, we generated novel forms of
+  visual metamers, stimuli that differ physically but look the same. We
+  developed a behavioral protocol that uses metameric stimuli to estimate the
+  receptive field sizes in which the model features are represented. Because
+  receptive field sizes change along the ventral stream, our behavioral results
+  can identify the visual area corresponding to the representation.
+  Measurements in human observers implicate visual area V2, providing a new
+  functional account of neurons in this area. The model also explains deficits
+  of peripheral vision known as crowding, and provides a quantitative framework
+  for assessing the capabilities and limitations of everyday vision.%
+  }
+  \verb{doi}
+  \verb 10.1038/nn.2889
+  \endverb
+  \field{isbn}{1546-1726 (Electronic)$\backslash$r1097-6256 (Linking)}
+  \field{issn}{10976256}
+  \field{number}{9}
+  \field{pages}{1195\bibrangedash 1204}
+  \field{title}{{Metamers of the ventral stream}}
+  \field{volume}{14}
+  \verb{file}
+  \verb :home/pimt/Documents/Articles/Freeman2011.pdf:pdf
+  \endverb
+  \field{journaltitle}{Nature Neuroscience}
+  \field{year}{2011}
+\endentry
+
+\entry{Friston2012}{article}{}
+  \name{author}{4}{}{%
+    {{}%
+     {Friston}{F.}%
+     {Karl}{K.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Adams}{A.}%
+     {Rick~A.}{R.~A.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Perrinet}{P.}%
+     {Laurent}{L.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Breakspear}{B.}%
+     {Michael}{M.}%
+     {}{}%
+     {}{}}%
+  }
+  \keyw{Active inference,Bayesian inference,Exploration,Free
+  energy,Perception,Salience,Surprise,Visual search}
+  \strng{namehash}{FK+1}
+  \strng{fullhash}{FKARAPLBM1}
+  \field{sortinit}{F}
+  \field{abstract}{%
+  If perception corresponds to hypothesis testing (Gregory, 1980); then visual
+  searches might be construed as experiments that generate sensory data. In
+  this work, we explore the idea that saccadic eye movements are optimal
+  experiments, in which data are gathered to test hypotheses or beliefs about
+  how those data are caused. This provides a plausible model of visual search
+  that can be motivated from the basic principles of self-organized behavior:
+  namely, the imperative to minimize the entropy of hidden states of the world
+  and their sensory consequences. This imperative is met if agents sample
+  hidden states of the world efficiently. This efficient sampling of salient
+  information can be derived in a fairly straightforward way, using approximate
+  Bayesian inference and variational free-energy minimization. Simulations of
+  the resulting active inference scheme reproduce sequential eye movements that
+  are reminiscent of empirically observed saccades and provide some
+  counterintuitive insights into the way that sensory evidence is accumulated
+  or assimilated into beliefs about the world.%
+  }
+  \verb{doi}
+  \verb 10.3389/fpsyg.2012.00151
+  \endverb
+  \verb{eprint}
+  \verb NIHMS150003
+  \endverb
+  \field{isbn}{1664-1078 (Electronic)}
+  \field{issn}{16641078}
+  \field{number}{MAY}
+  \field{pages}{1\bibrangedash 20}
+  \field{title}{{Perceptions as hypotheses: Saccades as experiments}}
+  \field{volume}{3}
+  \verb{file}
+  \verb :home/pimt/Documents/Articles/Friston2012.pdf:pdf
+  \endverb
+  \field{journaltitle}{Frontiers in Psychology}
+  \field{eprinttype}{arXiv}
+  \field{year}{2012}
+\endentry
+
+\entry{Goodale2004}{article}{}
+  \name{author}{2}{}{%
+    {{}%
+     {Goodale}{G.}%
+     {Melvyn~A.}{M.~A.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Westwood}{W.}%
+     {David~A.}{D.~A.}%
+     {}{}%
+     {}{}}%
+  }
+  \keyw{AIP,Anterior intraparietal sulcus,Area LO,Functional magnetic resonance
+  imaging,LOC,Lateral occipital area,Lateral occipital complex,MRI,Magnetic
+  resonance imaging,RF,Rod-and-frame,ST,Simultaneous tilt,TMS,Transcranial
+  magnetic stimulation,fMRI}
+  \strng{namehash}{GMAWDA1}
+  \strng{fullhash}{GMAWDA1}
+  \field{sortinit}{G}
+  \field{abstract}{%
+  In 1992, Goodale and Milner proposed a division of labour in the visual
+  pathways of the primate cerebral cortex between a dorsal stream specialised
+  for the visual control of action and a ventral stream dedicated to the
+  perception of the visual world. In the years since this original proposal,
+  support for the perception-action hypothesis has come from neuroimaging
+  experiments, human neuropsychology, monkey neurophysiology, and human
+  psychophysical experiments. Indeed, some of the strongest support for this
+  hypothesis has come from behavioural experiments showing that visually guided
+  actions are largely refractory to perceptual illusions. Although
+  controversial, the findings from this literature both support the original
+  hypothesis and suggest important modifications. The ongoing challenge for
+  neurobiologists is to map these behavioural findings onto their corresponding
+  neural substrates.%
+  }
+  \verb{doi}
+  \verb 10.1016/j.conb.2004.03.002
+  \endverb
+  \field{isbn}{0959-4388 (Print)$\backslash$r0959-4388 (Linking)}
+  \field{issn}{09594388}
+  \field{number}{2}
+  \field{pages}{203\bibrangedash 211}
+  \field{title}{{An evolving view of duplex vision: Separate but interacting
+  cortical pathways for perception and action}}
+  \field{volume}{14}
+  \verb{file}
+  \verb :home/pimt/Documents/Articles/Goodale2004.pdf:pdf
+  \endverb
+  \field{journaltitle}{Current Opinion in Neurobiology}
+  \field{year}{2004}
+\endentry
+
+\entry{Itti2000}{article}{}
+  \name{author}{2}{}{%
+    {{}%
+     {Itti}{I.}%
+     {Laurent}{L.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Koch}{K.}%
+     {Christof}{C.}%
+     {}{}%
+     {}{}}%
+  }
+  \keyw{saliency,vision systems,visual attention}
+  \strng{namehash}{ILKC1}
+  \strng{fullhash}{ILKC1}
+  \field{sortinit}{I}
+  \field{abstract}{%
+  Most models of visual search, whether involving overt eye movements or covert
+  shifts of attention, are based on the concept of a saliency map, that is, an
+  explicit two-dimensional map that encodes the saliency or conspicuity of
+  objects in the visual environment. Competition among neurons in this map
+  gives rise to a single winning location that corresponds to the next attended
+  target. Inhibiting this location automatically allows the system to attend to
+  the next most salient location. We describe a detailed computer
+  implementation of such a scheme, focusing on the problem of combining
+  information across modalities, here orientation, intensity and color
+  information, in a purely stimulus-driven manner. The model is applied to
+  common psychophysical stimuli as well as to a very demanding visual search
+  task. Its successful performance is used to address the extent to which the
+  primate visual system carries out visual search via one or more such saliency
+  maps and how this can be tested.%
+  }
+  \verb{doi}
+  \verb 10.1016/S0042-6989(99)00163-7
+  \endverb
+  \field{issn}{0042-6989}
+  \field{number}{10-12}
+  \field{pages}{1489\bibrangedash 1506}
+  \field{title}{{A saliency-based search mechanism for overt and covert hifts
+  of visual attention}}
+  \field{volume}{40}
+  \verb{file}
+  \verb :home/pimt/Documents/Articles/Itti1999.pdf:pdf
+  \endverb
+  \field{journaltitle}{Vision Research}
+  \field{year}{2000}
+\endentry
+
+\entry{Kortum1996}{article}{}
+  \name{author}{2}{}{%
+    {{}%
+     {Kortum}{K.}%
+     {Philip}{P.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Geisler}{G.}%
+     {Wilson~S.}{W.~S.}%
+     {}{}%
+     {}{}}%
+  }
+  \keyw{area-of-interest,eye,field-of-view,foveation,gaze contingent,image
+  compression,movements}
+  \strng{namehash}{KPGWS1}
+  \strng{fullhash}{KPGWS1}
+  \field{sortinit}{K}
+  \field{abstract}{%
+  We have developed a preliminary version of a foveated imaging system,
+  implemented on a general purpose computer, which greatly reduces the
+  transmission bandwidth of images. The system is based on the fact that the
+  spatial resolution of the human eye is space variant, decreasing with
+  increasing eccentricity from the point of gaze. By taking advantage of this
+  fact, it is possible to create an image that is almost perceptually
+  indistinguishable from a constant resolution image, but requires
+  substantially less information to code it. This is accomplished by degrading
+  the resolution of the image so that it matches the space-variant degradation
+  in the resolution of the human eye. Eye movements are recorded so that the
+  high resolution region of the image can be kept aligned with the high
+  resolution region of the human visual system. This system has demonstrated
+  that significant reductions in bandwidth can be achieved while still
+  maintaining access to high detail at any point in an image. The system has
+  been tested using 256x256 8 bit gray scale images with 20° fields-of-view
+  and eye-movement update rates of 30 Hz (display refresh was 60 Hz). Users of
+  the system have reported minimal perceptual artifacts at bandwidth reductions
+  of up to 94.7{\%} (18.8 times reduction)%
+  }
+  \verb{doi}
+  \verb 10.1117/12.238732
+  \endverb
+  \field{isbn}{081942031X}
+  \field{issn}{0277786X}
+  \field{pages}{350\bibrangedash 360}
+  \field{title}{{Implementation of a foveated image coding system for image
+  bandwidth reduction}}
+  \field{volume}{2657}
+  \verb{file}
+  \verb :home/pimt/Documents/Articles/Kortum1996.pdf:pdf
+  \endverb
+  \field{journaltitle}{SPIE Proceedings}
+  \field{year}{1996}
+\endentry
+
 \entry{Werner2014}{book}{}
   \name{editor}{2}{}{%
     {{}%
