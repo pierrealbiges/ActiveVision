@@ -41,14 +41,16 @@ La seconde, \textit{classifieur}, est entraînée à prédire la catégorie du s
 
 %----------------------------------------------------------------------------------------
 
-\section{Champs rétinien} %Description du modèle logpolar
+\section{Champs rétinien} %Description dues filtres rétiniens
 
 Avant d'être utilisée par le modèle, l'image provenant de la base MNIST subit un certain nombre de transformations.\\
 Chaque image présente originellement des niveaux de gris sur 28x28 pixels. Cette image est placée au hasard (mais de façon normocentrée) sur une image au fond blanc de 128x128 pixels (figure~\ref{fig:mnist_reshape}).\\
-A cette image est ensuite appliqué un \textit{filtre Wavelets} ou un \textit{filtre LogPolar}, deux méthodes permettant d'obtenir un champs rétinien, c'est à dire un filtre visuel dont l'acuité est maximale en son centre (simulant la fovea) et diminuant avec l'excentricité (simulant la vision périphérique). Les produits de ces méthodes et leurs théories sous-jacentes seront décrits dans ce document, mais leurs résultats ne peuvent pas être comparés tels quels, leurs architectures n'étant pas au même niveau d'aboutissement (la couche \textit{classifieur} étant par exemple seulement intégré avec la filtre LogPolar pour le moment).\\
-!!! Description filtre wavelets!!! \\
-Les effets du \textit{filtre Wavelets} sont visibles sur la figure~\ref{fig:Wavelet_effect}.\\
-!!! Description filtre LogPolar !!!\\
+A cette image est ensuite appliqué un \textit{filtre Wavelets} ou un \textit{filtre LogPolar}, deux méthodes permettant d'obtenir un champs rétinien, c'est à dire un filtre visuel dont l'acuité est maximale en son centre (simulant la fovea) et diminuant avec l'excentricité (simulant la vision périphérique). \\
+Dans les deux cas, la transformation mathématique imposée par le filtre est calculée à l'avance, permettant de l'appliquer à chaque nouvel environnement visuel et après chaque saccade oculaire, tout en économisant au maximum la puissance de calcul disponible.\autocite{Kortum1996}\\
+%Description filtre wavelets
+Le filtre \textit{Wavelets} consiste en l'application sur l'image d'une grille de résolution, définissant des anneaux concentriques de taille croissante et contenant des superpixels dont la taille augmente avec l'excentricité de l'anneau. Chacun des superpixels possédant un niveau de gris correspondant à la moyenne des valeurs des pixels qu'il contient, la résolution de l'image ainsi traitée diminue à chaque nouvel anneau, et donc par palier.\autocite{Kortum1996}
+Les effets de ce filtre sont visibles sur la figure~\ref{fig:Wavelet_effect}.\\
+%Description filtre LogPolar
 La représentation graphique du filtre \textit{LogPolar} utilisé dans ces travaux et ses effets sur l'un de nos stimuli visuels sont visibles sur les figures~\ref{fig:LogPolar_shape} et~\ref{fig:LogPolar_effect} .\\
 L'une des forces du filtre \textit{LogPolar} est sa capacité à modéliser la distribution des champs récepteurs rétinien, mais aussi (en modifiant seulement quelques paramètres) celle d'aires corticales visuelles primaires et associatives et peut donc être ré-utilisé dans le cadre d'un modèle visuel multi-couches neuromimétique, notamment pour la modélisation de la voie visuelle ventrale \autocite{Freeman2011}.
 

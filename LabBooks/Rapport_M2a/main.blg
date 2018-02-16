@@ -4,6 +4,7 @@ The top-level auxiliary file: main.aux
 The style file: biblatex.bst
 A level-1 auxiliary file: Chapters/Introduction.aux
 A level-1 auxiliary file: Chapters/Materiel_methode.aux
+A level-1 auxiliary file: Chapters/Resultats.aux
 A level-1 auxiliary file: Appendices/AppendixA.aux
 A level-1 auxiliary file: Appendices/AppendixB.aux
 Reallocated singl_function (elt_size=4) to 100 items from 50.
@@ -22,44 +23,44 @@ Database file #2: ActiveVision.bib
 Biblatex version: 3.3
 Reallocated singl_function (elt_size=4) to 100 items from 50.
 Reallocated wiz_functions (elt_size=4) to 9000 items from 6000.
-You've used 9 entries,
+You've used 10 entries,
             6047 wiz_defined-function locations,
-            1229 strings with 16178 characters,
-and the built_in function-call counts, 26453 in all, are:
-= -- 849
-> -- 893
-< -- 215
-+ -- 266
-- -- 372
-* -- 2298
-:= -- 1750
+            1244 strings with 17821 characters,
+and the built_in function-call counts, 29593 in all, are:
+= -- 946
+> -- 1002
+< -- 241
++ -- 295
+- -- 419
+* -- 2581
+:= -- 1933
 add.period$ -- 0
-call.type$ -- 9
-change.case$ -- 78
+call.type$ -- 10
+change.case$ -- 88
 chr.to.int$ -- 34
-cite$ -- 16
-duplicate$ -- 2919
-empty$ -- 2876
-format.name$ -- 573
-if$ -- 5895
+cite$ -- 18
+duplicate$ -- 3273
+empty$ -- 3220
+format.name$ -- 642
+if$ -- 6600
 int.to.chr$ -- 0
-int.to.str$ -- 16
+int.to.str$ -- 18
 missing$ -- 0
-newline$ -- 303
-num.names$ -- 328
-pop$ -- 2542
+newline$ -- 338
+num.names$ -- 369
+pop$ -- 2849
 preamble$ -- 1
-purify$ -- 103
+purify$ -- 116
 quote$ -- 0
-skip$ -- 1474
+skip$ -- 1654
 stack$ -- 0
-substring$ -- 424
-swap$ -- 1140
-text.length$ -- 242
-text.prefix$ -- 8
+substring$ -- 466
+swap$ -- 1281
+text.length$ -- 269
+text.prefix$ -- 9
 top$ -- 1
-type$ -- 330
+type$ -- 368
 warning$ -- 0
-while$ -- 205
+while$ -- 225
 width$ -- 0
-write$ -- 293
+write$ -- 327

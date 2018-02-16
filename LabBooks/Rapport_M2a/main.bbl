@@ -333,6 +333,60 @@
   \field{year}{2000}
 \endentry
 
+\entry{Kortum1996}{article}{}
+  \name{author}{2}{}{%
+    {{}%
+     {Kortum}{K.}%
+     {Philip}{P.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Geisler}{G.}%
+     {Wilson~S.}{W.~S.}%
+     {}{}%
+     {}{}}%
+  }
+  \keyw{area-of-interest,eye,field-of-view,foveation,gaze contingent,image
+  compression,movements}
+  \strng{namehash}{KPGWS1}
+  \strng{fullhash}{KPGWS1}
+  \field{sortinit}{K}
+  \field{abstract}{%
+  We have developed a preliminary version of a foveated imaging system,
+  implemented on a general purpose computer, which greatly reduces the
+  transmission bandwidth of images. The system is based on the fact that the
+  spatial resolution of the human eye is space variant, decreasing with
+  increasing eccentricity from the point of gaze. By taking advantage of this
+  fact, it is possible to create an image that is almost perceptually
+  indistinguishable from a constant resolution image, but requires
+  substantially less information to code it. This is accomplished by degrading
+  the resolution of the image so that it matches the space-variant degradation
+  in the resolution of the human eye. Eye movements are recorded so that the
+  high resolution region of the image can be kept aligned with the high
+  resolution region of the human visual system. This system has demonstrated
+  that significant reductions in bandwidth can be achieved while still
+  maintaining access to high detail at any point in an image. The system has
+  been tested using 256x256 8 bit gray scale images with 20° fields-of-view
+  and eye-movement update rates of 30 Hz (display refresh was 60 Hz). Users of
+  the system have reported minimal perceptual artifacts at bandwidth reductions
+  of up to 94.7{\%} (18.8 times reduction)%
+  }
+  \verb{doi}
+  \verb 10.1117/12.238732
+  \endverb
+  \field{isbn}{081942031X}
+  \field{issn}{0277786X}
+  \field{pages}{350\bibrangedash 360}
+  \field{title}{{Implementation of a foveated image coding system for image
+  bandwidth reduction}}
+  \field{volume}{2657}
+  \verb{file}
+  \verb :home/pimt/Documents/Articles/Kortum1996.pdf:pdf
+  \endverb
+  \field{journaltitle}{SPIE Proceedings}
+  \field{year}{1996}
+\endentry
+
 \entry{Werner2014}{book}{}
   \name{editor}{2}{}{%
     {{}%
