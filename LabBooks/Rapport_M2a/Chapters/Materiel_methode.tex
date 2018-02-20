@@ -48,10 +48,10 @@ Chaque image présente originellement des niveaux de gris sur 28x28 pixels. Cett
 A cette image est ensuite appliqué un \textit{filtre Wavelets} ou un \textit{filtre LogPolar}, deux méthodes permettant d'obtenir un champs rétinien, c'est à dire un filtre visuel dont l'acuité est maximale en son centre (simulant la fovea) et diminuant avec l'excentricité (simulant la vision périphérique). \\
 Dans les deux cas, la transformation mathématique imposée par le filtre est calculée à l'avance, permettant de l'appliquer à chaque nouvel environnement visuel et après chaque saccade oculaire, tout en économisant au maximum la puissance de calcul disponible.\autocite{Kortum1996}\\
 %Description filtre wavelets
-Le filtre \textit{Wavelets} consiste en l'application sur l'image d'une grille de résolution, définissant des anneaux concentriques de taille croissante et contenant des superpixels dont la taille augmente avec l'excentricité de l'anneau. Chacun des superpixels possédant un niveau de gris correspondant à la moyenne des valeurs des pixels qu'il contient, la résolution de l'image ainsi traitée diminue à chaque nouvel anneau, et donc par palier.\autocite{Kortum1996}
+Le \textbf{filtre \textit{Wavelets}} consiste en l'application sur l'image d'une grille de résolution, définissant des anneaux concentriques de taille croissante et contenant des superpixels dont la taille augmente avec l'excentricité de l'anneau. Chacun des superpixels possédant un niveau de gris correspondant à la moyenne des valeurs des pixels qu'il contient, la résolution de l'image ainsi traitée diminue à chaque nouvel anneau, et donc par palier.\autocite{Kortum1996}
 Les effets de ce filtre sont visibles sur la figure~\ref{fig:Wavelet_effect}.\\
 %Description filtre LogPolar
-La représentation graphique du filtre \textit{LogPolar} utilisé dans ces travaux et ses effets sur l'un de nos stimuli visuels sont visibles sur les figures~\ref{fig:LogPolar_shape} et~\ref{fig:LogPolar_effect} .\\
+La représentation graphique du \textbf{filtre \textit{LogPolar}} utilisé dans ces travaux et ses effets sur l'un de nos stimuli visuels sont visibles sur les figures~\ref{fig:LogPolar_shape} et~\ref{fig:LogPolar_effect} .\\
 L'une des forces du filtre \textit{LogPolar} est sa capacité à modéliser la distribution des champs récepteurs rétinien, mais aussi (en modifiant seulement quelques paramètres) celle d'aires corticales visuelles primaires et associatives et peut donc être ré-utilisé dans le cadre d'un modèle visuel multi-couches neuromimétique, notamment pour la modélisation de la voie visuelle ventrale \autocite{Freeman2011}.
 
 %----------------------------------------------------------------------------------------
@@ -59,7 +59,7 @@ L'une des forces du filtre \textit{LogPolar} est sa capacité à modéliser la d
 \section{Apprentissage supervisé} %Formules du modèle mathématiques soutenant la Régression linéaire multivariée
                                                                     %Prétraitements de l'image (whitening, resize et déplacement cible)
 
-Afin d'obtenir un modèle à la fois performant et adaptable, nous l'avons soumis à un apprentissage supervisé sous la forme d'une \textbf{régression linéaire multivariée} optimisée par \textbf{descente de gradient}.\\
+Afin d'obtenir un modèle à la fois performant et adaptable, nous l'avons soumis à un apprentissage supervisé sous la forme d'une \textbf{régression linéaire multivariée} optimisée par \textbf{descente de gradient}. Cette méthode à été préférée notamment pour la simplicité de sa mise en place, mais pourra être remplacée par une méthode plus complète lorsque le modèle sera dans un stade de développement plus avancé.\\
 Pour cela, nous calculons une hypothèse $h_{\theta}$ (équation~\ref{eqn:Hypo}) sur la répartition des stimuli en multipliant chacune des valeurs \textit{x} de l'entrée à un poids $\theta$ qui lui est spécifique.
 
 \begin{equation}
