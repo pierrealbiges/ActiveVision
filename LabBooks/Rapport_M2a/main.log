@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2018.1.15)  20 FEB 2018 16:30
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2018.1.15)  21 FEB 2018 15:44
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1671,7 +1671,15 @@ LaTeX Font Info:    Font shape `T1/ppl/bx/n' in size <24.88> not available
 
 
 
-{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
+{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}] [2
+
+]
+--------------------
+ R\IeC {\'e}sum\IeC {\'e}
+--------------------
+LaTeX Font Info:    Font shape `T1/ppl/bx/n' in size <12> not available
+(Font)              Font shape `T1/ppl/b/n' tried instead on input line 148.
+1: section
 
 Package scrlayer-scrpage Warning: \headheight to low.
 (scrlayer-scrpage)                At least 23.99747pt needed,
@@ -1681,29 +1689,13 @@ Package scrlayer-scrpage Warning: \headheight to low.
 (scrlayer-scrpage)                e.g., setting geometry's option
 (scrlayer-scrpage)                `head=23.99747pt'.
 (scrlayer-scrpage)                I'll also decrease \topmargin on input line 1
-47.
+67.
 
 
 Overfull \vbox (3.33585pt too high) has occurred while \output is active []
 
 
-[2]
---------------------
- Abstract
---------------------
-LaTeX Font Info:    Font shape `T1/ppl/bx/n' in size <12> not available
-(Font)              Font shape `T1/ppl/b/n' tried instead on input line 147.
-1: section
-[3
-
-] [4
-
-]
---------------------
- Acknowledgements
---------------------
-1: section
-[5] [6
+[3] [4
 
 ] (./main.toc)
 \tf@toc=\write5
@@ -1711,7 +1703,7 @@ LaTeX Font Info:    Font shape `T1/ppl/bx/n' in size <12> not available
 
 
 1: section
-[7] [8
+[5] [6
 
 ]
 1: section
@@ -1790,12 +1782,12 @@ Overfull \hbox (16.13829pt too wide) in paragraph at lines 11--14
 
 
 ]
-LaTeX Font Info:    Try loading font information for T1+cmtt on input line 230.
+LaTeX Font Info:    Try loading font information for T1+cmtt on input line 232.
 
  (/usr/share/texlive/texmf-dist/tex/latex/base/t1cmtt.fd
 File: t1cmtt.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
-Overfull \hbox (27.19339pt too wide) in paragraph at lines 230--230
+Overfull \hbox (27.19339pt too wide) in paragraph at lines 232--232
 []\T1/ppl/m/n/12 Li Zhaop-ing. \T1/ppl/m/it/12 Un-der-stand-ing vi-sion : the-o
 ry, mod-els and data\T1/ppl/m/n/12 . Ox-ford Uni. 2014, p. 383. \T1/ppl/m/sc/12
  isbn\T1/ppl/m/n/12 : 9780199564668. 
@@ -1810,14 +1802,14 @@ ry, mod-els and data\T1/ppl/m/n/12 . Ox-ford Uni. 2014, p. 383. \T1/ppl/m/sc/12
 
 ]
 Appendix A.
-<Figures/visual_system.jpg, id=293, 234.8775pt x 215.1237pt>
+<Figures/visual_system.jpg, id=283, 234.8775pt x 215.1237pt>
 File: Figures/visual_system.jpg Graphic file (type jpg)
 
 <use Figures/visual_system.jpg>
 Package pdftex.def Info: Figures/visual_system.jpg used on input line 11.
 (pdftex.def)             Requested size: 234.87692pt x 215.12317pt.
 
-<Figures/visual_system_simple.pdf, id=294, 722.7pt x 180.675pt>
+<Figures/visual_system_simple.pdf, id=284, 722.7pt x 180.675pt>
 File: Figures/visual_system_simple.pdf Graphic file (type pdf)
 
 <use Figures/visual_system_simple.pdf>
@@ -1839,13 +1831,13 @@ Underfull \hbox (badness 10000) in paragraph at lines 37--37
 []|\T1/ppl/m/n/12 Machine virtuelle
  []
 
-<Figures/POMDP.pdf, id=297, 845.1575pt x 597.23125pt>
+<Figures/POMDP.pdf, id=287, 845.1575pt x 597.23125pt>
 File: Figures/POMDP.pdf Graphic file (type pdf)
  <use Figures/POMDP.pdf>
 Package pdftex.def Info: Figures/POMDP.pdf used on input line 44.
 (pdftex.def)             Requested size: 380.31737pt x 268.75157pt.
 
-<Figures/mnist_reshape.pdf, id=298, 1084.05pt x 1084.05pt>
+<Figures/mnist_reshape.pdf, id=288, 1084.05pt x 1084.05pt>
 File: Figures/mnist_reshape.pdf Graphic file (type pdf)
 
 <use Figures/mnist_reshape.pdf>
@@ -1860,28 +1852,28 @@ e orig-i-nale tirée de MNIST ; \T1/ppl/b/n/10.95 B. \T1/ppl/m/n/10.95 Im-age ap
 rès trans-for-ma-tion 
  []
 
-<Figures/wavelet_effect.pdf, id=299, 1445.4pt x 1445.4pt>
+<Figures/wavelet_effect.pdf, id=289, 1445.4pt x 1445.4pt>
 File: Figures/wavelet_effect.pdf Graphic file (type pdf)
 
 <use Figures/wavelet_effect.pdf>
 Package pdftex.def Info: Figures/wavelet_effect.pdf used on input line 60.
 (pdftex.def)             Requested size: 361.34912pt x 361.34912pt.
 
-<Figures/LogPolar_shape.pdf, id=300, 867.24pt x 867.24pt>
+<Figures/LogPolar_shape.pdf, id=290, 867.24pt x 867.24pt>
 File: Figures/LogPolar_shape.pdf Graphic file (type pdf)
 
 <use Figures/LogPolar_shape.pdf>
 Package pdftex.def Info: Figures/LogPolar_shape.pdf used on input line 68.
 (pdftex.def)             Requested size: 303.53854pt x 303.53854pt.
 
-<Figures/LogPolar_effect.pdf, id=301, 867.24pt x 867.24pt>
+<Figures/LogPolar_effect.pdf, id=291, 867.24pt x 867.24pt>
 File: Figures/LogPolar_effect.pdf Graphic file (type pdf)
 
 <use Figures/LogPolar_effect.pdf>
 Package pdftex.def Info: Figures/LogPolar_effect.pdf used on input line 76.
 (pdftex.def)             Requested size: 303.53854pt x 303.53854pt.
 
-<Figures/Benchmarking_para_alpha_2.pdf, id=302, 433.62pt x 289.08pt>
+<Figures/Benchmarking_para_alpha_2.pdf, id=292, 433.62pt x 289.08pt>
 File: Figures/Benchmarking_para_alpha_2.pdf Graphic file (type pdf)
 
 <use Figures/Benchmarking_para_alpha_2.pdf>
@@ -1889,7 +1881,7 @@ Package pdftex.def Info: Figures/Benchmarking_para_alpha_2.pdf used on input li
 ne 86.
 (pdftex.def)             Requested size: 433.61894pt x 289.07928pt.
 
-<Figures/Benchmarking_para_alpha_3.pdf, id=303, 433.62pt x 289.08pt>
+<Figures/Benchmarking_para_alpha_3.pdf, id=293, 433.62pt x 289.08pt>
 File: Figures/Benchmarking_para_alpha_3.pdf Graphic file (type pdf)
 
 <use Figures/Benchmarking_para_alpha_3.pdf>
@@ -1897,7 +1889,7 @@ Package pdftex.def Info: Figures/Benchmarking_para_alpha_3.pdf used on input li
 ne 94.
 (pdftex.def)             Requested size: 433.61894pt x 289.07928pt.
 
-<Figures/Benchmarking_para_alpha.pdf, id=304, 433.62pt x 289.08pt>
+<Figures/Benchmarking_para_alpha.pdf, id=294, 433.62pt x 289.08pt>
 File: Figures/Benchmarking_para_alpha.pdf Graphic file (type pdf)
 
 <use Figures/Benchmarking_para_alpha.pdf>
@@ -1905,7 +1897,7 @@ Package pdftex.def Info: Figures/Benchmarking_para_alpha.pdf used on input line
  102.
 (pdftex.def)             Requested size: 433.61894pt x 289.07928pt.
 
-<Figures/logpolar_cost_learning.pdf, id=305, 1084.05pt x 722.7pt>
+<Figures/logpolar_cost_learning.pdf, id=295, 1084.05pt x 722.7pt>
 File: Figures/logpolar_cost_learning.pdf Graphic file (type pdf)
 
 <use Figures/logpolar_cost_learning.pdf>
@@ -1913,14 +1905,14 @@ Package pdftex.def Info: Figures/logpolar_cost_learning.pdf used on input line
 110.
 (pdftex.def)             Requested size: 433.61232pt x 289.07487pt.
 
-<Figures/saccades_wavelets.pdf, id=306, 857.41061pt x 276.90326pt>
+<Figures/saccades_wavelets.pdf, id=296, 857.41061pt x 276.90326pt>
 File: Figures/saccades_wavelets.pdf Graphic file (type pdf)
 
 <use Figures/saccades_wavelets.pdf>
 Package pdftex.def Info: Figures/saccades_wavelets.pdf used on input line 118.
 (pdftex.def)             Requested size: 428.70425pt x 138.45128pt.
 
-<Figures/saccades_logpolar.pdf, id=307, 722.7pt x 216.81pt>
+<Figures/saccades_logpolar.pdf, id=297, 722.7pt x 216.81pt>
 File: Figures/saccades_logpolar.pdf Graphic file (type pdf)
 
 <use Figures/saccades_logpolar.pdf>
@@ -1931,21 +1923,21 @@ Overfull \hbox (1.42126pt too wide) in paragraph at lines 126--128
  [][] 
  []
 
-<Figures/sacc_nombre.pdf, id=308, 433.62pt x 289.08pt>
+<Figures/sacc_nombre.pdf, id=298, 433.62pt x 289.08pt>
 File: Figures/sacc_nombre.pdf Graphic file (type pdf)
 
 <use Figures/sacc_nombre.pdf>
 Package pdftex.def Info: Figures/sacc_nombre.pdf used on input line 134.
 (pdftex.def)             Requested size: 433.61894pt x 289.07928pt.
 
-<Figures/sacc_distance.pdf, id=309, 433.62pt x 289.08pt>
+<Figures/sacc_distance.pdf, id=299, 433.62pt x 289.08pt>
 File: Figures/sacc_distance.pdf Graphic file (type pdf)
 
 <use Figures/sacc_distance.pdf>
 Package pdftex.def Info: Figures/sacc_distance.pdf used on input line 142.
 (pdftex.def)             Requested size: 433.61894pt x 289.07928pt.
 
-<Figures/err_distance.pdf, id=310, 433.62pt x 289.08pt>
+<Figures/err_distance.pdf, id=300, 433.62pt x 289.08pt>
 File: Figures/err_distance.pdf Graphic file (type pdf)
 
 <use Figures/err_distance.pdf>
@@ -1990,23 +1982,23 @@ Appendix B.
 
 
 ]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 246.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 246.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 248.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 248.
  (./main.aux (./Chapters/Introduction.aux) (./Chapters/Materiel_methode.aux) (.
 /Chapters/Resultats.aux) (./Appendices/AppendixA.aux)
 (./Appendices/AppendixB.aux))
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 246.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 246.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 248.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 248.
 Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: AF2207AD0BDA24D8EE56ABE96046CC82;2129.
+(rerunfilecheck)             Checksum: C9B7D1B7AD71C73BF82ADAAA0ABAB275;2129.
 Package logreq Info: Writing requests to 'main.run.xml'.
 \openout1 = `main.run.xml'.
 
  )
 (\end occurred when \iftrue on line 90 was incomplete) 
 Here is how much of TeX's memory you used:
- 30878 strings out of 494351
- 621689 string characters out of 6163906
+ 30875 strings out of 494351
+ 621664 string characters out of 6163906
  722428 words of memory out of 5000000
  33756 multiletter control sequences out of 15000+600000
  63158 words of font info for 125 fonts, out of 8000000 for 9000
@@ -2023,10 +2015,10 @@ xmf-dist/fonts/type1/urw/palatino/uplbi8a.pfb></usr/share/texlive/texmf-dist/fo
 nts/type1/urw/palatino/uplr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/ur
 w/palatino/uplr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/palatino/u
 plri8a.pfb>
-Output written on main.pdf (31 pages, 552035 bytes).
+Output written on main.pdf (29 pages, 551384 bytes).
 PDF statistics:
- 877 PDF objects out of 1000 (max. 8388607)
- 449 compressed objects within 5 object streams
- 82 named destinations out of 1000 (max. 500000)
+ 867 PDF objects out of 1000 (max. 8388607)
+ 441 compressed objects within 5 object streams
+ 79 named destinations out of 1000 (max. 500000)
  201 words of extra memory for PDF output out of 10000 (max. 10000000)
 
