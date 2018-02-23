@@ -12,7 +12,8 @@
 \contentsline {chapter}{\numberline {3}R\IeC {\'e}sultats}{9}{chapter.17}
 \contentsline {section}{\numberline {3.1}Apprentissage supervis\IeC {\'e}}{9}{section.18}
 \contentsline {section}{\numberline {3.2}Pr\IeC {\'e}diction de la position}{9}{section.19}
-\contentsline {section}{\numberline {3.3}Pr\IeC {\'e}diction de la cat\IeC {\'e}gorie}{9}{section.20}
-\contentsline {chapter}{Bibliography}{11}{chapter*.21}
-\contentsline {chapter}{\numberline {A}Figures}{13}{appendix.22}
-\contentsline {chapter}{\numberline {B}Code source}{23}{appendix.40}
+\contentsline {section}{\numberline {3.3}Pr\IeC {\'e}diction de la cat\IeC {\'e}gorie}{10}{section.20}
+\contentsline {chapter}{\numberline {4}Discussion et perspectives}{11}{chapter.21}
+\contentsline {chapter}{Bibliography}{13}{chapter*.22}
+\contentsline {chapter}{\numberline {A}Figures}{15}{appendix.23}
+\contentsline {chapter}{\numberline {B}Code source}{25}{appendix.42}

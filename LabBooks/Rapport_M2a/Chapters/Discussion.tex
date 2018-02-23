@@ -1,0 +1,17 @@
+% Chapter Template
+
+\chapter{Discussion et perspectives} % Main chapter title
+
+\label{Discussion} % For referencing this chapter elsewhere, use \ref{Discussion}
+
+%----------------------------------------------------------------------------------------
+Encore une fois, nous préférons insister sur le fait qu'au moment de l'écriture de ce rapport, le modèle est toujours en cours de construction et donc que les idées émises dans ce chapitre ainsi que le précédent restent des hypothèses qui faudra confirmer.\\
+
+Notre modèle semble ainsi capable de suivre le fonctionnement d'un modèle POMDP en réalisant à tour de rôle une observation de son environnement et une action ayant pour objectif d'améliorer la perception de cet environnement. \\
+
+% Prospects
+	% Modèle probabiliste
+	% Modif entrainement  utiliser classifieur pour réaliser apprentissage détecteur
+	
+Plusieurs étapes ont dors et déjà été identifiées afin de rendre le modèle à la fois plus performant et plus proche d'une certaine réalité neurologique.\\
+La première consistera en la modification de la prédiction certaine du modèle (à l'heure actuelle, la prédiction correspond à deux coordonnées où la cible devrait être présente) en prédiction probabiliste. Ceci permettrait de traiter la perception du modèle comme une carte de probabilité (ou de chaleur) où chaque point de l'espace est relié à une probabilité de contenir la cible. Ainsi la prédiction ne sera pas réalisée sur un point précis de l'espace mais sur un ensemble de points dont l'ecart-type devrait augmenter avec l'excentricité (d'après les résultats observés sur la figure~\ref{fig:err_distance}). De plus, cette carte de probabilité se mettant à jour à chaque nouvelle saccade (puisqu'une nouvelle observation de l'environnement est alors réalisée), le problème de recherche de la localisation précise de la cible devrait se résoudre de lui-même en explorant tour à tour chacune des localisations les plus probables.

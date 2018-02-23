@@ -6,8 +6,8 @@
 %----------------------------------------------------------------------------------------
 
 \section{Support physique et numérique} %Spécificités ordinateur/machine virtuelle, python/libraries versions
-L'ensemble des modélisations ont été réalisés sur un ordinateur portable hébergeant une machine virtuelle. Leurs caractéristiques sont rassemblées dans le tableau~\ref{tab:materiel}.\\
-Les modélisation ont été réalisées à l'aide du language de programmation \href{https://www.python.org/}{Python} (version 3.6.4) renforcé de la librairie \href{https://www.tensorflow.org/}{TensorFlow} (version 1.4) et de l'interface graphique \href{https://jupyter.org/}{Jupyter}.\\
+L'ensemble des simulations ont eut lieu sur un ordinateur portable hébergeant une machine virtuelle (leurs caractéristiques sont rassemblées dans le tableau~\ref{tab:materiel}).\\
+Les modélisations ont été réalisées à l'aide du language de programmation \href{https://www.python.org/}{Python} (version 3.6.4) renforcé de la librairie \href{https://www.tensorflow.org/}{TensorFlow} (version 1.4) et de l'interface graphique \href{https://jupyter.org/}{Jupyter}.\\
 La base de données \href{http://yann.lecun.com/exdb/mnist/}{MNIST} a été utilisée pour l'apprentissage et l'évaluation du modèle. Elle contient 70.000 images de chiffres manuscrits (60.000 pour l'entraînement, 10.000 pour l'évaluation), centrés et dont la taille a été normalisée. Chaque image est accompagnée d'un label décrivant quel chiffre elle contient.
 
 %----------------------------------------------------------------------------------------
@@ -51,7 +51,7 @@ Dans les deux cas, la transformation mathématique imposée par le filtre est ca
 Le \textbf{filtre \textit{Wavelets}} consiste en l'application sur l'image d'une grille de résolution, définissant des anneaux concentriques de taille croissante et contenant des superpixels dont la taille augmente avec l'excentricité de l'anneau. Chacun des superpixels possédant un niveau de gris correspondant à la moyenne des valeurs des pixels qu'il contient, la résolution de l'image ainsi traitée diminue à chaque nouvel anneau, et donc par palier.\autocite{Kortum1996}
 Les effets de ce filtre sont visibles sur la figure~\ref{fig:Wavelet_effect}.\\
 %Description filtre LogPolar
-La représentation graphique du \textbf{filtre \textit{LogPolar}} utilisé dans ces travaux et ses effets sur l'un de nos stimuli visuels sont visibles sur les figures~\ref{fig:LogPolar_shape} et~\ref{fig:LogPolar_effect} .\\
+Le \textbf{filtre \textit{LogPolar}} quant à lui est basé sur une approche neuromimétique, visant à reproduire la forme et l'organisation réelle des champs récepteurs présents dans les système visuels biologiques. Une représentation graphique du filtre utilisé dans ces travaux et ses effets sur l'un de nos stimuli visuels sont visibles sur les figures~\ref{fig:LogPolar_shape} et~\ref{fig:LogPolar_effect} .\\
 L'une des forces du filtre \textit{LogPolar} est sa capacité à modéliser la distribution des champs récepteurs rétinien, mais aussi (en modifiant seulement quelques paramètres) celle d'aires corticales visuelles primaires et associatives et peut donc être ré-utilisé dans le cadre d'un modèle visuel multi-couches neuromimétique, notamment pour la modélisation de la voie visuelle ventrale \autocite{Freeman2011}.
 
 %----------------------------------------------------------------------------------------
@@ -60,14 +60,14 @@ L'une des forces du filtre \textit{LogPolar} est sa capacité à modéliser la d
                                                                     %Prétraitements de l'image (whitening, resize et déplacement cible)
 
 Afin d'obtenir un modèle à la fois performant et adaptable, nous l'avons soumis à un apprentissage supervisé sous la forme d'une \textbf{régression linéaire multivariée} optimisée par \textbf{descente de gradient}. Cette méthode à été préférée notamment pour la simplicité de sa mise en place, mais pourra être remplacée par une méthode plus complète lorsque le modèle sera dans un stade de développement plus avancé.\\
-Pour cela, nous calculons une hypothèse $h_{\theta}$ (équation~\ref{eqn:Hypo}) sur la répartition des stimuli en multipliant chacune des valeurs \textit{x} de l'entrée à un poids $\theta$ qui lui est spécifique.
+Pour cela, nous calculons une hypothèse $h_{\theta}$ (équation~\ref{eqn:Hypo}) sur la répartition des stimuli en multipliant chacune des valeurs \textit{x} de l'entrée à un poids $\theta$ qui lui est spécifique, puis en ajoutant un biais $b$.
 
 \begin{equation}
 h_{\theta}(x) = \theta^{T}x + b
 \label{eqn:Hypo}
 \end{equation}
 
-Ces poids sont ensuite optimisés par descente de gradient (équation~\ref{eqn:Grad_desc}), où ils sont comparés aux labels \textit{y} des entrées pour un nombre d'exemples et d'itérations fixées. Le paramètre d'apprentissage $\alpha$ influence très fortement l'apprentissage et sa valeur doit être adaptée pour éviter un sous- ou un sur-apprentissage (révélant respectivement une valeur trop faible ou trop importante).\\
+Ces poids sont ensuite optimisés par descente de gradient (équation~\ref{eqn:Grad_desc}), où ils sont comparés aux labels \textit{y} des entrées (correspondant aux coordonnées réelles pour le détecteur et à la catégorie réelle pour le classifieur) pour un nombre d'exemples et d'itérations fixées. Le paramètre d'apprentissage $\alpha$ influence très fortement l'apprentissage et sa valeur doit être adaptée pour éviter un sous- ou un sur-apprentissage (révélant respectivement une valeur trop faible ou trop importante).\\
 
 \begin{equation}
 \theta_j := \theta_j - \alpha \frac{1}{m} \sum_{i=1}^m (h_\theta(x^i) - y^i)x_{j}^i
