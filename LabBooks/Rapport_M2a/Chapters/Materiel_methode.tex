@@ -6,17 +6,17 @@
 %----------------------------------------------------------------------------------------
 
 \section{Support physique et numérique} %Spécificités ordinateur/machine virtuelle, python/libraries versions
-L'ensemble des simulations ont eut lieu sur un ordinateur portable hébergeant une machine virtuelle (leurs caractéristiques sont rassemblées dans le tableau~\ref{tab:materiel}).\\
+L'ensemble des simulations ont eut lieu sur un ordinateur portable hébergeant une machine virtuelle (caractéristiques rassemblées dans le tableau~\ref{tab:materiel}).\\
 Les modélisations ont été réalisées à l'aide du language de programmation \href{https://www.python.org/}{Python} (version 3.6.4) renforcé de la librairie \href{https://www.tensorflow.org/}{TensorFlow} (version 1.4) et de l'interface graphique \href{https://jupyter.org/}{Jupyter}.\\
-La base de données \href{http://yann.lecun.com/exdb/mnist/}{MNIST} a été utilisée pour l'apprentissage et l'évaluation du modèle. Elle contient 70.000 images de chiffres manuscrits (60.000 pour l'entraînement, 10.000 pour l'évaluation), centrés et dont la taille a été normalisée. Chaque image est accompagnée d'un label décrivant quel chiffre elle contient.
+La base de données \href{http://yann.lecun.com/exdb/mnist/}{MNIST} a été utilisée pour l'apprentissage et l'évaluation du modèle. Elle contient 70.000 images de chiffres manuscrits (60.000 pour l'entraînement, 10.000 pour l'évaluation) centrés et dont la taille a été normalisée. Chaque image est accompagnée d'un label décrivant quel chiffre elle contient.
 
 %----------------------------------------------------------------------------------------
 
 \section{Modèle POMDP} %Description du modèle perception-action, schéma explicatif
 Le problème de recherche d'information dans un contexte d'exploration de l'environnement visuel peut être formulé comme un \textbf{processus de décision Markovien partiellement observable} (POMDP) \autocite{Butko2010}. \\
-Dans un POMDP (figure~\ref{fig:POMDP}), l'agent perçoit partiellement l'\textbf{état de l'environnement} \textit{S} à un temps \textit{t} (dans ce travail, l'environnement visuel) et peut réaliser des \textbf{actions} \textit{A} (ici des saccades oculaires) qui peuvent avoir des conséquences sur l'environnement et sa perception \textit{O} (l'environnement visuel perçut au travers du champs rétinien). L'agent va ainsi construire un \textbf{état de croyance} \textit{B} (ici les prédictions de position et de catégorie du stimulus) en fonction des observations et des actions réalisées jusqu'ici \autocite{Butko2010}.
+Dans un POMDP (figure~\ref{fig:POMDP}), l'agent perçoit partiellement l'\textbf{état de l'environnement} \textit{S} à un temps \textit{t} (dans ce travail, l'environnement visuel) et peut réaliser des \textbf{actions} \textit{A} (ici des saccades oculaires) qui peuvent avoir des conséquences sur l'environnement et sa perception \textit{O} (l'environnement visuel perçut au travers du champs rétinien). L'agent va ainsi construire un \textbf{état de croyance} \textit{B} (ici les prédictions de position ou de catégorie du stimulus) en fonction des observations et des actions réalisées jusqu'ici \autocite{Butko2010}.
 
-Un tel système doit satisfaire la \textbf{propriété de Markov}, qui décrit que la distribution de probabilité des futurs états ne dépends que de l'état précédent et pas de toute la séquence d'états en amont.\\
+Un tel système doit satisfaire la \textbf{propriété de Markov}, qui décrit que la distribution de probabilité des futurs états ne dépends que de l'état précédent et pas de toute la séquence d'états en amont. Cette propriété retire donc de l'agent la notion de mémoire à long terme (ici correspondant à tout ce qui a pu se dérouler avant $t_{-1}$) des états précédents de l'environnement, mais aussi des actions et des observations réalisées dans le passé.\\
 Ainsi lors de l'évolution du système dans le temps, on considère que l'état suivant de l'environnement est uniquement influencé par son état actuel et l'action (éventuelle) réalisée par l'agent (équation~\ref{eqn:POMDP_sta}) \autocite{Butko2010}. 
 
 \begin{equation}
@@ -36,22 +36,19 @@ B_{t}^i = p(S_{t} = i|A_{1:t},O_{1:t})
 \label{eqn:POMDP_bel}
 \end{equation}
 
-Nous construisons ainsi un modèle en deux couches. La première, \textit{détecteur}, est entraînée à prédire la position du stimulus dans l'image perçu au travers du champs rétinien, permettant de réaliser une saccade jusqu'aux coordonnées prédites et donc d'approcher la cible de la vision fovéale. Chaque saccade permet d'optimiser la détection du signal.\autocite{Friston2012}\\
-La seconde, \textit{classifieur}, est entraînée à prédire la catégorie du stimulus dans l'image, perçu au travers du champs rétinien et permet d'arrêter l'exploration de l'image lorsque sa prédiction présente une certitude assez élevée.
-
 %----------------------------------------------------------------------------------------
 
 \section{Champs rétinien} %Description dues filtres rétiniens
 
 Avant d'être utilisée par le modèle, l'image provenant de la base MNIST subit un certain nombre de transformations.\\
-Chaque image présente originellement des niveaux de gris sur 28x28 pixels. Cette image est placée au hasard (mais de façon normocentrée) sur une image au fond blanc de 128x128 pixels (figure~\ref{fig:mnist_reshape}).\\
+Chaque image présente originellement 28x28 pixels auxquels correspondent des niveaux de gris parmi 255 valeurs possibles (permettant un codage sur seulement 8bits par pixel). Cette image est placée au hasard (mais de façon normocentrée) sur une image au fond blanc de 128x128 pixels afin de réduire sa taille par rapport à l'environnement visuel qui la contient (figure~\ref{fig:mnist_reshape}).\\
 A cette image est ensuite appliqué un \textit{filtre Wavelets} ou un \textit{filtre LogPolar}, deux méthodes permettant d'obtenir un champs rétinien, c'est à dire un filtre visuel dont l'acuité est maximale en son centre (simulant la fovea) et diminuant avec l'excentricité (simulant la vision périphérique). \\
-Dans les deux cas, la transformation mathématique imposée par le filtre est calculée à l'avance, permettant de l'appliquer à chaque nouvel environnement visuel et après chaque saccade oculaire, tout en économisant au maximum la puissance de calcul disponible.\autocite{Kortum1996}\\
+Dans les deux cas, la transformation mathématique imposée par le filtre est calculée à l'avance, permettant de l'appliquer à chaque nouvel environnement visuel et après chaque saccade oculaire (donc à chaque nouvelle observation), tout en économisant au maximum la puissance de calcul disponible.\autocite{Kortum1996}\\
 %Description filtre wavelets
 Le \textbf{filtre \textit{Wavelets}} consiste en l'application sur l'image d'une grille de résolution, définissant des anneaux concentriques de taille croissante et contenant des superpixels dont la taille augmente avec l'excentricité de l'anneau. Chacun des superpixels possédant un niveau de gris correspondant à la moyenne des valeurs des pixels qu'il contient, la résolution de l'image ainsi traitée diminue à chaque nouvel anneau, et donc par palier.\autocite{Kortum1996}
 Les effets de ce filtre sont visibles sur la figure~\ref{fig:Wavelet_effect}.\\
 %Description filtre LogPolar
-Le \textbf{filtre \textit{LogPolar}} quant à lui est basé sur une approche neuromimétique, visant à reproduire la forme et l'organisation réelle des champs récepteurs présents dans les système visuels biologiques. Une représentation graphique du filtre utilisé dans ces travaux et ses effets sur l'un de nos stimuli visuels sont visibles sur les figures~\ref{fig:LogPolar_shape} et~\ref{fig:LogPolar_effect} .\\
+Le \textbf{filtre \textit{LogPolar}} quant à lui est basé sur une approche neuromimétique, visant à reproduire la forme et l'organisation réelle des champs récepteurs présents dans le système visuel biologique. Une représentation graphique du filtre utilisé dans ces travaux et ses effets sur l'un de nos stimuli visuels sont visibles sur les figures~\ref{fig:LogPolar_shape} et~\ref{fig:LogPolar_effect} .\\
 L'une des forces du filtre \textit{LogPolar} est sa capacité à modéliser la distribution des champs récepteurs rétinien, mais aussi (en modifiant seulement quelques paramètres) celle d'aires corticales visuelles primaires et associatives et peut donc être ré-utilisé dans le cadre d'un modèle visuel multi-couches neuromimétique, notamment pour la modélisation de la voie visuelle ventrale \autocite{Freeman2011}.
 
 %----------------------------------------------------------------------------------------
@@ -59,15 +56,15 @@ L'une des forces du filtre \textit{LogPolar} est sa capacité à modéliser la d
 \section{Apprentissage supervisé} %Formules du modèle mathématiques soutenant la Régression linéaire multivariée
                                                                     %Prétraitements de l'image (whitening, resize et déplacement cible)
 
-Afin d'obtenir un modèle à la fois performant et adaptable, nous l'avons soumis à un apprentissage supervisé sous la forme d'une \textbf{régression linéaire multivariée} optimisée par \textbf{descente de gradient}. Cette méthode à été préférée notamment pour la simplicité de sa mise en place, mais pourra être remplacée par une méthode plus complète lorsque le modèle sera dans un stade de développement plus avancé.\\
-Pour cela, nous calculons une hypothèse $h_{\theta}$ (équation~\ref{eqn:Hypo}) sur la répartition des stimuli en multipliant chacune des valeurs \textit{x} de l'entrée à un poids $\theta$ qui lui est spécifique, puis en ajoutant un biais $b$.
+Afin d'obtenir un modèle à la fois performant et adaptable, nous l'avons soumis à un apprentissage supervisé sous la forme d'une \textbf{régression linéaire multivariée} optimisée par \textbf{descente de gradient}. Cette méthode de \textit{machine learning} à été préférée notamment pour la simplicité de sa mise en place, mais pourra être remplacée par une méthode plus complète lorsque le modèle sera dans un stade de développement plus avancé.\\
+Dans cette méthode, nous calculons une hypothèse $h_{\theta}$ (équation~\ref{eqn:Hypo}) sur la répartition des stimuli en multipliant chacune des valeurs \textit{x} de l'entrée (l'image après transformation par le filtre rétinien) à un poids $\theta$ qui lui est spécifique, puis en ajoutant éventuellement un biais $b$.
 
 \begin{equation}
 h_{\theta}(x) = \theta^{T}x + b
 \label{eqn:Hypo}
 \end{equation}
 
-Ces poids sont ensuite optimisés par descente de gradient (équation~\ref{eqn:Grad_desc}), où ils sont comparés aux labels \textit{y} des entrées (correspondant aux coordonnées réelles pour le détecteur et à la catégorie réelle pour le classifieur) pour un nombre d'exemples et d'itérations fixées. Le paramètre d'apprentissage $\alpha$ influence très fortement l'apprentissage et sa valeur doit être adaptée pour éviter un sous- ou un sur-apprentissage (révélant respectivement une valeur trop faible ou trop importante).\\
+Ces poids sont ensuite optimisés par descente de gradient (équation~\ref{eqn:Grad_desc}), où ils sont comparés aux labels \textit{y} des entrées (correspondant aux informations que l'on veut apprendre, par exemple les coordonnées $(x,y)$ de la cible) pour un nombre d'exemples et d'itérations fixées. Le paramètre d'apprentissage $\alpha$ influence très fortement l'entrainement et sa valeur doit être adaptée pour éviter un sous- ou un sur-apprentissage (révélant respectivement une valeur trop faible ou trop importante).\\
 
 \begin{equation}
 \theta_j := \theta_j - \alpha \frac{1}{m} \sum_{i=1}^m (h_\theta(x^i) - y^i)x_{j}^i
@@ -80,3 +77,7 @@ En parallèle peut être calculé le coût $J(\theta)$ (équation~\ref{eqn:Cost}
 J(\theta) = \frac{1}{2m} \sum_{i=1}^m (h_\theta(x^i)-y^i)^2
 \label{eqn:Cost}
 \end{equation}
+
+Nous construisons ainsi un modèle de machine learning contenant deux couches et dont le comportement suit un modèle POMDP. Pour celà, nous réalisons l'entraînement avec en entrée deux vecteurs: l'entrée \textit{x}, produit d'une transformation mathématiques de l'image après application de l'un des filtres rétiniens, ainsi que le label \textit{y} comprenant (suivant la couche que l'on entraîne) soit les coordonnées $(x,y)$ de la cible, soit sa catégorie (le chiffre que l'image contient, sous la forme d'un vecteur one-hot).\\
+ La première couche (\textit{détecteur}), dont le développement est l'objectif principal de ce travail, est entraînée à prédire la position du stimulus dans l'image perçue au travers du champs rétinien, permettant de réaliser une saccade jusqu'aux coordonnées prédites et donc d'approcher la cible de la vision fovéale. Chaque saccade permet donc d'optimiser la détection du signal.\autocite{Friston2012}\\
+La seconde (\textit{classifieur}) est entraînée à prédire la catégorie du stimulus dans l'image perçue au travers du champs rétinien et permet d'arrêter l'exploration de l'image lorsque sa prédiction présente une certitude assez élevée.

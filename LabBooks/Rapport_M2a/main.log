@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2018.1.15)  23 FEB 2018 18:05
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2018.1.15)  26 FEB 2018 17:35
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1754,31 +1754,29 @@ Chapter 2.
 
 ]
 LaTeX Font Info:    Font shape `T1/ppl/bx/it' in size <12> not available
-(Font)              Font shape `T1/ppl/b/it' tried instead on input line 51.
+(Font)              Font shape `T1/ppl/b/it' tried instead on input line 48.
  [6]
-Underfull \hbox (badness 10000) in paragraph at lines 70--71
+Underfull \hbox (badness 10000) in paragraph at lines 67--68
 
  []
 
-[7]) [8]
+[7])
+Overfull \hbox (9.86732pt too wide) in paragraph at lines 81--223
+\T1/ppl/m/n/12 porte-ment suit un mod-èle POMDP. Pour celà, nous réal-isons l'e
+ntraînement avec en en-trée deux vecteurs:
+ []
+
+[8]
 \openout2 = `Chapters/Resultats.aux'.
 
  (./Chapters/Resultats.tex
 Chapter 3.
-
-Overfull \hbox (16.13829pt too wide) in paragraph at lines 13--16
-\T1/ppl/m/n/12 Dans le cadre du fil-tre \T1/ppl/m/it/12 Wavelets\T1/ppl/m/n/12 
-, on peut ainsi ob-server qu'une valeur $\OML/zplm/m/it/12  \OMS/zplm/m/n/12 ^
-^U \OT1/ppl/m/n/12 0.4$ \T1/ppl/m/n/12 en-traîne un sur-apprentissage
- []
-
-)
 1: section
 [9
 
 
 
-] [10]
+]) [10]
 \openout2 = `Chapters/Discussion.aux'.
 
  (./Chapters/Discussion.tex
@@ -2050,7 +2048,7 @@ xmf-dist/fonts/type1/urw/palatino/uplbi8a.pfb></usr/share/texlive/texmf-dist/fo
 nts/type1/urw/palatino/uplr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/ur
 w/palatino/uplr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/palatino/u
 plri8a.pfb>
-Output written on main.pdf (31 pages, 576652 bytes).
+Output written on main.pdf (31 pages, 577970 bytes).
 PDF statistics:
  898 PDF objects out of 1000 (max. 8388607)
  464 compressed objects within 5 object streams
