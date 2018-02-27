@@ -5,9 +5,14 @@
 \label{Discussion} % For referencing this chapter elsewhere, use \ref{Discussion}
 
 %----------------------------------------------------------------------------------------
-Encore une fois, nous préférons insister sur le fait qu'au moment de l'écriture de ce rapport, le modèle est toujours en cours de construction et donc que les idées émises dans ce chapitre ainsi que le précédent restent des hypothèses qui faudra confirmer.\\
+Encore une fois, nous préférons insister sur le fait qu'au moment de l'écriture de ce rapport, le modèle est toujours en cours de développement et donc que les idées émises dans ce chapitre ainsi que le précédent restent des hypothèses qui devront nécessairement être confirmées lors de travaux ultérieurs.\\
 
 Notre modèle semble ainsi capable de suivre le fonctionnement d'un modèle POMDP en réalisant à tour de rôle une observation de son environnement et une action ayant pour objectif d'améliorer la perception de cet environnement. \\
+L'agent va donc réaliser une série de saccades jusqu'à réussir à placer la cible visuelle au niveau de sa fovéa, où sa description (ici sa catégorisation) pourra être réalisée avec la plus grande accuité possible, et donc avec le plus grand taux de réussite. Ce comportement `'atteindre-et-décrire`' instauré par le fonctionnement POMDP semble cohérent avec ce que l'on peut observer dans les systèmes biologiques \autocite{Werner2014}. \\
+En complément à ces observations sur le comportement générale du modèle, nous avons pu observer que plus une cible est éloignée de la fovéa de l'agent lorsqu'elle est présentée initialement, moins ses prédictions seront précises et en conséquences plus nombreuses seront les saccades destinées à atteindre la position de la cible. 
+Encore une fois, ce comportement semble cohérent avec ce que l'on observe dans les systèmes biologiques. 
+A noter toutefois que le profil de performances du modèle, notamment concernant l'évolution de la taille de ses erreurs de prédiction avec l'excentricité de la cible, correspond à de faibles performances biologiques. 
+Plus exactement, le modèle semble présenter un profil de performances similaire au système biologique lorsque la cible est présentée peu de temps (150ms), mais lorsqu'elle est présentée plus longtemps (1s) les performances du système biologique ne semblent pas être influencées par l'excentricité de la cible. Des comparaisons quantitatives seront ici nécessaires pour confirmer ou infirmer ces similarités \autocite{Uddin2004}.\\
 
 % Prospects
 	% Modèle probabiliste

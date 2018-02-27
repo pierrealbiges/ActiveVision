@@ -387,6 +387,46 @@
   \field{year}{1996}
 \endentry
 
+\entry{Uddin2004}{article}{}
+  \name{author}{3}{}{%
+    {{}%
+     {Uddin}{U.}%
+     {M~K}{M.~K.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Ninose}{N.}%
+     {Y}{Y}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Nakamizo}{N.}%
+     {S}{S}%
+     {}{}%
+     {}{}}%
+  }
+  \keyw{1993,accuracy of spatial localization,adam,and hoek,course and,in which
+  they demonstrated,ketelaars,kingma,memory-guided saccade,reported on the
+  time,spatial localization,that localization performance,two-process
+  model,visually guided saccade}
+  \strng{namehash}{UMKNYNS1}
+  \strng{fullhash}{UMKNYNS1}
+  \field{sortinit}{U}
+  \verb{doi}
+  \verb 10.2117/psysoc.2004.28
+  \endverb
+  \field{issn}{00332852}
+  \field{pages}{28\bibrangedash 34}
+  \field{title}{{Accuracy and precision of spatial localization with and
+  without saccadic eye movements: A test of the two-process model}}
+  \field{volume}{47}
+  \verb{file}
+  \verb :home/pimt/Documents/Articles/Uddin2004.pdf:pdf
+  \endverb
+  \field{journaltitle}{Psychologia}
+  \field{year}{2004}
+\endentry
+
 \entry{Werner2014}{book}{}
   \name{editor}{2}{}{%
     {{}%
