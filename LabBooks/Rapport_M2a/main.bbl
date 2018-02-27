@@ -387,6 +387,35 @@
   \field{year}{1996}
 \endentry
 
+\entry{Najemnik2005}{article}{}
+  \name{author}{2}{}{%
+    {{}%
+     {Najemnik}{N.}%
+     {J}{J}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Geisler}{G.}%
+     {Wilson~S.}{W.~S.}%
+     {}{}%
+     {}{}}%
+  }
+  \strng{namehash}{NJGWS1}
+  \strng{fullhash}{NJGWS1}
+  \field{sortinit}{N}
+  \field{pages}{387\bibrangedash 391}
+  \field{title}{{Optimal eye movement strategies in visual search}}
+  \verb{url}
+  \verb http://dx.doi.org/10.1038/nature03390
+  \endverb
+  \field{volume}{434}
+  \verb{file}
+  \verb :home/pimt/Documents/Articles/Najemnik2005.pdf:pdf
+  \endverb
+  \field{journaltitle}{Nature reviews. Neuroscience}
+  \field{year}{2005}
+\endentry
+
 \entry{Uddin2004}{article}{}
   \name{author}{3}{}{%
     {{}%

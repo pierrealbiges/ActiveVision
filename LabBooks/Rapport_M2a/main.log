@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2018.1.15)  27 FEB 2018 14:49
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2018.1.15)  27 FEB 2018 17:03
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1796,13 +1796,30 @@ Underfull \hbox (badness 10000) in paragraph at lines 10--16
 
  []
 
-)
+
+Underfull \hbox (badness 10000) in paragraph at lines 21--24
+
+ []
+
 1: section
 [11
 
 
 
-] [12]
+]
+Underfull \hbox (badness 10000) in paragraph at lines 25--27
+
+ []
+
+)
+Underfull \hbox (badness 10000) in paragraph at lines 28--225
+
+ []
+
+[12] [13] [14
+
+
+]
 LaTeX Font Info:    Try loading font information for T1+cmtt on input line 232.
 
  (/usr/share/texlive/texmf-dist/tex/latex/base/t1cmtt.fd
@@ -1815,40 +1832,34 @@ m/n/12 10 . 3389 / fpsyg . 2012 . 00151$[][]\T1/ppl/m/n/12 . arXiv: [][]$\T1/cm
 tt/m/n/12 NIHMS150003$[][]\T1/ppl/m/n/12 . 
  []
 
-
+1: section
+[15]
 Overfull \hbox (33.19339pt too wide) in paragraph at lines 232--232
 []\T1/ppl/m/n/12 Li Zhaop-ing. \T1/ppl/m/it/12 Un-der-stand-ing vi-sion : the-o
 ry, mod-els and data\T1/ppl/m/n/12 . Ox-ford Uni. 2014, p. 383. \T1/ppl/m/sc/12
  isbn\T1/ppl/m/n/12 : 9780199564668. 
  []
 
-1: section
-[13
-
-
-]
+[16]
 \openout2 = `Appendices/AppendixA.aux'.
 
- (./Appendices/AppendixA.tex [14
-
-
-]
+ (./Appendices/AppendixA.tex
 Appendix A.
-<Figures/visual_system.jpg, id=305, 234.8775pt x 215.1237pt>
+<Figures/visual_system.jpg, id=319, 234.8775pt x 215.1237pt>
 File: Figures/visual_system.jpg Graphic file (type jpg)
 
 <use Figures/visual_system.jpg>
 Package pdftex.def Info: Figures/visual_system.jpg used on input line 11.
 (pdftex.def)             Requested size: 234.87692pt x 215.12317pt.
 
-<Figures/saccadic_sys.pdf, id=306, 614.295pt x 469.755pt>
+<Figures/saccadic_sys.pdf, id=320, 614.295pt x 469.755pt>
 File: Figures/saccadic_sys.pdf Graphic file (type pdf)
 
 <use Figures/saccadic_sys.pdf>
 Package pdftex.def Info: Figures/saccadic_sys.pdf used on input line 19.
 (pdftex.def)             Requested size: 491.43666pt x 375.80452pt.
 
-<Figures/visual_system_simple.pdf, id=309, 722.7pt x 180.675pt>
+<Figures/visual_system_simple.pdf, id=323, 722.7pt x 180.675pt>
 File: Figures/visual_system_simple.pdf Graphic file (type pdf)
 
 <use Figures/visual_system_simple.pdf>
@@ -1870,13 +1881,13 @@ Underfull \hbox (badness 10000) in paragraph at lines 45--45
 []|\T1/ppl/m/n/12 Machine virtuelle
  []
 
-<Figures/POMDP.pdf, id=312, 845.1575pt x 597.23125pt>
+<Figures/POMDP.pdf, id=326, 845.1575pt x 597.23125pt>
 File: Figures/POMDP.pdf Graphic file (type pdf)
  <use Figures/POMDP.pdf>
 Package pdftex.def Info: Figures/POMDP.pdf used on input line 52.
 (pdftex.def)             Requested size: 380.31737pt x 268.75157pt.
 
-<Figures/mnist_reshape.pdf, id=313, 1084.05pt x 1084.05pt>
+<Figures/mnist_reshape.pdf, id=327, 1084.05pt x 1084.05pt>
 File: Figures/mnist_reshape.pdf Graphic file (type pdf)
 
 <use Figures/mnist_reshape.pdf>
@@ -1891,28 +1902,28 @@ e orig-i-nale tirée de MNIST ; \T1/ppl/b/n/10.95 B. \T1/ppl/m/n/10.95 Im-age ap
 rès trans-for-ma-tion 
  []
 
-<Figures/wavelet_effect.pdf, id=314, 1445.4pt x 1445.4pt>
+<Figures/wavelet_effect.pdf, id=328, 1445.4pt x 1445.4pt>
 File: Figures/wavelet_effect.pdf Graphic file (type pdf)
 
 <use Figures/wavelet_effect.pdf>
 Package pdftex.def Info: Figures/wavelet_effect.pdf used on input line 68.
 (pdftex.def)             Requested size: 361.34912pt x 361.34912pt.
 
-<Figures/LogPolar_shape.pdf, id=315, 867.24pt x 867.24pt>
+<Figures/LogPolar_shape.pdf, id=329, 867.24pt x 867.24pt>
 File: Figures/LogPolar_shape.pdf Graphic file (type pdf)
 
 <use Figures/LogPolar_shape.pdf>
 Package pdftex.def Info: Figures/LogPolar_shape.pdf used on input line 76.
 (pdftex.def)             Requested size: 303.53854pt x 303.53854pt.
 
-<Figures/LogPolar_effect.pdf, id=316, 867.24pt x 867.24pt>
+<Figures/LogPolar_effect.pdf, id=330, 867.24pt x 867.24pt>
 File: Figures/LogPolar_effect.pdf Graphic file (type pdf)
 
 <use Figures/LogPolar_effect.pdf>
 Package pdftex.def Info: Figures/LogPolar_effect.pdf used on input line 84.
 (pdftex.def)             Requested size: 303.53854pt x 303.53854pt.
 
-<Figures/Benchmarking_para_alpha_2.pdf, id=317, 433.62pt x 289.08pt>
+<Figures/Benchmarking_para_alpha_2.pdf, id=331, 433.62pt x 289.08pt>
 File: Figures/Benchmarking_para_alpha_2.pdf Graphic file (type pdf)
 
 <use Figures/Benchmarking_para_alpha_2.pdf>
@@ -1920,7 +1931,7 @@ Package pdftex.def Info: Figures/Benchmarking_para_alpha_2.pdf used on input li
 ne 94.
 (pdftex.def)             Requested size: 433.61894pt x 289.07928pt.
 
-<Figures/Benchmarking_para_alpha_3.pdf, id=318, 433.62pt x 289.08pt>
+<Figures/Benchmarking_para_alpha_3.pdf, id=332, 433.62pt x 289.08pt>
 File: Figures/Benchmarking_para_alpha_3.pdf Graphic file (type pdf)
 
 <use Figures/Benchmarking_para_alpha_3.pdf>
@@ -1928,7 +1939,7 @@ Package pdftex.def Info: Figures/Benchmarking_para_alpha_3.pdf used on input li
 ne 102.
 (pdftex.def)             Requested size: 433.61894pt x 289.07928pt.
 
-<Figures/Benchmarking_para_alpha.pdf, id=319, 433.62pt x 289.08pt>
+<Figures/Benchmarking_para_alpha.pdf, id=333, 433.62pt x 289.08pt>
 File: Figures/Benchmarking_para_alpha.pdf Graphic file (type pdf)
 
 <use Figures/Benchmarking_para_alpha.pdf>
@@ -1936,7 +1947,7 @@ Package pdftex.def Info: Figures/Benchmarking_para_alpha.pdf used on input line
  110.
 (pdftex.def)             Requested size: 433.61894pt x 289.07928pt.
 
-<Figures/logpolar_cost_learning.pdf, id=320, 1084.05pt x 722.7pt>
+<Figures/logpolar_cost_learning.pdf, id=334, 1084.05pt x 722.7pt>
 File: Figures/logpolar_cost_learning.pdf Graphic file (type pdf)
 
 <use Figures/logpolar_cost_learning.pdf>
@@ -1944,14 +1955,14 @@ Package pdftex.def Info: Figures/logpolar_cost_learning.pdf used on input line
 118.
 (pdftex.def)             Requested size: 433.61232pt x 289.07487pt.
 
-<Figures/saccades_wavelets.pdf, id=321, 857.41061pt x 276.90326pt>
+<Figures/saccades_wavelets.pdf, id=335, 857.41061pt x 276.90326pt>
 File: Figures/saccades_wavelets.pdf Graphic file (type pdf)
 
 <use Figures/saccades_wavelets.pdf>
 Package pdftex.def Info: Figures/saccades_wavelets.pdf used on input line 126.
 (pdftex.def)             Requested size: 428.70425pt x 138.45128pt.
 
-<Figures/saccades_logpolar.pdf, id=322, 722.7pt x 216.81pt>
+<Figures/saccades_logpolar.pdf, id=336, 722.7pt x 216.81pt>
 File: Figures/saccades_logpolar.pdf Graphic file (type pdf)
 
 <use Figures/saccades_logpolar.pdf>
@@ -1962,21 +1973,21 @@ Overfull \hbox (1.42126pt too wide) in paragraph at lines 134--136
  [][] 
  []
 
-<Figures/sacc_nombre.pdf, id=323, 433.62pt x 289.08pt>
+<Figures/sacc_nombre.pdf, id=337, 433.62pt x 289.08pt>
 File: Figures/sacc_nombre.pdf Graphic file (type pdf)
 
 <use Figures/sacc_nombre.pdf>
 Package pdftex.def Info: Figures/sacc_nombre.pdf used on input line 142.
 (pdftex.def)             Requested size: 433.61894pt x 289.07928pt.
 
-<Figures/sacc_distance.pdf, id=324, 433.62pt x 289.08pt>
+<Figures/sacc_distance.pdf, id=338, 433.62pt x 289.08pt>
 File: Figures/sacc_distance.pdf Graphic file (type pdf)
 
 <use Figures/sacc_distance.pdf>
 Package pdftex.def Info: Figures/sacc_distance.pdf used on input line 150.
 (pdftex.def)             Requested size: 433.61894pt x 289.07928pt.
 
-<Figures/err_distance.pdf, id=325, 433.62pt x 289.08pt>
+<Figures/err_distance.pdf, id=339, 433.62pt x 289.08pt>
 File: Figures/err_distance.pdf Graphic file (type pdf)
 
 <use Figures/err_distance.pdf>
@@ -1984,46 +1995,49 @@ Package pdftex.def Info: Figures/err_distance.pdf used on input line 158.
 (pdftex.def)             Requested size: 411.93666pt x 274.62444pt.
 )
 1: section
-[15 <./Figures/visual_system.jpg>] [16 <./Figures/saccadic_sys.pdf> <./Figures/
-visual_system_simple.pdf
+[17
+
+
+ <./Figures/visual_system.jpg>] [18 <./Figures/saccadic_sys.pdf> <./Figures/vis
+ual_system_simple.pdf
 
 pdfTeX warning: /usr/bin/pdflatex (file ./Figures/visual_system_simple.pdf): PD
 F inclusion: multiple pdfs with page group included in a single page
->] [17 <./Figures/POMDP.pdf> <./Figures/mnist_reshape.pdf
+>] [19 <./Figures/POMDP.pdf> <./Figures/mnist_reshape.pdf
 
 pdfTeX warning: /usr/bin/pdflatex (file ./Figures/mnist_reshape.pdf): PDF inclu
 sion: multiple pdfs with page group included in a single page
->] [18 <./Figures/wavelet_effect.pdf>] [19 <./Figures/LogPolar_shape.pdf> <./Fi
+>] [20 <./Figures/wavelet_effect.pdf>] [21 <./Figures/LogPolar_shape.pdf> <./Fi
 gures/LogPolar_effect.pdf
 
 pdfTeX warning: /usr/bin/pdflatex (file ./Figures/LogPolar_effect.pdf): PDF inc
 lusion: multiple pdfs with page group included in a single page
->] [20 <./Figures/Benchmarking_para_alpha_2.pdf> <./Figures/Benchmarking_para_a
+>] [22 <./Figures/Benchmarking_para_alpha_2.pdf> <./Figures/Benchmarking_para_a
 lpha_3.pdf
 
 pdfTeX warning: /usr/bin/pdflatex (file ./Figures/Benchmarking_para_alpha_3.pdf
 ): PDF inclusion: multiple pdfs with page group included in a single page
->] [21 <./Figures/Benchmarking_para_alpha.pdf> <./Figures/logpolar_cost_learnin
+>] [23 <./Figures/Benchmarking_para_alpha.pdf> <./Figures/logpolar_cost_learnin
 g.pdf
 
 pdfTeX warning: /usr/bin/pdflatex (file ./Figures/logpolar_cost_learning.pdf): 
 PDF inclusion: multiple pdfs with page group included in a single page
->] [22 <./Figures/saccades_wavelets.pdf> <./Figures/saccades_logpolar.pdf
+>] [24 <./Figures/saccades_wavelets.pdf> <./Figures/saccades_logpolar.pdf
 
 pdfTeX warning: /usr/bin/pdflatex (file ./Figures/saccades_logpolar.pdf): PDF i
 nclusion: multiple pdfs with page group included in a single page
->] [23 <./Figures/sacc_nombre.pdf> <./Figures/sacc_distance.pdf
+>] [25 <./Figures/sacc_nombre.pdf> <./Figures/sacc_distance.pdf
 
 pdfTeX warning: /usr/bin/pdflatex (file ./Figures/sacc_distance.pdf): PDF inclu
 sion: multiple pdfs with page group included in a single page
->] [24 <./Figures/err_distance.pdf>]
+>] [26 <./Figures/err_distance.pdf>]
 \openout2 = `Appendices/AppendixB.aux'.
 
  (./Appendices/AppendixB.tex
 Appendix B.
 )
 1: section
-[25
+[27
 
 
 
@@ -2043,13 +2057,13 @@ Package logreq Info: Writing requests to 'main.run.xml'.
  )
 (\end occurred when \iftrue on line 90 was incomplete) 
 Here is how much of TeX's memory you used:
- 30914 strings out of 494351
- 622564 string characters out of 6163906
+ 30918 strings out of 494351
+ 622620 string characters out of 6163906
  723428 words of memory out of 5000000
- 33782 multiletter control sequences out of 15000+600000
+ 33783 multiletter control sequences out of 15000+600000
  63158 words of font info for 125 fonts, out of 8000000 for 9000
  350 hyphenation exceptions out of 8191
- 56i,21n,78p,10377b,1743s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 56i,21n,78p,10377b,1757s stack positions out of 5000i,500n,10000p,200000b,80000s
  </home/pimt/.texmf-var/f
 onts/pk/ljfour/jknappen/ec/ectt1200.600pk>{/usr/share/texlive/texmf-dist/fonts/
 enc/dvips/base/8r.enc}</usr/share/texlive/texmf-dist/fonts/type1/public/amsfont
@@ -2061,10 +2075,10 @@ xmf-dist/fonts/type1/urw/palatino/uplbi8a.pfb></usr/share/texlive/texmf-dist/fo
 nts/type1/urw/palatino/uplr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/ur
 w/palatino/uplr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/palatino/u
 plri8a.pfb>
-Output written on main.pdf (31 pages, 579814 bytes).
+Output written on main.pdf (33 pages, 585709 bytes).
 PDF statistics:
- 902 PDF objects out of 1000 (max. 8388607)
- 468 compressed objects within 5 object streams
- 84 named destinations out of 1000 (max. 500000)
+ 922 PDF objects out of 1000 (max. 8388607)
+ 481 compressed objects within 5 object streams
+ 87 named destinations out of 1000 (max. 500000)
  214 words of extra memory for PDF output out of 10000 (max. 10000000)
 
