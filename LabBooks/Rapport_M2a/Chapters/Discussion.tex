@@ -17,6 +17,8 @@ Plus exactement, le modèle semble présenter un profil de performances similair
 % Prospects
 	% Modèle probabiliste
 	% Modif entrainement  utiliser classifieur pour réaliser apprentissage détecteur
+	% Bruit écologique
+	% Implémentation robotique
 	
 Plusieurs étapes ont dors et déjà été identifiées afin de rendre le modèle à la fois plus performant et plus proche d'une certaine réalité neurologique. \\
 La première consistera en la modification de la prédiction du modèle (à l'heure actuelle, la prédiction correspond à deux coordonnées `'certaines`' où la cible devrait être présente) en prédiction probabiliste. 
@@ -27,3 +29,7 @@ L'une des solutions envisageables pour ce dernier point consiste en la transitio
 
 Lorsque le modèle présentera des performances jugées suffisantes, l'étape suivante sera probablement de le mettre à l'épreuve dans des conditions pour lesquelles il n'aura pas été programmé afin de tester la robustesse de la généralisation obtenue grâce à l'apprentissage automatisé. Pour cela, l'un des moyens à notre disposition est d'altérer la qualité de l'image utilisée en entrée via l'introduction de bruit. 
 Idéalement, ce bruit devra être construit pour suivre des règles écologiques, c'est à dire qu'il devra modéliser le bruit que l'on peut retrouver lors d'une perception naturelle de l'environnement visuel. Deux méthodes sont pour le moment envisagées : introduire des pseudo-stimulis créés en `'mélangeant`' des stimuli utilisés pour l'apprentissage (permettant d'obtenir des régions comprenant les mêmes variances de niveaux de gris que lors de la présence d'un stimulus réel mais sans présenter d'information pertinente) et/ou créer un bruit corrélé par transformation mathématiques \autocite{Najemnik2005}. \\
+
+Finalement, lorsque le modèle aura été entraîné, évalué et optimisé dans un ensemble de contextes artificiels, il deviendra envisageable de soumettre son fonctionnement à des contextes écologiques en l'implémentant dans un système autonome.
+Le paradigme POMDP permettra à l'agent de choisir l'action la plus adaptée en fonction de sa perception de son environnement et de la tâche à réaliser, tandis la présence de l'apprentissage automatisé et de l'approche neuromimétique (vision rétinienne) permettra de conserver une performance élevée (notamment en adaptabilité et en vitesse de réaction) tout en diminuant au maximum la puissance de calcul et la consommation d'énergie nécessaires à son fonctionnement. \autocite{Potthast2016} \\
+En prenant pour example un agent robotisé mobile, tel qu'un drone, dont la tâche serait de reconnaitre un objet ou un visage dans son environnement visuel, ce modèle pourrait lui permettre de choisir de façon active et autonome quelle action choisir (réaliser une saccade et si oui en visant quelle position, réaliser un mouvement et si oui lequel parmi 6 directions et 4 rotations disponibles) suivant son contexte environnemental et les informations qui lui sont accessibles (position estimée de l'agent par rapport à la cible, taux de certitude de l'identification, environnement observé, etc) afin de réaliser sa tâche de façon optimale. \autocite{Potthast2016} \\

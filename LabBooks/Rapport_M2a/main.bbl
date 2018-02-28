@@ -467,6 +467,82 @@
   \field{year}{2005}
 \endentry
 
+\entry{Potthast2016}{article}{}
+  \name{author}{4}{}{%
+    {{}%
+     {Potthast}{P.}%
+     {Christian}{C.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Breitenmoser}{B.}%
+     {Andreas}{A.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Sha}{S.}%
+     {Fei}{F.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Sukhatme}{S.}%
+     {Gaurav~S.}{G.~S.}%
+     {}{}%
+     {}{}}%
+  }
+  \list{publisher}{1}{%
+    {Elsevier B.V.}%
+  }
+  \keyw{Active perception,Feature selection,Information-theory,Multi-view
+  object recognition,Object change detection,Viewpoint selection}
+  \strng{namehash}{PC+1}
+  \strng{fullhash}{PCBASFSGS1}
+  \field{sortinit}{P}
+  \field{abstract}{%
+  Many robots are limited in their operating capabilities, both computational
+  and energy-wise. A strong desire exists to keep computation cost and energy
+  consumption to a minimum when executing tasks like object recognition with a
+  mobile robot. Adaptive action selection is a paradigm, offering great
+  flexibility in trading off the cost of acquiring information against making
+  robust and reliable inference under uncertainty. In this paper, we study
+  active multi-view object recognition and describe an information-theoretic
+  framework that combines and unifies two common techniques: online feature
+  selection for reducing computational costs and view planning for resolving
+  ambiguities and occlusions. Our algorithm adaptively chooses between the two
+  strategies of either selecting only the features that are most informative to
+  the recognition, or moving to a new viewpoint that optimally reduces the
+  expected uncertainty on the identity of the object. This two step process
+  allows us to keep overall computation cost minimal but simultaneously
+  increase recognition accuracy. Extensive empirical studies on a large RGB-D
+  dataset, and with two different feature sets, have validated the
+  effectiveness of the proposed framework. Our experiments show that dynamic
+  feature selection alone reduces the computation time at runtime 2.5–6 times
+  and, when combining it with viewpoint selection, we significantly increase
+  the recognition accuracy on average by 8{\%}–18{\%} absolute compared to
+  systems that do not use these two strategies. By establishing a link between
+  active object recognition and change detection, we were further able to use
+  our framework for the follow-up task of actively detecting object change.
+  Furthermore, we have successfully demonstrated the framework's applicability
+  to a low-powered quadcopter platform with limited operating time.%
+  }
+  \verb{doi}
+  \verb 10.1016/j.robot.2016.06.013
+  \endverb
+  \field{issn}{09218890}
+  \field{pages}{31\bibrangedash 47}
+  \field{title}{{Active multi-view object recognition: A unifying view on
+  online feature selection and view planning}}
+  \verb{url}
+  \verb http://dx.doi.org/10.1016/j.robot.2016.06.013
+  \endverb
+  \field{volume}{84}
+  \verb{file}
+  \verb :home/pimt/Documents/Articles/Potthast2016.pdf:pdf
+  \endverb
+  \field{journaltitle}{Robotics and Autonomous Systems}
+  \field{year}{2016}
+\endentry
+
 \entry{Uddin2004}{article}{}
   \name{author}{3}{}{%
     {{}%

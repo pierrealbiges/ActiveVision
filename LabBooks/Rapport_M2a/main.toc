@@ -16,4 +16,4 @@
 \contentsline {chapter}{\numberline {4}Discussion et perspectives}{11}{chapter.21}
 \contentsline {chapter}{Bibliography}{15}{chapter*.22}
 \contentsline {chapter}{\numberline {A}Figures}{17}{appendix.23}
-\contentsline {chapter}{\numberline {B}Code source}{27}{appendix.43}
+\contentsline {chapter}{\numberline {B}Code source et documents compl\IeC {\'e}mentaires}{27}{appendix.43}
