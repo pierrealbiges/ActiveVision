@@ -119,6 +119,57 @@
   \field{year}{2014}
 \endentry
 
+\entry{Fischer2007}{article}{}
+  \name{author}{4}{}{%
+    {{}%
+     {Fischer}{F.}%
+     {Sylvain}{S.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Perrinet}{P.}%
+     {Laurent}{L.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Redondo}{R.}%
+     {Rafael}{R.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Cristobal}{C.}%
+     {Gabriel}{G.}%
+     {}{}%
+     {}{}}%
+  }
+  \keyw{ARTIFICIAL INTELLIGENCE,Artificial Intelligence (incl.
+  Robotics),COMPRESSION,COMPUTER SCIENCE,CORTICAL-CELLS,Computer
+  Imaging,Computer Science,FILTERS,IMAGE REPRESENTATION,Image Processing and
+  Computer Vision,NATURAL IMAGES,Pattern Recognition,Pattern Recognition and
+  Graphics,RESPONSES,SPATIAL-FREQUENCY,STATISTICS,Studies,TRANSFORMS,VISUAL-CORTEX,Vision,Wavelet
+  transforms,image denoising,log-Gabor filters,oriented high-pass
+  filters,visual system,wavelet transforms}
+  \strng{namehash}{FS+1}
+  \strng{fullhash}{FSPLRRCG1}
+  \field{sortinit}{F}
+  \verb{doi}
+  \verb 10.1007/s11263-006-0026-8
+  \endverb
+  \field{number}{2}
+  \field{pages}{231\bibrangedash 246}
+  \field{title}{{Self-invertible 2D log-Gabor wavelets}}
+  \verb{url}
+  \verb http://invibe.net/LaurentPerrinet/Publications/Fischer07cv?action=Attac
+  \verb hFile{\&}do=view{\&}target=Fischer07cv.pdf
+  \endverb
+  \field{volume}{75}
+  \verb{file}
+  \verb :home/pimt/Documents/Articles/Fischer2007.pdf:pdf
+  \endverb
+  \field{journaltitle}{International Journal of Computer Vision}
+  \field{year}{2007}
+\endentry
+
 \entry{Freeman2011}{article}{}
   \name{author}{2}{}{%
     {{}%
