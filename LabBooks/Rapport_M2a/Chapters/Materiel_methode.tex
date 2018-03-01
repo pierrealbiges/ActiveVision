@@ -66,7 +66,7 @@ h_{\theta}(x) = \theta^{T}x + b
 \label{eqn:Hypo}
 \end{equation}
 
-Ces poids sont ensuite optimisés par descente de gradient (équation~\ref{eqn:Grad_desc}), où ils sont comparés à la position réelle \textit{y} de la cible (correspondant aux informations que l'on veut apprendre, ici ses coordonnées $(i,j)$) pour un nombre d'exemples $m$ et d'itérations fixées. Le paramètre d'apprentissage $\alpha$ influence très fortement l'entrainement et sa valeur doit être adaptée pour éviter un sous- ou un sur-apprentissage (révélant respectivement une valeur trop faible ou trop importante).\\
+Ces poids sont ensuite optimisés par descente de gradient (équation~\ref{eqn:Grad_desc}), où ils sont comparés à la position réelle \textit{y} de la cible (correspondant aux informations que l'on veut apprendre, ici ses coordonnées $(i,j)$) pour un nombre d'exemples ($m$ au total) et d'itérations fixées. Le paramètre d'apprentissage $\alpha$ influence très fortement l'entrainement et sa valeur doit être adaptée pour éviter un sous- ou un sur-apprentissage (révélant respectivement une valeur trop faible ou trop importante).\\
 
 \begin{equation}
 \theta_j := \theta_j - \alpha \frac{1}{m} \sum_{i=1}^m (h_\theta(x^i) - y^i)x_{j}^i
@@ -80,6 +80,6 @@ J(\theta) = \frac{1}{2m} \sum_{i=1}^m (h_\theta(x^i)-y^i)^2
 \label{eqn:Cost}
 \end{equation}
 
-Nous construisons ainsi un modèle de machine learning contenant deux couches et dont le comportement suit un modèle POMDP. Pour celà, nous réalisons l'entraînement avec en entrée deux vecteurs: l'entrée \textit{x}, produit d'une transformation mathématiques de l'image après application de l'un des filtres rétiniens, ainsi que le label \textit{y} comprenant (suivant la couche que l'on entraîne) soit les coordonnées $(x,y)$ de la cible, soit sa catégorie (le chiffre que l'image contient, sous la forme d'un vecteur one-hot).\\
- La première couche (\textit{détecteur}), dont le développement est l'objectif principal de ce travail, est entraînée à prédire la position du stimulus dans l'image perçue au travers du champs rétinien, permettant de réaliser une saccade jusqu'aux coordonnées prédites et donc d'approcher la cible de la vision fovéale. Chaque saccade permet donc d'optimiser la détection du signal.\autocite{Friston2012}\\
-La seconde (\textit{classifieur}) est entraînée à prédire la catégorie du stimulus dans l'image perçue au travers du champs rétinien et permet d'arrêter l'exploration de l'image lorsque sa prédiction présente une certitude assez élevée.
+Nous construisons ainsi un modèle linéaire à une couche dont le comportement s'insipire de celui d'un agent POMDP. Pour celà, nous réalisons l'entraînement avec en entrée deux vecteurs: l'entrée~\textit{x}, produit d'une transformation mathématiques de l'image après application de l'un des filtres rétiniens, ainsi que le label~\textit{y} comprenant les coordonnées $(x,y)$ de la cible.\\
+Cette couche, que l'on appellera (\textit{détecteur}), est ainsi entraînée à prédire la position du stimulus dans l'image perçue à partir du champs rétinien, permettant de réaliser une saccade jusqu'aux coordonnées prédites et d'approcher la cible de sa fovéa. Chaque saccade vise donc à améliorer la détection du signal.\autocite{Friston2012}\\
+Une seconde couche, que l'on appellera (\textit{classifieur}), est actuellement en cours de développement pour ce modèle mais son implémentation n'étant pas achevée au moment de l'écriture de ce rapport, celle-ci n'apparaitra de que manière anecdotique dans les figures. L'objectif est d'entraîner cette nouvelle couche à prédire la catégorie du stimulus dans l'image perçue à partir du champs rétinien et d'amorcer l'arrêt de l'exploration de l'image lorsque sa prédiction présente une certitude assez élevée.

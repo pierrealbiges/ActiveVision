@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2018.1.15)  1 MAR 2018 17:36
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2018.1.15)  2 MAR 2018 00:32
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1787,13 +1787,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 69--70
 
  []
 
-[7])
-Overfull \hbox (9.86732pt too wide) in paragraph at lines 83--223
-\T1/ppl/m/n/12 porte-ment suit un mod-èle POMDP. Pour celà, nous réal-isons l'e
-ntraînement avec en en-trée deux vecteurs:
- []
-
-[8]
+[7]) [8]
 \openout2 = `Chapters/Resultats.aux'.
 
  (./Chapters/Resultats.tex
@@ -1804,13 +1798,13 @@ Underfull \hbox (badness 10000) in paragraph at lines 9--10
  []
 
 
-Overfull \hbox (18.17105pt too wide) in paragraph at lines 13--17
+Overfull \hbox (18.17105pt too wide) in paragraph at lines 13--16
 \T1/ppl/m/n/12 On peut ob-server qu'indépendamment du fil-tre util-isé et du no
 m-bre de couches en-traînées, l'apprentissage
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 22--27
+Underfull \hbox (badness 10000) in paragraph at lines 21--26
 
  []
 
@@ -1933,12 +1927,6 @@ Package pdftex.def Info: Figures/mnist_reshape.pdf used on input line 60.
 (pdftex.def)             Requested size: 325.21751pt x 325.21751pt.
 LaTeX Font Info:    Font shape `T1/ppl/bx/n' in size <10.95> not available
 (Font)              Font shape `T1/ppl/b/n' tried instead on input line 62.
-
-Underfull \hbox (badness 1533) in paragraph at lines 62--62
- []\T1/ppl/m/sc/10.95 Figure A.5: |\T1/ppl/b/n/10.95 A. \T1/ppl/m/n/10.95 Im-ag
-e orig-i-nale tirée de MNIST ; \T1/ppl/b/n/10.95 B. \T1/ppl/m/n/10.95 Im-age ap
-rès trans-for-ma-tion 
- []
 
 <Figures/wavelet_effect.pdf, id=339, 1445.4pt x 1445.4pt>
 File: Figures/wavelet_effect.pdf Graphic file (type pdf)
@@ -2110,11 +2098,11 @@ Package logreq Info: Writing requests to 'main.run.xml'.
  )
 (\end occurred when \iftrue on line 90 was incomplete) 
 Here is how much of TeX's memory you used:
- 30968 strings out of 494351
- 624063 string characters out of 6163906
+ 30970 strings out of 494351
+ 624074 string characters out of 6163906
  730431 words of memory out of 5000000
  33829 multiletter control sequences out of 15000+600000
- 63158 words of font info for 125 fonts, out of 8000000 for 9000
+ 63656 words of font info for 127 fonts, out of 8000000 for 9000
  350 hyphenation exceptions out of 8191
  56i,21n,78p,10377b,1757s stack positions out of 5000i,500n,10000p,200000b,80000s
  </home/pimt/.texmf-var/f
@@ -2128,7 +2116,7 @@ xmf-dist/fonts/type1/urw/palatino/uplbi8a.pfb></usr/share/texlive/texmf-dist/fo
 nts/type1/urw/palatino/uplr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/ur
 w/palatino/uplr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/palatino/u
 plri8a.pfb>
-Output written on main.pdf (33 pages, 608894 bytes).
+Output written on main.pdf (33 pages, 608851 bytes).
 PDF statistics:
  982 PDF objects out of 1000 (max. 8388607)
  502 compressed objects within 6 object streams

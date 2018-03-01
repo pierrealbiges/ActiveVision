@@ -18,7 +18,7 @@
 \centering
 \includegraphics[scale=0.8]{Figures/saccadic_sys}
 \decoRule %puts an aesthetic horizontal line below the image
-\caption[Figure]{Schéma simplifié du réseau nerveux impliqué dans la plannification et l'execution des saccades oculaires. Les parties noires correspondent aux composantes dont notre modèle tente de modéliser les fonctions, tandis que celles grises correspondent au reste du réseau (adapté de \cite{Zhaoping2014})}
+\caption[Figure]{Schéma simplifié du réseau nerveux impliqué dans la planification et l'exécution des saccades oculaires. Les parties noires correspondent aux composantes dont notre modèle tente de modéliser les fonctions, tandis que celles grises correspondent au reste du réseau (adapté de \cite{Zhaoping2014})}
 \label{fig:saccadic_sys}
 \end{figure}
 
@@ -59,7 +59,7 @@ Machine virtuelle (ressources allouées) & VirtualBox v.5.2.6 & Ubuntu 16.04 & 4
 \centering
 \includegraphics[scale=0.3]{Figures/mnist_reshape}
 \decoRule %puts an aesthetic horizontal line below the image
-\caption[Figure]{\textbf{A.} Image originale tirée de MNIST ; \textbf{B.} Image après transformation géométrique et placé aux coordonnées $(i=-20,j=25)$}
+\caption[Figure]{\textbf{A.} Image originale tirée de la base MNIST ; \textbf{B.} Image après translation aux coordonnées $(i=-20,j=25)$ sur un fond blanc $128\times128$}
 \label{fig:mnist_reshape}
 \end{figure}
 
@@ -67,7 +67,7 @@ Machine virtuelle (ressources allouées) & VirtualBox v.5.2.6 & Ubuntu 16.04 & 4
 \centering
 \includegraphics[scale=0.25]{Figures/wavelet_effect}
 \decoRule %puts an aesthetic horizontal line below the image
-\caption[Figure]{\textbf{A.} Image avant application d'un filtre et placé aux coordonnées $(i=-6,j=6)$ ; \textbf{B.} Image après transformation par le filtre \textit{Wavelets}}
+\caption[Figure]{\textbf{A.} Image avant encodage pyramidal par ondelettes avec cible positionnée aux coordonnées $(i=-6,j=6)$ ; \textbf{B.} Image reconstruite d'après les valeurs des 70 coefficients d'ondelettes (taux de compression: $1-\frac{70}{128\times128}$)}
 \label{fig:Wavelet_effect}
 \end{figure}
 
@@ -75,7 +75,7 @@ Machine virtuelle (ressources allouées) & VirtualBox v.5.2.6 & Ubuntu 16.04 & 4
 \centering
 \includegraphics{Figures/Gabor_filter}
 \decoRule %puts an aesthetic horizontal line below the image
-\caption[Figure]{Exemples de sous-unités LogGabor constituant le filtre \textit{LogPolar}, avec leurs paramètres respectifs.}
+\caption[Figure]{Exemples de filtres LogGabor tels qu'appliqués sur l'image originale, avec leurs paramètres respectifs (nombre total de filtre constituant \textit{LogPolar}: 400)}
 \label{fig:Gabor_filter}
 \end{figure}
 
@@ -91,7 +91,7 @@ Machine virtuelle (ressources allouées) & VirtualBox v.5.2.6 & Ubuntu 16.04 & 4
 \centering
 \includegraphics[scale=0.35]{Figures/LogPolar_effect}
 \decoRule %puts an aesthetic horizontal line below the image
-\caption[Figure]{Image après transformation par le filtre \textit{LogPolar} ($N_{theta}=6$,$N_{orient}=8$,$N_{scale}=5$,$N_{phase}=2$) }
+\caption[Figure]{Image reconstruite après transformation par le filtre \textit{LogPolar} ($N_{theta}=6$,$N_{orient}=8$,$N_{scale}=5$,$N_{phase}=2$) }
 \label{fig:LogPolar_effect}
 \end{figure}
 
@@ -125,7 +125,7 @@ Machine virtuelle (ressources allouées) & VirtualBox v.5.2.6 & Ubuntu 16.04 & 4
 \centering
 \includegraphics[scale=0.4]{Figures/logpolar_cost_learning}
 \decoRule
-\caption[Figure]{Réduction du coût des couches \textit{détecteur} et \textit{classifieur} lors de l'apprentissage, dans le cadre d'un filtre \textit{LogPolar} (taille de la base d'apprentissage :  10000, nombre d'itérations : 100, $\alpha_{detect}=0.0015$, $\alpha_{classif}=0.3$)}
+\caption[Figure]{Quantification de la fonction de coût des couches \textit{détecteur} (gauche) et \textit{classifieur} (droite) lors de l'apprentissage, dans le cadre d'un filtre \textit{LogPolar} (taille de l'échantillon d'apprentissage :  10000, nombre d'itérations : 100, $\alpha_{detect}=0.0015$, $\alpha_{classif}=0.3$)}
 \label{fig:logpolar_cost}
 \end{figure}
 
@@ -149,7 +149,7 @@ Machine virtuelle (ressources allouées) & VirtualBox v.5.2.6 & Ubuntu 16.04 & 4
 \centering
 \includegraphics{Figures/logpolar_sacc_nombre}
 \decoRule
-\caption[Figure]{Nombre de saccades nécessaires pour atteindre la position de la cible au cours de 10000 essais, dans le cadre d'un filtre \textit{LogPolar} (taille de la base d'apprentissage :  10000, nombre d'itérations : 100, $\alpha_{detect}=0.0015$, $\alpha_{classif}=0.3$)}
+\caption[Figure]{Nombre de saccades nécessaires pour atteindre la position de la cible au cours de 10000 essais, dans le cadre d'un filtre \textit{LogPolar} (taille de l'échantillon d'apprentissage :  10000, nombre d'itérations : 100, $\alpha_{detect}=0.0015$, $\alpha_{classif}=0.3$)}
 \label{fig:sacc_nombre}
 \end{figure}
 
@@ -157,7 +157,7 @@ Machine virtuelle (ressources allouées) & VirtualBox v.5.2.6 & Ubuntu 16.04 & 4
 \centering
 \includegraphics{Figures/logpolar_sacc_distance}
 \decoRule
-\caption[Figure]{Nombre moyen de saccades nécessaires pour atteindre la position de la cible en fonction de sa distance initiale du point de fixation au cours de 10000 essais, dans le cadre d'un filtre \textit{LogPolar} (taille de la base d'apprentissage :  10000, nombre d'itérations : 100, $\alpha_{detect}=0.0015$, $\alpha_{classif}=0.3$)}
+\caption[Figure]{Nombre moyen de saccades nécessaires pour atteindre la position de la cible en fonction de sa distance initiale du point de fixation au cours de 10000 essais, dans le cadre d'un filtre \textit{LogPolar} (taille de l'échantillon d'apprentissage :  10000, nombre d'itérations : 100, $\alpha_{detect}=0.0015$, $\alpha_{classif}=0.3$)}
 \label{fig:sacc_distance}
 \end{figure}
 
@@ -165,6 +165,6 @@ Machine virtuelle (ressources allouées) & VirtualBox v.5.2.6 & Ubuntu 16.04 & 4
 \centering
 \includegraphics[scale=0.95]{Figures/logpolar_err_distance}
 \decoRule
-\caption[Figure]{Erreur moyenne lors de la prédiction de la position de la cible en fonction de sa distance du point de fixation au cours de 10000 essais, dans le cadre d'un filtre \textit{LogPolar} (taille de la base d'apprentissage :  10000, nombre d'itérations : 100, $\alpha_{detect}=0.0015$, $\alpha_{classif}=0.3$)}
+\caption[Figure]{Erreur moyenne lors de la prédiction de la position de la cible en fonction de sa distance du point de fixation au cours de 10000 essais, dans le cadre d'un filtre \textit{LogPolar} (taille de l'échantillon d'apprentissage :  10000, nombre d'itérations : 100, $\alpha_{detect}=0.0015$, $\alpha_{classif}=0.3$)}
 \label{fig:err_distance}
 \end{figure}
