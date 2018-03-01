@@ -467,6 +467,32 @@
   \field{year}{2005}
 \endentry
 
+\entry{SLIP}{misc}{}
+  \name{author}{1}{}{%
+    {{}%
+     {Perrinet}{P.}%
+     {Laurent}{L.}%
+     {}{}%
+     {}{}}%
+  }
+  \keyw{Image
+  processing,Neuroscience,fourier,perception,textures,vision,whitening}
+  \strng{namehash}{PL1}
+  \strng{fullhash}{PL1}
+  \field{sortinit}{P}
+  \field{abstract}{%
+  The SLIP library (https://github.com/bicv/SLIP) defines a simple
+  object-oriented class for gray-scale image processing. Use it to create a
+  SLIP object with a dedicated image size (and optionnaly some other useful
+  parameters) - which you can use to apply common image processing routines to
+  your images.%
+  }
+  \field{title}{{SLIP : a Simple Library for Image Processing}}
+  \verb{url}
+  \verb https://github.com/bicv/SLIP
+  \endverb
+\endentry
+
 \entry{Potthast2016}{article}{}
   \name{author}{4}{}{%
     {{}%

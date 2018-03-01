@@ -6,8 +6,8 @@
 %----------------------------------------------------------------------------------------
 
 \section{Support physique et numérique} %Spécificités ordinateur/machine virtuelle, python/libraries versions
-L'ensemble des simulations ont eut lieu sur un ordinateur portable hébergeant une machine virtuelle (caractéristiques rassemblées dans le tableau~\ref{tab:materiel}).\\
-Les modélisations ont été réalisées à l'aide du language de programmation \href{https://www.python.org/}{Python} (version 3.6.4) renforcé de la librairie \href{https://www.tensorflow.org/}{TensorFlow} (version 1.4) et de l'interface graphique \href{https://jupyter.org/}{Jupyter}.\\
+L'ensemble des simulations ont eut lieu sur un ordinateur portable hébergeant une machine virtuelle (caractéristiques rassemblées dans le tableau~\ref{tab:materiel}).
+Les modélisations ont été réalisées à l'aide du language de programmation \href{https://www.python.org/}{Python} (version 3.6.4) renforcé de la librairie \href{https://www.tensorflow.org/}{TensorFlow} (version 1.4) et de l'interface graphique \href{https://jupyter.org/}{Jupyter}.
 La base de données \href{http://yann.lecun.com/exdb/mnist/}{MNIST} a été utilisée pour l'apprentissage et l'évaluation du modèle. Elle contient 70.000 images de chiffres manuscrits (60.000 pour l'entraînement, 10.000 pour l'évaluation) centrés et dont la taille a été normalisée. Chaque image est accompagnée d'un label décrivant quel chiffre elle contient.
 
 %----------------------------------------------------------------------------------------
@@ -36,36 +36,37 @@ B_{t}^i = p(S_{t} = i|A_{1:t},O_{1:t})
 \label{eqn:POMDP_bel}
 \end{equation}
 
+Ainsi, dans le cas qui nous intéresse, l'état de l'environnement est constitué de la position et de l'identité de la cible visuelle, et le but des actions (les saccades) est de permettre d'estimer au mieux (après $t$ observations) l'état de l'environnement.
+
 %----------------------------------------------------------------------------------------
 
 \section{Champs rétinien} %Description dues filtres rétiniens
 
-Avant d'être utilisée par le modèle, l'image provenant de la base MNIST subit un certain nombre de transformations.\\
-Chaque image présente originellement 28x28 pixels auxquels correspondent des niveaux de gris parmi 255 valeurs possibles (permettant un codage sur seulement 8bits par pixel). Cette image est placée au hasard (mais de façon normocentrée) sur une image au fond blanc de 128x128 pixels afin de réduire sa taille par rapport à l'environnement visuel qui la contient (figure~\ref{fig:mnist_reshape}).\\
-A cette image est ensuite appliqué un \textit{filtre Wavelets} ou un \textit{filtre LogPolar}, deux méthodes permettant d'obtenir un champs rétinien, c'est à dire un filtre visuel dont l'acuité est maximale en son centre (simulant la fovea) et diminuant avec l'excentricité (simulant la vision périphérique). \\
-Dans les deux cas, la transformation mathématique imposée par le filtre est calculée à l'avance, permettant de l'appliquer à chaque nouvel environnement visuel et après chaque saccade oculaire (donc à chaque nouvelle observation), tout en économisant au maximum la puissance de calcul disponible.\autocite{Kortum1996}\\
+Avant d'être utilisée par le modèle, l'image provenant de la base MNIST subit un certain nombre de transformations.
+Chaque image présente originellement 28x28 pixels auxquels correspondent des niveaux de gris parmi 255 valeurs possibles (permettant un codage sur seulement 8bits par pixel). Cette image est placée au hasard (mais de façon normocentrée) sur une image au fond blanc de 128x128 pixels afin de réduire sa taille relative par rapport à l'environnement visuel qui la contient (figure~\ref{fig:mnist_reshape}).
+A cette image est ensuite appliqué un \textit{filtre Wavelets} ou un \textit{filtre LogPolar}, deux méthodes permettant d'obtenir un champ rétinien, c'est à dire un filtre visuel dont l'acuité est maximale en son centre (simulant la fovea) et diminuant avec l'excentricité (simulant la vision périphérique).
+Chaque méthode présente des avantages et des inconvénients, mais dans les deux cas la transformation mathématique imposée par le filtre est calculée à l'avance, permettant de l'appliquer à chaque nouvel exemple et après chaque saccade oculaire (donc à chaque nouvelle observation), tout en économisant au maximum la puissance de calcul disponible.\autocite{Kortum1996}\\
 %Description filtre wavelets
-Le \textbf{filtre \textit{Wavelets}} consiste en l'application sur l'image d'une grille de résolution, définissant des anneaux concentriques de taille croissante et contenant des superpixels dont la taille augmente avec l'excentricité de l'anneau. Chacun des superpixels possédant un niveau de gris correspondant à la moyenne des valeurs des pixels qu'il contient, la résolution de l'image ainsi traitée diminue à chaque nouvel anneau, et donc par palier.\autocite{Kortum1996}
-Les effets de ce filtre sont visibles sur la figure~\ref{fig:Wavelet_effect}.\\
+Le \textbf{filtre \textit{Wavelets}} consiste en un encodage pyramidal (c'est donc une approche mathématiques): on applique sur l'image une grille de résolution, définissant des anneaux concentriques contenants des superpixels dont la taille (et le nombre de pixels qu'ils contiennent) augmente avec l'excentricité de l'anneau. Le niveau de gris d'un superpixel correspondant à la moyenne des pixels qu'il contient, la résolution de l'image à laquelle est appliquée ce filtre diminue à chaque nouvel anneau, et donc par palier (les effets de ce filtre sont visibles sur la figure~\ref{fig:Wavelet_effect}). \autocite{Kortum1996} \\
 %Description filtre LogPolar
-Le \textbf{filtre \textit{LogPolar}} quant à lui est basé sur une approche neuromimétique, visant à reproduire la forme et l'organisation réelle des champs récepteurs présents dans le système visuel biologique. Pour suivre cette approche, il est constitué d'un ensemble de filtres LogGabors (figure~\ref{fig:Gabor_filter}), qui sont des fonctions mathématiques (plus précisemment, ils sont construits en multipliant une fonction gaussienne à une exponentielle complexe) présentant un certain nombre d'avantages pour la modélisation des champs récepteurs naturels\autocite{Fischer2007}. \\
-Nous les utilisons donc pour modéliser la distribution des champs récepteurs rétinien, mais il est aussi possible de facilement les adapter (en modifiant seulement quelques paramètres) à la modélisation des aires visuelles primaires et associatives et peut donc être ré-utilisé dans le cadre d'un modèle visuel multi-couches neuromimétique, notamment pour la modélisation de la voie visuelle ventrale \autocite{Freeman2011}. \\
-Une représentation graphique du filtre utilisé dans ces travaux et son effet sur l'un de nos stimuli visuels sont visibles sur les figures~\ref{fig:LogPolar_shape} et~\ref{fig:LogPolar_effect}. \\
+Le \textbf{filtre \textit{LogPolar}} quant à lui est basé sur une approche neuromimétique, visant à reproduire la forme et l'organisation réelle des champs récepteurs présents dans le système visuel biologique. Pour suivre cette approche, il est constitué d'un ensemble de filtres LogGabors (figure~\ref{fig:Gabor_filter}), qui sont des fonctions mathématiques (plus précisemment, ils sont construits en multipliant une fonction gaussienne à une exponentielle complexe) présentant un certain nombre d'avantages pour la modélisation des champs récepteurs naturels\autocite{Fischer2007, SLIP}. \\
+Nous les utilisons donc pour modéliser la distribution des champs récepteurs rétinien, mais il est aussi possible de facilement les adapter (en modifiant seulement quelques paramètres) à la modélisation des aires visuelles primaires et associatives et de les ré-utiliser dans le cadre d'un modèle visuel multi-couches neuromimétique, notamment pour la modélisation de la voie visuelle ventrale \autocite{Freeman2011}. \\
+Une représentation graphique du filtre utilisé dans ces travaux et de son effet sur l'un de nos stimuli visuels sont visibles sur les figures~\ref{fig:LogPolar_shape} et~\ref{fig:LogPolar_effect}. \\
 
 %----------------------------------------------------------------------------------------
 
 \section{Apprentissage supervisé} %Formules du modèle mathématiques soutenant la Régression linéaire multivariée
                                                                     %Prétraitements de l'image (whitening, resize et déplacement cible)
 
-Afin d'obtenir un modèle à la fois performant et adaptable, nous l'avons soumis à un apprentissage supervisé sous la forme d'une \textbf{régression linéaire multivariée} optimisée par \textbf{descente de gradient}. Cette méthode de \textit{machine learning} à été préférée notamment pour la simplicité de sa mise en place, mais pourra être remplacée par une méthode plus complète lorsque le modèle sera dans un stade de développement plus avancé.\\
-Dans cette méthode, nous calculons une hypothèse $h_{\theta}$ (équation~\ref{eqn:Hypo}) sur la répartition des stimuli en multipliant chacune des valeurs \textit{x} de l'entrée (l'image après transformation par le filtre rétinien) à un poids $\theta$ qui lui est spécifique, puis en ajoutant éventuellement un biais $b$.
+Notre modèle de reconnaissance visuelle repose sur un \textbf{régresseur linéaire multivarié} qui utilise comme entrée sa perception visuelle rétinienne et prédit la position $(x,y)$ de la cible. L'apprentissage des paramètres du modèle se fait par un apprentissage supervisé sous la forme d'une \textbf{descente de gradient}. Cette méthode de \textit{machine learning} à été préférée notamment pour la simplicité de sa mise en place, mais pourra être remplacée par une méthode plus complète lorsque le modèle sera dans un stade de développement plus avancé.\\
+Dans cette méthode, nous calculons une hypothèse $h_{\theta}$ (équation~\ref{eqn:Hypo}) sur la répartition des stimuli en réalisant le produit scalaire du vecteur d'entrée $\overrightarrow{x}$ (l'image après transformation par le filtre rétinien) à une matrice de poids $\theta$, puis en ajoutant éventuellement un biais $b$.
 
 \begin{equation}
 h_{\theta}(x) = \theta^{T}x + b
 \label{eqn:Hypo}
 \end{equation}
 
-Ces poids sont ensuite optimisés par descente de gradient (équation~\ref{eqn:Grad_desc}), où ils sont comparés aux labels \textit{y} des entrées (correspondant aux informations que l'on veut apprendre, par exemple les coordonnées $(x,y)$ de la cible) pour un nombre d'exemples et d'itérations fixées. Le paramètre d'apprentissage $\alpha$ influence très fortement l'entrainement et sa valeur doit être adaptée pour éviter un sous- ou un sur-apprentissage (révélant respectivement une valeur trop faible ou trop importante).\\
+Ces poids sont ensuite optimisés par descente de gradient (équation~\ref{eqn:Grad_desc}), où ils sont comparés à la position réelle \textit{y} de la cible (correspondant aux informations que l'on veut apprendre, ici ses coordonnées $(i,j)$) pour un nombre d'exemples $m$ et d'itérations fixées. Le paramètre d'apprentissage $\alpha$ influence très fortement l'entrainement et sa valeur doit être adaptée pour éviter un sous- ou un sur-apprentissage (révélant respectivement une valeur trop faible ou trop importante).\\
 
 \begin{equation}
 \theta_j := \theta_j - \alpha \frac{1}{m} \sum_{i=1}^m (h_\theta(x^i) - y^i)x_{j}^i
