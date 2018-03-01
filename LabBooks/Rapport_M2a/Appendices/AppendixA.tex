@@ -125,7 +125,7 @@ Machine virtuelle (ressources allouées) & VirtualBox v.5.2.6 & Ubuntu 16.04 & 4
 \centering
 \includegraphics[scale=0.4]{Figures/logpolar_cost_learning}
 \decoRule
-\caption[Figure]{Réduction du coût des couches \textit{détecteur} et \textit{classifieur} lors de l'apprentissage, dans le cadre d'un filtre \textit{LogPolar} (taille de la base d'apprentissage :  1000, nombre d'itérations : 100, $\alpha_{detect}=0.0015$, $\alpha_{classif}=0.3$)}
+\caption[Figure]{Réduction du coût des couches \textit{détecteur} et \textit{classifieur} lors de l'apprentissage, dans le cadre d'un filtre \textit{LogPolar} (taille de la base d'apprentissage :  10000, nombre d'itérations : 100, $\alpha_{detect}=0.0015$, $\alpha_{classif}=0.3$)}
 \label{fig:logpolar_cost}
 \end{figure}
 
@@ -147,24 +147,24 @@ Machine virtuelle (ressources allouées) & VirtualBox v.5.2.6 & Ubuntu 16.04 & 4
 
 \begin{figure}[th]
 \centering
-\includegraphics{Figures/sacc_nombre}
+\includegraphics{Figures/logpolar_sacc_nombre}
 \decoRule
-\caption[Figure]{Nombre de saccades nécessaires pour atteindre la position de la cible au cours de 1000 essais, dans le cadre d'un filtre \textit{LogPolar} (taille de la base d'apprentissage :  1000, nombre d'itérations : 100, $\alpha_{detect}=0.0015$, $\alpha_{classif}=0.3$)}
+\caption[Figure]{Nombre de saccades nécessaires pour atteindre la position de la cible au cours de 10000 essais, dans le cadre d'un filtre \textit{LogPolar} (taille de la base d'apprentissage :  10000, nombre d'itérations : 100, $\alpha_{detect}=0.0015$, $\alpha_{classif}=0.3$)}
 \label{fig:sacc_nombre}
 \end{figure}
 
 \begin{figure}[th]
 \centering
-\includegraphics{Figures/sacc_distance}
+\includegraphics{Figures/logpolar_sacc_distance}
 \decoRule
-\caption[Figure]{Nombre moyen de saccades nécessaires pour atteindre la position de la cible en fonction de sa distance initiale du point de fixation au cours de 1000 essais, dans le cadre d'un filtre \textit{LogPolar} (taille de la base d'apprentissage :  1000, nombre d'itérations : 100, $\alpha_{detect}=0.0015$, $\alpha_{classif}=0.3$)}
+\caption[Figure]{Nombre moyen de saccades nécessaires pour atteindre la position de la cible en fonction de sa distance initiale du point de fixation au cours de 10000 essais, dans le cadre d'un filtre \textit{LogPolar} (taille de la base d'apprentissage :  10000, nombre d'itérations : 100, $\alpha_{detect}=0.0015$, $\alpha_{classif}=0.3$)}
 \label{fig:sacc_distance}
 \end{figure}
 
 \begin{figure}[th]
 \centering
-\includegraphics[scale=0.95]{Figures/err_distance}
+\includegraphics[scale=0.95]{Figures/logpolar_err_distance}
 \decoRule
-\caption[Figure]{Erreur moyenne lors de la prédiction de la position de la cible en fonction de sa distance du point de fixation au cours de 1000 essais, dans le cadre d'un filtre \textit{LogPolar} (taille de la base d'apprentissage :  1000, nombre d'itérations : 100, $\alpha_{detect}=0.0015$, $\alpha_{classif}=0.3$)}
+\caption[Figure]{Erreur moyenne lors de la prédiction de la position de la cible en fonction de sa distance du point de fixation au cours de 10000 essais, dans le cadre d'un filtre \textit{LogPolar} (taille de la base d'apprentissage :  10000, nombre d'itérations : 100, $\alpha_{detect}=0.0015$, $\alpha_{classif}=0.3$)}
 \label{fig:err_distance}
 \end{figure}

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2018.1.15)  28 FEB 2018 17:40
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2018.1.15)  1 MAR 2018 13:54
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -2001,25 +2001,28 @@ Overfull \hbox (1.42126pt too wide) in paragraph at lines 142--144
  [][] 
  []
 
-<Figures/sacc_nombre.pdf, id=356, 433.62pt x 289.08pt>
-File: Figures/sacc_nombre.pdf Graphic file (type pdf)
+<Figures/logpolar_sacc_nombre.pdf, id=356, 433.62pt x 289.08pt>
+File: Figures/logpolar_sacc_nombre.pdf Graphic file (type pdf)
 
-<use Figures/sacc_nombre.pdf>
-Package pdftex.def Info: Figures/sacc_nombre.pdf used on input line 150.
+<use Figures/logpolar_sacc_nombre.pdf>
+Package pdftex.def Info: Figures/logpolar_sacc_nombre.pdf used on input line 15
+0.
 (pdftex.def)             Requested size: 433.61894pt x 289.07928pt.
 
-<Figures/sacc_distance.pdf, id=357, 433.62pt x 289.08pt>
-File: Figures/sacc_distance.pdf Graphic file (type pdf)
+<Figures/logpolar_sacc_distance.pdf, id=357, 433.62pt x 289.08pt>
+File: Figures/logpolar_sacc_distance.pdf Graphic file (type pdf)
 
-<use Figures/sacc_distance.pdf>
-Package pdftex.def Info: Figures/sacc_distance.pdf used on input line 158.
+<use Figures/logpolar_sacc_distance.pdf>
+Package pdftex.def Info: Figures/logpolar_sacc_distance.pdf used on input line 
+158.
 (pdftex.def)             Requested size: 433.61894pt x 289.07928pt.
 
-<Figures/err_distance.pdf, id=358, 433.62pt x 289.08pt>
-File: Figures/err_distance.pdf Graphic file (type pdf)
+<Figures/logpolar_err_distance.pdf, id=358, 433.62pt x 289.08pt>
+File: Figures/logpolar_err_distance.pdf Graphic file (type pdf)
 
-<use Figures/err_distance.pdf>
-Package pdftex.def Info: Figures/err_distance.pdf used on input line 166.
+<use Figures/logpolar_err_distance.pdf>
+Package pdftex.def Info: Figures/logpolar_err_distance.pdf used on input line 1
+66.
 (pdftex.def)             Requested size: 411.93666pt x 274.62444pt.
 )
 1: section
@@ -2054,14 +2057,15 @@ pdfTeX warning: /usr/bin/pdflatex (file ./Figures/Benchmarking_para_alpha.pdf):
 
 pdfTeX warning: /usr/bin/pdflatex (file ./Figures/saccades_wavelets.pdf): PDF i
 nclusion: multiple pdfs with page group included in a single page
->] [25 <./Figures/saccades_logpolar.pdf> <./Figures/sacc_nombre.pdf
+>] [25 <./Figures/saccades_logpolar.pdf> <./Figures/logpolar_sacc_nombre.pdf
 
-pdfTeX warning: /usr/bin/pdflatex (file ./Figures/sacc_nombre.pdf): PDF inclusi
-on: multiple pdfs with page group included in a single page
->] [26 <./Figures/sacc_distance.pdf> <./Figures/err_distance.pdf
+pdfTeX warning: /usr/bin/pdflatex (file ./Figures/logpolar_sacc_nombre.pdf): PD
+F inclusion: multiple pdfs with page group included in a single page
+>] [26 <./Figures/logpolar_sacc_distance.pdf> <./Figures/logpolar_err_distance.
+pdf
 
-pdfTeX warning: /usr/bin/pdflatex (file ./Figures/err_distance.pdf): PDF inclus
-ion: multiple pdfs with page group included in a single page
+pdfTeX warning: /usr/bin/pdflatex (file ./Figures/logpolar_err_distance.pdf): P
+DF inclusion: multiple pdfs with page group included in a single page
 >]
 \openout2 = `Appendices/AppendixB.aux'.
 
@@ -2090,7 +2094,7 @@ Package logreq Info: Writing requests to 'main.run.xml'.
 (\end occurred when \iftrue on line 90 was incomplete) 
 Here is how much of TeX's memory you used:
  30961 strings out of 494351
- 623787 string characters out of 6163906
+ 623922 string characters out of 6163906
  729798 words of memory out of 5000000
  33822 multiletter control sequences out of 15000+600000
  63158 words of font info for 125 fonts, out of 8000000 for 9000
@@ -2107,9 +2111,9 @@ xmf-dist/fonts/type1/urw/palatino/uplbi8a.pfb></usr/share/texlive/texmf-dist/fo
 nts/type1/urw/palatino/uplr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/ur
 w/palatino/uplr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/palatino/u
 plri8a.pfb>
-Output written on main.pdf (33 pages, 608665 bytes).
+Output written on main.pdf (33 pages, 608742 bytes).
 PDF statistics:
- 990 PDF objects out of 1000 (max. 8388607)
+ 989 PDF objects out of 1000 (max. 8388607)
  509 compressed objects within 6 object streams
  90 named destinations out of 1000 (max. 500000)
  219 words of extra memory for PDF output out of 10000 (max. 10000000)
