@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2018.1.15)  2 MAR 2018 11:37
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2018.1.15)  2 MAR 2018 13:43
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1855,7 +1855,7 @@ m-bre de couches en-traînées, l'apprentissage
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 21--26
+Underfull \hbox (badness 10000) in paragraph at lines 21--22
 
  []
 
@@ -1864,7 +1864,12 @@ Underfull \hbox (badness 10000) in paragraph at lines 21--26
 
 
 
-]) [10]
+]
+Underfull \hbox (badness 10000) in paragraph at lines 23--26
+
+ []
+
+) [10]
 \openout2 = `Chapters/Discussion.aux'.
 
  (./Chapters/Discussion.tex
@@ -2145,20 +2150,16 @@ Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 247.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 247.
 Package rerunfilecheck Info: File `main.out' has not changed.
 (rerunfilecheck)             Checksum: D6A09F012353FC409EEA9258B1469726;2267.
-
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
-
 Package logreq Info: Writing requests to 'main.run.xml'.
 \openout1 = `main.run.xml'.
 
  )
 (\end occurred when \iftrue on line 89 was incomplete) 
 Here is how much of TeX's memory you used:
- 32109 strings out of 494351
- 642827 string characters out of 6163906
- 769767 words of memory out of 5000000
- 34947 multiletter control sequences out of 15000+600000
+ 32108 strings out of 494351
+ 642815 string characters out of 6163906
+ 768763 words of memory out of 5000000
+ 34946 multiletter control sequences out of 15000+600000
  66036 words of font info for 130 fonts, out of 8000000 for 9000
  350 hyphenation exceptions out of 8191
  56i,21n,78p,10377b,1749s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -2174,7 +2175,7 @@ st/fonts/type1/urw/palatino/uplbi8a.pfb></usr/share/texlive/texmf-dist/fonts/ty
 pe1/urw/palatino/uplr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/pala
 tino/uplr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/palatino/uplri8a
 .pfb>
-Output written on main.pdf (30 pages, 618016 bytes).
+Output written on main.pdf (30 pages, 618553 bytes).
 PDF statistics:
  990 PDF objects out of 1000 (max. 8388607)
  512 compressed objects within 6 object streams
