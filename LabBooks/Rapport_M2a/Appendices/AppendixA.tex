@@ -95,6 +95,22 @@ Machine virtuelle (ressources allouées) & VirtualBox v.5.2.6 & Ubuntu 16.04 & 4
 \label{fig:LogPolar_effect}
 \end{figure}
 
+\begin{algorithm}
+\SetAlgoLined
+$Image28 \leftarrow new\_MNIST\_example$\;
+$(i,j) \leftarrow tirage\_aleatoire$\;
+$Image128 \leftarrow creer\_Image128(Image28,(i,j))$\;
+$x \leftarrow transformation(Image128(0,0))$\;
+$\hat{i},\hat{j} \leftarrow (0,0)$\;
+\While{$\|(i-\hat{i},j-\hat{j})\|>2$}{
+  $\bigtriangleup i,\bigtriangleup j \leftarrow detecteur(x)$\;
+  $\hat{i} \leftarrow \hat{i}+\bigtriangleup i$\;
+  $\hat{j} \leftarrow \hat{j}+\bigtriangleup j$\;
+  $x \leftarrow transformation(Image128,(\hat{i},\hat{j}))$\;
+ }
+\caption{Algorithme du modèle de reconnaissance visuelle\label{Algo}}
+\end{algorithm}
+
 %%%%% Résultats %%%%%
 
 \begin{figure}[th]
@@ -133,7 +149,10 @@ Machine virtuelle (ressources allouées) & VirtualBox v.5.2.6 & Ubuntu 16.04 & 4
 \centering
 \includegraphics[scale=0.5]{Figures/saccades_wavelets}
 \decoRule
-\caption[Figure]{Exemple de perception et comportement saccadique du modèle entraîné, dans le cadre d'un filtre \textit{Wavelets}}
+\caption[Figure]{Exemple de perception et comportement saccadique du modèle entraîné, dans le cadre d'un filtre \textit{Wavelets}
+\\ A gauche: Position de la fovéa avant et après saccade jusqu'à la position de la cible
+\\ Au centre: Perception de l'agent avant saccade
+\\ A droite: Perception de l'agent après saccade}
 \label{fig:saccades_wavelets}
 \end{figure}
 
@@ -141,7 +160,10 @@ Machine virtuelle (ressources allouées) & VirtualBox v.5.2.6 & Ubuntu 16.04 & 4
 \centering
 \includegraphics[scale=0.75]{Figures/saccades_logpolar}
 \decoRule
-\caption[Figure]{Exemple de perception et comportement saccadique du modèle entraîné, dans le cadre d'un filtre \textit{LogPolar}}
+\caption[Figure]{Exemple de perception et comportement saccadique du modèle entraîné, dans le cadre d'un filtre \textit{LogPolar}
+\\ A gauche: Position de la fovéa avant et après saccades jusqu'à la position de la cible
+\\ Au centre: Perception de l'agent avant saccades
+\\ A droite: Perception de l'agent après saccades}
 \label{fig:saccades_logpolar}
 \end{figure}
 
