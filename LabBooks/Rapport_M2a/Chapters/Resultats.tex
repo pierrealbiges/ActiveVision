@@ -10,9 +10,9 @@ Cette partie contient des résultats préliminaires, le modèle étant encore en
 
 \section{Apprentissage supervisé}
 
-L'étude d'étalonnage du paramètre d'apprentissage $\alpha$ (équation~\ref{eqn:Grad_desc}) permet de rendre compte de son importance sur l'efficacité de l'apprentissage et du modèle. On peut ainsi observer que certaines valeurs entraînent un sur-apprentissage très important (figures~\ref{fig:benchmark_surApp1} et \ref{fig:benchmark_surApp2}), tandis que d'autres semblent représenter des valeurs utilisables, voire optimales, pour réaliser l'apprentissage (figure~\ref{fig:benchmark_alpha}).\\
+L'étude d'étalonnage du paramètre d'apprentissage $\alpha$ (équation~\ref{eqn:Grad_desc}) permet de rendre compte de son importance sur l'efficacité de l'apprentissage et du modèle. On peut ainsi observer que certaines valeurs entraînent un sur-apprentissage très important (figures~\ref{fig:benchmark_surApp2}), tandis que d'autres semblent représenter des valeurs utilisables, voire optimales, pour réaliser l'apprentissage (figure~\ref{fig:benchmark_alpha}).\\
 Lorsque \textit{détecteur} et \textit{classifieur} sont tous deux entraînés, deux jeux de poids indépendants doivent être optimisés par l'apprentissage. Chaque couche possède ainsi son propre paramètre $\alpha$ (respectivement $\alpha_{detect}$ et $\alpha_{classif}$) et l'on peut donc calculer leurs coûts indépendamments (figure~\ref{fig:logpolar_cost}).\\
-On peut observer qu'indépendamment du filtre utilisé et du nombre de couches entraînées, l'apprentissage par descente de gradient permet d'optimiser le modèle, en modifiant graduellement les poids $\theta$. Cette optimisation est révélée par une diminution graduelle du coût, représentant une différence entre la réalité et ce qui est prédit par le modèle.
+On peut observer qu'indépendamment du filtre utilisé et du nombre de couches entraînées, l'apprentissage par descente de gradient permet d'optimiser le modèle, en modifiant les poids $\theta$ itération après itération. Cette optimisation est révélée par une diminution graduelle du coût, représentant une différence entre la réalité et ce qui est prédit par le modèle.
 
 %----------------------------------------------------------------------------------------
 
