@@ -67,6 +67,15 @@ Pour traduire les script de notes personnelles du format ipynb vers markdown, il
     
 (A noter que nbconvert est inclus dans l'installer de jupyter, donc la ligne précédente n'est pas nécessaire si celui-ci est déjà installé).
 
+# 2018-04-06
+---
+Seconde journée du séminaire.  
+Traduire les fichiers de notes existant vers du markdown :
+
+    jupyter nbconvert --to markdown PERRINET-W* 
+    
+D'autres formats sont disponibles (cf [lien](https://ipython.org/ipython-doc/3/notebook/nbconvert.html) et [API](https://nbconvert.readthedocs.io/en/latest/execute_api.html)): html, latex, pdf, slides, script (python), notebook, ...
+
 ---
 # To Do
 + **Créer la base de données qui servira pour l'apprentissage et l'évaluation**. Cette base devra comprendre pour l'ensemble des situations possibles (coordonnées transformables) les cartes rétinienne (LogPolaire de l'image) et colliculaires (LogPolaire de la carte de certitude) correspondantes
