@@ -2,8 +2,9 @@
 \defcounter {refsection}{0}\relax 
 \select@language {english}
 \contentsline {chapter}{\numberline {1}Introduction}{1}{chapter.3}
-\contentsline {chapter}{\numberline {2}Mat\IeC {\'e}riel et m\IeC {\'e}thodes}{2}{chapter.4}
-\contentsline {chapter}{\numberline {3}R\IeC {\'e}sultats}{3}{chapter.5}
-\contentsline {chapter}{\numberline {4}Discussion et perspectives}{4}{chapter.6}
-\contentsline {chapter}{\numberline {A}Figures}{5}{appendix.7}
-\contentsline {chapter}{\numberline {B}Code source et documents compl\IeC {\'e}mentaires}{6}{appendix.8}
+\contentsline {chapter}{\numberline {2}Mat\IeC {\'e}riel et m\IeC {\'e}thodes}{3}{chapter.4}
+\contentsline {chapter}{\numberline {3}R\IeC {\'e}sultats}{4}{chapter.5}
+\contentsline {chapter}{\numberline {4}Discussion et perspectives}{5}{chapter.6}
+\contentsline {chapter}{Bibliography}{6}{chapter*.7}
+\contentsline {chapter}{\numberline {A}Figures}{7}{appendix.8}
+\contentsline {chapter}{\numberline {B}Code source et documents compl\IeC {\'e}mentaires}{8}{appendix.9}
