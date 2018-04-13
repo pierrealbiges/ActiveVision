@@ -1,11 +1,24 @@
 # 2018-04-10
 ---
-Journée d'hier, conférence de Danish SHAIKH: "Neurorobotics, embodied approach to understanding the neural basis of adaptative behaviour" + repos. 
+Journée d'hier, conférence de Danish SHAIKH: "Neurorobotics, embodied approach to understanding the neural basis of adaptative behaviour" + repos.  
+
+# 2018-04-11 - Rapport
+---
+Ecriture des premières lignes du rapport
+
+# 2018-04-12
+---
+Télécharger et installer Mendeley Desktop : [lien](https://www.mendeley.com/guides/download-mendeley-desktop/ubuntu/instructions)  
+SSH command line options : [lien](https://www.attachmate.com/documentation/rsit-unix-802/rsit-unix-guide/data/ssh_options_ap.htm)
+
+# 2018-04-13
+---
+
 
 ---
 # To Do
 + **Créer la base de données qui servira pour l'apprentissage et l'évaluation**. Cette base devra comprendre pour l'ensemble des situations possibles (coordonnées transformables) les cartes rétinienne (LogPolaire de l'image) et colliculaires (LogPolaire de la carte de certitude) correspondantes
-+ Transformer les script ipynb de notes en nb vi l'outil nbconvert
++ ~~Transformer les script ipynb de notes en nb vi l'outil nbconvert~~
 ### Rapport M2b
 + **Ecrire une ébauche d'introduction**
 
@@ -31,4 +44,6 @@ Journée d'hier, conférence de Danish SHAIKH: "Neurorobotics, embodied approach
 
 ---
 # Satellites
-+ Bonnes pratiques avec les NN: [lien](https://cs231n.github.io/neural-networks-3/)
++ [EU copyright reform could inpede open science](https://www.nature.com/articles/d41586-018-03837-7)
++ [PuRe: Robust pupil detection for real-time pervasive eye tracking](https://arxiv.org/abs/1712.08900), Santini2017
++ [Dynamic gaze-position prediction of saccadic eye movements using a Taylor series ](http://jov.arvojournals.org/article.aspx?articleid=2665187), Wang2017
