@@ -20,7 +20,10 @@ Pour réaliser une [Cross-entropy error function](https://en.wikipedia.org/wiki/
 # To Do
 + ~~Créer un réseau simple (idéalement une couche) réalisant une régression linéaire v -> a~~
 + ~~Modifier le script pour que l'apprentissage se réalise~~
-+ Vérifier l'efficacité de l'apprentissage en visualisant les prédictions
++ ~~Vérifier l'efficacité de l'apprentissage en visualisant les prédictions~~
++ Appliquer le nouveau filtre moyenné à la carte de certitude
++ Produire et enregistrer des figures des images/cartes de certitude
++ Relancer l'apprentissage avec ces nouvelles données
 ### Rapport M2b
 + **Ecrire une ébauche d'introduction**
 
