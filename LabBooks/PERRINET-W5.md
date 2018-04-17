@@ -18,7 +18,7 @@ SSH command line options : [lien](https://www.attachmate.com/documentation/rsit-
 ---
 # To Do
 + **Créer la base de données qui servira pour l'apprentissage et l'évaluation**. Cette base devra comprendre pour l'ensemble des situations possibles (coordonnées transformables) les cartes rétinienne (LogPolaire de l'image) et colliculaires (LogPolaire de la carte de certitude) correspondantes
-+ ~~Transformer les script ipynb de notes en nb vi l'outil nbconvert~~
++ ~~Transformer les script ipynb de notes en nb via l'outil nbconvert~~
 ### Rapport M2b
 + **Ecrire une ébauche d'introduction**
 
