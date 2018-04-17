@@ -1,11 +1,26 @@
 # 2018-04-16
 ---
+Pour construire mon autoencodeur, j'adapte cet [exemple](https://github.com/MorvanZhou/PyTorch-Tutorial/blob/master/tutorial-contents/404_autoencoder.py) à mon problème.
 
+# 2018-04-17
+---
+Quand j'essaie de modifier le calcul du coût de:
+
+    loss_func = torch.nn.MSELoss()
+    
+Vers: 
+
+    loss_func = torch.nn.CrossEntropyLoss()
+ 
+Pour réaliser une [Cross-entropy error function](https://en.wikipedia.org/wiki/Cross_entropy#Cross-entropy_error_function_and_logistic_regression), j'obtient toute une série d'erreur qui débouchent finalement sur:
+
+    multi-target not supported at /pytorch/torch/lib/THNN/generic/ClassNLLCriterion.c:22
+ 
 ---
 # To Do
-+ Créer un autoencodeur "v -> a"
-    + Créer un encodeur "v -> z"
-    + Créer un décodeur "z -> a"
++ ~~Créer un réseau simple (idéalement une couche) réalisant une régression linéaire v -> a~~
++ ~~Modifier le script pour que l'apprentissage se réalise~~
++ Vérifier l'efficacité de l'apprentissage en visualisant les prédictions
 ### Rapport M2b
 + **Ecrire une ébauche d'introduction**
 
