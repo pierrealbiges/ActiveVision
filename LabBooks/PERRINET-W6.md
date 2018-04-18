@@ -16,6 +16,13 @@ Pour réaliser une [Cross-entropy error function](https://en.wikipedia.org/wiki/
 
     multi-target not supported at /pytorch/torch/lib/THNN/generic/ClassNLLCriterion.c:22
  
+# 2018-04-18
+---
+Toute la journée j'ai eu des problèmes de connexion avec babbage.  
+Au bout de quelques minutes les notebooks jupyter passent en erreur 403 (Forbidden). Cette erreur arrivait déjà avant mais je pouvais continuer à travailler sur le script (y compris le lancer).   
+Hors depuis hier, lorsque l'erreur 403 apparaît, je ne peux même plus lancer les scripts et actualiser la page pour y entrer le MdP (solution habituelle à l'erreur) ne donne rien (chargement infini).  
+La seule solution que j'ai trouvé pour le moment, c'est de tuer le kernel jupyter sur babbage et de le relancer...
+
 ---
 # To Do
 + ~~Créer un réseau simple (idéalement une couche) réalisant une régression linéaire v -> a~~
