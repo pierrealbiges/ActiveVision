@@ -20,8 +20,27 @@ Pour réaliser une [Cross-entropy error function](https://en.wikipedia.org/wiki/
 ---
 Toute la journée j'ai eu des problèmes de connexion avec babbage.  
 Au bout de quelques minutes les notebooks jupyter passent en erreur 403 (Forbidden). Cette erreur arrivait déjà avant mais je pouvais continuer à travailler sur le script (y compris le lancer).   
-Hors depuis hier, lorsque l'erreur 403 apparaît, je ne peux même plus lancer les scripts et actualiser la page pour y entrer le MdP (solution habituelle à l'erreur) ne donne rien (chargement infini).  
-La seule solution que j'ai trouvé pour le moment, c'est de tuer le kernel jupyter sur babbage et de le relancer...
+Hors depuis hier, lorsque l'erreur 403 apparaît, je ne peux même plus lancer les scripts et actualiser la page pour y entrer le MdP (solution habituelle à l'erreur) ne donne rien (chargement infini). Je ne semble pas le [seul touché](https://github.com/jupyter/notebook/issues/1845). 
+La seule solution que j'ai trouvé pour le moment, c'est de tuer le kernel jupyter sur babbage et de le relancer...  
+
+Cette erreur apparait alors: 
+
+    [W 16:10:32.025 NotebookApp] WebSocket ping timeout after 119997 ms.
+    
+# 2018-04-19
+---
+A cause des problèmes de connectivité d'hier, j'ai perdu toute une partie de mon travail.  
+Pour reproduire le filtre LogPol moyenné qu'on a construit dans le script 2018-04-16_regression_couples.ipynb dans le script 2018-04-18_Produce_LogPol_figures.ipynb, j'ai dû modifier le calcul de la variable env:
+
+    # Dans le filtre LogPol classique
+    env = np.sqrt(phi[i_theta, i_orient, i_scale, 0, :]**2 + phi[i_theta, i_orient, i_scale, 1, :]**2).reshape((N_X, N_Y))
+    
+    # Dans le filtre LogPol moyenné, version originale
+    env = energy[i_orient, i_scale, :].reshape((N_X, N_Y))
+    
+    # Dans le nouveau script, version fonctionnelle
+    env = np.sqrt(energy[i_orient, i_scale, :]**2.5).reshape((N_X, N_Y))
+
 
 ---
 # To Do
@@ -57,3 +76,4 @@ La seule solution que j'ai trouvé pour le moment, c'est de tuer le kernel jupyt
 ---
 # Satellites
 + [Scientific communication correlates with increased citations in Ecology and Conservation](https://peerj.com/articles/4564/)
++ [Theory of the tensile actuation of fiber reinforced coiled muscles](http://iopscience.iop.org/article/10.1088/1361-665X/aab52b)
