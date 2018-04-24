@@ -3,10 +3,20 @@
 Traduire un document avec [nbconvert](https://nbconvert.readthedocs.io/en/latest/usage.html) :
 
     jupyter nbconvert --to markdown path/to/file
+    
+# 2018-04-24
+---
+En retirant le drapeau -f de la commande créant mon tunnel ssh, je devrai pouvoir l'arrêter facilement quand il ne semble plus fonctionnant, puisque il ne devrait plus tourner en fond:
+
+    ssh -N -L 127.0.0.1:8895:127.0.0.1:8898 pierre@10.164.7.21
 
 ---
 # To Do
 + ~~Modifier le modèle pour que les valeurs de sortie soient comprises dans l'intervale [0,1]~~
++ Modifier le modèle pour comprendre les dernières modifications de Laurent (notamment le paramètre rho)
++ Modifier la génération des coordonnées pour qu'elles soient des integers
++ Complexifier le réseau neuronal
++ Introduire du bruit dans l'environnement visuel pour rendre l'apprentissage et l'évaluation plus difficile
 
 ### Rapport M2b
 + **Ecrire une ébauche d'introduction**
