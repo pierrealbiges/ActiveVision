@@ -12,6 +12,11 @@ En retirant le drapeau -f de la commande créant mon tunnel ssh, je devrai pouvo
     
 En attendant de trouver une façon pertinente de complexifier le nn, j'ai simplement ajouté une couche linéaire.
 
+# 2014-04-25
+---
+Pour produire un bruit écologique, je peux me baser sur les générateurs de [perlin noise](https://medium.com/@yvanscher/playing-with-perlin-noise-generating-realistic-archipelagos-b59f004d8401).  
+Il existe une librairie python permettant de produire du bruit perlin: [noise](https://github.com/caseman/noise)
+
 ---
 # To Do
 + ~~Modifier le modèle pour que les valeurs de sortie soient comprises dans l'intervale [0,1]~~
