@@ -28,7 +28,9 @@ Nouvelle méthode pour lancer les notebooks depuis local :
     babbage > jupyter-notebook --no-browser --port=8898
     local browser > 10.167.7.21:8898
     
-J'ai écrit à nouveau tout ce qui a été perdu hier : implémententation du bruit dans le modèle, production de nouvelles figures comprenant le bruit
+J'ai écrit à nouveau tout ce qui a été perdu hier : implémententation du bruit dans le modèle, production de nouvelles figures comprenant le bruit.  
+
+Une nouvelle méthode de production de bruit écologique remplace la libraire noise: motioncloud, développée par Laurent et moins lourde computationnellement.
 
 ---
 # To Do
@@ -37,7 +39,7 @@ J'ai écrit à nouveau tout ce qui a été perdu hier : implémententation du br
 + ~~Modifier la génération des coordonnées pour qu'elles soient des integers~~
 + Complexifier le réseau neuronal
 + ~~Introduire du bruit dans l'environnement visuel pour rendre l'apprentissage et l'évaluation plus difficile~~
-+ Remplacer la libraire noise par motion cloud, pour la production de bruit
++ ~~Remplacer la libraire noise par motion cloud, pour la production de bruit~~
 + Recréer la carte d'accuracy en présence de bruit
 
 ### Rapport M2b
