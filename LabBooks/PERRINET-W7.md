@@ -27,6 +27,8 @@ Nouvelle méthode pour lancer les notebooks depuis local :
     local > ssh pierre@10.164.7.21
     babbage > jupyter-notebook --no-browser --port=8898
     local browser > 10.167.7.21:8898
+    
+J'ai écrit à nouveau tout ce qui a été perdu hier : implémententation du bruit dans le modèle, production de nouvelles figures comprenant le bruit
 
 ---
 # To Do
@@ -34,7 +36,9 @@ Nouvelle méthode pour lancer les notebooks depuis local :
 + ~~Modifier le modèle pour comprendre les dernières modifications de Laurent (notamment le paramètre rho)~~
 + ~~Modifier la génération des coordonnées pour qu'elles soient des integers~~
 + Complexifier le réseau neuronal
-+ Introduire du bruit dans l'environnement visuel pour rendre l'apprentissage et l'évaluation plus difficile
++ ~~Introduire du bruit dans l'environnement visuel pour rendre l'apprentissage et l'évaluation plus difficile~~
++ Remplacer la libraire noise par motion cloud, pour la production de bruit
++ Recréer la carte d'accuracy en présence de bruit
 
 ### Rapport M2b
 + **Ecrire une ébauche d'introduction**
