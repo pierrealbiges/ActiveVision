@@ -13,17 +13,27 @@
 \newcommand{\file}[1]{\texttt{\bfseries#1}}
 \newcommand{\option}[1]{\texttt{\itshape#1}}
 
-%----------------------------------------------------------------------------------------
+%--------------- Vision biologique ---------------
 
-Au cours de l'histoire évolutive et sous la pression de la sélection naturelle, tous nos systèmes perceptifs ont tendu (et tendent encore) vers une optimisation de leurs performances, en fonction de nos besoins et de nos ressources.\\
-Chez de nombreuses espèces dont la notre, la modalité perceptive principale est la vision.
-L'ensemble de notre système visuel, de la rétine jusqu'aux aires cérébrales les plus associatives, a ainsi évolué pour obtenir le fonctionnement à la fois rapide et efficace qu'on lui connait aujourd'hui.
-Pour cela, notre système visuel associe deux de ses caractéristiques: une acuité variable et des saccades oculaires. \autocite{Werner2014}\\
+Au cours de l'histoire évolutive et sous la pression de la sélection naturelle, tous nos systèmes perceptifs ont tendu (et tendent encore) vers une optimisation de leurs performances, en fonction de nos besoins et de nos ressources.
+L'ensemble de notre système visuel, de la rétine jusqu'aux aires cérébrales les plus associatives, a ainsi évolué pour arriver au fonctionnement à la fois rapide et efficace qu'on lui connait aujourd'hui. \autocite{Werner2014}\\
 
-Le champs visuel peut être décrit en deux parties: la vision centrale et la vision périphérique. \autocite{Werner2014}\\
-La vision centrale est soutenue anatomiquement par la fovéa, une région rétinienne comprenant exclusivement des cônes. Cette composition, couplée à une forte densité de photorécepteurs permet à cette région de présenter l'acuité visuelle (c'est à dire la précision avec laquelle les stimuli visuels pourront être analysés) la plus importante, ainsi qu'une bonne perception des couleurs. \autocite{Werner2014}\\
-La composition et la densité en photorécépteurs de la rétine soutenant la vision périphérique change avec son excentricité par rapport à la fovéa, mais elle comprends majoritairement des batônnets. En conséquence, l'acuité visuelle et la perception des couleurs dans la vision périphérique diminuent avec son excentricité, mais celle-ci est par contre très sensible aux variations de luminance et de fréquence spatiale. \autocite{Werner2014}\\
-Cette caractéristique de notre système visuel permet de fortement réduire la quantité d'informations que doivent traiter les réseaux nerveux, passant d'un flux arrivant à la rétine estimé à $10^{8}$ bits/s à une sortie par le nerf optique estimé à $10^{2}$ bits/s. \autocite{Kortum1996, Werner2014, Zhaoping2014}\\
+La variabilité de l'acuité (la précision avec laquelle les stimuli visuels pourront être analysés) au sein de notre champs visuel (portion de l'espace observée par un oeil immobile) est l'un des produits de cette pression évolutive. On peut ainsi séparer le champs visuel en deux parties : la vision centrale et la vision périphérique.\autocite{Werner2014} \\
+La vision centrale est soutenue anatomiquement par la fovéa, une région rétinienne comprenant exclusivement des cônes. Cette composition, couplée à une forte densité de photorécepteurs permet à cette région de présenter l'acuité visuelle la plus importante, ainsi qu'une bonne perception des couleurs. \autocite{Werner2014}\\
+La composition et la densité en photorécépteurs de la rétine soutenant la vision périphérique change avec son excentricité par rapport à la fovéa, mais elle comprends majoritairement des batônnets. En conséquence, l'acuité visuelle et la perception des couleurs dans la vision périphérique diminuent avec la distance de la fovéa, mais on peut y observer une importante sensibilité aux variations de luminance et de fréquence spatiale. \autocite{Werner2014}\\%
+Cette variabilité des caractéristiques de notre système visuel, et notamment de son acuité, permet de fortement réduire la quantité d'informations que doivent traiter les réseaux nerveux, passant d'un flux arrivant à la rétine estimé à $10^{8}$ bits/s à une sortie par le nerf optique estimé à $10^{2}$ bits/s. \autocite{Kortum1996, Werner2014, Zhaoping2014}\\
 
-Mais cette optimisation du flux d'informations présente au moins un inconvénient majeur. Une description précise d'un stimulus visuel ne peut être réalisée avec une certitude élevée que dans une partie très réduite du champs visuel (environ 2° chez l'Humain).\\
-Ainsi lors de l'exploration visuelle de son environnement, un agent va devoir réaliser une suite de mouvements oculaires brefs afin de placer les cibles visuelles dans sa vision centrale et ainsi pouvoir en réaliser des descriptions précises.
+Mais cette optimisation du flux d'informations présente au moins un inconvénient majeur. Une description précise d'un stimulus visuel ne peut être réalisée avec une certitude élevée que dans une partie très réduite du champs visuel (environ 2 degrés chez l'Humain).\\
+Ainsi lors de l'exploration visuelle de son environnement, un agent va devoir réaliser une suite de mouvements oculaires brefs afin de placer les régions visuelles d'intérêt dans sa vision centrale et ainsi pouvoir en réaliser des descriptions précises. Par exemple, l'observation passive d'une scène va impliquer la réalisation de 2 à 4 saccades par seconde. \autocite{Krauzlis2017, Werner2014} \\
+La sélection attentionnelle et motrice de la cible à décrire fait intervenir un réseau complexe d'aires cérébrales et corticales et nécessite l'intégration d'influences \textit{top-down} comme \textit{bottom-up}. \autocite{Werner2014}
+
+Nous pouvons donc décrire la vision comme un processus actif, impliquant des notions de perception, de traitement de l'information et d'actions motrices. \autocite{Werner2014} \\
+
+%--------------- Vision artificielle ---------------
+
+Depuis les débuts de l'intelligence artificielle dans les années 60, l'un des domaines phares de son développement a été la vision artificielle. L'objectif est de s'inspirer, voir de mimer les systèmes biologiques afin de permettre aux systèmes informatisés d'accéder à la compréhension de leur environnement.
+La modélisation de l'activité du système visuel a ainsi connu l'application de nombreuses méthodes, à diverses échelles et niveaux de complexité.\autocite{Werner2014} \\
+Les modèles à carte de saillance permettent par exemple de reconstruire l'influence qu'ont les signaux \textit{bottom-up} sur l'orientation du regard. Ces modèles décrivant chaque point de l'espace visuel par une valeur, ceux qui ressortent le plus de l'envrionnement sont considérés comme portant l'intérêt le plus grand pour le système, et attirent donc le regard. Lorsqu'une région est explorée, sa saillance devient ensuite nulle. \autocite{Werner2014} \\ 
+Les modèles de saillance présentent deux inconvénients majeurs. Leurs prédictions sont meilleures que le hasard sans être exactes, notamment car elles ne prennent pas en compte la recherche de cible. Leur deuxième inconvénient est que ces modèles considèrent l'ensemble de l'environnement visuel à la fois et avec la même valeur, ce qui est loin de ce qui se déroule dans les systèmes biologiques. \autocite{Werner2014}
+
+Ces modèles permettent non seulement d'améliorer les performances des systèmes informatisés, mais aussi de mieux appréhender les zones d'ombre dans nos connaissances du fonctionnement du système visuel. \autocite{Werner2014}
