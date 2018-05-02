@@ -12,10 +12,25 @@ En retirant le drapeau -f de la commande créant mon tunnel ssh, je devrai pouvo
     
 En attendant de trouver une façon pertinente de complexifier le nn, j'ai simplement ajouté une couche linéaire.
 
-# 2014-04-25
+# 2018-04-25
 ---
 Pour produire un bruit écologique, je peux me baser sur les générateurs de [perlin noise](https://medium.com/@yvanscher/playing-with-perlin-noise-generating-realistic-archipelagos-b59f004d8401).  
 Il existe une librairie python permettant de produire du bruit perlin: [noise](https://github.com/caseman/noise)
+
+# 2018-04-27
+---
+Toute une partie du travail de la veille est perdu à cause de mes problèmes de connectivité.  
+Aujourd'hui Laurent a proposé une solution permettant de me connecter directement à babbage sans créer de tunnel ssh. La connection local-babbage n'est plus sécurisée mais si ça fonctionne je continuerai comme ça.  
+
+Nouvelle méthode pour lancer les notebooks depuis local :
+
+    local > ssh pierre@10.164.7.21
+    babbage > jupyter-notebook --no-browser --port=8898
+    local browser > 10.167.7.21:8898
+    
+J'ai écrit à nouveau tout ce qui a été perdu hier : implémententation du bruit dans le modèle, production de nouvelles figures comprenant le bruit.  
+
+Une nouvelle méthode de production de bruit écologique remplace la libraire noise: motioncloud, développée par Laurent et moins lourde computationnellement.
 
 ---
 # To Do
@@ -23,7 +38,9 @@ Il existe une librairie python permettant de produire du bruit perlin: [noise](h
 + ~~Modifier le modèle pour comprendre les dernières modifications de Laurent (notamment le paramètre rho)~~
 + ~~Modifier la génération des coordonnées pour qu'elles soient des integers~~
 + Complexifier le réseau neuronal
-+ Introduire du bruit dans l'environnement visuel pour rendre l'apprentissage et l'évaluation plus difficile
++ ~~Introduire du bruit dans l'environnement visuel pour rendre l'apprentissage et l'évaluation plus difficile~~
++ ~~Remplacer la libraire noise par motion cloud, pour la production de bruit~~
++ Recréer la carte d'accuracy en présence de bruit
 
 ### Rapport M2b
 + **Ecrire une ébauche d'introduction**
@@ -50,3 +67,4 @@ Il existe une librairie python permettant de produire du bruit perlin: [noise](h
 
 ---
 # Satellites
++ [Zhu et al., 2018](https://onlinelibrary.wiley.com/doi/abs/10.1002/adma.201707495) : utiliser la vision par ordinateur pour permettre à une imprimante 3D d'imprimer des circuits électroconducteurs directement sur une main. La vision par ordinateur permet ici de compenser les mouvements faibles et involontaires des sujets.
