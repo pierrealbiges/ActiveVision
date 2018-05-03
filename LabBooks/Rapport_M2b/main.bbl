@@ -70,10 +70,83 @@
   bandwidth reduction}}
     \field{volume}{2657}
     \verb{file}
-    \verb :home/pimt/Documents/Articles/Kortum1996.pdf:pdf
+    \verb :home/albert/.local/share/data/Mendeley Ltd./Mendeley Desktop/Downloa
+    \verb ded/Kortum, Geisler - 1996 - Implementation of a foveated image codin
+    \verb g system for image bandwidth reduction.pdf:pdf
     \endverb
     \field{journaltitle}{SPIE Proceedings}
     \field{year}{1996}
+  \endentry
+
+  \entry{Krauzlis2017}{article}{}
+    \name{author}{3}{}{%
+      {{hash=KRJ}{%
+         family={Krauzlis},
+         familyi={K\bibinitperiod},
+         given={Richard\bibnamedelima J.},
+         giveni={R\bibinitperiod\bibinitdelim J\bibinitperiod},
+      }}%
+      {{hash=GL}{%
+         family={Goffart},
+         familyi={G\bibinitperiod},
+         given={Laurent},
+         giveni={L\bibinitperiod},
+      }}%
+      {{hash=HZM}{%
+         family={Hafed},
+         familyi={H\bibinitperiod},
+         given={Ziad\bibnamedelima M.},
+         giveni={Z\bibinitperiod\bibinitdelim M\bibinitperiod},
+      }}%
+    }
+    \keyw{behaviour,neuroscience}
+    \strng{namehash}{KRJGLHZM1}
+    \strng{fullhash}{KRJGLHZM1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{sortinit}{K}
+    \field{sortinithash}{K}
+    \field{abstract}{%
+    Ocular fixation is a dynamic process that is actively controlled by many of
+  the same brain structures involved in the control of eye movements, including
+  the superior colliculus, cerebellum and reticular formation. In this article,
+  we review several aspects of this active control. First, the decision to move
+  the eyes not only depends on target-related signals from the peripheral
+  visual field, but also on signals from the currently fixated target at the
+  fovea, and involves mechanisms that are shared between saccades and smooth
+  pursuit. Second, eye position during fixation is actively controlled and
+  depends on bilateral activity in the superior colliculi and medio-posterior
+  cerebellum; disruption of activity in these circuits causes systematic
+  deviations in eye position during both fixation and smooth pursuit eye
+  movements. Third, the eyes are not completely still during fixation but make
+  continuous miniature movements, including ocular drift and microsaccades,
+  which are controlled by the same neuronal mechanisms that generate larger
+  saccades. Finally, fixational eye movements have large effects on visual
+  perception. Ocular drift transforms the visual input in ways that increase
+  spatial acuity; microsaccades not only improve vision by relocating the fovea
+  but also cause momentary changes in vision analogous to those caused by
+  larger saccades.This article is part of the themed issue 'Movement
+  suppression: brain mechanisms for stopping and stillness'.%
+    }
+    \verb{doi}
+    \verb 10.1098/rstb.2016.0205
+    \endverb
+    \field{isbn}{0000000187671}
+    \field{issn}{0962-8436}
+    \field{number}{1718}
+    \field{pages}{20160205}
+    \field{title}{{Neuronal control of fixation and fixational eye movements}}
+    \verb{url}
+    \verb http://rstb.royalsocietypublishing.org/lookup/doi/10.1098/rstb.2016.0
+    \verb 205
+    \endverb
+    \field{volume}{372}
+    \verb{file}
+    \verb :home/albert/Documents/ActiveVision/Articles/Krauzlis2017.pdf:pdf
+    \endverb
+    \field{journaltitle}{Philosophical Transactions of the Royal Society B:
+  Biological Sciences}
+    \field{year}{2017}
   \endentry
 
   \entry{Werner2014}{book}{}
