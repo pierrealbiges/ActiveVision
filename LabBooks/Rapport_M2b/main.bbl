@@ -205,6 +205,46 @@
     \field{year}{2017}
   \endentry
 
+  \entry{Perlin1985}{article}{}
+    \name{author}{1}{}{%
+      {{hash=PK}{%
+         family={Perlin},
+         familyi={P\bibinitperiod},
+         given={Ken},
+         giveni={K\bibinitperiod},
+      }}%
+    }
+    \list{publisher}{1}{%
+      {ACM}%
+    }
+    \keyw{algorithm development, fire, functional composition, interactive,
+  pixel stream editor, solid texture, space function, stochastic modelling,
+  turbulence, waves}
+    \strng{namehash}{PK1}
+    \strng{fullhash}{PK1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{sortinit}{P}
+    \field{sortinithash}{P}
+    \verb{doi}
+    \verb 10.1145/325165.325247
+    \endverb
+    \field{issn}{0097-8930}
+    \field{number}{3}
+    \field{pages}{287\bibrangedash 296}
+    \field{title}{An Image Synthesizer}
+    \verb{url}
+    \verb http://doi.acm.org/10.1145/325165.325247
+    \endverb
+    \field{volume}{19}
+    \list{location}{1}{%
+      {New York, NY, USA}%
+    }
+    \field{journaltitle}{SIGGRAPH Comput. Graph.}
+    \field{month}{07}
+    \field{year}{1985}
+  \endentry
+
   \entry{Werner2014}{book}{}
     \name{editor}{2}{}{%
       {{hash=WJS}{%
