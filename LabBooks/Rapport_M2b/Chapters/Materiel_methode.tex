@@ -3,4 +3,18 @@
 \chapter{Matériel et méthodes} % Main chapter title
 \label{Materiel_methode} % Change X to a consecutive number; for referencing this chapter elsewhere, use \ref{ChapterX}
 
-%----------------------------------------------------------------------------------------
+%--------------- Matériel ---------------
+
+L'ensemble des simulations (comprenant apprentissage et évaluation) ont été réalisées sur une machine connectée à distance via un protocole ssh et dont les caractéristiques sont visibles dans le tableau~\autoref{tab:materiel}.	
+
+%--------------- Filtre LogPolar ---------------
+
+Afin de modéliser la variabilité de l'acuité visuelle, nous avons utilisé un filtre LogPolaire (\ref{fig:logpol_filter}).
+Ce filtre, construit avec une approche neuromimétique, est constitué d'un ensemble de filtres Gabor et vise à reproduire la forme et l'organisation réelle des champs récepteurs présents dans les régions visuelles des systèmes nerveux biologiques. De précédentes études ont montré qu'il présente un certain nombre d'avantages pour la simulation des systèmes biologiques, notamment car il est aisément modifiable pour modéliser les champs récepteurs de réseaux visuels à différentes profondeurs : rétine, corps genouillé latéral, colliculis supérieur, V1 puis aires associatives.
+Le filtre LogPolaire correspond à une matrice de valeurs qui, lorsque appliquée à une image (par multiplication matricielle) permet une décroissante de la résolution en fonction de l'excentricité (la distance par rapport au centre de l'image). \autocite{Freeman2011} \\
+
+%--------------- Bruit écologique ---------------
+
+%--------------- Catégorisation ---------------
+
+%--------------- Localisation ---------------
