@@ -2,13 +2,33 @@
 ---
 Pas de notes les deux dernières semaines : une semaine de rapport + une semaine de maladie
 
+# 2018-05-15
+---
+J'ai écrit une version simplissime d'exploration saccadique dans le modèle en m'inspirant de celui que j'avais créé pour le stage précédent.
+
+# 2018-05-16
+---
+Avancée de la reflexion sur l'état que devrait avoir le modèle. Voir notes manuscrites.
+
+# 2018-05-17
+---
+Description [cross-entropy](https://stackoverflow.com/questions/41990250/what-is-cross-entropy#41990932) + notes manuscrites.  
+Doc pytorch de la fonction calculant la [cross-entropy loss](https://pytorch.org/docs/0.3.1/nn.html?highlight=crossentropy#torch.nn.CrossEntropyLoss).  
+Plsu d'informations sur [Relu](https://pytorch.org/docs/0.3.1/nn.html?highlight=relu#torch.nn.ReLU) et [Leaky_Relu](https://pytorch.org/docs/0.3.1/nn.html?highlight=relu#torch.nn.LeakyReLU).
+
 ---
 # To Do
 + Complexifier le réseau neuronal
+    + Changer les couches intermédiaire en ReLu
 + Recréer la carte d'accuracy en présence de bruit
++ ~~Créer fonction réalisant une saccade vers la position contenant la valeur maximale de la sortie de net~~
++ Créer une carte de certitude persistente et mise à jour après chaque saccade
++ ~~Créer des graphiques logpolaires pour vérifier l'importance des problèmes de reconstruction dans le fonctionnement du modèle~~
++ Changer le calcul de la perte par une cross-entropy
 
 ### Rapport M2b
 + **Ecrire une ébauche d'introduction**
++ Ecrire une ébauche de matériel et méthodes
 
 ---
 # A lire
