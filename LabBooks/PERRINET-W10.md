@@ -16,15 +16,25 @@ Description [cross-entropy](https://stackoverflow.com/questions/41990250/what-is
 Doc pytorch de la fonction calculant la [cross-entropy loss](https://pytorch.org/docs/0.3.1/nn.html?highlight=crossentropy#torch.nn.CrossEntropyLoss).  
 Plsu d'informations sur [Relu](https://pytorch.org/docs/0.3.1/nn.html?highlight=relu#torch.nn.ReLU) et [Leaky_Relu](https://pytorch.org/docs/0.3.1/nn.html?highlight=relu#torch.nn.LeakyReLU).
 
+# 2018-05-18
+---
+Ce matin, j'ai créé deux nouveaux scripts dans lesquels j'ai remplacé ma deuxième couche linéaire cachée par des [RNN](https://pytorch.org/docs/0.3.1/nn.html?#torch.nn.RNN), respectivement d'une et de trois couches.  
+Je n'ai pas encore créé de script me permettant de comparer leurs performances, mais logiquement le multicouche devrait être plus performant. Comme on pouvait s'en douter, son apprentissage semble plus lent :
+
+    RNN_1couche > Epoch 0: [10000/60000] Loss: [ 0.01175939] Time: 3.41 mn
+    RNN_3couches > Epoch 0: [10000/60000] Loss: [ 0.01874864] Time: 4.03 mn
+
+
 ---
 # To Do
-+ Complexifier le réseau neuronal
-    + Changer les couches intermédiaire en ReLu
++ ~~Complexifier le réseau neuronal~~
+    + ~~Changer les couches intermédiaire en ReLu~~
+    + ~~Introduire du RNN~~
 + Recréer la carte d'accuracy en présence de bruit
 + ~~Créer fonction réalisant une saccade vers la position contenant la valeur maximale de la sortie de net~~
 + Créer une carte de certitude persistente et mise à jour après chaque saccade
 + ~~Créer des graphiques logpolaires pour vérifier l'importance des problèmes de reconstruction dans le fonctionnement du modèle~~
-+ Changer le calcul de la perte par une cross-entropy
++ Changer le calcul de la perte par une cross-entropy -> Vraiment adapté au problème? Dans le cas où on l'implémente vraiment, plutôt utiliser une [BCE loss](https://pytorch.org/docs/0.3.1/nn.html?highlight=normalize#torch.nn.BCELoss)?
 
 ### Rapport M2b
 + **Ecrire une ébauche d'introduction**
