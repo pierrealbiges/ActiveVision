@@ -14,7 +14,7 @@ Avancée de la reflexion sur l'état que devrait avoir le modèle. Voir notes ma
 ---
 Description [cross-entropy](https://stackoverflow.com/questions/41990250/what-is-cross-entropy#41990932) + notes manuscrites.  
 Doc pytorch de la fonction calculant la [cross-entropy loss](https://pytorch.org/docs/0.3.1/nn.html?highlight=crossentropy#torch.nn.CrossEntropyLoss).  
-Plsu d'informations sur [Relu](https://pytorch.org/docs/0.3.1/nn.html?highlight=relu#torch.nn.ReLU) et [Leaky_Relu](https://pytorch.org/docs/0.3.1/nn.html?highlight=relu#torch.nn.LeakyReLU).
+Plus d'informations sur [Relu](https://pytorch.org/docs/0.3.1/nn.html?highlight=relu#torch.nn.ReLU) et [Leaky_Relu](https://pytorch.org/docs/0.3.1/nn.html?highlight=relu#torch.nn.LeakyReLU).
 
 # 2018-05-18
 ---
@@ -29,6 +29,9 @@ Je pense qu'il devrait être pratique de remplacer, lors de la construction des 
 
 ---
 # To Do
+
++ simplifier le script pour avoir une convergence du réseau à une entrée synthétique simple qui fait converger le réseau vers la fonction identité (juste pour voir si on maitrise l'apprentissage)
+
 + ~~Complexifier le réseau neuronal~~
     + ~~Changer les couches intermédiaire en ReLu~~
     + ~~Introduire du RNN~~
