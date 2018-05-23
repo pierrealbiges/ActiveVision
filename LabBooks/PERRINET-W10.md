@@ -23,6 +23,8 @@ Je n'ai pas encore créé de script me permettant de comparer leurs performances
 
     RNN_1couche > Epoch 0: [10000/60000] Loss: [ 0.01175939] Time: 3.41 mn
     RNN_3couches > Epoch 0: [10000/60000] Loss: [ 0.01874864] Time: 4.03 mn
+    
+Je pense qu'il devrait être pratique de remplacer, lors de la construction des images MNIST_128 (insertion d'un MNIST 28x28 dans une image 128x128) et notamment lors de la construction post-saccade, le calcul actuel par décallage de l'image MNIST en elle-même, par un décallage de l'image dans son ensemble, grâce à la fonction [numpy.roll](https://docs.scipy.org/doc/numpy/reference/generated/numpy.roll.html).
 
 
 ---
