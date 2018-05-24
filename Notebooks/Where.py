@@ -1,5 +1,15 @@
 
 
+
+
+
+import os
+import time
+import matplotlib.pyplot as plt
+import numpy as np
+import argparse
+
+# TODO: passer les arguments par la ligne de commande
 N_theta, N_orient, N_scale, N_phase, N_X, N_Y, rho = 6, 12, 5, 2, 128, 128, 1.61803
 
 
@@ -10,12 +20,31 @@ n_RNN = 90
 n_hidden2 = 195
 
 
+# Training settings
+parser = argparse.ArgumentParser(description='PyTorch MNIST Example')
+parser.add_argument('--batch-size', type=int, default=10, metavar='N',
+                    help='input batch size for training (default: 64)')
+parser.add_argument('--test-batch-size', type=int, default=10, metavar='N',
+                    help='input batch size for testing (default: 1000)')
+parser.add_argument('--epochs', type=int, default=10, metavar='N',
+                    help='number of epochs to train (default: 10)')
+parser.add_argument('--lr', type=float, default=0.01, metavar='LR',
+                    help='learning rate (default: 0.01)')
+parser.add_argument('--momentum', type=float, default=0.9, metavar='M', #default = 0.5
+                    help='SGD momentum (default: 0.5)')
+parser.add_argument('--no-cuda', action='store_true', default=False,
+                    help='disables CUDA training')
+parser.add_argument('--seed', type=int, default=1, metavar='S',
+                    help='random seed (default: 1)')
+parser.add_argument('--log-interval', type=int, default=10, metavar='N',
+                    help='how many batches to wait before logging training status')
+parser.add_argument('--dimension', type=int, default = 120, metavar='D',
+                    help='the dimension of the second neuron network') #ajout de l'argument dimension représentant le nombre de neurone dans la deuxième couche. 
+parser.add_argument('--boucle', type=int, default=0, metavar='B',
+                   help='boucle pour faire différents couche de la deuxième couche de neurone')# ajout de boucle pour automatiser le nombre de neurone dans la deuxieme couche
+args = parser.parse_args()
 
-import os
-import time
-import matplotlib.pyplot as plt
-import numpy as np
-import argparse
+
 #import noise
 import torch
 import torch.nn as nn
@@ -84,8 +113,8 @@ def accuracy_128(i_offset, j_offset, N_pic=128, N_stim=55):
     center = (N_pic-N_stim)//2
 
     accuracy_128 = 0.1 * np.ones((N_pic, N_pic))
-    accuracy_128[(center+i_offset):(center+N_stim+i_offset),
-                 (center+j_offset):(center+N_stim+j_offset)] = accuracy
+    accuracy_128[int(center+i_offset):int(center+N_stim+i_offset),
+                 int(center+j_offset):int(center+N_stim+j_offset)] = accuracy
 
     accuracy_LP = energy_vector @ np.ravel(accuracy_128)
     return accuracy_LP
@@ -268,7 +297,7 @@ def train(net, sample_size, optimizer=optimizer, vsize=N_theta*N_orient*N_scale*
     return net
 
 
-def evaluate(net, sample_size, optimizer=optimizer, vsize=N_theta*N_orient*N_scale*N_phase, asize=N_orient*N_scale, offset_std=10, offset_max=25):
+def test(net, sample_size, optimizer=optimizer, vsize=N_theta*N_orient*N_scale*N_phase, asize=N_orient*N_scale, offset_std=10, offset_max=25):
     for batch_idx, (data, label) in enumerate(data_loader):
         input, a_data = np.zeros((sample_size, 1, vsize)), np.zeros(
             (sample_size, 1, asize))
@@ -383,3 +412,28 @@ def eval_sacc(vsize=N_theta*N_orient*N_scale*N_phase, asize=N_orient*N_scale, N_
 
         print('*' * 50)
         return prediction
+    
+    
+
+def main():
+    for epoch in range(1, args.epochs + 1):
+        train(epoch)
+        Accuracy = test()
+    print('Test set: Final Accuracy: {:.3f}%'.format(Accuracy*100)) # print que le pourcentage de réussite final
+    
+    
+if __name__ == '__main__':  
+    if args.boucle == 1: # Pour que la boucle se fasse indiquer --boucle 1
+        rho = 10**(1/3) 
+        for i in [int (k) for k in rho**np.arange(2,9)]:# i prend les valeur en entier du tuple rho correspondra au nombre de neurone
+            args.dimension = i
+            print ('La deuxième couche de neurone comporte',i,'neurones')
+            main()
+    else:
+        t0 = time.time () # ajout de la constante de temps t0
+
+        main()
+
+        t1 = time.time () # ajout de la constante de temps t1
+
+        print ("Le programme a mis",t1-t0, "secondes à s'exécuter.") #compare t1 et t0, connaitre le temps d'execution du programme    
