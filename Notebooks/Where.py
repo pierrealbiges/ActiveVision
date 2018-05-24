@@ -1,8 +1,6 @@
 
 
 N_theta, N_orient, N_scale, N_phase, N_X, N_Y, rho = 6, 12, 5, 2, 128, 128, 1.61803
-params = {'sf_0': .1, 'B_sf': 2*lg.pe.B_sf,
-              'theta': np.pi * 5 / 7., 'B_theta': 2*lg.pe.B_theta}
 
 
 sample_size = 100  # quantity of examples that'll be processed
@@ -45,6 +43,10 @@ def vectorization(N_theta, N_orient, N_scale, N_phase, N_X, N_Y, rho):
     parameterfile = 'https://raw.githubusercontent.com/bicv/LogGabor/master/default_param.py'
     lg = LogGabor(parameterfile)
     lg.set_size((N_X, N_Y))
+    params = {'sf_0': .1, 'B_sf': 2*lg.pe.B_sf,
+              'theta': np.pi * 5 / 7., 'B_theta': 2*lg.pe.B_theta}
+
+
 
     phase = np.pi/4
     edge = lg.normalize(lg.invert(lg.loggabor(
