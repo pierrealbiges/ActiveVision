@@ -1,15 +1,23 @@
+# 2018-05-24
+---
+Lorsque je tente de lancer les scripts dans lequels Laurent à intégré la possibilité de réaliser les calculs sur GPU (Where.py), j'ai une erreur que je n'arrive pas à débugger (je ne trouve rien sur la doc pytorch, ni sur internet) :
+
+    net = Net(n_feature=N_theta*N_orient*N_scale*N_phase, n_hidden1=n_hidden1, n_hidden2=n_hidden2, n_output=N_orient*N_scale).to(device)
+    >> 'Net' object has no attribute 'to'
+    
+Alors ce que ces lignes semblent fonctionner quand Laurent lance le script + l'intégration est similaire dans cet [exemple](https://github.com/pytorch/examples/blob/master/mnist/main.py).
 
 ---
 # To Do
 
 ### Modèle
-+ simplifier le script pour avoir une convergence du réseau à une entrée synthétique simple qui fait converger le réseau vers la fonction identité (juste pour voir si on maitrise l'apprentissage)
++ simplifier le script pour avoir une convergence du réseau à une entrée synthétique simple qui fait converger le réseau vers la fonction identité (juste pour voir si on maitrise l'apprentissage) -> Par fonction idendité, tu veux dire "What"?
 + Recréer la carte d'accuracy en présence de bruit
 + Créer une carte de certitude persistente et mise à jour après chaque saccade
 + ~~Changer le calcul de la perte par une cross-entropy -> Vraiment adapté au problème? Dans le cas où on l'implémente vraiment, plutôt utiliser une [BCE loss](https://pytorch.org/docs/0.3.1/nn.html?highlight=normalize#torch.nn.BCELoss)?~~
 + ~~Remettre valeur rho par défaut~~
-+ Mettre à jour les librairies python utilisées
-+ Intégrer le calcul GPU aux nouveaux scripts
++ ~~Mettre à jour les librairies python utilisées~~
++ Intégrer le calcul GPU aux nouveaux scripts -> Cf notes 2018-05-24
 + ~~Retirer la fonction sigmoid, doublon avec F.Sigmoid~~ -> Retrait aussi de F.Sigmoid, doublon depuis le changement de fonction loss vers BCELossWithLogits
 + Réaliser des benchmarking pour choisir les paramètre optimaux pour le modèle
     + learning rate
