@@ -237,6 +237,7 @@ def train(net, sample_size, optimizer=optimizer, vsize=N_theta*N_orient*N_scale*
         target = np.zeros((sample_size, asize))
         for idx in range(sample_size):
 <<<<<<< HEAD
+<<<<<<< HEAD
             i_offset, j_offset = minmax(np.random.randn()*offset_std, offset_max), minmax(np.random.randn()*offset_std, offset_max)
             input[idx, 0, :], a_data[idx, 0, :] = couples(data[idx, 0, :], i_offset, j_offset, 
                                                                                        device)
@@ -246,13 +247,22 @@ def train(net, sample_size, optimizer=optimizer, vsize=N_theta*N_orient*N_scale*
 =======
             i_offset, j_offset = minmax(np.random.randn()*offset_std, offset_max),
                                  minmax(np.random.randn()*offset_std, offset_max)
+=======
+            i_offset = minmax(np.random.randn()*offset_std, offset_max)
+            j_offset = minmax(np.random.randn()*offset_std, offset_max)
+>>>>>>> a29425c3d4ee98b64e9159dcac7890ed1f065d2c
             input[idx, 0, :], a_data[idx, 0, :] = couples(data[idx, 0, :], i_offset, j_offset,
                                                                                        device)
             target[idx, :] = a_data[idx, 0, :]
 
+<<<<<<< HEAD
         input, target = Variable(torch.FloatTensor(input)),
                         Variable(torch.FloatTensor(a_data))
 >>>>>>> fc2d9d85001c67cd00393e63356876463713d31e
+=======
+        input = Variable(torch.FloatTensor(input))
+        target = Variable(torch.FloatTensor(a_data))
+>>>>>>> a29425c3d4ee98b64e9159dcac7890ed1f065d2c
 
         prediction = net(input)
         loss = loss_func(prediction, target)
@@ -274,6 +284,7 @@ def test(net, sample_size, optimizer=optimizer, vsize=N_theta*N_orient*N_scale*N
             (sample_size, 1, asize))
         target = np.zeros((sample_size, asize))
         for idx in range(sample_size):
+<<<<<<< HEAD
             i_offset, j_offset = minmax(np.random.randn()*offset_std, offset_max), minmax(np.random.randn()*offset_std, offset_max)
             input[idx, 0, :], a_data[idx, 0, :] = couples(data[idx, 0, :], i_offset, j_offset, device)
             target[idx, :] = a_data[idx, 0, :]
@@ -284,6 +295,16 @@ def test(net, sample_size, optimizer=optimizer, vsize=N_theta*N_orient*N_scale*N
         input, target = Variable(torch.FloatTensor(input)),
                         Variable(torch.FloatTensor(a_data))
 >>>>>>> fc2d9d85001c67cd00393e63356876463713d31e
+=======
+            i_offset = minmax(np.random.randn()*offset_std, offset_max)
+            j_offset = minmax(np.random.randn()*offset_std, offset_max)
+            input[idx, 0, :], a_data[idx, 0, :] = couples(data[idx, 0, :], i_offset, j_offset, device)
+            target[idx, :] = a_data[idx, 0, :]
+
+
+        input = Variable(torch.FloatTensor(input))
+        target = Variable(torch.FloatTensor(a_data))
+>>>>>>> a29425c3d4ee98b64e9159dcac7890ed1f065d2c
 
         prediction = net(input)
         loss = loss_func(prediction, target)
@@ -291,6 +312,7 @@ def test(net, sample_size, optimizer=optimizer, vsize=N_theta*N_orient*N_scale*N
     return loss.data.numpy()
 
 
+<<<<<<< HEAD
 def eval_sacc(vsize=N_theta*N_orient*N_scale*N_phase, asize=N_orient*N_scale, N_pic=N_X, sacc_lim=5, fovea_size=10, offset_std=10, offset_max=25, fig_type='cmap'):
     for batch_idx, (data, label) in enumerate(data_loader):
         data = data.to(device)
@@ -300,6 +322,14 @@ def eval_sacc(vsize=N_theta*N_orient*N_scale*N_phase, asize=N_orient*N_scale, N_
         i_offset, j_offset = minmax(np.random.randn()*10, 35),
                              minmax(np.random.randn()*10, 35)
 >>>>>>> fc2d9d85001c67cd00393e63356876463713d31e
+=======
+
+def eval_sacc(vsize=N_theta*N_orient*N_scale*N_phase, asize=N_orient*N_scale, N_pic=N_X, sacc_lim=5, fovea_size=10, offset_std=10, offset_max=25, fig_type='cmap'):
+    for batch_idx, (data, label) in enumerate(data_loader):
+        data = data.to(device)
+        i_offset = minmax(np.random.randn()*offset_std, offset_max)
+        j_offset = minmax(np.random.randn()*offset_std, offset_max)
+>>>>>>> a29425c3d4ee98b64e9159dcac7890ed1f065d2c
         print('Stimulus position: ({},{})'.format(i_offset, j_offset))
         a_data_in_fovea = False
         sacc_count = 0
@@ -308,11 +338,17 @@ def eval_sacc(vsize=N_theta*N_orient*N_scale*N_phase, asize=N_orient*N_scale, N_
             input, a_data = np.zeros((1, 1, vsize)), np.zeros((1, 1, asize))
             input[0, 0, :], a_data[0, 0, :] = couples(data[0, 0, :], i_offset, j_offset, device)
 <<<<<<< HEAD
+<<<<<<< HEAD
             input, a_data = Variable(torch.FloatTensor(input)), Variable(torch.FloatTensor(a_data))
 =======
             input, a_data = Variable(torch.FloatTensor(input)),
                             Variable(torch.FloatTensor(a_data))
 >>>>>>> fc2d9d85001c67cd00393e63356876463713d31e
+=======
+
+            input = Variable(torch.FloatTensor(input))
+            a_data = Variable(torch.FloatTensor(a_data))
+>>>>>>> a29425c3d4ee98b64e9159dcac7890ed1f065d2c
 
             prediction = net(input)
             pred_data = prediction.data.numpy()[-1][-1]
@@ -401,7 +437,7 @@ if __name__ == '__main__':
         rho = 10**(1/3)
         for i in [int (k) for k in rho**np.arange(2,9)]:# i prend les valeur en entier du tuple rho correspondra au nombre de neurone
             args.dimension = i
-            print ('La deuxième couche de neurone comporte',i,'neurones')
+            print('La deuxième couche de neurone comporte',i,'neurones')
             main()
     else:
         t0 = time.time () # ajout de la constante de temps t0
@@ -410,4 +446,4 @@ if __name__ == '__main__':
 
         t1 = time.time () # ajout de la constante de temps t1
 
-        print ("Le programme a mis",t1-t0, "secondes à s'exécuter.") #compare t1 et t0, connaitre le temps d'execution du programme
+        print("Le programme a mis",t1-t0, "secondes à s'exécuter.") #compare t1 et t0, connaitre le temps d'execution du programme
