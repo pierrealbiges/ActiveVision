@@ -10,9 +10,9 @@ L'ensemble des simulations (comprenant apprentissage et évaluation) ont été r
 Avant d'être utilisées par notre modèle, les images subissent un certain nombre de pré-traitements. L'objectif de ces pré-traitements est de les rendre plus écologiques, c'est à dire plus proches des stimuli que rencontrent les systèmes biologiques.
 
 \subsection{Redimensionner et replacer}
-Dans ce travail, nous avons utilisé comme stimuli les images provenant de MNIST, une base de données contenant 70000 chiffres manuscrits dont l'utilisation est très répandue pendant la phase de développement des modèles d'apprentissage automatique (sa classification est considérée comme l'évaluation standard pour ces modèles).
-A l'origine les examples MNIST sont codées en niveau de gris dans une image normalisée de 28*28 pixels (--- insert fig ---).
-Afin de réduire la taille du stimulus au sein de l'image, nous introduisons cette image de 28*28 pixels dans une image vide de 128*128 pixels (--- insert fig ---).
+Dans ce travail, nous avons utilisé comme stimuli les images provenant de MNIST, une base de données contenant 70000 chiffres manuscrits dont l'utilisation est très répandue pendant le développement des modèles d'apprentissage automatique (sa classification est considérée comme l'évaluation standard pour ces modèles).
+A l'origine les examples MNIST sont codées en niveau de gris dans une image normalisée de 28*28 pixels (figure~\ref{fig:MNIST_28}).
+Afin de réduire la taille du stimulus au sein de l'image, nous introduisons cette image de 28*28 pixels dans une image vide de 128*128 pixels (figure~\ref{fig:MNIST_128}).
 Cette insertion se fait systematiquement à un emplacement aléatoire pour permettre de produire un stimulus utilisable dans notre tache de détection de la position d'une cible.
 
 \subsection{Bruit écologique}
