@@ -7,11 +7,23 @@ Lorsque je tente de lancer les scripts dans lequels Laurent à intégré la poss
     
 Alors ce que ces lignes semblent fonctionner quand Laurent lance le script + l'intégration est similaire dans cet [exemple](https://github.com/pytorch/examples/blob/master/mnist/main.py).
 
+# 2018-05-25
+---
+Ce matin lorsque j'ai voulu lancer jupyter-notebook sur babbage, j'ai reçu une erreur :
+
+    AttributeError: '_NamespacePath' object has no attribute 'sort'
+
+Pour régler ce problème, j'ai dû installer setuptools :
+
+    pip3 install --user --upgrade pip setuptools
+    
+Concernant les conflits sur les derniers scripts entre mon local et origin, j'ai trouvé une explication du fonctionnement de [mergetool](https://stackoverflow.com/questions/161813/how-to-resolve-merge-conflicts-in-git)
+
 ---
 # To Do
 
 ### Modèle
-+ simplifier le script pour avoir une convergence du réseau à une entrée synthétique simple qui fait converger le réseau vers la fonction identité (juste pour voir si on maitrise l'apprentissage) -> Par fonction idendité, tu veux dire "What"?
++ simplifier le script pour avoir une convergence du réseau à une entrée synthétique simple qui fait converger le réseau vers la fonction identité (juste pour voir si on maitrise l'apprentissage) -> Qu'est-ce que tu veux dire pr fonction idendité?
 + Recréer la carte d'accuracy en présence de bruit
 + Créer une carte de certitude persistente et mise à jour après chaque saccade
 + ~~Changer le calcul de la perte par une cross-entropy -> Vraiment adapté au problème? Dans le cas où on l'implémente vraiment, plutôt utiliser une [BCE loss](https://pytorch.org/docs/0.3.1/nn.html?highlight=normalize#torch.nn.BCELoss)?~~
