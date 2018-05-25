@@ -6,10 +6,7 @@ import argparse
 
 # TODO: passer les arguments par la ligne de commande
 N_theta, N_orient, N_scale, N_phase, N_X, N_Y, rho = 6, 12, 5, 2, 128, 128, 1.61803
-
-
 sample_size = 100  # quantity of examples that'll be processed
-N_theta, N_orient, N_scale, N_phase, N_X, N_Y, rho = 6, 12, 5, 2, 128, 128, 1.61803
 lr = 0.05
 n_hidden1 = ((N_theta*N_orient*N_scale*N_phase)/4)*3
 n_hidden2 = ((N_theta*N_orient*N_scale*N_phase)/4)
