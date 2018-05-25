@@ -3,24 +3,34 @@
 \chapter{Matériel et méthodes} % Main chapter title
 \label{Materiel_methode} % Change X to a consecutive number; for referencing this chapter elsewhere, use \ref{ChapterX}
 
-%--------------- Matériel ---------------
 \section{Matériel}
-L'ensemble des simulations (comprenant apprentissage et évaluation) ont été réalisées sur une machine connectée à distance via un protocole ssh et dont les caractéristiques sont visibles dans la~\autoref{tab:materiel}.	\\
+L'ensemble des simulations (comprenant apprentissage et évaluation) ont été réalisées sur une machine connectée à distance via un protocole ssh et dont les caractéristiques sont visibles dans la~\autoref{tab:materiel}. \\
 
-%--------------- Filtre LogPolar ---------------
-\section{Filtre LogPolaire}
-Afin de simuler une variabilité de l'acuité visuelle chez notre modèle, nous avons utilisé un filtre LogPolaire (figure~\ref{fig:logpol_filter}).
-Ce filtre, construit avec une approche neuromimétique, est constitué d'un ensemble de filtres Gabor et vise à reproduire la forme et l'organisation réelle des champs récepteurs présents dans les régions visuelles des systèmes nerveux biologiques. De précédentes études ont montré qu'il présente un certain nombre d'avantages pour la modélisation des systèmes biologiques, notamment car il est aisément modifiable pour simuler les champs récepteurs de différentes régions impliquées dans la vision (rétine, corps genouillé latéral, colliculis supérieur, V1 puis aires associatives).
-Le filtre LogPolaire correspond en réalité à une matrice de valeurs qui, lorsque appliquée à une image (par multiplication matricielle) permet une décroissante de la résolution en fonction de l'excentricité (la distance par rapport au centre de l'image). 
-Le résultat de l'application de ce filtre sur l'un de nos stimuli est visible sur la figure~\ref{fig:mnist_128_LP}. \autocite{Freeman2011} \\
-Une version de ce filtre dans laquelle les filtres Gabor d'un même emplacement (mais ne possédant pas la même orientation) sont moyennés est appliquée à la carte de certitude, servant de \textit{label} pour l'apprentissage de notre modèle (figures~\ref{fig:energy_filter} et \ref{fig:accuracy_128_LP}). \\
+\section{Pré-traitements de l'image}
+Avant d'être utilisées par notre modèle, les images subissent un certain nombre de pré-traitements. L'objectif de ces pré-traitements est de les rendre plus écologiques, c'est à dire plus proches des stimuli que rencontrent les systèmes biologiques.
 
-%--------------- Bruit écologique ---------------
-\section{Bruit écologique}
+\subsection{Redimensionner et replacer}
+Dans ce travail, nous avons utilisé comme stimuli les images provenant de MNIST, une base de données contenant 70000 chiffres manuscrits dont l'utilisation est très répandue pendant le développement des modèles d'apprentissage automatique (sa classification est considérée comme l'évaluation standard pour ces modèles).
+A l'origine les examples MNIST sont codées en niveau de gris dans une image normalisée de 28*28 pixels (figure~\ref{fig:MNIST_28}).
+Afin de réduire la taille du stimulus au sein de l'image, nous introduisons cette image de 28*28 pixels dans une image vide de 128*128 pixels (figure~\ref{fig:MNIST_128}).
+Cette insertion se fait systematiquement à un emplacement aléatoire pour permettre de produire un stimulus utilisable dans notre tache de détection de la position d'une cible.
+
+\subsection{Bruit écologique}
 Pour permettre à nos stimuli de s'approcher de ceux pouvant être reçus et traités par les systèmes biologiques, nous avons superposé à nos signaux un bruit généré de manière aléatoire et selon deux méthodes possibles.
-La première consiste en la génération de bruit Perlin \autocite{Perlin1985} (figure~\ref{fig:perlin_noise}), permettant à l'origine de produire automatiquement des textures à l'aspect naturel (nuages, feu, eau, etc).
-La seconde consiste en la génération de bruit \textit{MotionCloud} (figure~\ref{fig:motioncloud_noise}), permettant d'obtenir des textures aléatoires et naturelles servant à l'origine à étudier la perception des mouvements (!!! INSERT REF !!!) \\
+La première consiste en la génération de bruit Perlin \autocite{Perlin1985} (figure~\ref{fig:perlin_noise}), permettant à l'origine de produire automatiquement des textures à l'aspect naturel destinées à être utilisées pour des effets spéciaux numériques.
+La seconde consiste en la génération de bruit \textit{MotionCloud} (figure~\ref{fig:motioncloud_noise}), permettant d'obtenir des textures aléatoires et semblants naturelles, destinées à l'origine à être utilisées dans des études sur la perception des mouvements. \autocite{Leon2012}
 
-%--------------- Catégorisation ---------------
+\section{Filtre LogPolaire}
+Finalement, afin de simuler une variabilité de l'acuité visuelle chez notre modèle, nous avons utilisé un filtre LogPolaire (figure~\ref{fig:logpol_filter}).
+Ce filtre, construit avec une approche neuromimétique, est constitué d'un ensemble de filtres Gabor et vise à reproduire la forme et l'organisation réelle des champs récepteurs présents dans les régions visuelles des systèmes nerveux biologiques. 
+De précédentes études ont montré qu'il présente un certain nombre d'avantages pour la modélisation des systèmes biologiques, notamment car il est aisément modifiable pour simuler les champs récepteurs de différentes régions impliquées dans la vision (rétine, corps genouillé latéral, colliculis supérieur, V1 puis aires associatives).
+Le filtre LogPolaire correspond en réalité à une matrice de valeurs qui, lorsque appliquée à une image par multiplication matricielle, permet une décroissante de la résolution en fonction de l'excentricité (distance) par rapport au centre de l'image. 
+Le résultat de l'application de ce filtre sur l'un de nos stimuli est visible sur la figure~\ref{fig:mnist_128_LP}. \autocite{Freeman2011} \\
+Une version de ce filtre dans laquelle les filtres Gabor d'un même emplacement (mais ne possédant pas la même orientation) sont moyennés est appliquée à la carte de certitude, servant de label pour l'apprentissage de notre modèle (figures~\ref{fig:energy_filter} et \ref{fig:accuracy_128_LP}). \\
+
+\section{Modèle}
+Notre modèle étant construit à l'aide de méthodes d'apprentissage automatisé (ou \textit{machine learning}), il est plus aisé de décrire son fonctionnement en deux temps: pendant la phase d'apprentissage puis pendant la phase d'évaluation. \\
+
+
 
 %--------------- Localisation ---------------

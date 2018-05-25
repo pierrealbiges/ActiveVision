@@ -205,6 +205,78 @@
     \field{year}{2017}
   \endentry
 
+  \entry{Leon2012}{article}{}
+    \name{author}{4}{}{%
+      {{hash=LPS}{%
+         family={Leon},
+         familyi={L\bibinitperiod},
+         given={P.\bibnamedelima S.},
+         giveni={P\bibinitperiod\bibinitdelim S\bibinitperiod},
+      }}%
+      {{hash=VI}{%
+         family={Vanzetta},
+         familyi={V\bibinitperiod},
+         given={I.},
+         giveni={I\bibinitperiod},
+      }}%
+      {{hash=MGS}{%
+         family={Masson},
+         familyi={M\bibinitperiod},
+         given={G.\bibnamedelima S.},
+         giveni={G\bibinitperiod\bibinitdelim S\bibinitperiod},
+      }}%
+      {{hash=PLU}{%
+         family={Perrinet},
+         familyi={P\bibinitperiod},
+         given={L.\bibnamedelima U.},
+         giveni={L\bibinitperiod\bibinitdelim U\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{LPS+1}
+    \strng{fullhash}{LPSVIMGSPLU1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{sortinit}{L}
+    \field{sortinithash}{L}
+    \field{abstract}{%
+    Choosing an appropriate set of stimuli is essential to characterize the
+  response of a sensory system to a particular functional dimension, such as
+  the eye movement following the motion of a visual scene. Here, we describe a
+  framework to generate random texture movies with controlled information
+  content, i.e., Motion Clouds. These stimuli are defined using a generative
+  model that is based on controlled experimental parametrization. We show that
+  Motion Clouds correspond to dense mixing of localized moving gratings with
+  random positions. Their global envelope is similar to natural-like
+  stimulation with an approximate full-field translation corresponding to a
+  retinal slip. We describe the construction of these stimuli mathematically
+  and propose an open-source Python-based implementation. Examples of the use
+  of this framework are shown. We also propose extensions to other modalities
+  such as color vision, touch, and audition.%
+    }
+    \verb{doi}
+    \verb 10.1152/jn.00737.2011
+    \endverb
+    \verb{eprint}
+    \verb arXiv:1208.6467v1
+    \endverb
+    \field{isbn}{1522-1598 (Electronic)$\backslash$n0022-3077 (Linking)}
+    \field{issn}{0022-3077}
+    \field{number}{11}
+    \field{pages}{3217\bibrangedash 3226}
+    \field{title}{{Motion clouds: model-based stimulus synthesis of
+  natural-like random textures for the study of motion perception}}
+    \verb{url}
+    \verb http://jn.physiology.org/cgi/doi/10.1152/jn.00737.2011
+    \endverb
+    \field{volume}{107}
+    \verb{file}
+    \verb :home/albert/Downloads/Leon2012:
+    \endverb
+    \field{journaltitle}{Journal of Neurophysiology}
+    \field{eprinttype}{arXiv}
+    \field{year}{2012}
+  \endentry
+
   \entry{Perlin1985}{article}{}
     \name{author}{1}{}{%
       {{hash=PK}{%
@@ -214,34 +286,35 @@
          giveni={K\bibinitperiod},
       }}%
     }
-    \list{publisher}{1}{%
-      {ACM}%
-    }
-    \keyw{algorithm development, fire, functional composition, interactive,
-  pixel stream editor, solid texture, space function, stochastic modelling,
-  turbulence, waves}
+    \keyw{Algorithm,Stochastic process,Texture mapping}
     \strng{namehash}{PK1}
     \strng{fullhash}{PK1}
     \field{labelnamesource}{author}
     \field{labeltitlesource}{title}
     \field{sortinit}{P}
     \field{sortinithash}{P}
+    \field{abstract}{%
+    We introduce the concept of a Pixel Stream Editor. This forms the basis for
+  an interactive synthesizer for designing highly realistic Computer Generated
+  Imagery. The designer works in an interactive Very High Level programming
+  environment which provides a very fast concept/implement/view iteration
+  cycle.Naturalistic visual complexity is built up by composition of non-linear
+  functions, as opposed to the more conventional texture mapping or growth
+  model algorithms. Powerful primitives are included for creating controlled
+  stochastic effects. We introduce the concept of "solid texture" to the field
+  of CGI.We have used this system to create very convincing representations of
+  clouds, fire, water, stars, marble, wood, rock, soap films and crystal. The
+  algorithms created with this paradigm are generally extremely fast, highly
+  realistic, and asynchronously parallelizable at the pixel level.%
+    }
     \verb{doi}
-    \verb 10.1145/325165.325247
+    \verb 10.1145/325334.325247
     \endverb
-    \field{issn}{0097-8930}
     \field{number}{3}
     \field{pages}{287\bibrangedash 296}
-    \field{title}{An Image Synthesizer}
-    \verb{url}
-    \verb http://doi.acm.org/10.1145/325165.325247
-    \endverb
+    \field{title}{{An image synthesizer}}
     \field{volume}{19}
-    \list{location}{1}{%
-      {New York, NY, USA}%
-    }
-    \field{journaltitle}{SIGGRAPH Comput. Graph.}
-    \field{month}{07}
+    \field{journaltitle}{Computer Graphics}
     \field{year}{1985}
   \endentry
 

@@ -4,10 +4,13 @@
 \contentsline {chapter}{\numberline {1}Introduction}{1}{chapter.3}
 \contentsline {chapter}{\numberline {2}Mat\IeC {\'e}riel et m\IeC {\'e}thodes}{4}{chapter.4}
 \contentsline {section}{\numberline {2.1}Mat\IeC {\'e}riel}{4}{section.5}
-\contentsline {section}{\numberline {2.2}Filtre LogPolaire}{4}{section.6}
-\contentsline {section}{\numberline {2.3}Bruit \IeC {\'e}cologique}{5}{section.7}
-\contentsline {chapter}{\numberline {3}R\IeC {\'e}sultats}{6}{chapter.8}
-\contentsline {chapter}{\numberline {4}Discussion et perspectives}{7}{chapter.9}
-\contentsline {chapter}{Bibliography}{8}{chapter*.10}
-\contentsline {chapter}{\numberline {A}Figures}{9}{appendix.11}
-\contentsline {chapter}{\numberline {B}Code source et documents compl\IeC {\'e}mentaires}{13}{appendix.19}
+\contentsline {section}{\numberline {2.2}Pr\IeC {\'e}-traitements de l'image}{4}{section.6}
+\contentsline {subsection}{\numberline {2.2.1}Redimensionner et replacer}{4}{subsection.7}
+\contentsline {subsection}{\numberline {2.2.2}Bruit \IeC {\'e}cologique}{4}{subsection.8}
+\contentsline {section}{\numberline {2.3}Filtre LogPolaire}{5}{section.9}
+\contentsline {section}{\numberline {2.4}Mod\IeC {\`e}le}{5}{section.10}
+\contentsline {chapter}{\numberline {3}R\IeC {\'e}sultats}{6}{chapter.11}
+\contentsline {chapter}{\numberline {4}Discussion et perspectives}{7}{chapter.12}
+\contentsline {chapter}{Bibliography}{8}{chapter*.13}
+\contentsline {chapter}{\numberline {A}Figures}{9}{appendix.14}
+\contentsline {chapter}{\numberline {B}Code source et documents compl\IeC {\'e}mentaires}{14}{appendix.24}
