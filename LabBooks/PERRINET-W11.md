@@ -38,7 +38,7 @@ Et j'ai du nettoyé des fichiers créés par mergetool avec :
 
 ### Modèle
 + simplifier le script pour avoir une convergence du réseau à une entrée synthétique simple qui fait converger le réseau vers la fonction identité (juste pour voir si on maitrise l'apprentissage) -> Qu'est-ce que tu veux dire pr fonction idendité?
-+ Recréer la carte d'accuracy en présence de bruit
++ Recréer la carte d'accuracy en présence de bruit -> Script à modifier: 2018-04-27_classifier_noised.ipynb
 + Créer une carte de certitude persistente et mise à jour après chaque saccade
 + ~~Changer le calcul de la perte par une cross-entropy -> Vraiment adapté au problème? Dans le cas où on l'implémente vraiment, plutôt utiliser une [BCE loss](https://pytorch.org/docs/0.3.1/nn.html?highlight=normalize#torch.nn.BCELoss)?~~
 + ~~Remettre valeur rho par défaut~~
