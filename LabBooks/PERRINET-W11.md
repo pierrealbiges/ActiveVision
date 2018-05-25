@@ -17,7 +17,21 @@ Pour régler ce problème, j'ai dû installer setuptools :
 
     pip3 install --user --upgrade pip setuptools
     
-Concernant les conflits sur les derniers scripts entre mon local et origin, j'ai trouvé une explication du fonctionnement de [mergetool](https://stackoverflow.com/questions/161813/how-to-resolve-merge-conflicts-in-git)
+Concernant les conflits sur les derniers scripts entre mon local et origin, j'ai trouvé une explication du fonctionnement de [mergetool](https://stackoverflow.com/questions/161813/how-to-resolve-merge-conflicts-in-git).  
+Finalement, j'ai résolu le conflit avec les lignes suivantes : 
+
+    git checkout --ours Where.py
+    git checkout --theirs Where.py
+    git add Where.py
+    git commit -m "merge"
+
+Et j'ai du nettoyé des fichiers créés par mergetool avec :
+
+    git clean -f Where_*
+    > Removing Where_BACKUP_21341.py
+    >Removing Where_BASE_21341.py
+    > Removing Where_LOCAL_21341.py
+    > Removing Where_REMOTE_21341.py
 
 ---
 # To Do
