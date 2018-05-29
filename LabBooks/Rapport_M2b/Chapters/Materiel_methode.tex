@@ -7,32 +7,36 @@
 L'ensemble des simulations (comprenant apprentissage et évaluation) ont été réalisées sur une machine connectée à distance via un protocole ssh et dont les caractéristiques sont visibles dans la~\autoref{tab:materiel}.
 
 \section{Carte de certitude}
-En amont de l'initialisation de notre modèle, nous créons un classifieur simple que nous entaînons pour être capable de obtenir des performances acceptables sur la base de données MNIST (99\% de reconnaissance positive du chiffre contenu dans l'image) dans des conditions classiques.
+En amont de l'initialisation de notre modèle, nous créons un classifieur simple que nous entaînons pour être capable d'obtenir, dans des conditions classiques, des performances acceptables sur la base de données MNIST (99\% de reconnaissance positive du chiffre contenu dans l'image).
 Ce modèle est ensuite évalué avec des images de 28*28 pixels contenant un chiffre provenant de MNIST mais pouvant être décalé dans cet espace.
-La performance de ce classifieur est ainsi calculée 1000 fois pour chaque position possible du chiffre dans l'espace pour obtenir une matrice correspondant à la certitude avec laquelle le modèle peut reconnaitre le chiffre qu'on lui impose selon sa position par rapport au centre de l'image, correspondant à son centre de fixation.
+La performance du classifieur est ainsi calculée 1000 fois pour chaque position possible du chiffre dans l'espace. 
+Nous obtenons une matrice correspondant à la certitude avec laquelle le modèle peut reconnaitre le chiffre qu'on lui impose selon sa position par rapport au centre de l'image, correspondant à son centre de fixation.
 Une reconstruction graphique de cette matrice est visible dans la figure~\ref{fig:accuracy}.
 Cette carte de certitude servira de base pour construire les labels qui seront utilisés lors de l'apprentissage automatisé de notre modèle principal.
 
 \section{Pré-traitements de l'image}
 Dans ce travail, nous avons utilisé comme stimuli les images provenant de MNIST, une base de données contenant 70000 chiffres manuscrits dont l'utilisation est très répandue pendant le développement des modèles d'apprentissage automatique (sa classification est considérée comme l'évaluation standard pour ces modèles).
-Avant d'être utilisées par notre modèle, les images subissent un certain nombre de pré-traitements. L'objectif de ces pré-traitements est de les rendre plus écologiques, c'est à dire plus proches des stimuli que rencontrent les systèmes biologiques.
+Avant d'être utilisées par notre modèle, les images subissent un certain nombre de pré-traitements. 
+L'objectif de ces pré-traitements est de les rendre plus écologiques, c'est à dire plus proches des stimuli que rencontrent les systèmes biologiques.
 
 \subsection{Redimensionner et replacer}
 A l'origine les examples MNIST sont codées en niveau de gris dans une image normalisée de 28*28 pixels (figure~\ref{fig:MNIST_28}).
-Afin de réduire la taille du stimulus au sein de l'image, nous introduisons cette image de 28*28 pixels dans une image vide de 128*128 pixels (figure~\ref{fig:MNIST_128}).
-Cette insertion se fait systematiquement à un emplacement aléatoire pour permettre de produire un stimulus utilisable dans notre tache de détection de la position d'une cible. \\
-En parallèle, la carte de certitude construite précédemment et contenue dans une image de 54*54 pixels est introduite dans une image vide 128*128 pixels, au même emplacement que le stimulus.
+Afin de réduire la taille du stimulus au sein de l'image, nous introduisons cette image de 28*28 pixels dans une image pseudo-vide de 128*128 pixels (figure~\ref{fig:MNIST_128}).
+Cette insertion se fait systematiquement à un emplacement aléatoire pour permettre de produire un stimulus utilisable dans notre tache de détection de la position d'une cible.
+En parallèle, la carte de certitude construite précédemment et contenue dans une image de 54*54 pixels est introduite dans une image pseudo-vide de 128*128 pixels, au même emplacement que le stimulus. \\
+Les images-hôtes sont pseudo-vides car leurs valeurs en chaque point correspond à la valeur minimale de l'image insérée, permettant de ne pas créer un cadre autour de cette dernière lorsqu'elle est integrée.
 
 \subsection{Bruit écologique}
 Pour permettre à nos stimuli de s'approcher de ceux pouvant être reçus et traités par les systèmes biologiques, nous avons superposé à nos signaux (image et certitude) un bruit généré de manière aléatoire et selon deux méthodes possibles.
 La première consiste en la génération de bruit Perlin \autocite{Perlin1985} (figure~\ref{fig:perlin_noise}), permettant à l'origine de produire automatiquement des textures à l'aspect naturel destinées à être utilisées pour des effets spéciaux numériques.
-La seconde consiste en la génération de bruit \textit{MotionCloud} (figure~\ref{fig:motioncloud_noise}), permettant d'obtenir des textures aléatoires et semblants naturelles, destinées à l'origine à être utilisées dans des études sur la perception des mouvements. \autocite{Leon2012}
+La seconde consiste en la génération de bruit \textit{MotionCloud} (figure~\ref{fig:motioncloud_noise}), permettant d'obtenir des textures aléatoires et semblants naturelles, destinées à l'origine à être utilisées dans des études sur la perception des mouvements.
+C'est cette dernière que nous avons utilisé par défaut lors de l'apprentissage automatisé, mais les deux méthodes sont implantées dans nos scripts. \autocite{Leon2012}
 
 \section{Filtre LogPolaire}
 Finalement, afin de simuler une variabilité de l'acuité visuelle chez notre modèle, nous avons appliqué à nos stimuli un filtre LogPolaire (figure~\ref{fig:logpol_filter}).
 Ce filtre, construit avec une approche neuromimétique, est constitué d'un ensemble de filtres Gabor et vise à reproduire la forme et l'organisation réelle des champs récepteurs présents dans les régions visuelles des systèmes nerveux biologiques. 
 De précédentes études ont montré qu'il présente un certain nombre d'avantages pour la modélisation des systèmes biologiques, notamment car il est aisément modifiable pour simuler les champs récepteurs de différentes régions impliquées dans la vision (rétine, corps genouillé latéral, colliculis supérieur, V1 puis aires associatives).
-Le filtre LogPolaire correspond en réalité à une matrice de valeurs qui, lorsque appliquée à une image par multiplication matricielle, permet une décroissante de la résolution en fonction de l'excentricité (distance) par rapport au centre de l'image. 
+Le filtre LogPolaire correspond en réalité à une matrice de valeurs qui, lorsque appliquée à une image par multiplication matricielle, permet une décroissance de la résolution en fonction de l'excentricité (distance) par rapport au centre de l'image. 
 Le résultat de l'application de ce filtre sur l'un de nos stimuli est visible sur les figures~\ref{fig:mnist_128_LP_nonoise} (non-bruité) et~\ref{fig:mnist_128_LP_MotionCloud} (avec un bruit MotionCloud). Des reconstructions alternatives (logarithmiques) sont visibles sur les figures~\ref{fig:mnist_log_nonoise} et~\ref{fig:mnist_log_motioncloud} \autocite{Freeman2011} \\
 Une version de ce filtre dans laquelle les filtres Gabor d'un même emplacement (mais ne possédant pas la même orientation) sont moyennés est appliquée à la carte de certitude, servant de label pour l'apprentissage de notre modèle (figures~\ref{fig:energy_filter} et \ref{fig:accuracy_128_LP}).
 
