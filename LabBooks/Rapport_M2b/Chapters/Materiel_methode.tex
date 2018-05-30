@@ -41,8 +41,14 @@ Le résultat de l'application de ce filtre sur l'un de nos stimuli est visible s
 Une version de ce filtre dans laquelle les filtres Gabor d'un même emplacement (mais ne possédant pas la même orientation) sont moyennés est appliquée à la carte de certitude, servant de label pour l'apprentissage de notre modèle (figures~\ref{fig:energy_filter} et \ref{fig:accuracy_128_LP}).
 
 \section{Modèle}
-Le fonctionnement de notre modèle se basant sur des méthodes d'apprentissage automatisé (ou \textit{machine learning}), son fonctionnement peut être décrit en deux temps: une phase d'apprentissage puis une phase d'évaluation (ou de test). \\
-
-
-
-%--------------- Localisation ---------------
+Le fonctionnement de notre modèle se basant sur des méthodes d'apprentissage automatisé (ou \textit{machine learning}), son fonctionnement peut être décrit en deux temps.\\
+Durant la première phase, dîte d'apprentissage, nous fournissons au réseau nerveux artificiel à la fois un input, correspondant à l'image transformée à partir de laquelle il va devoir prédire la position d'un stimulus et un label, correspondant à une carte de chaleur représentant la position réelle du stimulus. 
+Durant un nombre d'itérations prédéfinies, le réseau nerveux va interpréter l'input pour produire une série de valeurs correspondant à sa prédiction de la position du stimulus.
+Le modèle calcul ensuite un coût, c'est à dire (de manière simplifiée) la différence entre cette prédiction et le label fourni (et donc à la justesse de la prédiction), via la méthode de cross-entropie binaire avec régression logistique (\textit{BCEWithLogitsLoss}).
+Finalement selon les valeurs de coût, les matrices de poids du réseau nerveux artificiel sont mises à jour via la méthode de descente de gradient stochastique (\textit{SGD}). \\
+Après la phase d'apprentissage vient la phase d'évaluation (ou de test) où nous fournissons au modèle des inputs qu'il n'a jamais rencontré afin de s'assurer de ses performances et de ses capacités de généralisation (transcrire à de nouveaux stimuli ce qu'il a appris).
+Les inputs sont ainsi fournis seuls, sans labels, et le modèle doit produire des prédictions sur la position des stimulis.
+Aucun apprentissage n'est réalisé durant cette phase. \\
+Lors de l'écriture de ce rapport, le réseau nerveux artificiel était composé de trois couches linéaires séparées par une rectification linéaire fuitée (\textit{leaky\_ReLU}). \\
+L'ensemble des étapes décrites jusqu'ici sont visibles sur la figure~\ref{fig:model}.
+Pour plus de détails sur le fonctionnement du modèle, se reporter à l'appendice~\ref{Code}.
