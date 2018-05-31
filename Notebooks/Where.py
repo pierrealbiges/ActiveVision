@@ -6,8 +6,8 @@ import argparse
 import noise
 
 # TODO: passer les arguments par la ligne de commande
-N_theta, N_azimuth, N_eccentricty, N_phase, N_X, N_Y, rho = 6, 12, 15, 2, 128, 128, 1.61803
-sample_size = 100  # quantity of examples that'll be processed
+N_theta, N_azimuth, N_eccentricty, N_phase, N_X, N_Y, rho = 6, 12, 8, 2, 128, 128, 1.41
+minibatch_size = 100  # quantity of examples that'll be processed
 lr = 0.05
 n_hidden1 = int(((N_theta*N_azimuth*N_eccentricty*N_phase)/4)*3)
 n_hidden2 = int(((N_theta*N_azimuth*N_eccentricty*N_phase)/4))
@@ -34,16 +34,16 @@ else:
     print('No accuracy data found.')
 
 ## Préparer l'apprentissage et les fonctions nécessaires au fonctionnement du script
-def vectorization(N_theta, N_azimuth, N_eccentricty, N_phase, N_X, N_Y, rho):
+def vectorization(N_theta, N_azimuth, N_eccentricty, N_phase, N_X, N_Y, rho, B_sf=.1, B_theta=np.pi/N_theta/2):
     retina = np.zeros((N_theta, N_azimuth, N_eccentricty, N_phase, N_X*N_Y))
     parameterfile = 'https://raw.githubusercontent.com/bicv/LogGabor/master/default_param.py'
     lg = LogGabor(parameterfile)
     lg.set_size((N_X, N_Y))
-    params = {'sf_0': .1, 'B_sf': 2*lg.pe.B_sf,
-              'theta': np.pi * 5 / 7., 'B_theta': 2*lg.pe.B_theta}
-    phase = np.pi/4
-    edge = lg.normalize(lg.invert(lg.loggabor(
-        N_X/3, 3*N_Y/4, **params)*np.exp(-1j*phase)))
+    # params = {'sf_0': .1, 'B_sf': lg.pe.B_sf,
+    #           'theta': np.pi * 5 / 7., 'B_theta': lg.pe.B_theta}
+    # phase = np.pi/4
+    # edge = lg.normalize(lg.invert(lg.loggabor(
+    #     N_X/3, 3*N_Y/4, **params)*np.exp(-1j*phase)))
 
     for i_theta in range(N_theta):
         for i_azimuth in range(N_azimuth):
@@ -56,9 +56,11 @@ def vectorization(N_theta, N_azimuth, N_eccentricty, N_phase, N_X, N_Y, rho):
                 y = N_Y/2 + r * \
                     np.sin((i_azimuth+(i_eccentricty % 2)*.5)*np.pi*2 / N_azimuth)
                 for i_phase in range(N_phase):
-                    params = {'sf_0': sf_0, 'B_sf': lg.pe.B_sf,
-                              'theta': i_theta*np.pi/N_theta, 'B_theta': np.pi/N_theta/2}
+                    params = {'sf_0': sf_0, 'B_sf': B_sf,
+                              'theta': i_theta*np.pi/N_theta, 'B_theta': B_theta}
                     phase = i_phase * np.pi/2
+                    # print(r, x, y, phase, params)
+
                     retina[i_theta, i_azimuth, i_eccentricty, i_phase, :] = lg.normalize(
                         lg.invert(lg.loggabor(x, y, **params)*np.exp(-1j*phase))).ravel()
     return retina
@@ -74,19 +76,43 @@ colliculus_vector = colliculus.reshape((N_azimuth*N_eccentricty, N_X*N_Y))
 colliculus_inverse = np.linalg.pinv(colliculus_vector)
 
 
-def mnist_fullfield(data, i_offset, j_offset, N_pic=N_X, noise=0.):
+def mnist_fullfield(data, i_offset, j_offset, N_pic=N_X, noise=0., figure_type=''):
     N_stim = data.shape[0]
     center = (N_pic-N_stim)//2
 
-    data_128 = (data.min().numpy()) * np.ones((N_pic, N_pic))
-    data_128[int(center+i_offset):int(center+N_stim+i_offset), int(center+j_offset):int(center+N_stim+j_offset)] = data
+    data_fullfield = (data.min().numpy()) * np.ones((N_pic, N_pic))
+    data_fullfield[int(center+i_offset):int(center+N_stim+i_offset), int(center+j_offset):int(center+N_stim+j_offset)] = data
 
     if noise>0.:
-        data_128 += noise * MotionCloudNoise()
+        data_fullfield += noise * MotionCloudNoise()
 
-    data_retina = retina_vector @ np.ravel(data_128)
+    data_retina = retina_vector @ np.ravel(data_fullfield)
 
-    return data_retina
+    if figure_type == 'cmap':
+        image_hat = phi_plus @ data_LP
+        fig, ax = plt.subplots(figsize=(13, 10.725))
+        cmap = ax.pcolor(np.arange(-N_pic/2, N_pic/2), np.arange(-N_pic/2, N_pic/2), image_hat.reshape((N_X, N_X)))
+        fig.colorbar(cmap)
+        return fig, ax
+
+    elif figure_type == 'log':
+        code = phi @ np.ravel(data_128)
+        global_energy = (code**2).sum(axis=(0, -1))
+        print(code.shape, global_energy.shape)
+
+        log_r_target = 1 + np.log(np.sqrt(i_offset**2 + j_offset**2) / np.sqrt(N_X**2 + N_Y**2) / 2) / 5
+        if j_offset != 0:
+            theta_target = np.arctan(-i_offset / j_offset)
+        else:
+            theta_target = np.sign(-i_offset) * np.pi/2
+        log_r, theta = np.meshgrid(np.linspace(0, 1, N_scale+1), np.linspace(-np.pi*.625, np.pi*1.375, N_orient+1))
+
+        fig, ax = plt.subplots(subplot_kw=dict(projection='polar'))
+        ax.pcolor(theta, log_r, np.fliplr(global_energy))
+        ax.plot(theta_target, log_r_target, 'r+')
+        return fig, ax
+    else:
+        return data_retina
 
 
 def accuracy_fullfield(accuracy, i_offset, j_offset, N_pic=N_X):
@@ -140,7 +166,7 @@ data_loader = torch.utils.data.DataLoader(
                    transform=transforms.Compose([
                        transforms.ToTensor(),
                        transforms.Normalize((0.1307,), (0.3081,))])),
-    batch_size=sample_size,
+    batch_size=minibatch_size,
     shuffle=True, **kwargs)
 
 
@@ -165,20 +191,20 @@ optimizer = torch.optim.SGD(net.parameters(), lr=lr)
 loss_func = torch.nn.BCEWithLogitsLoss()
 
 
-def train(net, sample_size, optimizer=optimizer, vsize=N_theta*N_azimuth*N_eccentricty*N_phase, asize=N_azimuth*N_eccentricty, offset_std=10, offset_max=25, verbose=1):
+def train(net, minibatch_size, optimizer=optimizer, vsize=N_theta*N_azimuth*N_eccentricty*N_phase, asize=N_azimuth*N_eccentricty, offset_std=10, offset_max=25, verbose=1):
     t_start = time.time()
     if verbose: print('Starting training...')
     for batch_idx, (data, label) in enumerate(data_loader):
 
-        input = np.zeros((sample_size, 1, vsize))
-        a_data = np.zeros((sample_size, 1, asize))
+        input = np.zeros((minibatch_size, 1, vsize))
+        a_data = np.zeros((minibatch_size, 1, asize))
 
-        target = np.zeros((sample_size, asize))
-        for idx in range(sample_size):
+        target = np.zeros((minibatch_size, asize))
+        for idx in range(minibatch_size):
 
             i_offset = minmax(np.random.randn()*offset_std, offset_max)
             j_offset = minmax(np.random.randn()*offset_std, offset_max)
-            input[idx, 0, :], a_data[idx, 0, :] = couples(data[idx, 0, :], i_offset, j_offset)
+            input[idx, 0, :], a_data[idx, 0, :] = couples(data[idx, 0, :, :], i_offset, j_offset)
             target[idx, :] = a_data[idx, 0, :]
 
         input, target = Variable(torch.FloatTensor(input)), Variable(torch.FloatTensor(a_data))
@@ -192,17 +218,17 @@ def train(net, sample_size, optimizer=optimizer, vsize=N_theta*N_azimuth*N_eccen
 
         if verbose and batch_idx % 100 == 0:
             print('[{}/{}] Loss: {} Time: {:.2f} mn'.format(
-                batch_idx*sample_size, len(data_loader.dataset),
+                batch_idx*minibatch_size, len(data_loader.dataset),
                 loss.data.numpy(), (time.time()-t_start)/60))
     return net
 
 
-def test(net, sample_size, optimizer=optimizer, vsize=N_theta*N_azimuth*N_eccentricty*N_phase, asize=N_azimuth*N_eccentricty, offset_std=10, offset_max=25):
+def test(net, minibatch_size, optimizer=optimizer, vsize=N_theta*N_azimuth*N_eccentricty*N_phase, asize=N_azimuth*N_eccentricty, offset_std=10, offset_max=25):
     for batch_idx, (data, label) in enumerate(data_loader):
-        input, a_data = np.zeros((sample_size, 1, vsize)), np.zeros(
-            (sample_size, 1, asize))
-        target = np.zeros((sample_size, asize))
-        for idx in range(sample_size):
+        input, a_data = np.zeros((minibatch_size, 1, vsize)), np.zeros(
+            (minibatch_size, 1, asize))
+        target = np.zeros((minibatch_size, asize))
+        for idx in range(minibatch_size):
 
             i_offset, j_offset = minmax(np.random.randn()*offset_std, offset_max), minmax(np.random.randn()*offset_std, offset_max)
             input[idx, 0, :], a_data[idx, 0, :] = couples(data[idx, 0, :], i_offset, j_offset)
@@ -288,16 +314,16 @@ def eval_sacc(vsize=N_theta*N_azimuth*N_eccentricty*N_phase, asize=N_azimuth*N_e
                     np.log(np.sqrt(i_offset**2 + j_offset**2) /
                            np.sqrt(N_X**2 + N_Y**2) / 2) / 5
                 if j_offset != 0:
-                    theta_a_data = np.arctan(-i_offset / j_offset)
+                    azimuth_a_data = np.arctan(-i_offset / j_offset)
                 else:
-                    theta_a_data = np.sign(-i_offset) * np.pi/2
-                print('a_data position (log_r, theta) = ({},{})'.format(log_r_a_data,
-                                                                        theta_a_data))
-                log_r, theta = np.meshgrid(np.linspace(0, 1, N_eccentricty+1), np.linspace(-np.pi*.625, np.pi*1.375, N_azimuth+1))
+                    azimuth_a_data = np.sign(-i_offset) * np.pi/2
+                print('a_data position (log_r, azimuth) = ({},{})'.format(log_r_a_data,
+                                                                        azimuth_a_data))
+                log_r, azimuth = np.meshgrid(np.linspace(0, 1, N_eccentricty+1), np.linspace(-np.pi*.625, np.pi*1.375, N_azimuth+1))
 
                 fig, ax = plt.subplots(subplot_kw=dict(projection='polar'))
-                ax.pcolor(theta, log_r, np.fliplr(global_colliculus))
-                ax.plot(theta_a_data, log_r_a_data, 'r+')
+                ax.pcolor(azimuth, log_r, np.fliplr(global_colliculus))
+                ax.plot(azimuth_a_data, log_r_a_data, 'r+')
                 #
                 # for i_azimuth in range(N_azimuth):
                 #     for i_eccentricty in range(N_eccentricty):
