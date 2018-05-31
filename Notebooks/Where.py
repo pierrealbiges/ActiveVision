@@ -3,16 +3,6 @@ import time
 import matplotlib.pyplot as plt
 import numpy as np
 import argparse
-# import noise
-
-# TODO: passer les arguments par la ligne de commande
-N_theta, N_azimuth, N_eccentricty, N_phase, N_X, N_Y, rho = 6, 12, 8, 2, 128, 128, 1.41
-minibatch_size = 100  # quantity of examples that'll be processed
-lr = 0.05
-n_hidden1 = int(((N_theta*N_azimuth*N_eccentricty*N_phase)/4)*3)
-n_hidden2 = int(((N_theta*N_azimuth*N_eccentricty*N_phase)/4))
-verbose = 1
-
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
@@ -21,6 +11,25 @@ import MotionClouds as mc
 from torchvision import datasets, transforms
 from torch.autograd import Variable
 from LogGabor import LogGabor
+
+# TODO: passer les arguments par la ligne de commande
+N_theta, N_azimuth, N_eccentricity, N_phase, N_X, N_Y, rho = 6, 12, 8, 2, 128, 128, 1.41
+minibatch_size = 100  # quantity of examples that'll be processed
+lr = 0.05
+n_hidden1 = int(((N_theta*N_azimuth*N_eccentricity*N_phase)/4)*3)
+n_hidden2 = int(((N_theta*N_azimuth*N_eccentricity*N_phase)/4))
+verbose = 1
+
+data_loader = torch.utils.data.DataLoader(
+    datasets.MNIST('/tmp/data', 
+                   train=True,    #def the dataset as training data 
+                   download=True,  #download if dataset not present on disk
+                   transform=transforms.Compose([
+                       transforms.ToTensor(),
+                       transforms.Normalize((0.1307,), (0.3081,))])),
+                   batch_size=minibatch_size, 
+                   shuffle=True)
+
 
 
 ## Charger la matrice de certitude
@@ -33,9 +42,8 @@ else:
     print('No accuracy data found.')
 
 ## Préparer l'apprentissage et les fonctions nécessaires au fonctionnement du script
-def vectorization(N_theta, N_azimuth, N_eccentricty, N_phase, N_X, N_Y, rho,
-                  ecc_max=.8, B_sf=.4, B_theta=np.pi/N_theta/2):
-    retina = np.zeros((N_theta, N_azimuth, N_eccentricty, N_phase, N_X*N_Y))
+def vectorization(N_theta=N_theta, N_azimuth=N_azimuth, N_eccentricity=N_eccentricity, N_phase=N_phase, N_X=N_X, N_Y=N_Y, rho=rho, ecc_max=.8, B_sf=.4, B_theta=np.pi/N_theta/2, figure_type='', save=False):
+    retina = np.zeros((N_theta, N_azimuth, N_eccentricity, N_phase, N_X*N_Y))
     parameterfile = 'https://raw.githubusercontent.com/bicv/LogGabor/master/default_param.py'
     lg = LogGabor(parameterfile)
     lg.set_size((N_X, N_Y))
@@ -47,37 +55,53 @@ def vectorization(N_theta, N_azimuth, N_eccentricty, N_phase, N_X, N_Y, rho,
 
     for i_theta in range(N_theta):
         for i_azimuth in range(N_azimuth):
-            for i_eccentricty in range(N_eccentricty):
-                ecc = ecc_max * (1/rho)**(N_eccentricty - i_eccentricty)
+            for i_eccentricity in range(N_eccentricity):
+                ecc = ecc_max * (1/rho)**(N_eccentricity - i_eccentricity)
                 r = np.sqrt(N_X**2+N_Y**2) / 2 * ecc  # radius
                 sf_0 = 0.5 * 0.03 / ecc
                 x = N_X/2 + r * \
-                    np.cos((i_azimuth+(i_eccentricty % 2)*.5)*np.pi*2 / N_azimuth)
+                    np.cos((i_azimuth+(i_eccentricity % 2)*.5)*np.pi*2 / N_azimuth)
                 y = N_Y/2 + r * \
-                    np.sin((i_azimuth+(i_eccentricty % 2)*.5)*np.pi*2 / N_azimuth)
+                    np.sin((i_azimuth+(i_eccentricity % 2)*.5)*np.pi*2 / N_azimuth)
                 for i_phase in range(N_phase):
                     params = {'sf_0': sf_0, 'B_sf': B_sf,
                               'theta': i_theta*np.pi/N_theta, 'B_theta': B_theta}
                     phase = i_phase * np.pi/2
                     # print(r, x, y, phase, params)
 
-                    retina[i_theta, i_azimuth, i_eccentricty, i_phase, :] = lg.normalize(
+                    retina[i_theta, i_azimuth, i_eccentricity, i_phase, :] = lg.normalize(
                         lg.invert(lg.loggabor(x, y, **params)*np.exp(-1j*phase))).ravel()
-    return retina
+    if figure_type == 'contourf':
+        FIG_WIDTH = 10 
+        fig, ax = plt.subplots(figsize=(FIG_WIDTH, FIG_WIDTH))
+        for i_theta in range(N_theta):
+            for i_azimuth in range(N_azimuth):
+                for i_eccentricity in range(N_eccentricity):
+                    env = np.sqrt(retina[i_theta, i_azimuth, i_eccentricity, 0, :]**2 + retina[i_theta, i_azimuth, i_eccentricity, 1, :]**2).reshape((N_X, N_Y))
+                    ax.contourf(env, levels=[env.max()/1.2, env.max()/1.00001], lw=1, colors=[plt.cm.viridis(i_theta/(N_theta))], alpha=.1)
+        fig.suptitle('Tiling of visual space using the retinal filters')
+        ax.set_xlabel(r'$Y$')
+        ax.set_ylabel(r'$X$')
+        ax.axis('equal')
+        if save: plt.savefig('logpol_filter.pdf')
+        plt.tight_layout()
+        return fig, ax
+    else:
+        return retina
 
 
-retina = vectorization(N_theta, N_azimuth, N_eccentricty, N_phase, N_X, N_Y, rho)
-retina_vector = retina.reshape((N_theta*N_azimuth*N_eccentricty*N_phase, N_X*N_Y))
+retina = vectorization(N_theta, N_azimuth, N_eccentricity, N_phase, N_X, N_Y, rho)
+retina_vector = retina.reshape((N_theta*N_azimuth*N_eccentricity*N_phase, N_X*N_Y))
 retina_inverse = np.linalg.pinv(retina_vector)
 
 colliculus = (retina**2).sum(axis=(0, 3))
 colliculus = colliculus**.5
 colliculus /= colliculus.sum(axis=-1)[:, :, None]
-colliculus_vector = colliculus.reshape((N_azimuth*N_eccentricty, N_X*N_Y))
+colliculus_vector = colliculus.reshape((N_azimuth*N_eccentricity, N_X*N_Y))
 colliculus_inverse = np.linalg.pinv(colliculus_vector)
 
 
-def mnist_fullfield(data, i_offset, j_offset, N_pic=N_X, noise=0.,  mean=.25,  std=.25, figure_type=''):
+def mnist_fullfield(data, i_offset, j_offset, N_pic=N_X, noise=0.,  mean=.25,  std=.25, figure_type='', save=False):
     N_stim = data.shape[0]
     center = (N_pic-N_stim)//2
 
@@ -94,10 +118,17 @@ def mnist_fullfield(data, i_offset, j_offset, N_pic=N_X, noise=0.,  mean=.25,  s
     data_retina *= std
     data_retina += mean
 
-    if figure_type == 'cmap':
-        image_hat = phi_plus @ data_LP
+    if figure_type == '128':
         fig, ax = plt.subplots(figsize=(13, 10.725))
-        cmap = ax.pcolor(np.arange(-N_pic/2, N_pic/2), np.arange(-N_pic/2, N_pic/2), image_hat.reshape((N_X, N_X)))
+        cmap = ax.pcolor(np.arange(-N_pic/2, N_pic/2), np.arange(-N_pic/2, N_pic/2), np.flipud(data_fullfield), cmap='Greys_r')
+        fig.colorbar(cmap)
+        if save: plt.savefig('mnist_128.pdf')
+        return fig, ax
+    
+    elif figure_type == 'cmap':
+        image_hat = retina_inverse @ data_retina
+        fig, ax = plt.subplots(figsize=(13, 10.725))
+        cmap = ax.pcolor(np.arange(-N_pic/2, N_pic/2), np.arange(-N_pic/2, N_pic/2), np.flipud(image_hat.reshape((N_X, N_X))), cmap='Greys_r')
         fig.colorbar(cmap)
         return fig, ax
 
@@ -148,14 +179,22 @@ def minmax(value, border):
     return int(value)
 
 
-def MotionCloudNoise(sf_0=0.125, B_sf=3.):
+def MotionCloudNoise(sf_0=0.125, B_sf=3., figure_type='', save=False):
     mc.N_X, mc.N_Y, mc.N_frame = 128, 128, 1
     fx, fy, ft = mc.get_grids(mc.N_X, mc.N_Y, mc.N_frame)
     name = 'static'
     env = mc.envelope_gabor(fx, fy, ft, sf_0=sf_0, B_sf=B_sf, B_theta=np.inf, V_X=0., V_Y=0., B_V=0, alpha=.5)
     z = mc.rectif(mc.random_cloud(env))
     z = z.reshape((mc.N_X, mc.N_Y))
-    return z
+    
+    if figure_type == 'cmap':
+        fig, ax = plt.subplots(figsize=(13, 10.725))
+        cmap = ax.pcolor(np.arange(-mc.N_X/2, mc.N_X/2), np.arange(-mc.N_X/2, mc.N_X/2), MotionCloudNoise(), cmap='Greys_r')
+        fig.colorbar(cmap)
+        if save: plt.savefig('motioncloud_noise.pdf')
+        return fig, ax
+    else:
+        return z
 
 
 do_cuda = False # torch.cuda.is_available()
@@ -193,14 +232,14 @@ class Net(torch.nn.Module):
         #return F.sigmoid(data)
 
 #print(device)
-net = Net(n_feature=N_theta*N_azimuth*N_eccentricty*N_phase, n_hidden1=n_hidden1, n_hidden2=n_hidden2, n_output=N_azimuth*N_eccentricty)
+net = Net(n_feature=N_theta*N_azimuth*N_eccentricity*N_phase, n_hidden1=n_hidden1, n_hidden2=n_hidden2, n_output=N_azimuth*N_eccentricity)
 #net = net.to(device)
 optimizer = torch.optim.SGD(net.parameters(), lr=lr)
 # https://pytorch.org/docs/master/nn.html?highlight=bcewithlogitsloss#torch.nn.BCEWithLogitsLoss
 loss_func = torch.nn.BCEWithLogitsLoss()
 
 
-def train(net, minibatch_size, optimizer=optimizer, vsize=N_theta*N_azimuth*N_eccentricty*N_phase, asize=N_azimuth*N_eccentricty, offset_std=10, offset_max=25, verbose=1):
+def train(net, minibatch_size, optimizer=optimizer, vsize=N_theta*N_azimuth*N_eccentricity*N_phase, asize=N_azimuth*N_eccentricity, offset_std=10, offset_max=25, verbose=1):
     t_start = time.time()
     if verbose: print('Starting training...')
     for batch_idx, (data, label) in enumerate(data_loader):
@@ -232,7 +271,7 @@ def train(net, minibatch_size, optimizer=optimizer, vsize=N_theta*N_azimuth*N_ec
     return net
 
 
-def test(net, minibatch_size, optimizer=optimizer, vsize=N_theta*N_azimuth*N_eccentricty*N_phase, asize=N_azimuth*N_eccentricty, offset_std=10, offset_max=25):
+def test(net, minibatch_size, optimizer=optimizer, vsize=N_theta*N_azimuth*N_eccentricity*N_phase, asize=N_azimuth*N_eccentricity, offset_std=10, offset_max=25):
     for batch_idx, (data, label) in enumerate(data_loader):
         input, a_data = np.zeros((minibatch_size, 1, vsize)), np.zeros(
             (minibatch_size, 1, asize))
@@ -252,7 +291,7 @@ def test(net, minibatch_size, optimizer=optimizer, vsize=N_theta*N_azimuth*N_ecc
     return loss.data.numpy()
 
 
-def eval_sacc(vsize=N_theta*N_azimuth*N_eccentricty*N_phase, asize=N_azimuth*N_eccentricty,
+def eval_sacc(vsize=N_theta*N_azimuth*N_eccentricity*N_phase, asize=N_azimuth*N_eccentricity,
              N_pic=N_X, sacc_lim=5, fovea_size=10, offset_std=10, offset_max=25, fig_type='cmap'):
     for batch_idx, (data, label) in enumerate(data_loader):
         #data = data.to(device)
@@ -317,7 +356,7 @@ def eval_sacc(vsize=N_theta*N_azimuth*N_eccentricty*N_phase, asize=N_azimuth*N_e
 
                 # code = colliculus_inverse @ pred_data
                 # global_colliculus = colliculus_vector @ code
-                global_colliculus = pred_data.reshape(N_eccentricty, N_azimuth)
+                global_colliculus = pred_data.reshape(N_eccentricity, N_azimuth)
 
                 log_r_a_data = 1 + \
                     np.log(np.sqrt(i_offset**2 + j_offset**2) /
@@ -328,7 +367,7 @@ def eval_sacc(vsize=N_theta*N_azimuth*N_eccentricty*N_phase, asize=N_azimuth*N_e
                     azimuth_a_data = np.sign(-i_offset) * np.pi/2
                 print('a_data position (log_r, azimuth) = ({},{})'.format(log_r_a_data,
                                                                         azimuth_a_data))
-                azimuth, log_r = np.meshgrid(np.linspace(-np.pi, np.pi, N_azimuth), np.linspace(0, 1, N_eccentricty))
+                azimuth, log_r = np.meshgrid(np.linspace(-np.pi, np.pi, N_azimuth), np.linspace(0, 1, N_eccentricity))
                 fig, ax = plt.subplots(subplot_kw=dict(projection='polar'))
                 #ax.imshow(np.fliplr(global_colliculus))
                 # ax.pcolormesh(np.fliplr(global_colliculus))
@@ -337,10 +376,10 @@ def eval_sacc(vsize=N_theta*N_azimuth*N_eccentricty*N_phase, asize=N_azimuth*N_e
                 fig.colorbar(cmap)
                 #
                 # for i_azimuth in range(N_azimuth):
-                #     for i_eccentricty in range(N_eccentricty):
-                #         if global_colliculus[i_azimuth][i_eccentricty] == np.max(global_colliculus):
+                #     for i_eccentricity in range(N_eccentricity):
+                #         if global_colliculus[i_azimuth][i_eccentricity] == np.max(global_colliculus):
                 #             print('Position prediction (orient, scale) = ({},{})'.format(
-                #                 i_azimuth, i_eccentricty))
+                #                 i_azimuth, i_eccentricity))
 
                 # a_data_in_fovea = True
 
