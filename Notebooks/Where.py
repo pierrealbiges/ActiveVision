@@ -311,7 +311,7 @@ def eval_sacc(vsize=N_theta*N_azimuth*N_eccentricty*N_phase, asize=N_azimuth*N_e
                 #         print('a_data predicted in fovea, stopping the saccadic exploration')
 
             if fig_type == 'log':
-                print(pred_data.shape)
+                # print(pred_data.shape)
                 print('Loading pred_data... min, max=', pred_data.min(), pred_data.max())
 
                 # code = colliculus_inverse @ pred_data
