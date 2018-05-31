@@ -54,8 +54,8 @@ if os.path.isfile(path):
     accuracy =  np.load(path)
 else:
     print('No accuracy data found.')
-    
-    
+
+
 sample_size = 100  # quantity of examples that'll be processed
 N_theta, N_orient, N_scale, N_phase, N_X, N_Y, rho = 6, 12, 5, 2, 128, 128, 1.61803
 lr = 0.05
@@ -108,9 +108,6 @@ def accuracy_128(i_offset, j_offset, N_pic=N_X, N_stim=55):
     center = (N_pic-N_stim)//2
 
     accuracy_128 = 0.1 * np.ones((N_pic, N_pic))
-
-    accuracy_128[(center+i_offset):(center+N_stim+i_offset), (center+j_offset):(center+N_stim+j_offset)] = accuracy
-=======
     accuracy_128[int(center+i_offset):int(center+N_stim+i_offset),
                  int(center+j_offset):int(center+N_stim+j_offset)] = accuracy
 
@@ -219,7 +216,7 @@ net = Net(n_feature=N_theta*N_orient*N_scale*N_phase, n_hidden1=n_hidden1, n_hid
 optimizer = torch.optim.SGD(net.parameters(), lr=lr)
 loss_func = torch.nn.BCEWithLogitsLoss()
 
-   
+
 def train(net, sample_size, optimizer=optimizer, vsize=N_theta*N_orient*N_scale*N_phase, asize=N_orient*N_scale, offset_std=10, offset_max=25, verbose=1):
     t_start = time.time()
     if verbose: print('Starting training...')
@@ -230,7 +227,7 @@ def train(net, sample_size, optimizer=optimizer, vsize=N_theta*N_orient*N_scale*
         for idx in range(sample_size):
 
             i_offset, j_offset = minmax(np.random.randn()*offset_std, offset_max), minmax(np.random.randn()*offset_std, offset_max)
-            input[idx, 0, :], a_data[idx, 0, :] = couples(data[idx, 0, :], i_offset, j_offset, 
+            input[idx, 0, :], a_data[idx, 0, :] = couples(data[idx, 0, :], i_offset, j_offset,
                                                                                        device)
             target[idx, :] = a_data[idx, 0, :]
 
