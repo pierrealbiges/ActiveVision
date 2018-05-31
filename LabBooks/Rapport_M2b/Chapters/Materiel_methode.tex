@@ -1,10 +1,16 @@
+%!TEX root = main.tex
+%!TeX TS-program = pdflatex
+%!TeX encoding = UTF-8 Unicode
+%!TeX spellcheck = en-US
+%!BIB TS-program = biber
+% -*- coding: UTF-8; -*-
+% vim: set fenc=utf-8
 % Chapter Template
-
 \chapter{Matériel et méthodes} % Main chapter title
 \label{Materiel_methode} % Change X to a consecutive number; for referencing this chapter elsewhere, use \ref{ChapterX}
 
 \section{Matériel}
-L'ensemble des simulations (comprenant apprentissage et évaluation) ont été réalisées sur une machine connectée à distance via un protocole ssh et dont les caractéristiques sont visibles dans la~\autoref{tab:materiel}.
+L'ensemble des simulations (comprenant apprentissage et évaluation) ont été réalisées sur une machine connectée à distance via un protocole \verb+ssh+ et dont les caractéristiques sont visibles dans la~\autoref{tab:materiel}.
 
 \section{Carte de certitude}
 En amont de l'initialisation de notre modèle, nous créons un classifieur simple que nous entaînons pour être capable d'obtenir, dans des conditions classiques, des performances acceptables sur la base de données MNIST (99\% de reconnaissance positive du chiffre contenu dans l'image).
