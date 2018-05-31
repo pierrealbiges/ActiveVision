@@ -26,14 +26,14 @@ Pour pouvoir écrire le rapport, j'ai voulu fixer un stade de développement du 
 + Réaliser des benchmarking pour choisir les paramètre optimaux pour le modèle
     + learning rate
 + Ne garder que N_pic ou N_X/N_Y (doublon)
-+ Adapter Regard.py à notre modèle
++ **Adapter Regard.py à notre modèle**
 + Normaliser les données après transformations 128+noise+logpol
-+ Corriger le calcul de la nouvelle position du stimulus avec saccade
++ Corriger le calcul de la nouvelle position du stimulus avec saccade -> (max(a,b) - min(a,b)) ?
 
 ### Rapport de stage
 + ~~Ecrire une ébauche d'Introduction~~
-+ **Ecrire une ébauche de Matériel et méthodes**
-+ Ecrire une ébauche de Résultats
++ ~~Ecrire une ébauche de Matériel et méthodes~~
++ **Ecrire une ébauche de Résultats**
 + Ecrire une ébauche de Discussion
 
 ---
