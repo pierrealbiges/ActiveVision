@@ -95,7 +95,6 @@ class Data():
                        **kwargs)
 
     def show(self, gamma=.5, noise_level=.4, transpose=True):
-
         images, foo = next(iter(self.train_loader))
 
         from torchvision.utils import make_grid
