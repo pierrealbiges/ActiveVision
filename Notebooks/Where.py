@@ -3,7 +3,7 @@ import time
 import matplotlib.pyplot as plt
 import numpy as np
 import argparse
-import noise
+# import noise
 
 # TODO: passer les arguments par la ligne de commande
 N_theta, N_azimuth, N_eccentricty, N_phase, N_X, N_Y, rho = 6, 12, 8, 2, 128, 128, 1.41
@@ -12,7 +12,6 @@ lr = 0.05
 n_hidden1 = int(((N_theta*N_azimuth*N_eccentricty*N_phase)/4)*3)
 n_hidden2 = int(((N_theta*N_azimuth*N_eccentricty*N_phase)/4))
 verbose = 1
-
 
 import torch
 import torch.nn as nn
@@ -72,6 +71,7 @@ retina_vector = retina.reshape((N_theta*N_azimuth*N_eccentricty*N_phase, N_X*N_Y
 retina_inverse = np.linalg.pinv(retina_vector)
 
 colliculus = (retina**2).sum(axis=(0, 3))
+colliculus = colliculus**.5
 colliculus /= colliculus.sum(axis=-1)[:, :, None]
 colliculus_vector = colliculus.reshape((N_azimuth*N_eccentricty, N_X*N_Y))
 colliculus_inverse = np.linalg.pinv(colliculus_vector)
@@ -97,7 +97,7 @@ def mnist_fullfield(data, i_offset, j_offset, N_pic=N_X, noise=0., figure_type='
         return fig, ax
 
     elif figure_type == 'log':
-        code = phi @ np.ravel(data_128)
+        code = phi @ np.ravel(data_LP)
         global_energy = (code**2).sum(axis=(0, -1))
         print(code.shape, global_energy.shape)
 
@@ -123,7 +123,6 @@ def accuracy_fullfield(accuracy, i_offset, j_offset, N_pic=N_X):
     accuracy_fullfield = 0.1 * np.ones((N_pic, N_pic))
     accuracy_fullfield[int(center+i_offset):int(center+N_stim+i_offset),
                  int(center+j_offset):int(center+N_stim+j_offset)] = accuracy
-
 
     accuracy_colliculus = colliculus_vector @ np.ravel(accuracy_fullfield)
     # if verbose: print('accuracy_colliculus... min, max=', accuracy_colliculus.min(), accuracy_colliculus.max())
@@ -178,9 +177,13 @@ class Net(torch.nn.Module):
         self.hidden2 = torch.nn.Linear(n_hidden1, n_hidden2)
         self.predict = torch.nn.Linear(n_hidden2, n_output)
 
-    def forward(self, data):
-        data = F.leaky_relu(self.hidden1(data))
-        data = F.leaky_relu(self.hidden2(data))
+    def forward(self, data, do_leaky_relu=False):
+        if do_leaky_relu:
+            data = F.relu(self.hidden1(data))
+            data = F.relu(self.hidden2(data))
+        else:
+            data = F.leaky_relu(self.hidden1(data))
+            data = F.leaky_relu(self.hidden2(data))
         data = self.predict(data)
         return F.sigmoid(data)
 
@@ -320,13 +323,13 @@ def eval_sacc(vsize=N_theta*N_azimuth*N_eccentricty*N_phase, asize=N_azimuth*N_e
                     azimuth_a_data = np.sign(-i_offset) * np.pi/2
                 print('a_data position (log_r, azimuth) = ({},{})'.format(log_r_a_data,
                                                                         azimuth_a_data))
-                log_r, azimuth = np.meshgrid(np.linspace(0, 1, N_eccentricty+1), np.linspace(-np.pi, np.pi, N_azimuth+1))
-
-                fig, ax = plt.subplots()#subplot_kw=dict(projection='polar'))
-                ax.imshow(np.fliplr(global_colliculus))
+                azimuth, log_r = np.meshgrid(np.linspace(-np.pi, np.pi, N_azimuth), np.linspace(0, 1, N_eccentricty))
+                fig, ax = plt.subplots(subplot_kw=dict(projection='polar'))
+                #ax.imshow(np.fliplr(global_colliculus))
                 # ax.pcolormesh(np.fliplr(global_colliculus))
-                # ax.pcolormesh(log_r, azimuth, np.fliplr(global_colliculus))
+                cmap = ax.pcolor(log_r, azimuth, global_colliculus)
                 ax.plot(azimuth_a_data, log_r_a_data, 'r+')
+                fig.colorbar(cmap)
                 #
                 # for i_azimuth in range(N_azimuth):
                 #     for i_eccentricty in range(N_eccentricty):
@@ -335,6 +338,7 @@ def eval_sacc(vsize=N_theta*N_azimuth*N_eccentricty*N_phase, asize=N_azimuth*N_e
                 #                 i_azimuth, i_eccentricty))
 
                 # a_data_in_fovea = True
+
 
         print('*' * 50)
         return prediction
