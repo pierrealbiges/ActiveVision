@@ -12,30 +12,6 @@ lr = 0.05
 n_hidden1 = ((N_theta*N_orient*N_scale*N_phase)/4)*3
 n_hidden2 = ((N_theta*N_orient*N_scale*N_phase)/4)
 
-# Training settings
-parser = argparse.ArgumentParser(description='PyTorch MNIST Example')
-parser.add_argument('--batch-size', type=int, default=10, metavar='N',
-                    help='input batch size for training (default: 64)')
-parser.add_argument('--test-batch-size', type=int, default=10, metavar='N',
-                    help='input batch size for testing (default: 1000)')
-parser.add_argument('--epochs', type=int, default=10, metavar='N',
-                    help='number of epochs to train (default: 10)')
-parser.add_argument('--lr', type=float, default=0.01, metavar='LR',
-                    help='learning rate (default: 0.01)')
-parser.add_argument('--momentum', type=float, default=0.9, metavar='M', #default = 0.5
-                    help='SGD momentum (default: 0.5)')
-parser.add_argument('--no-cuda', action='store_true', default=False,
-                    help='disables CUDA training')
-parser.add_argument('--seed', type=int, default=1, metavar='S',
-                    help='random seed (default: 1)')
-parser.add_argument('--log-interval', type=int, default=10, metavar='N',
-                    help='how many batches to wait before logging training status')
-parser.add_argument('--dimension', type=int, default = 120, metavar='D',
-                    help='the dimension of the second neuron network') #ajout de l'argument dimension représentant le nombre de neurone dans la deuxième couche.
-parser.add_argument('--boucle', type=int, default=0, metavar='B',
-                   help='boucle pour faire différents couche de la deuxième couche de neurone')# ajout de boucle pour automatiser le nombre de neurone dans la deuxieme couche
-args = parser.parse_args()
-
 
 import torch
 import torch.nn as nn
@@ -135,8 +111,8 @@ def mnist_128(data, i_offset, j_offset, N_pic=N_X, N_stim=28, noise=True, noise_
     return data_LP
 
 
-def couples(data, i_offset, j_offset, device):
-    data = data.to(device)
+def couples(data, i_offset, j_offset):#, device):
+    #data = data.to(device)
     v = mnist_128(data.cpu(), i_offset, j_offset)
     a = accuracy_128(i_offset, j_offset)
     return (v, a)
@@ -146,29 +122,6 @@ def minmax(value, border):
     value = max(value, -border)
     value = min(value, border)
     return int(value)
-
-
-def sigmoid(values):
-    values = 1 / (1 + ((1 / 0.1) - 1) * np.exp(-values))
-    return values
-
-
-def randomized_perlin_noise(shape=(128, 128), scale=10, octaves=6, persistence=0.5, lacunarity=2.0, base=0):
-    noise_vector = np.zeros(shape)
-    for i in range(shape[0]):
-        for j in range(shape[1]):
-            noise_vector[i][j] = noise.pnoise2(i/scale,
-                                               j/scale,
-                                               octaves=int(
-                                                   octave * abs(np.random.randn()))+1,
-                                               persistence=persistence *
-                                               abs(np.random.randn()),
-                                               lacunarity=lacunarity *
-                                               abs(np.random.randn()),
-                                               repeatx=shape[0],
-                                               repeaty=shape[1],
-                                               base=base)
-    return noise_vector
 
 
 def MotionCloudNoise(sf_0=0.125, B_sf=3.):
@@ -182,8 +135,7 @@ def MotionCloudNoise(sf_0=0.125, B_sf=3.):
     return z
 
 
-
-do_cuda = torch.cuda.is_available()
+do_cuda = False # torch.cuda.is_available()
 kwargs = {'num_workers': 1, 'pin_memory': True} if do_cuda else {}
 device = torch.cuda.device("cuda" if do_cuda else "cpu")
 
@@ -213,8 +165,9 @@ class Net(torch.nn.Module):
 
         return data
 
-
-net = Net(n_feature=N_theta*N_orient*N_scale*N_phase, n_hidden1=n_hidden1, n_hidden2=n_hidden2, n_output=N_orient*N_scale).to(device)
+#print(device)
+net = Net(n_feature=N_theta*N_orient*N_scale*N_phase, n_hidden1=n_hidden1, n_hidden2=n_hidden2, n_output=N_orient*N_scale)
+#net = net.to(device)
 optimizer = torch.optim.SGD(net.parameters(), lr=lr)
 loss_func = torch.nn.BCEWithLogitsLoss()
 
@@ -229,8 +182,7 @@ def train(net, sample_size, optimizer=optimizer, vsize=N_theta*N_orient*N_scale*
         for idx in range(sample_size):
 
             i_offset, j_offset = minmax(np.random.randn()*offset_std, offset_max), minmax(np.random.randn()*offset_std, offset_max)
-            input[idx, 0, :], a_data[idx, 0, :] = couples(data[idx, 0, :], i_offset, j_offset,
-                                                                                       device)
+            input[idx, 0, :], a_data[idx, 0, :] = couples(data[idx, 0, :], i_offset, j_offset)
             target[idx, :] = a_data[idx, 0, :]
 
         input, target = Variable(torch.FloatTensor(input)), Variable(torch.FloatTensor(a_data))
@@ -257,7 +209,7 @@ def test(net, sample_size, optimizer=optimizer, vsize=N_theta*N_orient*N_scale*N
         for idx in range(sample_size):
 
             i_offset, j_offset = minmax(np.random.randn()*offset_std, offset_max), minmax(np.random.randn()*offset_std, offset_max)
-            input[idx, 0, :], a_data[idx, 0, :] = couples(data[idx, 0, :], i_offset, j_offset, device)
+            input[idx, 0, :], a_data[idx, 0, :] = couples(data[idx, 0, :], i_offset, j_offset)
             target[idx, :] = a_data[idx, 0, :]
 
         input = Variable(torch.FloatTensor(input))
@@ -271,7 +223,7 @@ def test(net, sample_size, optimizer=optimizer, vsize=N_theta*N_orient*N_scale*N
 
 def eval_sacc(vsize=N_theta*N_orient*N_scale*N_phase, asize=N_orient*N_scale, N_pic=N_X, sacc_lim=5, fovea_size=10, offset_std=10, offset_max=25, fig_type='cmap'):
     for batch_idx, (data, label) in enumerate(data_loader):
-        data = data.to(device)
+        #data = data.to(device)
         i_offset = minmax(np.random.randn()*offset_std, offset_max)
         j_offset = minmax(np.random.randn()*offset_std, offset_max)
         print('Stimulus position: ({},{})'.format(i_offset, j_offset))
@@ -280,7 +232,7 @@ def eval_sacc(vsize=N_theta*N_orient*N_scale*N_phase, asize=N_orient*N_scale, N_
 
         while not a_data_in_fovea:
             input, a_data = np.zeros((1, 1, vsize)), np.zeros((1, 1, asize))
-            input[0, 0, :], a_data[0, 0, :] = couples(data[0, 0, :], i_offset, j_offset, device)
+            input[0, 0, :], a_data[0, 0, :] = couples(data[0, 0, :], i_offset, j_offset)
             input, a_data = Variable(torch.FloatTensor(input)), Variable(torch.FloatTensor(a_data))
             input, a_data = Variable(torch.FloatTensor(input)), Variable(torch.FloatTensor(a_data))
 
@@ -369,6 +321,31 @@ def main():
 
 
 if __name__ == '__main__':
+
+    # Training settings
+    parser = argparse.ArgumentParser(description='PyTorch MNIST Example')
+    parser.add_argument('--batch-size', type=int, default=10, metavar='N',
+                        help='input batch size for training (default: 64)')
+    parser.add_argument('--test-batch-size', type=int, default=10, metavar='N',
+                        help='input batch size for testing (default: 1000)')
+    parser.add_argument('--epochs', type=int, default=10, metavar='N',
+                        help='number of epochs to train (default: 10)')
+    parser.add_argument('--lr', type=float, default=0.01, metavar='LR',
+                        help='learning rate (default: 0.01)')
+    parser.add_argument('--momentum', type=float, default=0.9, metavar='M', #default = 0.5
+                        help='SGD momentum (default: 0.5)')
+    parser.add_argument('--no-cuda', action='store_true', default=False,
+                        help='disables CUDA training')
+    parser.add_argument('--seed', type=int, default=1, metavar='S',
+                        help='random seed (default: 1)')
+    parser.add_argument('--log-interval', type=int, default=10, metavar='N',
+                        help='how many batches to wait before logging training status')
+    parser.add_argument('--dimension', type=int, default = 120, metavar='D',
+                        help='the dimension of the second neuron network') #ajout de l'argument dimension représentant le nombre de neurone dans la deuxième couche.
+    parser.add_argument('--boucle', type=int, default=0, metavar='B',
+                       help='boucle pour faire différents couche de la deuxième couche de neurone')# ajout de boucle pour automatiser le nombre de neurone dans la deuxieme couche
+    args = parser.parse_args()
+
     if args.boucle == 1: # Pour que la boucle se fasse indiquer --boucle 1
         rho = 10**(1/3)
         for i in [int (k) for k in rho**np.arange(2,9)]:# i prend les valeur en entier du tuple rho correspondra au nombre de neurone
