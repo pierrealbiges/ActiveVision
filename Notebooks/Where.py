@@ -34,7 +34,8 @@ else:
     print('No accuracy data found.')
 
 ## Préparer l'apprentissage et les fonctions nécessaires au fonctionnement du script
-def vectorization(N_theta, N_azimuth, N_eccentricty, N_phase, N_X, N_Y, rho, B_sf=.1, B_theta=np.pi/N_theta/2):
+def vectorization(N_theta, N_azimuth, N_eccentricty, N_phase, N_X, N_Y, rho,
+                  ecc_max=.8, B_sf=.4, B_theta=np.pi/N_theta/2):
     retina = np.zeros((N_theta, N_azimuth, N_eccentricty, N_phase, N_X*N_Y))
     parameterfile = 'https://raw.githubusercontent.com/bicv/LogGabor/master/default_param.py'
     lg = LogGabor(parameterfile)
@@ -48,7 +49,7 @@ def vectorization(N_theta, N_azimuth, N_eccentricty, N_phase, N_X, N_Y, rho, B_s
     for i_theta in range(N_theta):
         for i_azimuth in range(N_azimuth):
             for i_eccentricty in range(N_eccentricty):
-                ecc = (1/rho)**(N_eccentricty - i_eccentricty)
+                ecc = ecc_max * (1/rho)**(N_eccentricty - i_eccentricty)
                 r = np.sqrt(N_X**2+N_Y**2) / 2 * ecc  # radius
                 sf_0 = 0.5 * 0.03 / ecc
                 x = N_X/2 + r * \
@@ -181,7 +182,7 @@ class Net(torch.nn.Module):
         data = F.leaky_relu(self.hidden1(data))
         data = F.leaky_relu(self.hidden2(data))
         data = self.predict(data)
-        return data
+        return F.sigmoid(data)
 
 #print(device)
 net = Net(n_feature=N_theta*N_azimuth*N_eccentricty*N_phase, n_hidden1=n_hidden1, n_hidden2=n_hidden2, n_output=N_azimuth*N_eccentricty)
@@ -319,10 +320,12 @@ def eval_sacc(vsize=N_theta*N_azimuth*N_eccentricty*N_phase, asize=N_azimuth*N_e
                     azimuth_a_data = np.sign(-i_offset) * np.pi/2
                 print('a_data position (log_r, azimuth) = ({},{})'.format(log_r_a_data,
                                                                         azimuth_a_data))
-                log_r, azimuth = np.meshgrid(np.linspace(0, 1, N_eccentricty+1), np.linspace(-np.pi*.625, np.pi*1.375, N_azimuth+1))
+                log_r, azimuth = np.meshgrid(np.linspace(0, 1, N_eccentricty+1), np.linspace(-np.pi, np.pi, N_azimuth+1))
 
-                fig, ax = plt.subplots(subplot_kw=dict(projection='polar'))
-                ax.pcolor(azimuth, log_r, np.fliplr(global_colliculus))
+                fig, ax = plt.subplots()#subplot_kw=dict(projection='polar'))
+                ax.imshow(np.fliplr(global_colliculus))
+                # ax.pcolormesh(np.fliplr(global_colliculus))
+                # ax.pcolormesh(log_r, azimuth, np.fliplr(global_colliculus))
                 ax.plot(azimuth_a_data, log_r_a_data, 'r+')
                 #
                 # for i_azimuth in range(N_azimuth):
@@ -331,7 +334,7 @@ def eval_sacc(vsize=N_theta*N_azimuth*N_eccentricty*N_phase, asize=N_azimuth*N_e
                 #             print('Position prediction (orient, scale) = ({},{})'.format(
                 #                 i_azimuth, i_eccentricty))
 
-                a_data_in_fovea = True
+                # a_data_in_fovea = True
 
         print('*' * 50)
         return prediction
