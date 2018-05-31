@@ -110,7 +110,6 @@ def accuracy_128(i_offset, j_offset, N_pic=N_X, N_stim=55):
     accuracy_128 = 0.1 * np.ones((N_pic, N_pic))
 
     accuracy_128[(center+i_offset):(center+N_stim+i_offset), (center+j_offset):(center+N_stim+j_offset)] = accuracy
-=======
     accuracy_128[int(center+i_offset):int(center+N_stim+i_offset),
                  int(center+j_offset):int(center+N_stim+j_offset)] = accuracy
 
@@ -230,27 +229,10 @@ def train(net, sample_size, optimizer=optimizer, vsize=N_theta*N_orient*N_scale*
         for idx in range(sample_size):
 
             i_offset, j_offset = minmax(np.random.randn()*offset_std, offset_max), minmax(np.random.randn()*offset_std, offset_max)
-            input[idx, 0, :], a_data[idx, 0, :] = couples(data[idx, 0, :], i_offset, j_offset, 
-                                                                                       device)
+            input[idx, 0, :], a_data[idx, 0, :] = couples(data[idx, 0, :], i_offset, j_offset, device)
             target[idx, :] = a_data[idx, 0, :]
 
         input, target = Variable(torch.FloatTensor(input)), Variable(torch.FloatTensor(a_data))
-
-            i_offset, j_offset = minmax(np.random.randn()*offset_std, offset_max),
-                                 minmax(np.random.randn()*offset_std, offset_max)
-
-            i_offset = minmax(np.random.randn()*offset_std, offset_max)
-            j_offset = minmax(np.random.randn()*offset_std, offset_max)
-
-            input[idx, 0, :], a_data[idx, 0, :] = couples(data[idx, 0, :], i_offset, j_offset,
-                                                                                       device)
-            target[idx, :] = a_data[idx, 0, :]
-
-        input, target = Variable(torch.FloatTensor(input)),
-                        Variable(torch.FloatTensor(a_data))
-
-        input = Variable(torch.FloatTensor(input))
-        target = Variable(torch.FloatTensor(a_data))
 
         prediction = net(input)
         loss = loss_func(prediction, target)
@@ -277,18 +259,6 @@ def test(net, sample_size, optimizer=optimizer, vsize=N_theta*N_orient*N_scale*N
             input[idx, 0, :], a_data[idx, 0, :] = couples(data[idx, 0, :], i_offset, j_offset, device)
             target[idx, :] = a_data[idx, 0, :]
 
-
-        input, target = Variable(torch.FloatTensor(input)), Variable(torch.FloatTensor(a_data))
-
-        input, target = Variable(torch.FloatTensor(input)),
-                        Variable(torch.FloatTensor(a_data))
-
-            i_offset = minmax(np.random.randn()*offset_std, offset_max)
-            j_offset = minmax(np.random.randn()*offset_std, offset_max)
-            input[idx, 0, :], a_data[idx, 0, :] = couples(data[idx, 0, :], i_offset, j_offset, device)
-            target[idx, :] = a_data[idx, 0, :]
-
-
         input = Variable(torch.FloatTensor(input))
         target = Variable(torch.FloatTensor(a_data))
 
@@ -296,15 +266,6 @@ def test(net, sample_size, optimizer=optimizer, vsize=N_theta*N_orient*N_scale*N
         loss = loss_func(prediction, target)
 
     return loss.data.numpy()
-
-
-def eval_sacc(vsize=N_theta*N_orient*N_scale*N_phase, asize=N_orient*N_scale, N_pic=N_X, sacc_lim=5, fovea_size=10, offset_std=10, offset_max=25, fig_type='cmap'):
-    for batch_idx, (data, label) in enumerate(data_loader):
-        data = data.to(device)
-        i_offset, j_offset = minmax(np.random.randn()*offset_std, offset_max), minmax(np.random.randn()*offset_std, offset_max)
-
-        i_offset, j_offset = minmax(np.random.randn()*10, 35),
-                             minmax(np.random.randn()*10, 35)
 
 
 def eval_sacc(vsize=N_theta*N_orient*N_scale*N_phase, asize=N_orient*N_scale, N_pic=N_X, sacc_lim=5, fovea_size=10, offset_std=10, offset_max=25, fig_type='cmap'):
@@ -320,8 +281,7 @@ def eval_sacc(vsize=N_theta*N_orient*N_scale*N_phase, asize=N_orient*N_scale, N_
             input, a_data = np.zeros((1, 1, vsize)), np.zeros((1, 1, asize))
             input[0, 0, :], a_data[0, 0, :] = couples(data[0, 0, :], i_offset, j_offset, device)
             input, a_data = Variable(torch.FloatTensor(input)), Variable(torch.FloatTensor(a_data))
-            input, a_data = Variable(torch.FloatTensor(input)),
-                            Variable(torch.FloatTensor(a_data))
+            input, a_data = Variable(torch.FloatTensor(input)), Variable(torch.FloatTensor(a_data))
 
             input = Variable(torch.FloatTensor(input))
             a_data = Variable(torch.FloatTensor(a_data))
@@ -359,8 +319,7 @@ def eval_sacc(vsize=N_theta*N_orient*N_scale*N_phase, asize=N_orient*N_scale, N_
                 # saccades
                 i_offset, j_offset = (i_offset - i_hat), (j_offset - j_hat)
                 sacc_count += 1
-                print('Stimulus position after saccade: ({}, {})'.format(
-                    i_offset, j_offset))
+                print('Stimulus position after saccade: ({}, {})'.format(i_offset, j_offset))
 
                 # check if the image position is predicted within the fovea
                 if i_hat <= (fovea_size/2) and j_hat <= (fovea_size/2):
