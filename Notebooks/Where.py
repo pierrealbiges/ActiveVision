@@ -189,7 +189,8 @@ class Net(torch.nn.Module):
             data = F.leaky_relu(self.hidden1(data))
             data = F.leaky_relu(self.hidden2(data))
         data = self.predict(data)
-        return F.sigmoid(data)
+        return data
+        #return F.sigmoid(data)
 
 #print(device)
 net = Net(n_feature=N_theta*N_azimuth*N_eccentricty*N_phase, n_hidden1=n_hidden1, n_hidden2=n_hidden2, n_output=N_azimuth*N_eccentricty)
