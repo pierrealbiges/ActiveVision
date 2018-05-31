@@ -54,8 +54,9 @@ class Data():
                        transform=transforms.Compose([
                        transforms.ToTensor(),
                        transforms.Normalize((0.1307,), (0.3081,))])),
+#                                 transforms.Normalize(mean=[args.mean]*3, std=[args.std]*3),
                        batch_size=batch_size,
-                       shuffle=True, 
+                       shuffle=True,
                        **kwargs)
 
         self.dataset = self.data_loader.dataset
@@ -66,10 +67,10 @@ class Data():
         #split = int(np.floor(self.args.valid_size * num_train))
         #if self.args.verbose:
         #    print('Found', num_train, 'sample images; ', num_train-split, ' to train', split, 'to test')
-            
+
         #from torch.utils.data import random_split
         #train_dataset, test_dataset = random_split(self.dataset, [num_train-split, split])
-        
+
         #self.train_loader = torch.utils.data.DataLoader(train_dataset, batch_size=self.args.batch_size, **kwargs)
         #self.test_loader = torch.utils.data.DataLoader(test_dataset, batch_size=self.args.test_batch_size, **kwargs)
         self.train_loader = torch.utils.data.DataLoader(
@@ -80,7 +81,7 @@ class Data():
                        transforms.ToTensor(),
                        transforms.Normalize((0.1307,), (0.3081,))])),
                        batch_size=batch_size,
-                       shuffle=True, 
+                       shuffle=True,
                        **kwargs)
         self.test_loader = torch.utils.data.DataLoader(
                        datasets.MNIST('/tmp/data',
@@ -90,9 +91,9 @@ class Data():
                        transforms.ToTensor(),
                        transforms.Normalize((0.1307,), (0.3081,))])),
                        batch_size=test_batch_size,
-                       shuffle=True, 
+                       shuffle=True,
                        **kwargs)
-        
+
     def show(self, gamma=.5, noise_level=.4, transpose=True):
 
         images, foo = next(iter(self.train_loader))
@@ -213,29 +214,32 @@ class ML():
             100. * correct / len(self.d.test_loader.dataset)))
         return correct.numpy() / len(self.d.test_loader.dataset)
 
-    def show(self, gamma=.5, noise_level=.4, transpose=True):
+    def show(self, gamma=.5, noise_level=.4, transpose=True, only_wrong=False):
 
         data, target = next(iter(self.d.test_loader))
         data, target = data.to(self.device), target.to(self.device)
         output = self.model(data)
         pred = output.data.max(1, keepdim=True)[1] # get the index of the max log-probability
-        print('target:' + ' '.join('%5s' % self.d.dataset.classes[j] for j in target))
-        print('pred  :' + ' '.join('%5s' % self.d.dataset.classes[j] for j in pred))
-        #print(target, pred)
+        if only_wrong and not pred == target:
+            print('target:' + ' '.join('%5s' % self.d.dataset.classes[j] for j in target))
+            print('pred  :' + ' '.join('%5s' % self.d.dataset.classes[j] for j in pred))
+            #print(target, pred)
 
 
-        from torchvision.utils import make_grid
-        npimg = make_grid(data, normalize=True).numpy()
-        import matplotlib.pyplot as plt
-        fig, ax = plt.subplots(figsize=((13, 5)))
-        import numpy as np
-        if transpose:
-            ax.imshow(np.transpose(npimg, (1, 2, 0)))
+            from torchvision.utils import make_grid
+            npimg = make_grid(data, normalize=True).numpy()
+            import matplotlib.pyplot as plt
+            fig, ax = plt.subplots(figsize=((13, 5)))
+            import numpy as np
+            if transpose:
+                ax.imshow(np.transpose(npimg, (1, 2, 0)))
+            else:
+                ax.imshow(npimg)
+            plt.setp(ax, xticks=[], yticks=[])
+
+            return fig, ax
         else:
-            ax.imshow(npimg)
-        plt.setp(ax, xticks=[], yticks=[])
-
-        return fig, ax
+            return None, None
 
     def protocol(self):
         # TODO: make a loop for the cross-validation of results
