@@ -1,19 +1,34 @@
-# 2018-05-25
+# 2018-05-28
+---
+Pas de travail fourni aujourd'hui, participation aux Cordées de la Réussite en tant qu'étudiant encadrant.
+
+# 2018-05-29
 ---
 Laurent a créé un [modèle ML](https://github.com/laurentperrinet/CatchTheEye) simple qui obtient d'excellentes performances sur un problème similaire au notre (fork du travail d'[Anaïs et Nicolas](https://github.com/anaisbrgs/StageL3)).  
-Il faut que je récupère son script Regard.py pour intégrer notamment la méthode dans mon travail.
+Il faut que je récupère son script Regard.py pour intégrer notamment la méthode dans mon travail.  
+
+J'ai du installer la libraire easydict pour pouvoir faire tourner Regard.py :
+
+    pip3 install --user easydict
+    
+# 2018-05-31
+---
+Pour pouvoir écrire le rapport, j'ai voulu fixer un stade de développement du modèle et écrire les résultats autour de ses performances. Problème: j'ai voulu me fixer sur 2018_05_23_classification_BCELoss parce que dans mes souvenirs il fonctionnait bien, mais en faisant tourner un apprentissage cette nuit je vois qu'il ne converge pas!
 
 ---
 # To Do
 
 ### Modèle
-+ simplifier le script pour avoir une convergence du réseau à une entrée synthétique simple qui fait converger le réseau vers la fonction identité (juste pour voir si on maitrise l'apprentissage) -> Qu'est-ce que tu veux dire pr fonction idendité?
++ Simplifier le script pour avoir une convergence du réseau à une entrée synthétique simple qui fait converger le réseau vers la fonction identité (juste pour voir si on maitrise l'apprentissage) -> Qu'est-ce que tu veux dire pr fonction idendité?
 + Recréer la carte d'accuracy en présence de bruit -> Script à modifier: 2018-04-27_classifier_noised.ipynb
 + Créer une carte de certitude persistente et mise à jour après chaque saccade
 + Intégrer le calcul GPU aux nouveaux scripts -> Cf notes 2018-05-24
 + Réaliser des benchmarking pour choisir les paramètre optimaux pour le modèle
     + learning rate
 + Ne garder que N_pic ou N_X/N_Y (doublon)
++ Adapter Regard.py à notre modèle
++ Normaliser les données après transformations 128+noise+logpol
++ Corriger le calcul de la nouvelle position du stimulus avec saccade
 
 ### Rapport de stage
 + ~~Ecrire une ébauche d'Introduction~~
@@ -33,6 +48,7 @@ Il faut que je récupère son script Regard.py pour intégrer notamment la méth
 + [Liu et al., 2016](http://ieeexplore.ieee.org/document/7762165/?reload=true) : Learning to Predict Eye Fixations via Multiresolution Convolutional Neural Networks
 + [Papier utilisant une méthode similaire à la notre + intégration en robotique](https://www.researchgate.net/publication/220934961_Fast_Object_Detection_with_Foveated_Imaging_and_Virtual_Saccades_on_Resource_Limited_Robots)
 + Focal Loss for Dense Object Detection, Lin et al. 2017 (cf mail Hugo)
++ [Rosten et al., 2008](https://arxiv.org/abs/0810.2434) : Faster and better: a machine learning approach to corner detection
 ### Magnocellular pathway function  
 + [Selective suppression of the magnocellular visual pathway during saccadic eye movements](http://www.nature.com.lama.univ-amu.fr/articles/371511a0), Burr1994
 + [On Identifying Magnocellular and Parvocellular Responses on the Basis of Contrast-Response Functions](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3004196/), Skottun2011
