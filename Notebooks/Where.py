@@ -77,7 +77,7 @@ colliculus_vector = colliculus.reshape((N_azimuth*N_eccentricty, N_X*N_Y))
 colliculus_inverse = np.linalg.pinv(colliculus_vector)
 
 
-def mnist_fullfield(data, i_offset, j_offset, N_pic=N_X, noise=0., figure_type=''):
+def mnist_fullfield(data, i_offset, j_offset, N_pic=N_X, noise=0.,  mean=.25,  std=.25, figure_type=''):
     N_stim = data.shape[0]
     center = (N_pic-N_stim)//2
 
@@ -88,6 +88,11 @@ def mnist_fullfield(data, i_offset, j_offset, N_pic=N_X, noise=0., figure_type='
         data_fullfield += noise * MotionCloudNoise()
 
     data_retina = retina_vector @ np.ravel(data_fullfield)
+
+    data_retina -= data_retina.mean()
+    data_retina /= data_retina.std()
+    data_retina *= std
+    data_retina += mean
 
     if figure_type == 'cmap':
         image_hat = phi_plus @ data_LP
@@ -148,7 +153,6 @@ def MotionCloudNoise(sf_0=0.125, B_sf=3.):
     fx, fy, ft = mc.get_grids(mc.N_X, mc.N_Y, mc.N_frame)
     name = 'static'
     env = mc.envelope_gabor(fx, fy, ft, sf_0=sf_0, B_sf=B_sf, B_theta=np.inf, V_X=0., V_Y=0., B_V=0, alpha=.5)
-
     z = mc.rectif(mc.random_cloud(env))
     z = z.reshape((mc.N_X, mc.N_Y))
     return z
@@ -177,8 +181,8 @@ class Net(torch.nn.Module):
         self.hidden2 = torch.nn.Linear(n_hidden1, n_hidden2)
         self.predict = torch.nn.Linear(n_hidden2, n_output)
 
-    def forward(self, data, do_leaky_relu=False):
-        if do_leaky_relu:
+    def forward(self, data, do_leaky_relu=True):
+        if not do_leaky_relu:
             data = F.relu(self.hidden1(data))
             data = F.relu(self.hidden2(data))
         else:
