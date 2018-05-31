@@ -9,8 +9,9 @@ import noise
 N_theta, N_orient, N_scale, N_phase, N_X, N_Y, rho = 6, 12, 5, 2, 128, 128, 1.61803
 sample_size = 100  # quantity of examples that'll be processed
 lr = 0.05
-n_hidden1 = ((N_theta*N_orient*N_scale*N_phase)/4)*3
-n_hidden2 = ((N_theta*N_orient*N_scale*N_phase)/4)
+n_hidden1 = int(((N_theta*N_orient*N_scale*N_phase)/4)*3)
+n_hidden2 = int(((N_theta*N_orient*N_scale*N_phase)/4))
+
 
 
 import torch
@@ -31,17 +32,9 @@ if os.path.isfile(path):
 else:
     print('No accuracy data found.')
 
-
-sample_size = 100  # quantity of examples that'll be processed
-N_theta, N_orient, N_scale, N_phase, N_X, N_Y, rho = 6, 12, 5, 2, 128, 128, 1.61803
-lr = 0.05
-n_hidden1 = int(((N_theta*N_orient*N_scale*N_phase)/4)*3)
-n_hidden2 = int(((N_theta*N_orient*N_scale*N_phase)/4))
-
-
 ## Préparer l'apprentissage et les fonctions nécessaires au fonctionnement du script
 def vectorization(N_theta, N_orient, N_scale, N_phase, N_X, N_Y, rho):
-    phi = np.zeros((N_theta, N_orient, N_scale, N_phase, N_X*N_Y))
+    retina = np.zeros((N_theta, N_orient, N_scale, N_phase, N_X*N_Y))
     parameterfile = 'https://raw.githubusercontent.com/bicv/LogGabor/master/default_param.py'
     lg = LogGabor(parameterfile)
     lg.set_size((N_X, N_Y))
@@ -65,22 +58,23 @@ def vectorization(N_theta, N_orient, N_scale, N_phase, N_X, N_Y, rho):
                     params = {'sf_0': sf_0, 'B_sf': lg.pe.B_sf,
                               'theta': i_theta*np.pi/N_theta, 'B_theta': np.pi/N_theta/2}
                     phase = i_phase * np.pi/2
-                    phi[i_theta, i_orient, i_scale, i_phase, :] = lg.normalize(
+                    retina[i_theta, i_orient, i_scale, i_phase, :] = lg.normalize(
                         lg.invert(lg.loggabor(x, y, **params)*np.exp(-1j*phase))).ravel()
-    return phi
+    return retina
 
 
-phi = vectorization(N_theta, N_orient, N_scale, N_phase, N_X, N_Y, rho)
-phi_vector = phi.reshape((N_theta*N_orient*N_scale*N_phase, N_X*N_Y))
-phi_plus = np.linalg.pinv(phi_vector)
+retina = vectorization(N_theta, N_orient, N_scale, N_phase, N_X, N_Y, rho)
+retina_vector = retina.reshape((N_theta*N_orient*N_scale*N_phase, N_X*N_Y))
+retina_inverse = np.linalg.pinv(retina_vector)
 
-energy = (phi**2).sum(axis=(0, 3))
-energy /= energy.sum(axis=-1)[:, :, None]
-energy_vector = energy.reshape((N_orient*N_scale, N_X*N_Y))
-energy_plus = np.linalg.pinv(energy_vector)
+colliculus = (retina**2).sum(axis=(0, 3))
+colliculus /= colliculus.sum(axis=-1)[:, :, None]
+colliculus_vector = colliculus.reshape((N_orient*N_scale, N_X*N_Y))
+colliculus_inverse = np.linalg.pinv(colliculus_vector)
 
 
-def accuracy_128(i_offset, j_offset, N_pic=N_X, N_stim=55):
+def accuracy_128(accuracy, i_offset, j_offset, N_pic=N_X):
+    N_stim = accuracy.shape[0]
     center = (N_pic-N_stim)//2
 
     accuracy_128 = 0.1 * np.ones((N_pic, N_pic))
@@ -90,31 +84,29 @@ def accuracy_128(i_offset, j_offset, N_pic=N_X, N_stim=55):
                  int(center+j_offset):int(center+N_stim+j_offset)] = accuracy
 
 
-    accuracy_LP = energy_vector @ np.ravel(accuracy_128)
+    accuracy_LP = colliculus_vector @ np.ravel(accuracy_128)
     return accuracy_LP
 
 
-def mnist_128(data, i_offset, j_offset, N_pic=N_X, N_stim=28, noise=True, noise_type='MotionCloud'):
+def mnist_128(data, i_offset, j_offset, N_pic=N_X, noise=0.):
+    N_stim = data.shape[0]
     center = (N_pic-N_stim)//2
-    data_128 = (data.min().numpy()) * np.ones((N_pic, N_pic))
 
+    data_128 = (data.min().numpy()) * np.ones((N_pic, N_pic))
     data_128[int(center+i_offset):int(center+N_stim+i_offset), int(center+j_offset):int(center+N_stim+j_offset)] = data
 
-    if noise:
-        if noise_type == 'MotionCloud':
-            data_LP = phi_vector @ np.ravel(data_128 + MotionCloudNoise())
-        elif noise_type == 'Perlin':
-            data_LP = phi_vector @ np.ravel(
-                data_128 + randomized_perlin_noise())
-    else:
-        data_LP = phi_vector @ np.ravel(data_128)
+    if noise>0.:
+        data_128 += noise * MotionCloudNoise()
+
+    data_LP = retina_vector @ np.ravel(data_128)
+
     return data_LP
 
 
 def couples(data, i_offset, j_offset):#, device):
     #data = data.to(device)
-    v = mnist_128(data.cpu(), i_offset, j_offset)
-    a = accuracy_128(i_offset, j_offset)
+    v = mnist_128(data, i_offset, j_offset)
+    a = accuracy_128(accuracy, i_offset, j_offset)
     return (v, a)
 
 
@@ -243,7 +235,7 @@ def eval_sacc(vsize=N_theta*N_orient*N_scale*N_phase, asize=N_orient*N_scale, N_
             pred_data = prediction.data.numpy()[-1][-1]
 
             if fig_type == 'cmap':
-                image = energy_plus @ pred_data
+                image = colliculus_inverse @ pred_data
                 image_reshaped = image.reshape(N_pic, N_pic)
 
                 fig, ax = plt.subplots(figsize=(13, 10.725))
@@ -281,9 +273,9 @@ def eval_sacc(vsize=N_theta*N_orient*N_scale*N_phase, asize=N_orient*N_scale, N_
                         print('a_data predicted in fovea, stopping the saccadic exploration')
 
             if fig_type == 'log':
-                code = energy_plus @ pred_data
-                global_energy = energy_vector @ code
-                global_energy = global_energy.reshape(N_scale, N_orient)
+                code = colliculus_inverse @ pred_data
+                global_colliculus = colliculus_vector @ code
+                global_colliculus = global_colliculus.reshape(N_scale, N_orient)
 
                 log_r_a_data = 1 + \
                     np.log(np.sqrt(i_offset**2 + j_offset**2) /
@@ -297,12 +289,12 @@ def eval_sacc(vsize=N_theta*N_orient*N_scale*N_phase, asize=N_orient*N_scale, N_
                 log_r, theta = np.meshgrid(np.linspace(0, 1, N_scale+1), np.linspace(-np.pi*.625, np.pi*1.375, N_orient+1))
 
                 fig, ax = plt.subplots(subplot_kw=dict(projection='polar'))
-                ax.pcolor(theta, log_r, np.fliplr(global_energy))
+                ax.pcolor(theta, log_r, np.fliplr(global_colliculus))
                 ax.plot(theta_a_data, log_r_a_data, 'r+')
 
                 for n_orient in range(N_orient):
                     for n_scale in range(N_scale):
-                        if global_energy[n_orient][n_scale] == np.max(global_energy):
+                        if global_colliculus[n_orient][n_scale] == np.max(global_colliculus):
                             print('Position prediction (orient, scale) = ({},{})'.format(
                                 n_orient, n_scale))
 
