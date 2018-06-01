@@ -271,6 +271,7 @@ def eval_sacc(vsize=N_theta*N_azimuth*N_eccentricty*N_phase, asize=N_azimuth*N_e
             a_data = Variable(torch.FloatTensor(a_data))
 
             prediction = net(input)
+            prediction = F.sigmoid(prediction)
             pred_data = prediction.data.numpy()[-1][-1]
 
             if fig_type == 'cmap':
