@@ -83,20 +83,23 @@ def vectorization(N_theta=N_theta, N_azimuth=N_azimuth, N_eccentricity=N_eccentr
         ax.set_xlabel(r'$Y$')
         ax.set_ylabel(r'$X$')
         ax.axis('equal')
-        if save: plt.savefig('logpol_filter.pdf')
+        if save: plt.savefig('retina_filter.pdf')
         plt.tight_layout()
         return fig, ax
     elif figure_type == 'colliculus':
+        FIG_WIDTH = 10 
         fig, ax = plt.subplots(figsize=(FIG_WIDTH, FIG_WIDTH))
         for i_azimuth in range(N_azimuth):
             for i_eccentricity in range(N_eccentricity):
                 env = np.sqrt(colliculus[i_azimuth, i_eccentricity, :]**2.5).reshape((N_X, N_Y))
-                ax.contour(colliculus[i_azimuth, i_eccentricity, :].reshape((N_X, N_Y)), levels=[env.max()/2], lw=1, colors=[plt.cm.viridis(i_theta/(N_theta))])
+                #ax.contour(colliculus[i_azimuth, i_eccentricity, :].reshape((N_X, N_Y)), levels=[env.max()/2], lw=1, colors=[plt.cm.viridis(i_theta/(N_theta))])
+                ax.contourf(env, levels=[env.max()/1.2, env.max()/1.00001], lw=1, colors=[plt.cm.viridis(i_eccentricity/(N_eccentricity))], alpha=.1)
         fig.suptitle('Tiling of visual space using energy')
         ax.set_xlabel(r'$Y$')
         ax.set_ylabel(r'$X$')
         ax.axis('equal')
         plt.tight_layout()
+        if save: plt.savefig('colliculus_filter.pdf')
         return fig, ax
     else:
         return retina
