@@ -71,7 +71,7 @@ def vectorization(N_theta=N_theta, N_azimuth=N_azimuth, N_eccentricity=N_eccentr
 
                     retina[i_theta, i_azimuth, i_eccentricity, i_phase, :] = lg.normalize(
                         lg.invert(lg.loggabor(x, y, **params)*np.exp(-1j*phase))).ravel()
-    if figure_type == 'contourf':
+    if figure_type == 'retina':
         FIG_WIDTH = 10 
         fig, ax = plt.subplots(figsize=(FIG_WIDTH, FIG_WIDTH))
         for i_theta in range(N_theta):
@@ -84,6 +84,18 @@ def vectorization(N_theta=N_theta, N_azimuth=N_azimuth, N_eccentricity=N_eccentr
         ax.set_ylabel(r'$X$')
         ax.axis('equal')
         if save: plt.savefig('logpol_filter.pdf')
+        plt.tight_layout()
+        return fig, ax
+    elif figure_type == 'colliculus':
+        fig, ax = plt.subplots(figsize=(FIG_WIDTH, FIG_WIDTH))
+        for i_azimuth in range(N_azimuth):
+            for i_eccentricity in range(N_eccentricity):
+                env = np.sqrt(colliculus[i_azimuth, i_eccentricity, :]**2.5).reshape((N_X, N_Y))
+                ax.contour(colliculus[i_azimuth, i_eccentricity, :].reshape((N_X, N_Y)), levels=[env.max()/2], lw=1, colors=[plt.cm.viridis(i_theta/(N_theta))])
+        fig.suptitle('Tiling of visual space using energy')
+        ax.set_xlabel(r'$Y$')
+        ax.set_ylabel(r'$X$')
+        ax.axis('equal')
         plt.tight_layout()
         return fig, ax
     else:
@@ -127,7 +139,6 @@ def mnist_fullfield(data, i_offset, j_offset, N_pic=N_X, noise=0.,  mean=.25,  s
     
     elif figure_type == 'cmap':
         image_hat = retina_inverse @ data_retina
-        print(image_hat.min(), image_hat.max())
         fig, ax = plt.subplots(figsize=(13, 10.725))
         cmap = ax.pcolor(np.arange(-N_pic/2, N_pic/2), np.arange(-N_pic/2, N_pic/2), np.flipud(image_hat.reshape((N_X, N_X))), cmap='Greys_r')
         fig.colorbar(cmap)
