@@ -15,20 +15,38 @@ J'ai du installer la libraire easydict pour pouvoir faire tourner Regard.py :
 ---
 Pour pouvoir écrire le rapport, j'ai voulu fixer un stade de développement du modèle et écrire les résultats autour de ses performances. Problème: j'ai voulu me fixer sur 2018_05_23_classification_BCELoss parce que dans mes souvenirs il fonctionnait bien, mais en faisant tourner un apprentissage cette nuit je vois qu'il ne converge pas!
 
+# 2018-06-01
+---
+J'ai peut-être trouvé la raison pour laquelle le modèle ne semble pas apprendre : les images MNIST que l'on utilise ont des valeurs entre (environ) -1 et 3, alors que l'image produite après passage dans le filtre rétinien comprends des valeurs entre (environ) -160 et 160 (sans bruit ajouté).  
+C'est certainement cette différence d'echelle qui fait qu'on n'observe pas de convergence pendant l'apprentissage et qu'on ne voit pas le stimulus lors de la reconstruction graphique "filtre logpolar classique + image" (2018-05-21_LogPol_figures.ipynb)  
+
+Le problème provenait de la normalisation qu'on avait implanté rapidement :
+
+    > Where.py
+    data_retina -= data_retina.mean()
+    data_retina /= data_retina.std()
+    data_retina *= std
+    data_retina += mean
+    
+En retirant ces 4 lignes, on peut de nouveau observer le stimulus dans l'image post-filtre rétinien. Je suis en train de tester l'apprentissage pour voir si ça à aussi débloqué cette situation.
+
+
 ---
 # To Do
 
 ### Modèle
-+ Simplifier le script pour avoir une convergence du réseau à une entrée synthétique simple qui fait converger le réseau vers la fonction identité (juste pour voir si on maitrise l'apprentissage) -> Qu'est-ce que tu veux dire pr fonction idendité?
-+ Recréer la carte d'accuracy en présence de bruit -> Script à modifier: 2018-04-27_classifier_noised.ipynb
++ ~~Recréer la carte d'accuracy en présence de bruit -> Script à modifier: 2018-04-27_classifier_noised.ipynb~~ -> Avons décidé avec Laurent de ne pas intégrer de bruit dans ces données 
 + Créer une carte de certitude persistente et mise à jour après chaque saccade
 + Intégrer le calcul GPU aux nouveaux scripts -> Cf notes 2018-05-24
-+ Réaliser des benchmarking pour choisir les paramètre optimaux pour le modèle
++ Réaliser des benchmarking pour choisir les paramètres optimaux pour le modèle
     + learning rate
 + Ne garder que N_pic ou N_X/N_Y (doublon)
-+ **Adapter Regard.py à notre modèle**
-+ Normaliser les données après transformations 128+noise+logpol
++ Adapter Regard.py à notre modèle
++ ~~Normaliser les données après transformations 128+noise+logpol~~
+    + Réaliser le benchmarking des paramètres mean et std 
 + Corriger le calcul de la nouvelle position du stimulus avec saccade -> (max(a,b) - min(a,b)) ?
++ **Modifer la figure model.odg pour s'adapter aux notes manuscrites**
++ Intégrer la possibilité de créer les figures dans Where.py et réaliser un cleanup de LogPol_figures.ipynb pour ne faire qu'appeler ses fonctions
 
 ### Rapport de stage
 + ~~Ecrire une ébauche d'Introduction~~
