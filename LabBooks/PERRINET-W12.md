@@ -18,7 +18,18 @@ Pour pouvoir écrire le rapport, j'ai voulu fixer un stade de développement du 
 # 2018-06-01
 ---
 J'ai peut-être trouvé la raison pour laquelle le modèle ne semble pas apprendre : les images MNIST que l'on utilise ont des valeurs entre (environ) -1 et 3, alors que l'image produite après passage dans le filtre rétinien comprends des valeurs entre (environ) -160 et 160 (sans bruit ajouté).  
-C'est certainement cette différence d'echelle qui fait qu'on n'observe pas de convergence pendant l'apprentissage et qu'on ne voit pas le stimulus lors de la reconstruction graphique "filtre logpolar classique + image" (2018-05-21_LogPol_figures.ipynb)
+C'est certainement cette différence d'echelle qui fait qu'on n'observe pas de convergence pendant l'apprentissage et qu'on ne voit pas le stimulus lors de la reconstruction graphique "filtre logpolar classique + image" (2018-05-21_LogPol_figures.ipynb)  
+
+Le problème provenait de la normalisation qu'on avait implanté rapidement :
+
+    > Where.py
+    data_retina -= data_retina.mean()
+    data_retina /= data_retina.std()
+    data_retina *= std
+    data_retina += mean
+    
+En retirant ces 4 lignes, on peut de nouveau observer le stimulus dans l'image post-filtre rétinien. Je suis en train de tester l'apprentissage pour voir si ça à aussi débloqué cette situation.
+
 
 ---
 # To Do

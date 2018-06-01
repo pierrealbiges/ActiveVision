@@ -15,7 +15,7 @@ from LogGabor import LogGabor
 # TODO: passer les arguments par la ligne de commande
 N_theta, N_azimuth, N_eccentricity, N_phase, N_X, N_Y, rho = 6, 12, 8, 2, 128, 128, 1.41
 minibatch_size = 100  # quantity of examples that'll be processed
-lr = 0.05
+lr = 0.016
 n_hidden1 = int(((N_theta*N_azimuth*N_eccentricity*N_phase)/4)*3)
 n_hidden2 = int(((N_theta*N_azimuth*N_eccentricity*N_phase)/4))
 verbose = 1
@@ -113,10 +113,10 @@ def mnist_fullfield(data, i_offset, j_offset, N_pic=N_X, noise=0.,  mean=.25,  s
 
     data_retina = retina_vector @ np.ravel(data_fullfield)
 
-    data_retina -= data_retina.mean()
-    data_retina /= data_retina.std()
-    data_retina *= std
-    data_retina += mean
+    #data_retina -= data_retina.mean()
+    #data_retina /= data_retina.std()
+    #data_retina *= std
+    #data_retina += mean
 
     if figure_type == '128':
         fig, ax = plt.subplots(figsize=(13, 10.725))
@@ -127,9 +127,12 @@ def mnist_fullfield(data, i_offset, j_offset, N_pic=N_X, noise=0.,  mean=.25,  s
     
     elif figure_type == 'cmap':
         image_hat = retina_inverse @ data_retina
+        print(image_hat.min(), image_hat.max())
         fig, ax = plt.subplots(figsize=(13, 10.725))
         cmap = ax.pcolor(np.arange(-N_pic/2, N_pic/2), np.arange(-N_pic/2, N_pic/2), np.flipud(image_hat.reshape((N_X, N_X))), cmap='Greys_r')
         fig.colorbar(cmap)
+        if save and noise>0.: plt.savefig('mnist_128_LP_noise.pdf')
+        elif save and noise==0.: plt.savefig('mnist_128_LP_nonoise.pdf')
         return fig, ax
 
     elif figure_type == 'log':
