@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016/Debian) (preloaded format=pdflatex 2017.12.11)  4 JUN 2018 15:16
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016/Debian) (preloaded format=pdflatex 2017.12.11)  4 JUN 2018 16:19
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -2058,12 +2058,18 @@ Chapter 3.
 
  (./Chapters/Discussion.tex
 Chapter 4.
-)
-Overfull \hbox (25.4911pt too wide) in paragraph at lines 16--229
+
+Overfull \hbox (25.4911pt too wide) in paragraph at lines 16--20
 \T1/ppl/m/n/12 -> Pos-si-bil-ité d'intégrer un sec-ond in-put (top-down) cor-re
 -spon-dant à cible à recherche dans l'environnement 
  []
 
+
+Underfull \hbox (badness 10000) in paragraph at lines 16--20
+
+ []
+
+)
 1: section
 [10
 
@@ -2281,7 +2287,7 @@ ype1/public/amsfonts/cm/cmr10.pfb></usr/share/texmf/fonts/type1/public/cm-super
 b></usr/share/texlive/texmf-dist/fonts/type1/urw/palatino/uplr8a.pfb></usr/shar
 e/texlive/texmf-dist/fonts/type1/urw/palatino/uplr8a.pfb></usr/share/texlive/te
 xmf-dist/fonts/type1/urw/palatino/uplri8a.pfb>
-Output written on main.pdf (22 pages, 2558060 bytes).
+Output written on main.pdf (22 pages, 2558769 bytes).
 PDF statistics:
  571 PDF objects out of 1000 (max. 8388607)
  375 compressed objects within 4 object streams

@@ -13,8 +13,12 @@
 
 %----------------------------------------------------------------------------------------
 
--> Tests avec images vides \\
 -> Multiple saccades avec mémoire \\
 -> Complexification de la tache avec des inputs de plus en plus écologiques jusqu'à une prise de vue en direct via caméra \\
 -> Possibilité d'intégrer un second input (top-down) correspondant à cible à recherche dans l'environnement \\
--> Possibilité d'intégrer ces développements dans un projet de thèse
+-> Possibilité d'intégrer ces développements dans un projet de thèse \\
+
+Malgré le stade de développement peu avancé de notre modèle, nous avons dès aujourd'hui identifié de nombreuses étapes de développement que nous devrons probablement réaliser dans le futur pour complexifier son comportement et améliorer ses performances. \\
+La première étape sera certainement d'étudier la robustesse du modèle en lui soumettant lors de l'étape d'évaluation des images vides mais pouvant être bruitées.
+Dans son état actuel, le modèle ne devrait pas être capable relever la différence avec le reste des images qu'on lui fournit et devrait donc tenter de réaliser une détection, puis une classification malgré l'absence de stimulus.
+En réponse à ce phénomène, il sera possible d'ajouter une couche de neurones artificiels précédent notre réseau actuel et détectant la présence ou l'absence de stimulus dans le champs visuel, modifiant en fonction le comportement de la suite du réseau. \\
