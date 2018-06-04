@@ -32,7 +32,7 @@ L'objectif de ces pré-traitements est de les rendre plus écologiques, c'est à
 A l'origine les examples MNIST sont codées en niveau de gris dans une image normalisée de 28*28 pixels (figure~\ref{fig:MNIST_28}).
 Afin de réduire la taille du stimulus au sein de l'image, nous introduisons cette image de 28*28 pixels dans une image pseudo-vide de 128*128 pixels (figure~\ref{fig:MNIST_128}).
 Cette insertion se fait systematiquement à un emplacement aléatoire pour permettre de produire un stimulus utilisable dans notre tache de détection de la position d'une cible.
-En parallèle, la carte de certitude construite précédemment et contenue dans une image de 54*54 pixels est introduite dans une image pseudo-vide de 128*128 pixels, au même emplacement que le stimulus. \\
+En parallèle, la carte de certitude construite précédemment et contenue dans une image de 54*54 pixels est introduite dans une image pseudo-vide de 128*128 pixels, au même emplacement que le stimulus (figure~\ref{fig:couples}). \\
 Les images-hôtes sont pseudo-vides car leurs valeurs en chaque point correspond à la valeur minimale de l'image insérée, permettant de ne pas créer un cadre autour de cette dernière lorsqu'elle est integrée.
 
 \subsection{Bruit écologique}

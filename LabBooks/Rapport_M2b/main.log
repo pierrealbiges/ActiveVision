@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016/Debian) (preloaded format=pdflatex 2017.12.11)  4 JUN 2018 12:52
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016/Debian) (preloaded format=pdflatex 2017.12.11)  4 JUN 2018 13:52
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -2100,101 +2100,111 @@ Underfull \hbox (badness 10000) in paragraph at lines 19--19
 []|\T1/ppl/m/n/12 Système
  []
 
-<Figures/accuracy.pdf, id=214, 939.51pt x 775.09576pt>
+<Figures/accuracy.pdf, id=216, 939.51pt x 775.09576pt>
 File: Figures/accuracy.pdf Graphic file (type pdf)
 
 <use Figures/accuracy.pdf>
 Package pdftex.def Info: Figures/accuracy.pdf used on input line 27.
 (pdftex.def)             Requested size: 375.79733pt x 310.0328pt.
 
-<Figures/MNIST_28.pdf, id=215, 939.51pt x 775.09576pt>
+<Figures/MNIST_28.pdf, id=217, 939.51pt x 775.09576pt>
 File: Figures/MNIST_28.pdf Graphic file (type pdf)
 
 <use Figures/MNIST_28.pdf>
 Package pdftex.def Info: Figures/MNIST_28.pdf used on input line 35.
 (pdftex.def)             Requested size: 281.85518pt x 232.53052pt.
 
-<Figures/MNIST_128.pdf, id=216, 939.51pt x 775.09576pt>
-File: Figures/MNIST_128.pdf Graphic file (type pdf)
+<Figures/mnist_128.pdf, id=218, 939.51pt x 775.09576pt>
+File: Figures/mnist_128.pdf Graphic file (type pdf)
 
-<use Figures/MNIST_128.pdf>
-Package pdftex.def Info: Figures/MNIST_128.pdf used on input line 43.
+<use Figures/mnist_128.pdf>
+Package pdftex.def Info: Figures/mnist_128.pdf used on input line 43.
 (pdftex.def)             Requested size: 281.85518pt x 232.53052pt.
 
-<Figures/perlin_noise.pdf, id=217, 939.51pt x 775.09576pt>
+<Figures/couples_a-v.pdf, id=219, 1445.4pt x 505.89pt>
+File: Figures/couples_a-v.pdf Graphic file (type pdf)
+
+<use Figures/couples_a-v.pdf>
+Package pdftex.def Info: Figures/couples_a-v.pdf used on input line 51.
+(pdftex.def)             Requested size: 578.14977pt x 202.3524pt.
+
+Overfull \hbox (37.54736pt too wide) in paragraph at lines 51--53
+ [][] 
+ []
+
+<Figures/perlin_noise.pdf, id=220, 939.51pt x 775.09576pt>
 File: Figures/perlin_noise.pdf Graphic file (type pdf)
 
 <use Figures/perlin_noise.pdf>
-Package pdftex.def Info: Figures/perlin_noise.pdf used on input line 51.
+Package pdftex.def Info: Figures/perlin_noise.pdf used on input line 59.
 (pdftex.def)             Requested size: 375.79733pt x 310.0328pt.
 
-<Figures/motioncloud_noise.pdf, id=220, 939.51pt x 775.09576pt>
+<Figures/motioncloud_noise.pdf, id=223, 939.51pt x 775.09576pt>
 File: Figures/motioncloud_noise.pdf Graphic file (type pdf)
 
 <use Figures/motioncloud_noise.pdf>
-Package pdftex.def Info: Figures/motioncloud_noise.pdf used on input line 59.
+Package pdftex.def Info: Figures/motioncloud_noise.pdf used on input line 67.
 (pdftex.def)             Requested size: 375.79733pt x 310.0328pt.
 
-<Figures/logpol_filter.pdf, id=223, 722.7pt x 722.7pt>
-File: Figures/logpol_filter.pdf Graphic file (type pdf)
+<Figures/retina_filter.pdf, id=226, 722.7pt x 722.7pt>
+File: Figures/retina_filter.pdf Graphic file (type pdf)
 
-<use Figures/logpol_filter.pdf>
-Package pdftex.def Info: Figures/logpol_filter.pdf used on input line 67.
+<use Figures/retina_filter.pdf>
+Package pdftex.def Info: Figures/retina_filter.pdf used on input line 75.
 (pdftex.def)             Requested size: 289.07487pt x 289.07487pt.
 
-<Figures/mnist_128_LP_nonoise.pdf, id=226, 939.51pt x 775.09576pt>
+<Figures/mnist_128_LP_nonoise.pdf, id=229, 939.51pt x 775.09576pt>
 File: Figures/mnist_128_LP_nonoise.pdf Graphic file (type pdf)
 
 <use Figures/mnist_128_LP_nonoise.pdf>
-Package pdftex.def Info: Figures/mnist_128_LP_nonoise.pdf used on input line 75
+Package pdftex.def Info: Figures/mnist_128_LP_nonoise.pdf used on input line 83
 .
 (pdftex.def)             Requested size: 375.79733pt x 310.0328pt.
 
-<Figures/mnist_128_LP_MotionCloud.pdf, id=227, 939.51pt x 775.09576pt>
-File: Figures/mnist_128_LP_MotionCloud.pdf Graphic file (type pdf)
+<Figures/mnist_128_LP_noise.pdf, id=230, 939.51pt x 775.09576pt>
+File: Figures/mnist_128_LP_noise.pdf Graphic file (type pdf)
 
-<use Figures/mnist_128_LP_MotionCloud.pdf>
-Package pdftex.def Info: Figures/mnist_128_LP_MotionCloud.pdf used on input lin
-e 83.
+<use Figures/mnist_128_LP_noise.pdf>
+Package pdftex.def Info: Figures/mnist_128_LP_noise.pdf used on input line 91.
 (pdftex.def)             Requested size: 375.79733pt x 310.0328pt.
 
-<Figures/mnist_log_nonoise.png, id=228, 433.62pt x 289.08pt>
+<Figures/mnist_log_nonoise.png, id=231, 433.62pt x 289.08pt>
 File: Figures/mnist_log_nonoise.png Graphic file (type png)
 
 <use Figures/mnist_log_nonoise.png>
-Package pdftex.def Info: Figures/mnist_log_nonoise.png used on input line 91.
+Package pdftex.def Info: Figures/mnist_log_nonoise.png used on input line 99.
 (pdftex.def)             Requested size: 173.44492pt x 115.62994pt.
 
-<Figures/mnist_log_motioncloud.png, id=230, 433.62pt x 289.08pt>
+<Figures/mnist_log_motioncloud.png, id=233, 433.62pt x 289.08pt>
 File: Figures/mnist_log_motioncloud.png Graphic file (type png)
 
 <use Figures/mnist_log_motioncloud.png>
-Package pdftex.def Info: Figures/mnist_log_motioncloud.png used on input line 9
-9.
+Package pdftex.def Info: Figures/mnist_log_motioncloud.png used on input line 1
+07.
 (pdftex.def)             Requested size: 173.44492pt x 115.62994pt.
 
-<Figures/logpol_energy_filter.pdf, id=231, 722.7pt x 722.7pt>
-File: Figures/logpol_energy_filter.pdf Graphic file (type pdf)
+<Figures/colliculus_filter.pdf, id=234, 722.7pt x 722.7pt>
+File: Figures/colliculus_filter.pdf Graphic file (type pdf)
 
-<use Figures/logpol_energy_filter.pdf>
-Package pdftex.def Info: Figures/logpol_energy_filter.pdf used on input line 10
-7.
+<use Figures/colliculus_filter.pdf>
+Package pdftex.def Info: Figures/colliculus_filter.pdf used on input line 115.
 (pdftex.def)             Requested size: 289.07487pt x 289.07487pt.
 
-<Figures/accuracy_128_LP.pdf, id=232, 939.51pt x 775.09576pt>
-File: Figures/accuracy_128_LP.pdf Graphic file (type pdf)
+<Figures/accuracy_colliculus.pdf, id=235, 939.51pt x 775.09576pt>
+File: Figures/accuracy_colliculus.pdf Graphic file (type pdf)
 
-<use Figures/accuracy_128_LP.pdf>
-Package pdftex.def Info: Figures/accuracy_128_LP.pdf used on input line 115.
+<use Figures/accuracy_colliculus.pdf>
+Package pdftex.def Info: Figures/accuracy_colliculus.pdf used on input line 123
+.
 (pdftex.def)             Requested size: 375.79733pt x 310.0328pt.
 
-<Figures/Model.pdf, id=233, 939.51pt x 433.62pt>
+<Figures/Model.pdf, id=236, 939.51pt x 433.62pt>
 File: Figures/Model.pdf Graphic file (type pdf)
  <use Figures/Model.pdf>
-Package pdftex.def Info: Figures/Model.pdf used on input line 123.
+Package pdftex.def Info: Figures/Model.pdf used on input line 131.
 (pdftex.def)             Requested size: 610.67427pt x 281.84966pt.
 
-Overfull \hbox (70.07187pt too wide) in paragraph at lines 123--125
+Overfull \hbox (70.07187pt too wide) in paragraph at lines 131--133
  [][] 
  []
 
@@ -2203,26 +2213,30 @@ Overfull \hbox (70.07187pt too wide) in paragraph at lines 123--125
 [11
 
 
- <./Figures/accuracy.pdf>] [12 <./Figures/MNIST_28.pdf> <./Figures/MNIST_128.pd
+ <./Figures/accuracy.pdf>] [12 <./Figures/MNIST_28.pdf> <./Figures/mnist_128.pd
 f
 
-pdfTeX warning: pdflatex (file ./Figures/MNIST_128.pdf): PDF inclusion: multipl
+pdfTeX warning: pdflatex (file ./Figures/mnist_128.pdf): PDF inclusion: multipl
 e pdfs with page group included in a single page
->] [13 <./Figures/perlin_noise.pdf> <./Figures/motioncloud_noise.pdf
+>] [13 <./Figures/couples_a-v.pdf> <./Figures/perlin_noise.pdf
 
-pdfTeX warning: pdflatex (file ./Figures/motioncloud_noise.pdf): PDF inclusion:
- multiple pdfs with page group included in a single page
->] [14 <./Figures/logpol_filter.pdf> <./Figures/mnist_128_LP_nonoise.pdf
+pdfTeX warning: pdflatex (file ./Figures/perlin_noise.pdf): PDF inclusion: mult
+iple pdfs with page group included in a single page
+>] [14 <./Figures/motioncloud_noise.pdf> <./Figures/retina_filter.pdf
 
-pdfTeX warning: pdflatex (file ./Figures/mnist_128_LP_nonoise.pdf): PDF inclusi
-on: multiple pdfs with page group included in a single page
->] [15 <./Figures/mnist_128_LP_MotionCloud.pdf> <./Figures/mnist_log_nonoise.pn
-g> <./Figures/mnist_log_motioncloud.png>] [16 <./Figures/logpol_energy_filter.p
-df> <./Figures/accuracy_128_LP.pdf
+pdfTeX warning: pdflatex (file ./Figures/retina_filter.pdf): PDF inclusion: mul
+tiple pdfs with page group included in a single page
+>] [15 <./Figures/mnist_128_LP_nonoise.pdf> <./Figures/mnist_128_LP_noise.pdf
 
-pdfTeX warning: pdflatex (file ./Figures/accuracy_128_LP.pdf): PDF inclusion: m
-ultiple pdfs with page group included in a single page
->] [17 <./Figures/Model.pdf>]
+pdfTeX warning: pdflatex (file ./Figures/mnist_128_LP_noise.pdf): PDF inclusion
+: multiple pdfs with page group included in a single page
+>] [16 <./Figures/mnist_log_nonoise.png> <./Figures/mnist_log_motioncloud.png> 
+<./Figures/colliculus_filter.pdf>] [17 <./Figures/accuracy_colliculus.pdf> <./F
+igures/Model.pdf
+
+pdfTeX warning: pdflatex (file ./Figures/Model.pdf): PDF inclusion: multiple pd
+fs with page group included in a single page
+>]
 \openout2 = `Appendices/AppendixB.aux'.
 
  (./Appendices/AppendixB.tex
@@ -2242,16 +2256,16 @@ Package atveryend Info: Empty hook `AfterLastShipout' on input line 252.
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 252.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 252.
 Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: 1A2B2465CF6AA9B0B6A2F50C03B8B261;2144.
+(rerunfilecheck)             Checksum: 6F606D0F825B00E58A0E6B16DB2D99EF;2144.
 Package logreq Info: Writing requests to 'main.run.xml'.
 \openout1 = `main.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 33889 strings out of 493013
- 682583 string characters out of 6135681
- 894657 words of memory out of 5000000
- 36990 multiletter control sequences out of 15000+600000
+ 33896 strings out of 493013
+ 682714 string characters out of 6135681
+ 895657 words of memory out of 5000000
+ 36995 multiletter control sequences out of 15000+600000
  55358 words of font info for 101 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  56i,21n,78p,10377b,1921s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -2261,10 +2275,10 @@ m-super/sftt1200.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/palatino/up
 lb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/palatino/uplr8a.pfb></u
 sr/share/texlive/texmf-dist/fonts/type1/urw/palatino/uplr8a.pfb></usr/share/tex
 live/texmf-dist/fonts/type1/urw/palatino/uplri8a.pfb>
-Output written on main.pdf (21 pages, 2245304 bytes).
+Output written on main.pdf (21 pages, 2547380 bytes).
 PDF statistics:
- 532 PDF objects out of 1000 (max. 8388607)
- 346 compressed objects within 4 object streams
- 60 named destinations out of 1000 (max. 500000)
- 186 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 549 PDF objects out of 1000 (max. 8388607)
+ 355 compressed objects within 4 object streams
+ 61 named destinations out of 1000 (max. 500000)
+ 191 words of extra memory for PDF output out of 10000 (max. 10000000)
 
