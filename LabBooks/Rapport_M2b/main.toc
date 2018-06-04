@@ -12,7 +12,9 @@
 \contentsline {section}{\numberline {2.5}Filtre LogPolaire}{6}{section.11}
 \contentsline {section}{\numberline {2.6}Mod\IeC {\`e}le}{6}{section.12}
 \contentsline {chapter}{\numberline {3}R\IeC {\'e}sultats}{8}{chapter.13}
-\contentsline {chapter}{\numberline {4}Discussion et perspectives}{9}{chapter.14}
-\contentsline {chapter}{Bibliography}{10}{chapter*.15}
-\contentsline {chapter}{\numberline {A}Figures}{11}{appendix.16}
-\contentsline {chapter}{\numberline {B}Code source et documents compl\IeC {\'e}mentaires}{18}{appendix.32}
+\contentsline {section}{\numberline {3.1}R\IeC {\'e}sultats escompt\IeC {\'e}s}{8}{section.14}
+\contentsline {section}{\numberline {3.2}R\IeC {\'e}sultats pr\IeC {\'e}liminaires}{9}{section.15}
+\contentsline {chapter}{\numberline {4}Discussion et perspectives}{10}{chapter.16}
+\contentsline {chapter}{Bibliography}{11}{chapter*.17}
+\contentsline {chapter}{\numberline {A}Figures}{12}{appendix.18}
+\contentsline {chapter}{\numberline {B}Code source et documents compl\IeC {\'e}mentaires}{19}{appendix.34}
