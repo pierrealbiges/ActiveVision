@@ -13,7 +13,6 @@
 
 %----------------------------------------------------------------------------------------
 
--> Multiple saccades avec mémoire \\
 -> Complexification de la tache avec des inputs de plus en plus écologiques jusqu'à une prise de vue en direct via caméra \\
 -> Possibilité d'intégrer un second input (top-down) correspondant à cible à recherche dans l'environnement \\
 -> Possibilité d'intégrer ces développements dans un projet de thèse \\
@@ -22,3 +21,9 @@ Malgré le stade de développement peu avancé de notre modèle, nous avons dès
 La première étape sera certainement d'étudier la robustesse du modèle en lui soumettant lors de l'étape d'évaluation des images vides mais pouvant être bruitées.
 Dans son état actuel, le modèle ne devrait pas être capable relever la différence avec le reste des images qu'on lui fournit et devrait donc tenter de réaliser une détection, puis une classification malgré l'absence de stimulus.
 En réponse à ce phénomène, il sera possible d'ajouter une couche de neurones artificiels précédent notre réseau actuel et détectant la présence ou l'absence de stimulus dans le champs visuel, modifiant en fonction le comportement de la suite du réseau. \\
+Nous savons que les systèmes biologiques n'accèdent pas nécessairement à leur cible en une seule saccade et qu'une fois qu'ils l'ont atteinte ils réalisent autour d'elle des micro-saccades.
+De même, nous avons pu observer la présence d'erreurs lorsque le modèle réalise une prédiction, et donc lors de la saccade vers sa cible, entraînant un rapprochement incomplet de la fovéa.
+Ainsi une seconde étape nous semblant primordiale est l'intégration au modèle de la possibilité de réaliser plusieurs saccades à la suite, séparées par une re-évaluation de son environnement, pour lui permettre de diminuer les conséquences d'une prédiction imprécise. \autocite{Najemnik2005, Werner2014}\\
+Mais cette série de prédictions ne peut se faire sans mémoire ou l'on risque de voir le modèle osciller continuellement entre les mêmes points de son environnement visuel.
+Ainsi dans un même temps, il sera nécessaire d'insérer dans le modèle une forme simple de mémoire de son environnement et de ce qu'il en a exploré.
+Cette mémoire pourrait prendre la forme d'une carte de probabilité mise à jour au fil de l'exploration, via l'addition de la prédiction lors de sa réalisation afin de définir le lieu présentant la probabilité la plus haute de contenir la cible, puis en la soustraction d'une valeur pré-determinée autour de la région fovéale après chaque tentative de classification, afin de fortement réduire la valeur de probabilité de cette région et ainsi inhiber sa visite dans le futur (inhibition de retour). \autocite{Najemnik2005, Werner2014, Zhaoping2014} \\
