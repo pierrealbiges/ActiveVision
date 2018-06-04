@@ -10,18 +10,21 @@
 \label{Materiel_methode} % Change X to a consecutive number; for referencing this chapter elsewhere, use \ref{ChapterX}
 
 \section{Matériel}
-L'ensemble des simulations (comprenant apprentissage et évaluation) ont été réalisées sur une machine connectée à distance via un protocole \verb+ssh+ et dont les caractéristiques sont visibles dans la~\autoref{tab:materiel}.
+L'ensemble des simulations (comprenant apprentissage et évaluations) ont été réalisées sur une machine connectée à distance via un protocole \verb+ssh+ et dont les caractéristiques sont visibles dans la~\autoref{tab:materiel}.
+
+\section{Base de données MNIST}
+Dans ce travail, nous avons utilisé comme stimuli les images provenant de MNIST, une base de données de 70000 images contenant un chiffre manuscrit chacune, accompagnées d'un \textit{label} décrivant de quel chiffre il s'agit. 
+Cette base de données a été choisi car sa classification est considérée comme l'évaluation standard dans la cadre du développement des modèles de \textit{machine learning}. Son utilisation courante nous permettra de facilement comparer les performances d'autres modèles à celle du notre, et sa simplicité nous permet de construire des prototypes simples mais fonctionnels qui pourront ensuite être complexifiées pour être adaptés à d'autres types de stimuli.
 
 \section{Carte de certitude}
-En amont de l'initialisation de notre modèle, nous créons un classifieur simple que nous entaînons pour être capable d'obtenir, dans des conditions classiques, des performances acceptables sur la base de données MNIST (99\% de reconnaissance positive du chiffre contenu dans l'image).
-Ce modèle est ensuite évalué avec des images de 28*28 pixels contenant un chiffre provenant de MNIST mais pouvant être décalé dans cet espace.
+En amont de l'initialisation de notre modèle, nous avons créé un classifieur simple que nous entaînons pour être capable d'obtenir, dans des conditions classiques, des performances acceptables sur la base de données MNIST (99\% de reconnaissance positive du chiffre contenu dans l'image).
+Ce modèle est ensuite évalué avec des images de 28*28 pixels contenant toujours un  chiffre MNIST mais celui-ci pouvant être décalé dans cet espace.
 La performance du classifieur est ainsi calculée 1000 fois pour chaque position possible du chiffre dans l'espace. 
 Nous obtenons une matrice correspondant à la certitude avec laquelle le modèle peut reconnaitre le chiffre qu'on lui impose selon sa position par rapport au centre de l'image, correspondant à son centre de fixation.
 Une reconstruction graphique de cette matrice est visible dans la figure~\ref{fig:accuracy}.
-Cette carte de certitude servira de base pour construire les labels qui seront utilisés lors de l'apprentissage automatisé de notre modèle principal.
+Cette carte de certitude servira de base pour construire les \textit{labels} qui seront utilisés lors de l'apprentissage automatisé de notre modèle principal.
 
 \section{Pré-traitements de l'image}
-Dans ce travail, nous avons utilisé comme stimuli les images provenant de MNIST, une base de données contenant 70000 chiffres manuscrits dont l'utilisation est très répandue pendant le développement des modèles d'apprentissage automatique (sa classification est considérée comme l'évaluation standard pour ces modèles).
 Avant d'être utilisées par notre modèle, les images subissent un certain nombre de pré-traitements. 
 L'objectif de ces pré-traitements est de les rendre plus écologiques, c'est à dire plus proches des stimuli que rencontrent les systèmes biologiques.
 
@@ -33,7 +36,7 @@ En parallèle, la carte de certitude construite précédemment et contenue dans 
 Les images-hôtes sont pseudo-vides car leurs valeurs en chaque point correspond à la valeur minimale de l'image insérée, permettant de ne pas créer un cadre autour de cette dernière lorsqu'elle est integrée.
 
 \subsection{Bruit écologique}
-Pour permettre à nos stimuli de s'approcher de ceux pouvant être reçus et traités par les systèmes biologiques, nous avons superposé à nos signaux (image et certitude) un bruit généré de manière aléatoire et selon deux méthodes possibles.
+Pour permettre à nos stimuli de s'approcher de ceux pouvant être reçus et traités par les systèmes biologiques, nous avons superposé à nos signaux un bruit généré de manière aléatoire et selon deux méthodes possibles.
 La première consiste en la génération de bruit Perlin \autocite{Perlin1985} (figure~\ref{fig:perlin_noise}), permettant à l'origine de produire automatiquement des textures à l'aspect naturel destinées à être utilisées pour des effets spéciaux numériques.
 La seconde consiste en la génération de bruit \textit{MotionCloud} (figure~\ref{fig:motioncloud_noise}), permettant d'obtenir des textures aléatoires et semblants naturelles, destinées à l'origine à être utilisées dans des études sur la perception des mouvements.
 C'est cette dernière que nous avons utilisé par défaut lors de l'apprentissage automatisé, mais les deux méthodes sont implantées dans nos scripts. \autocite{Leon2012}
@@ -41,20 +44,20 @@ C'est cette dernière que nous avons utilisé par défaut lors de l'apprentissag
 \section{Filtre LogPolaire}
 Finalement, afin de simuler une variabilité de l'acuité visuelle chez notre modèle, nous avons appliqué à nos stimuli un filtre LogPolaire (figure~\ref{fig:logpol_filter}).
 Ce filtre, construit avec une approche neuromimétique, est constitué d'un ensemble de filtres Gabor et vise à reproduire la forme et l'organisation réelle des champs récepteurs présents dans les régions visuelles des systèmes nerveux biologiques. 
-De précédentes études ont montré qu'il présente un certain nombre d'avantages pour la modélisation des systèmes biologiques, notamment car il est aisément modifiable pour simuler les champs récepteurs de différentes régions impliquées dans la vision (rétine, corps genouillé latéral, colliculis supérieur, V1 puis aires associatives).
+De précédentes études ont montré que cette méthode présente un certain nombre d'avantages pour la modélisation des systèmes biologiques, notamment car elle est aisément modifiable pour simuler les champs récepteurs de différentes régions impliquées dans la vision (rétine, corps genouillé latéral, colliculis supérieur, V1 puis aires associatives).
 Le filtre LogPolaire correspond en réalité à une matrice de valeurs qui, lorsque appliquée à une image par multiplication matricielle, permet une décroissance de la résolution en fonction de l'excentricité (distance) par rapport au centre de l'image. 
 Le résultat de l'application de ce filtre sur l'un de nos stimuli est visible sur les figures~\ref{fig:mnist_128_LP_nonoise} (non-bruité) et~\ref{fig:mnist_128_LP_MotionCloud} (avec un bruit MotionCloud). Des reconstructions alternatives (logarithmiques) sont visibles sur les figures~\ref{fig:mnist_log_nonoise} et~\ref{fig:mnist_log_motioncloud} \autocite{Freeman2011} \\
 Une version de ce filtre dans laquelle les filtres Gabor d'un même emplacement (mais ne possédant pas la même orientation) sont moyennés est appliquée à la carte de certitude, servant de label pour l'apprentissage de notre modèle (figures~\ref{fig:energy_filter} et \ref{fig:accuracy_128_LP}).
 
 \section{Modèle}
 Le fonctionnement de notre modèle se basant sur des méthodes d'apprentissage automatisé (ou \textit{machine learning}), son fonctionnement peut être décrit en deux temps.\\
-Durant la première phase, dîte d'apprentissage, nous fournissons au réseau nerveux artificiel à la fois un input, correspondant à l'image transformée à partir de laquelle il va devoir prédire la position d'un stimulus et un label, correspondant à une carte de chaleur représentant la position réelle du stimulus. 
+Durant la première phase, dîte d'apprentissage, nous fournissons au réseau nerveux artificiel à la fois une entrée (ou \textit{input}) correspondant à l'image transformée à partir de laquelle il va devoir prédire la position d'un stimulus et un label, correspondant à une carte de chaleur représentant la position réelle du stimulus. 
 Durant un nombre d'itérations prédéfinies, le réseau nerveux va interpréter l'input pour produire une série de valeurs correspondant à sa prédiction de la position du stimulus.
-Le modèle calcul ensuite un coût, c'est à dire (de manière simplifiée) la différence entre cette prédiction et le label fourni (et donc à la justesse de la prédiction), via la méthode de cross-entropie binaire avec régression logistique (\textit{BCEWithLogitsLoss}).
+Le modèle calcul ensuite un coût, c'est à dire (de manière simplifiée) la différence entre cette prédiction et le label fourni (et donc à la justesse de la prédiction), via la méthode de l'entropie croisée binaire avec régression logistique (\textit{BCEWithLogitsLoss}).
 Finalement selon les valeurs de coût, les matrices de poids du réseau nerveux artificiel sont mises à jour via la méthode de descente de gradient stochastique (\textit{SGD}). \\
 Après la phase d'apprentissage vient la phase d'évaluation (ou de test) où nous fournissons au modèle des inputs qu'il n'a jamais rencontré afin de s'assurer de ses performances et de ses capacités de généralisation (transcrire à de nouveaux stimuli ce qu'il a appris).
 Les inputs sont ainsi fournis seuls, sans labels, et le modèle doit produire des prédictions sur la position des stimulis.
 Aucun apprentissage n'est réalisé durant cette phase. \\
-Lors de l'écriture de ce rapport, le réseau nerveux artificiel était composé de trois couches linéaires séparées par une rectification linéaire fuitée (\textit{leaky\_ReLU}). \\
+Lors de l'écriture de ce rapport, le réseau nerveux artificiel était composé de trois couches linéaires séparées par une rectification linéaire fuitée (\textit{leaky\_ReLU}).
 L'ensemble des étapes décrites jusqu'ici sont visibles sur la figure~\ref{fig:model}.
 Pour plus de détails sur le fonctionnement du modèle, se reporter à l'appendice~\ref{Code}.
