@@ -20,16 +20,22 @@ n_hidden1 = int(((N_theta*N_azimuth*N_eccentricity*N_phase)/4)*3)
 n_hidden2 = int(((N_theta*N_azimuth*N_eccentricity*N_phase)/4))
 verbose = 1
 
-
 data_loader = torch.utils.data.DataLoader(
-    datasets.MNIST('/tmp/data', 
-                   train=True,     #def the dataset as training data 
-                   download=True,  #download if dataset not present on disk
-                   transform=transforms.Compose([
-                       transforms.ToTensor(),
-                       transforms.Normalize((0.1307,), (0.3081,))])),
-                   batch_size=minibatch_size, 
-                   shuffle=True)
+           datasets.MNIST('/tmp/data', 
+           train=True,     #def the dataset as training data 
+           download=True,  #download if dataset not present on disk
+           transform=transforms.Compose([
+               transforms.ToTensor(),
+               transforms.Normalize((0.1307,), (0.3081,))])),
+           batch_size=minibatch_size, 
+           shuffle=True)
+
+class custom_loader(data_loader.dataset):
+    def __init__(self):
+
+    def __len__(self):
+        return len(data_loader.dataset)
+    def __getitem__(self):
 
 
 ## Charger la matrice de certitude
@@ -37,7 +43,7 @@ path = "MNIST_accuracy.npy"
 if os.path.isfile(path):
     accuracy =  np.load(path)
     if verbose:
-        print('Loading accuracy...')
+        print('Loading accuracy... min, max=', accuracy.min(), accuracy.max())
 else:
     print('No accuracy data found.')
 
@@ -127,6 +133,7 @@ def mnist_fullfield(data, i_offset, j_offset, N_pic=N_X, noise=0.,  mean=.25,  s
         data_fullfield += noise * MotionCloudNoise()
 
     data_retina = retina_vector @ np.ravel(data_fullfield)
+    print(data_fullfield.shape, np.ravel(data_fullfield).shape, data_retina.shape)
 
     # data normalization
     #data_retina -= data_retina.mean()
@@ -179,6 +186,7 @@ def accuracy_fullfield(accuracy, i_offset, j_offset, N_pic=N_X, figure_type='', 
                  int(center+j_offset):int(center+N_stim+j_offset)] = accuracy
 
     accuracy_colliculus = colliculus_vector @ np.ravel(accuracy_fullfield)
+    print(accuracy_fullfield.shape, np.ravel(accuracy_fullfield).shape, accuracy_colliculus.shape)
     
     if figure_type == 'colliculus':
         image_hat = colliculus_inverse @ np.ravel(accuracy_colliculus)
@@ -193,8 +201,8 @@ def accuracy_fullfield(accuracy, i_offset, j_offset, N_pic=N_X, figure_type='', 
 
 def couples(data, i_offset, j_offset): #, device):
     #data = data.to(device)
-    v = mnist_fullfield(data, i_offset, j_offset)
-    a = accuracy_fullfield(accuracy, i_offset, j_offset)
+    v = mnist_fullfield(data, i_offset, j_offset, figure_type='cmap')
+    a = accuracy_fullfield(accuracy, i_offset, j_offset, figure_type='colliculus')
     return (v, a)
 
 
@@ -225,17 +233,6 @@ def MotionCloudNoise(sf_0=0.125, B_sf=3., figure_type='', save=False):
 do_cuda = False # torch.cuda.is_available()
 kwargs = {'num_workers': 1, 'pin_memory': True} if do_cuda else {}
 device = torch.cuda.device("cuda" if do_cuda else "cpu")
-
-
-data_loader = torch.utils.data.DataLoader(
-    datasets.MNIST('/tmp/data',
-                   train=True,     # def the dataset as training data
-                   download=True,  # download if dataset not present on disk
-                   transform=transforms.Compose([
-                       transforms.ToTensor(),
-                       transforms.Normalize((0.1307,), (0.3081,))])),
-    batch_size=minibatch_size,
-    shuffle=True, **kwargs)
 
 
 class Net(torch.nn.Module):

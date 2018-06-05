@@ -27,6 +27,15 @@ Remplacer le stimulus par un bloc blanc sur un fond noir ne semble pas améliore
     [...]
     [40000/60000] Loss: 0.3663122355937958 Time: 16.77 mn
     [50000/60000] Loss: 0.37088751792907715 Time: 21.51 mn
+    
+Pour observer l'influence du calcul actuel du coût (BCEWithLogitsLoss) sur l'apprentissage, je lance un test en le remplacant par le classique MSELoss. Il faudrait aussi tester [SmoothL1Loss](https://pytorch.org/docs/stable/nn.html?highlight=loss#torch.nn.SmoothL1Loss).  
+Ce changement semble avoir un effet fortement bénéfique sur l'apprentissage :
+
+    [0/60000] Loss: 1.873697280883789 Time: 0.05 mn
+    [10000/60000] Loss: 0.24662844836711884 Time: 5.39 mn
+    [20000/60000] Loss: 0.15121513605117798 Time: 10.73 mn
+    [30000/60000] Loss: 0.09705615043640137 Time: 16.07 mn
+    [40000/60000] Loss: 0.07907275855541229 Time: 21.54 mn
 
 ---
 # To Do
@@ -45,6 +54,9 @@ Remplacer le stimulus par un bloc blanc sur un fond noir ne semble pas améliore
 + ~~Debug: créer input = 1 point~~
     + ~~Debug: créer input = blob~~
 + Debug : créer database avant train
++ Debug : changer le calcul de la perte
+    + ~~MSELoss~~ -> Apprentissage en cours
+    + ~~SmoothL1Loss~~ -> Apprentissage en cours
 
 ### Rapport de stage
 + **Ecrire une ébauche de Résultats**

@@ -37,10 +37,11 @@ path = "MNIST_accuracy.npy"
 if os.path.isfile(path):
     accuracy =  np.load(path)
     if verbose:
-        print('Loading accuracy...')
+        print('Loading accuracy... min, max=', accuracy.min(), accuracy.max())
 else:
     print('No accuracy data found.')
 
+    
 ## Préparer l'apprentissage et les fonctions nécessaires au fonctionnement du script
 def vectorization(N_theta=N_theta, N_azimuth=N_azimuth, N_eccentricity=N_eccentricity, N_phase=N_phase, N_X=N_X, N_Y=N_Y, rho=rho, ecc_max=.8, B_sf=.4, B_theta=np.pi/N_theta/2, figure_type='', save=False):
     retina = np.zeros((N_theta, N_azimuth, N_eccentricity, N_phase, N_X*N_Y))
@@ -122,6 +123,7 @@ def mnist_fullfield(data, i_offset, j_offset, N_pic=N_X, noise=0.,  mean=.25,  s
 
     data_fullfield = (data.min().numpy()) * np.ones((N_pic, N_pic))
     data_fullfield[int(center+i_offset):int(center+N_stim+i_offset), int(center+j_offset):int(center+N_stim+j_offset)] = data
+    
 
     if noise>0.:
         data_fullfield += noise * MotionCloudNoise()
@@ -260,7 +262,8 @@ net = Net(n_feature=N_theta*N_azimuth*N_eccentricity*N_phase, n_hidden1=n_hidden
 #net = net.to(device)
 optimizer = torch.optim.SGD(net.parameters(), lr=lr)
 # https://pytorch.org/docs/master/nn.html?highlight=bcewithlogitsloss#torch.nn.BCEWithLogitsLoss
-loss_func = torch.nn.BCEWithLogitsLoss()
+#loss_func = torch.nn.BCEWithLogitsLoss()
+loss_func = torch.nn.MSELoss()
 
 
 def train(net, minibatch_size, optimizer=optimizer, vsize=N_theta*N_azimuth*N_eccentricity*N_phase, asize=N_azimuth*N_eccentricity, offset_std=10, offset_max=25, verbose=1):
@@ -270,19 +273,20 @@ def train(net, minibatch_size, optimizer=optimizer, vsize=N_theta*N_azimuth*N_ec
 
         input_ = np.zeros((minibatch_size, 1, vsize))
         a_data = np.zeros((minibatch_size, 1, asize))
-        target = np.zeros((minibatch_size, asize))
+        #target = np.zeros((minibatch_size, asize))
         
         for idx in range(minibatch_size):
 
             i_offset = minmax(np.random.randn()*offset_std, offset_max)
             j_offset = minmax(np.random.randn()*offset_std, offset_max)
             input_[idx, 0, :], a_data[idx, 0, :] = couples(data[idx, 0, :, :], i_offset, j_offset)
-            target[idx, :] = a_data[idx, 0, :]
+            #target[idx, :] = a_data[idx, 0, :]
 
-        input_, target = Variable(torch.FloatTensor(input_)), Variable(torch.FloatTensor(a_data))
-
+        #input_, target = Variable(torch.FloatTensor(input_)), Variable(torch.FloatTensor(a_data))
+        input_, a_data = Variable(torch.FloatTensor(input_)), Variable(torch.FloatTensor(a_data))
         prediction = net(input_)
-        loss = loss_func(prediction, target)
+        #loss = loss_func(prediction, target)
+        loss = loss_func(prediction, a_data)
 
         optimizer.zero_grad()
         loss.backward()
