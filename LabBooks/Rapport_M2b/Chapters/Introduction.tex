@@ -1,7 +1,7 @@
 %!TEX root = main.tex
 %!TeX TS-program = pdflatex
 %!TeX encoding = UTF-8 Unicode
-%!TeX spellcheck = fr-FR
+%!TeX spellcheck = fr
 %!BIB TS-program = biber
 % -*- coding: UTF-8; -*-
 % vim: set fenc=utf-8
@@ -23,20 +23,20 @@
 %--------------- Vision biologique ---------------
 
 Au cours de l'histoire évolutive et sous la pression de la sélection naturelle, tous nos systèmes perceptifs ont tendu (et tendent encore) vers une optimisation de leur fonctionnement, en fonction de nos besoins et de nos ressources.
-L'ensemble de notre système visuel, de la rétine jusqu'aux aires corticales les plus associatives, a ainsi évolué pour pouvoir réaliser une description robuste et rapide de notre environnement, nous permettant d'en intégrer les informations les plus pertinentes, d'intéragir efficacement avec lui et d'en appréhender les dangers.
-Cette pression évolutive a notamment mené au développement de deux caractéristiques du système visuel qui vont plus particulièrement nous intéresser : l'acuité visuelle est non-uniforme, plus fine au centre du champ visuel et l'\oe il explore la scène visuelle en effectuant des saccades.~\autocite{Werner2014} \\
+L'ensemble de notre système visuel, de la rétine jusqu'aux aires corticales les plus associatives, a ainsi évolué pour pouvoir réaliser une description robuste et rapide de notre environnement, nous permettant d'en intégrer les informations les plus pertinentes, d'interagir efficacement avec lui et d'en appréhender les dangers.
+Cette pression évolutive a notamment mené au développement de deux caractéristiques du système visuel qui vont plus particulièrement nous intéresser : l'acuité visuelle est non-uniforme et l'\oe il explore la scène visuelle en effectuant des saccades.~\autocite{Werner2014} \\
 
 L'acuité visuelle peut être définie comme l'efficacité  avec laquelle les stimuli visuels peuvent être analysés. Celle-ci n'est pas fixe mais varie au sein de notre champs visuel (portion de l'espace observée par un oeil immobile), qu'il est ainsi possible de séparer en deux parties : la vision centrale et la vision périphérique.\autocite{Werner2014} \\
 La vision centrale est soutenue anatomiquement par la fovéa, une région rétinienne comprenant exclusivement des cônes. Cette composition, couplée à une forte densité de photorécepteurs et une faible convergence photorécepteurs/cellules ganglionnaires, permet à cette région de présenter l'acuité visuelle la plus importante du système visuel, ainsi qu'une bonne perception des couleurs. \autocite{Werner2014} \\
-La composition et la densité en photorécépteurs de la rétine soutenant la vision périphérique change avec son excentricité par rapport à la fovéa, mais elle comprends majoritairement des batônnets. 
-De même, le degré de convergence photorécepteurs/cellules ganglionnaires augmente avec cette excentricité (lorsque ce degré augmente, le nombre de photorécepteurs convergeants vers une même cellule ganglionnaire augmente).
+La composition et la densité en photorécepteurs de la rétine soutenant la vision périphérique change avec son excentricité par rapport à la fovéa, mais elle comprends majoritairement des bâtonnets. 
+De même, le degré de convergence photorécepteurs/cellules ganglionnaires augmente avec cette excentricité (lorsque ce degré augmente, le nombre de photorécepteurs convergents vers une même cellule ganglionnaire augmente).
 En conséquence, l'acuité visuelle et la perception des couleurs dans la vision périphérique diminuent avec la distance de la fovéa, mais on peut y observer une importante sensibilité aux variations de luminance et de fréquence spatiale. \autocite{Werner2014} \\
 Cette variabilité des caractéristiques de notre système visuel et notamment de son acuité, permet de fortement réduire la quantité d'informations à traiter par les réseaux nerveux en aval de la rétine, cette dernière recevant quasi-continuellement un flux d'information estimé à $10^{8}$ bits/s, subissant une réduction de plus de 99\% pour engendrer une sortie par le nerf optique estimée à $10^{2}$ bits/s. \autocite{Kortum1996, Werner2014, Zhaoping2014} \\
 La variabilité de l'acuité visuelle en fonction de l'excentricité à la rétine, ainsi que l'organisation spatiale des stimuli sur celle-ci sont d'ailleurs conservées tout au long des réseaux nerveux réalisant leur traitement, formant ce que l'on nomme l'organisation rétinotopique des régions cérébrales visuelles. \autocite{Werner2014} \\
 
 Mais cette réduction du flux d'informations à traiter présente au moins un inconvénient majeur. 
-Une description précise d'un stimulus visuel ne peut être réalisée avec une grande certitude que dans une partie très réduite du champs visuel (environ 2 degrés chez l'Humain).
-Pour palier à cela, lorsqu'un agent voudra explorer son environnement visuel, il devra réaliser une série de mouvements oculaires brefs. Ces saccades oculaires permettront de placer les régions visuelles d'intérêt dans la vision centrale, pour que le système visuel en aval puisse en réaliser des descriptions précises. Par exemple, l'observation passive d'une scène (sans consigne ou recherche précise d'une cible) va impliquer la réalisation de 2-4 saccades par seconde. \autocite{Krauzlis2017, Werner2014} \\
+Une description précise d'un stimulus visuel ne peut être réalisée avec une grande certitude que dans une partie très réduite du champ visuel (sur un disque d'environ 2 degrés d'angle visuel chez l'Humain).
+Pour palier à cela, lorsqu'un agent voudra explorer son environnement visuel, il devra réaliser une série de mouvements oculaires brefs. Ces saccades oculaires permettront de placer les régions visuelles d'intérêt dans la vision centrale, pour que le système visuel en aval puisse en réaliser des descriptions précises. Par exemple, l'observation passive d'une scène (sans consigne ou recherche précise d'une cible) va impliquer la réalisation d'en moyenne 2 à 4 saccades par seconde. \autocite{Krauzlis2017, Werner2014} \\
 La sélection attentionnelle et motrice de la cible à décrire fait intervenir un réseau complexe d'aires cérébrales et corticales et nécessite l'intégration de signaux \textit{top-down} comme \textit{bottom-up}. \autocite{Werner2014} \\
 
 %--------------- Vision artificielle ---------------
@@ -45,12 +45,12 @@ La modélisation du système visuel est l'un des domaines phares du développeme
 L'objectif est de s'inspirer, voir de mimer le fonctionnement des systèmes biologiques afin de permettre aux systèmes informatisés d'accéder à la compréhension de leur environnement.
 La vision artificielle connait ainsi depuis plusieurs décennies l'application de nombreuses méthodes, à diverses échelles et niveaux de complexité.\autocite{Werner2014} \\
 Les modèles à carte de saillance permettent par exemple de reconstruire l'influence qu'ont les signaux \textit{bottom-up} sur l'orientation du regard. 
-Ces modèles décrivant chaque point de l'espace visuel par une valeur, ceux qui ressortent le plus de l'envrionnement sont considérés comme portant l'intérêt le plus grand pour le système et attirent le regard. 
+Ces modèles décrivant chaque point de l'espace visuel par une valeur, ceux qui ressortent le plus de l'environnement sont considérés comme portant l'intérêt le plus grand pour le système et attirent le regard. 
 Après avoir été explorée, une région voit sa saillance devenir nulle, car elle ne peut alors plus fournir d'information à l'agent.
 Les prédictions de ces modèles sont meilleures que le hasard mais ne sont pas parfaites, notamment car ils ne prennent pas en compte certaines caractéristiques des systèmes biologiques, tels que la recherche de cible ou la variabilité de l'acuité visuelle. \autocite{Werner2014} \\
 
-L'étude, le développement et l'utilisation de la vision artificelle permet non seulement d'améliorer les performances des systèmes informatisés, mais aussi de mieux appréhender les zones d'ombre dans nos connaissances du fonctionnement du système visuel (notamment lorsque la modélisation d'une fonction spécifique ne permet pas de prédire le comportement naturel). \autocite{Werner2014} \\
+L'étude, le développement et l'utilisation de la vision artificielle permet non seulement d'améliorer les performances des systèmes informatisés, mais aussi de mieux appréhender les zones d'ombre dans nos connaissances du fonctionnement du système visuel (notamment lorsque la modélisation d'une fonction spécifique ne permet pas de prédire le comportement naturel). \autocite{Werner2014} \\
 
 Dans ce travail exploratoire nous avons tenté, via la simulation de la variabilité de l'acuité visuelle et de l'exploration saccadique de l'environnement, et en les appliquant à des réseaux nerveux artificiels, de proposer une alternative aux modèle actuels de description de l'environnement visuel qui se basent pour la plupart sur une classification pixels par pixels (ou groupes de pixels) sur l'ensemble du champs visuel. 
-Grâce à la simulation de ces fonctions biologiques, notre modèle devrait pouvoir rechercher une cible dans son environnement visuel de façon autonome et ne décrire (classifier) que les régions qui lui fourniront des informations pertinentes. \\
+Grâce à la simulation de ces fonctions biologiques, notre modèle doit pouvoir rechercher une cible dans son environnement visuel de façon autonome et ne décrire (classifier) que les régions qui lui fourniront des informations pertinentes. \\
 L'objectif est double: d'une part aider à l'optimisation des systèmes de vision par ordinateur en proposant une méthode neuromimétique rapide et peu couteuse de la recherche de cible, notamment pour les systèmes embarqués pour lesquels ces caractéristiques sont primordiales, et d'autre part d'explorer les connaissances neuroscientifiques sur le sujet afin d'offrir un point de départ dans l'identification de zones d'ombre dans la compréhension de l'exploration saccadique de l'environnement ainsi que de la recherche/suivi de cible visuelle.
