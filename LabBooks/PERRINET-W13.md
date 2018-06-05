@@ -9,6 +9,25 @@ Note concernant les problèmes de 403 FORBIDDEN (problème de connexion aux note
 
 Concernant les problèmes d'apprentissage, il faudrait aussi tester de créer la base de données non pas à la volée comme actuellement mais avant train, pour vérifier si ça empêche son fonctionnement normal.
 
+Après quelques tests, l'apprentissage ne se fait toujours pas et ce même si l'on remplace le stimulus par un simple point blanc sur fond noir, et les performances sont toujours très faibles: 
+
+    0/60000] Loss: 0.8450890779495239 Time: 0.03 mn
+    [10000/60000] Loss: 0.4025525152683258 Time: 3.15 mn
+    [...]
+    [40000/60000] Loss: 0.36951038241386414 Time: 28.25 mn
+    [50000/60000] Loss: 0.37394532561302185 Time: 37.15 mn
+
+Après quelques vérifications, les coordonnées d'insertion dans input et accuracy semblent les même, le problème d'apprentissage ne semble donc pas correspondre à une dissociation input/label.  
+Cependant, l'apprentissage consiste en la comparaison d'un vecteur input (1152,) et d'un vecteur accuracy  (96,).  Est-ce que la grande différence de valeurs peu entrainer un faible apprentissage?  
+
+Remplacer le stimulus par un bloc blanc sur un fond noir ne semble pas améliorer l'apprentissage : 
+
+    [0/60000] Loss: 0.7251732349395752 Time: 0.06 mn
+    [10000/60000] Loss: 0.6256107091903687 Time: 5.59 mn
+    [...]
+    [40000/60000] Loss: 0.3663122355937958 Time: 16.77 mn
+    [50000/60000] Loss: 0.37088751792907715 Time: 21.51 mn
+
 ---
 # To Do
 
@@ -23,8 +42,8 @@ Concernant les problèmes d'apprentissage, il faudrait aussi tester de créer la
 + Corriger le calcul de la nouvelle position du stimulus avec saccade -> (max(a,b) - min(a,b)) ?
 + ~~Modifer la figure model.odg pour s'adapter aux notes manuscrites~~
 + ~~Intégrer la possibilité de créer les figures dans Where.py et réaliser un cleanup de LogPol_figures.ipynb pour ne faire qu'appeler ses fonctions~~
-+ Debug: créer input = 1 point
-    + Debug: créer input = blob
++ ~~Debug: créer input = 1 point~~
+    + ~~Debug: créer input = blob~~
 + Debug : créer database avant train
 
 ### Rapport de stage
