@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.6.5)  5 JUN 2018 14:59
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.6.5)  5 JUN 2018 15:09
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1843,92 +1843,93 @@ ry, mod-els and data\T1/ppl/m/n/12 . Ox-ford Uni. 2014, p. 383. \T1/ppl/m/sc/12
  (./Appendices/AppendixA.tex
 Appendix A.
 
-Underfull \hbox (badness 10000) in paragraph at lines 19--19
+Underfull \hbox (badness 10000) in paragraph at lines 26--26
 []|\T1/ppl/m/n/12 Système
  []
 
 <Figures/accuracy.pdf, id=243, 939.51pt x 775.09576pt>
 File: Figures/accuracy.pdf Graphic file (type pdf)
 <use Figures/accuracy.pdf>
-Package pdftex.def Info: Figures/accuracy.pdf  used on input line 27.
+Package pdftex.def Info: Figures/accuracy.pdf  used on input line 34.
 (pdftex.def)             Requested size: 375.79733pt x 310.0328pt.
 <Figures/MNIST_28.pdf, id=244, 939.51pt x 775.09576pt>
 File: Figures/MNIST_28.pdf Graphic file (type pdf)
 <use Figures/MNIST_28.pdf>
-Package pdftex.def Info: Figures/MNIST_28.pdf  used on input line 35.
+Package pdftex.def Info: Figures/MNIST_28.pdf  used on input line 42.
 (pdftex.def)             Requested size: 281.85518pt x 232.53052pt.
 <Figures/mnist_128.pdf, id=245, 939.51pt x 775.09576pt>
 File: Figures/mnist_128.pdf Graphic file (type pdf)
 <use Figures/mnist_128.pdf>
-Package pdftex.def Info: Figures/mnist_128.pdf  used on input line 43.
+Package pdftex.def Info: Figures/mnist_128.pdf  used on input line 50.
 (pdftex.def)             Requested size: 281.85518pt x 232.53052pt.
 <Figures/couples_a-v.pdf, id=246, 1445.4pt x 505.89pt>
 File: Figures/couples_a-v.pdf Graphic file (type pdf)
 <use Figures/couples_a-v.pdf>
-Package pdftex.def Info: Figures/couples_a-v.pdf  used on input line 51.
+Package pdftex.def Info: Figures/couples_a-v.pdf  used on input line 58.
 (pdftex.def)             Requested size: 578.14977pt x 202.3524pt.
 
-Overfull \hbox (37.54736pt too wide) in paragraph at lines 51--53
+Overfull \hbox (37.54736pt too wide) in paragraph at lines 58--60
  [][] 
  []
 
 <Figures/perlin_noise.pdf, id=247, 939.51pt x 775.09576pt>
 File: Figures/perlin_noise.pdf Graphic file (type pdf)
 <use Figures/perlin_noise.pdf>
-Package pdftex.def Info: Figures/perlin_noise.pdf  used on input line 59.
+Package pdftex.def Info: Figures/perlin_noise.pdf  used on input line 66.
 (pdftex.def)             Requested size: 375.79733pt x 310.0328pt.
 <Figures/motioncloud_noise.pdf, id=250, 939.51pt x 775.09576pt>
 File: Figures/motioncloud_noise.pdf Graphic file (type pdf)
 <use Figures/motioncloud_noise.pdf>
-Package pdftex.def Info: Figures/motioncloud_noise.pdf  used on input line 67.
+Package pdftex.def Info: Figures/motioncloud_noise.pdf  used on input line 74.
 (pdftex.def)             Requested size: 375.79733pt x 310.0328pt.
 <Figures/retina_filter.pdf, id=253, 722.7pt x 722.7pt>
 File: Figures/retina_filter.pdf Graphic file (type pdf)
 <use Figures/retina_filter.pdf>
-Package pdftex.def Info: Figures/retina_filter.pdf  used on input line 75.
+Package pdftex.def Info: Figures/retina_filter.pdf  used on input line 82.
 (pdftex.def)             Requested size: 289.07487pt x 289.07487pt.
 <Figures/mnist_128_LP_nonoise.pdf, id=256, 939.51pt x 775.09576pt>
 File: Figures/mnist_128_LP_nonoise.pdf Graphic file (type pdf)
 <use Figures/mnist_128_LP_nonoise.pdf>
-Package pdftex.def Info: Figures/mnist_128_LP_nonoise.pdf  used on input line 8
-3.
+Package pdftex.def Info: Figures/mnist_128_LP_nonoise.pdf  used on input line 9
+0.
 (pdftex.def)             Requested size: 375.79733pt x 310.0328pt.
 <Figures/mnist_128_LP_noise.pdf, id=257, 939.51pt x 775.09576pt>
 File: Figures/mnist_128_LP_noise.pdf Graphic file (type pdf)
 <use Figures/mnist_128_LP_noise.pdf>
-Package pdftex.def Info: Figures/mnist_128_LP_noise.pdf  used on input line 91.
+Package pdftex.def Info: Figures/mnist_128_LP_noise.pdf  used on input line 98.
 
 (pdftex.def)             Requested size: 375.79733pt x 310.0328pt.
 <Figures/mnist_log_nonoise.pdf, id=258, 433.62pt x 289.08pt>
 File: Figures/mnist_log_nonoise.pdf Graphic file (type pdf)
 <use Figures/mnist_log_nonoise.pdf>
-Package pdftex.def Info: Figures/mnist_log_nonoise.pdf  used on input line 99.
+Package pdftex.def Info: Figures/mnist_log_nonoise.pdf  used on input line 106.
+
 (pdftex.def)             Requested size: 173.44492pt x 115.62994pt.
 <Figures/mnist_log_motioncloud.pdf, id=259, 433.62pt x 289.08pt>
 File: Figures/mnist_log_motioncloud.pdf Graphic file (type pdf)
 <use Figures/mnist_log_motioncloud.pdf>
 Package pdftex.def Info: Figures/mnist_log_motioncloud.pdf  used on input line 
-107.
+114.
 (pdftex.def)             Requested size: 173.44492pt x 115.62994pt.
 <Figures/colliculus_filter.pdf, id=260, 722.7pt x 722.7pt>
 File: Figures/colliculus_filter.pdf Graphic file (type pdf)
 <use Figures/colliculus_filter.pdf>
-Package pdftex.def Info: Figures/colliculus_filter.pdf  used on input line 115.
+Package pdftex.def Info: Figures/colliculus_filter.pdf  used on input line 122.
 
 (pdftex.def)             Requested size: 289.07487pt x 289.07487pt.
 <Figures/accuracy_colliculus.pdf, id=261, 939.51pt x 775.09576pt>
 File: Figures/accuracy_colliculus.pdf Graphic file (type pdf)
 <use Figures/accuracy_colliculus.pdf>
-Package pdftex.def Info: Figures/accuracy_colliculus.pdf  used on input line 12
-3.
+Package pdftex.def Info: Figures/accuracy_colliculus.pdf  used on input line 13
+0.
 (pdftex.def)             Requested size: 375.79733pt x 310.0328pt.
 <Figures/Model.pdf, id=262, 939.51pt x 433.62pt>
 File: Figures/Model.pdf Graphic file (type pdf)
 <use Figures/Model.pdf>
-Package pdftex.def Info: Figures/Model.pdf  used on input line 131.
+Package pdftex.def Info: Figures/Model.pdf  used on input line 138.
 (pdftex.def)             Requested size: 610.67427pt x 281.84966pt.
 
-Overfull \hbox (70.07187pt too wide) in paragraph at lines 131--133
+Overfull \hbox (70.07187pt too wide) in paragraph at lines 138--140
  [][] 
  []
 
@@ -1993,13 +1994,13 @@ Package logreq Info: Writing requests to 'main.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 35663 strings out of 492647
- 714277 string characters out of 6129579
- 959228 words of memory out of 5000000
+ 35665 strings out of 492647
+ 714288 string characters out of 6129579
+ 960228 words of memory out of 5000000
  39108 multiletter control sequences out of 15000+600000
- 584854 words of font info for 114 fonts, out of 8000000 for 9000
+ 585352 words of font info for 116 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 56i,21n,78p,793b,1958s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 56i,21n,78p,793b,1956s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/local/texlive/2018/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc}
 {/usr/local/texlive/2018/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/local/tex
 live/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texli
@@ -2009,7 +2010,7 @@ e/2018/texmf-dist/fonts/type1/public/cm-super/sftt1200.pfb></usr/local/texlive/
 xmf-dist/fonts/type1/urw/palatino/uplr8a.pfb></usr/local/texlive/2018/texmf-dis
 t/fonts/type1/urw/palatino/uplr8a.pfb></usr/local/texlive/2018/texmf-dist/fonts
 /type1/urw/palatino/uplri8a.pfb>
-Output written on main.pdf (22 pages, 2559986 bytes).
+Output written on main.pdf (22 pages, 2560283 bytes).
 PDF statistics:
  614 PDF objects out of 1000 (max. 8388607)
  394 compressed objects within 4 object streams

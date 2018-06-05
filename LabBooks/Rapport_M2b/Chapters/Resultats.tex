@@ -1,7 +1,7 @@
 %!TEX root = main.tex
 %!TeX TS-program = pdflatex
 %!TeX encoding = UTF-8 Unicode
-%!TeX spellcheck = en-US
+%!TeX spellcheck = fr
 %!BIB TS-program = biber
 % -*- coding: UTF-8; -*-
 % vim: set fenc=utf-8
@@ -15,7 +15,7 @@
 
 \section{Résultats escomptés}
 
-Au terme du stade de développement actuel notre modèle devrait être capable, lorsque nous lui fournissons une image bruitée de 128*128 pixels contenant un chiffe MNIST placé au hasard, de produire une carte de probabilités représentant une prédiction précise de la position du stimulus dans l'espace.
+Au terme du stade de développement actuel notre modèle devrait être capable, lorsque nous lui fournissons une image bruitée de $128\times 128$ pixels contenant un chiffe MNIST placé au hasard, de produire une carte de probabilités représentant une prédiction précise de la position du stimulus dans l'espace.
 A chaque point de l'espace devrait donc correspondre une valeur comprise dans l'intervalle $[0,1]$, pouvant être traduite par la certitude du modèle de la présence d'un stimulus en ce point.
 La prédiction du modèle devrait ainsi comprendre au moins une zone chaude (une seule lors d'une prédiction optimale), c'est à dire une région circulaire (dépendant de la forme des champs récepteurs) où sont rassemblées les valeurs de probabilités les plus élevées, à l'image de ce que l'on peut observer dans les labels (figure~\ref{fig:accuracy_128_LP}).
 Selon les caractéristiques de notre filtre rétinien, l'acuité du modèle et donc la certitude de ses prédictions devraient diminuer avec l'excentricité par rapport au centre de la fovéa.
