@@ -1,6 +1,13 @@
 # 2018-06-04
 ---
 
+# 2018-06-05
+---
+Le modèle ne présente toujours pas de performance ne serait-ce qu'acceptable. Pour vérifier une hypothèse de l'origine de ce problème, on crée des inputs artificiels correspondant d'abord à un point non-bruité, puis à un blob non-bruité
+
+Note concernant les problèmes de 403 FORBIDDEN (problème de connexion aux notebooks) : le problème apparaît indépendamment du temps, puisque laisser tourner l'ordi pendant la nuit n'entraîne pas une 403 le matin suivant. Ce n'est donc pas un problème de "time out".
+
+Concernant les problèmes d'apprentissage, il faudrait aussi tester de créer la base de données non pas à la volée comme actuellement mais avant train, pour vérifier si ça empêche son fonctionnement normal.
 
 ---
 # To Do
@@ -12,10 +19,13 @@
 + Ne garder que N_pic ou N_X/N_Y (doublon)
 + Adapter Regard.py à notre modèle
 + ~~Normaliser les données après transformations 128+noise+logpol~~ -> Normalisation retirée, mauvaise intégration endommageant le modèle
-    + Réaliser le benchmarking des paramètres mean et std 
+    + ~~Réaliser le benchmarking des paramètres mean et std~~ -> cf parent 
 + Corriger le calcul de la nouvelle position du stimulus avec saccade -> (max(a,b) - min(a,b)) ?
-+ **Modifer la figure model.odg pour s'adapter aux notes manuscrites**
-+ Intégrer la possibilité de créer les figures dans Where.py et réaliser un cleanup de LogPol_figures.ipynb pour ne faire qu'appeler ses fonctions
++ ~~Modifer la figure model.odg pour s'adapter aux notes manuscrites~~
++ ~~Intégrer la possibilité de créer les figures dans Where.py et réaliser un cleanup de LogPol_figures.ipynb pour ne faire qu'appeler ses fonctions~~
++ Debug: créer input = 1 point
+    + Debug: créer input = blob
++ Debug : créer database avant train
 
 ### Rapport de stage
 + **Ecrire une ébauche de Résultats**
