@@ -9,7 +9,7 @@ Note concernant les problèmes de 403 FORBIDDEN (problème de connexion aux note
 
 Concernant les problèmes d'apprentissage, il faudrait aussi tester de créer la base de données non pas à la volée comme actuellement mais avant train, pour vérifier si ça empêche son fonctionnement normal.
 
-Après quelques tests, l'apprentissage ne se fait toujours pas et ce même si l'on remplace le stimulus par un simple point blanc sur fond noir, et les performances sont toujours très faibles: 
+Après quelques tests, l'apprentissage ne se fait toujours pas et ce même si l'on remplace le stimulus par un simple point blanc sur fond noir, et les performances sont toujours très faibles:
 
     0/60000] Loss: 0.8450890779495239 Time: 0.03 mn
     [10000/60000] Loss: 0.4025525152683258 Time: 3.15 mn
@@ -20,14 +20,14 @@ Après quelques tests, l'apprentissage ne se fait toujours pas et ce même si l'
 Après quelques vérifications, les coordonnées d'insertion dans input et accuracy semblent les même, le problème d'apprentissage ne semble donc pas correspondre à une dissociation input/label.  
 Cependant, l'apprentissage consiste en la comparaison d'un vecteur input (1152,) et d'un vecteur accuracy  (96,).  Est-ce que la grande différence de valeurs peu entrainer un faible apprentissage?  
 
-Remplacer le stimulus par un bloc blanc sur un fond noir ne semble pas améliorer l'apprentissage : 
+Remplacer le stimulus par un bloc blanc sur un fond noir ne semble pas améliorer l'apprentissage :
 
     [0/60000] Loss: 0.7251732349395752 Time: 0.06 mn
     [10000/60000] Loss: 0.6256107091903687 Time: 5.59 mn
     [...]
     [40000/60000] Loss: 0.3663122355937958 Time: 16.77 mn
     [50000/60000] Loss: 0.37088751792907715 Time: 21.51 mn
-    
+
 Pour observer l'influence du calcul actuel du coût (BCEWithLogitsLoss) sur l'apprentissage, je lance un test en le remplacant par le classique MSELoss. Il faudrait aussi tester [SmoothL1Loss](https://pytorch.org/docs/stable/nn.html?highlight=loss#torch.nn.SmoothL1Loss).  
 Ce changement semble avoir un effet fortement bénéfique sur l'apprentissage :
 
@@ -36,6 +36,12 @@ Ce changement semble avoir un effet fortement bénéfique sur l'apprentissage :
     [20000/60000] Loss: 0.15121513605117798 Time: 10.73 mn
     [30000/60000] Loss: 0.09705615043640137 Time: 16.07 mn
     [40000/60000] Loss: 0.07907275855541229 Time: 21.54 mn
+
+
+# 2018-06-05
+---
+
+Il faudrait tester la normalisation de l'entrée sur l'apprentissage
 
 ---
 # To Do
@@ -47,7 +53,7 @@ Ce changement semble avoir un effet fortement bénéfique sur l'apprentissage :
 + Ne garder que N_pic ou N_X/N_Y (doublon)
 + Adapter Regard.py à notre modèle
 + ~~Normaliser les données après transformations 128+noise+logpol~~ -> Normalisation retirée, mauvaise intégration endommageant le modèle
-    + ~~Réaliser le benchmarking des paramètres mean et std~~ -> cf parent 
+    + ~~Réaliser le benchmarking des paramètres mean et std~~ -> cf parent
 + Corriger le calcul de la nouvelle position du stimulus avec saccade -> (max(a,b) - min(a,b)) ?
 + ~~Modifer la figure model.odg pour s'adapter aux notes manuscrites~~
 + ~~Intégrer la possibilité de créer les figures dans Where.py et réaliser un cleanup de LogPol_figures.ipynb pour ne faire qu'appeler ses fonctions~~
