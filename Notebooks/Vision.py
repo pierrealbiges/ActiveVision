@@ -8,8 +8,6 @@ from LogGabor import LogGabor
 # TODO: passer les arguments par la ligne de commande
 N_theta, N_azimuth, N_eccentricity, N_phase, N_X, N_Y, rho = 6, 12, 8, 2, 128, 128, 1.41
 verbose = 1
-mean = 0.
-std = 0.5
 
 ## Charger la matrice de certitude
 path = "MNIST_accuracy.npy"
@@ -130,9 +128,11 @@ def mnist_fullfield(data, i_offset, j_offset, N_pic=N_X, noise=0.,  mean=.25,  s
         return fig, ax
 
     elif figure_type == 'log':
-        code = phi @ np.ravel(data_LP)
-        global_energy = (code**2).sum(axis=(0, -1))
-        print(code.shape, global_energy.shape)
+        #TODO: les lignes suivantes sont pas 100% claires - a tester dans 2018-05-31_LogPol_figures
+        #code = retina_vector @ np.ravel(data_retina)
+        global_energy = (data_retina**2).reshape((N_theta*N_azimuth, N_eccentricity*N_phase, N_X*N_Y))
+        global_energy = global_energy.sum(axis=0).reshape(N_eccentricity, N_azimuth)
+        print(data_retina.shape, global_energy.shape)
 
         log_r_target = 1 + np.log(np.sqrt(i_offset**2 + j_offset**2) / np.sqrt(N_X**2 + N_Y**2) / 2) / 5
         if j_offset != 0:

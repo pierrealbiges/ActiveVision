@@ -17,22 +17,26 @@ lr = 0.016
 n_hidden1 = int(((N_theta*N_azimuth*N_eccentricity*N_phase)/4)*3)
 n_hidden2 = int(((N_theta*N_azimuth*N_eccentricity*N_phase)/4))
 verbose = 1
+mean = .2
+std = .5
 
 
 do_cuda = False # torch.cuda.is_available()
 kwargs = {'num_workers': 1, 'pin_memory': True} if do_cuda else {}
 device = torch.cuda.device("cuda" if do_cuda else "cpu")
 
-data_loader = torch.utils.data.DataLoader(
-    datasets.MNIST('/tmp/data',
-                   train=True,     # def the dataset as training data
-                   download=True,  # download if dataset not present on disk
-                   transform=transforms.Compose([
-                       transforms.ToTensor(),
-                       transforms.Normalize(mean=[mean]*3, std=[std]*3)])),
-                   batch_size=minibatch_size,
-                   shuffle=True, **kwargs)
-
+def get_data_loader(mean=mean, std=std, minibatch_size=minibatch_size):
+    data_loader = torch.utils.data.DataLoader(
+        datasets.MNIST('/tmp/data',
+                       train=True,     # def the dataset as training data
+                       download=True,  # download if dataset not present on disk
+                       transform=transforms.Compose([
+                           transforms.ToTensor(),
+                           transforms.Normalize(mean=[mean]*3, std=[std]*3)])),
+                       batch_size=minibatch_size,
+                       shuffle=True, **kwargs)
+    return data_loader
+data_loader = get_data_loader(mean=mean, std=std, minibatch_size=minibatch_size)
 
 class Net(torch.nn.Module):
     def __init__(self, n_feature, n_hidden1, n_hidden2, n_output):
