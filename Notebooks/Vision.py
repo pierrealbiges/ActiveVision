@@ -48,6 +48,7 @@ def vectorization(N_theta=N_theta, N_azimuth=N_azimuth, N_eccentricity=N_eccentr
 
                     retina[i_theta, i_azimuth, i_eccentricity, i_phase, :] = lg.normalize(
                         lg.invert(lg.loggabor(x, y, **params)*np.exp(-1j*phase))).ravel()
+    
     if figure_type == 'retina':
         FIG_WIDTH = 10
         fig, ax = plt.subplots(figsize=(FIG_WIDTH, FIG_WIDTH))
@@ -100,18 +101,18 @@ def mnist_fullfield(data, i_offset, j_offset, N_pic=N_X, noise=0.,  contrast=1.,
     data_fullfield = (data.min().numpy()) * np.ones((N_pic, N_pic))
     data_fullfield[int(center+i_offset):int(center+N_stim+i_offset), int(center+j_offset):int(center+N_stim+j_offset)] = data
 
+    # data normalization
+    # data_fullfield -= data_fullfield.mean()
+    # data_fullfield /= data_fullfield.std()
+    # data_fullfield *= std
+    # data_fullfield += mean
+    data_fullfield = (data_fullfield - data_fullfield.min())/(data_fullfield.max() - data_fullfield.min())
+    data_fullfield *= contrast
+
     if noise>0.:
         data_fullfield += noise * MotionCloudNoise()
 
     data_retina = retina_vector @ np.ravel(data_fullfield)
-
-    # data normalization
-    # data_retina -= data_retina.mean()
-    # data_retina /= data_retina.std()
-    # data_retina *= std
-    # data_retina += mean
-    data_retina = (data_retina - data_retina.min())/(data_retina.max() - data_retina.min())
-    data_retina *= contrast
 
     if figure_type == '128':
         fig, ax = plt.subplots(figsize=(13, 10.725))
@@ -175,8 +176,8 @@ def accuracy_fullfield(accuracy, i_offset, j_offset, N_pic=N_X, figure_type='', 
 
 def couples(data, i_offset, j_offset): #, device):
     #data = data.to(device)
-    v = mnist_fullfield(data, i_offset, j_offset)
-    a = accuracy_fullfield(accuracy, i_offset, j_offset)
+    v = mnist_fullfield(data, i_offset, j_offset, figure_type='')
+    a = accuracy_fullfield(accuracy, i_offset, j_offset, figure_type='')
     return (v, a)
 
 
