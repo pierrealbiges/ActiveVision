@@ -19,15 +19,6 @@ n_hidden2 = int(((N_theta*N_azimuth*N_eccentricity*N_phase)/4))
 verbose = 1
 
 
-## Charger la matrice de certitude
-path = "MNIST_accuracy.npy"
-if os.path.isfile(path):
-    accuracy =  np.load(path)
-    if verbose:
-        print('Loading accuracy... min, max=', accuracy.min(), accuracy.max())
-else:
-    print('No accuracy data found.')
-
 do_cuda = False # torch.cuda.is_available()
 kwargs = {'num_workers': 1, 'pin_memory': True} if do_cuda else {}
 device = torch.cuda.device("cuda" if do_cuda else "cpu")
@@ -38,7 +29,7 @@ data_loader = torch.utils.data.DataLoader(
                    download=True,  # download if dataset not present on disk
                    transform=transforms.Compose([
                        transforms.ToTensor(),
-                       transforms.Normalize(mean=[mean]*3, std=[std]*3),
+                       transforms.Normalize(mean=[mean]*3, std=[std]*3)])),
                    batch_size=minibatch_size,
                    shuffle=True, **kwargs)
 

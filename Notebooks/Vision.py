@@ -11,6 +11,15 @@ verbose = 1
 mean = 0.
 std = 0.5
 
+## Charger la matrice de certitude
+path = "MNIST_accuracy.npy"
+if os.path.isfile(path):
+    accuracy =  np.load(path)
+    if verbose:
+        print('Loading accuracy... min, max=', accuracy.min(), accuracy.max())
+else:
+    print('No accuracy data found.')
+
 ## Préparer l'apprentissage et les fonctions nécessaires au fonctionnement du script
 def vectorization(N_theta=N_theta, N_azimuth=N_azimuth, N_eccentricity=N_eccentricity, N_phase=N_phase, N_X=N_X, N_Y=N_Y, rho=rho, ecc_max=.8, B_sf=.4, B_theta=np.pi/N_theta/2, figure_type='', save=False):
     retina = np.zeros((N_theta, N_azimuth, N_eccentricity, N_phase, N_X*N_Y))
@@ -138,6 +147,7 @@ def mnist_fullfield(data, i_offset, j_offset, N_pic=N_X, noise=0.,  mean=.25,  s
         return fig, ax
     else:
         return data_retina
+
 
 
 def accuracy_fullfield(accuracy, i_offset, j_offset, N_pic=N_X, figure_type='', save=False):

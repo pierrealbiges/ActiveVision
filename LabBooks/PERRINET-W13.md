@@ -41,7 +41,9 @@ Ce changement semble avoir un effet fortement bénéfique sur l'apprentissage :
 # 2018-06-05
 ---
 
-Il faudrait tester la normalisation de l'entrée sur l'apprentissage
+Notes temporaires de Laurent:
+- je teste la normalisation de l'entrée sur l'apprentissage
+- un autre Loss est un MSELoss entre le label=position true et la moyenne de la carte colliculaire (ce que tu as fait en stage A)
 
 ---
 # To Do
