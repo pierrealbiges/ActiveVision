@@ -20,17 +20,17 @@ n_hidden1 = int(((N_theta*N_azimuth*N_eccentricity*N_phase)/4)*3)
 n_hidden2 = int(((N_theta*N_azimuth*N_eccentricity*N_phase)/4))
 verbose = 1
 
-
-data_loader = torch.utils.data.DataLoader(
-    datasets.MNIST('/tmp/data',
-                   train=True,     #def the dataset as training data
-                   download=True,  #download if dataset not present on disk
-                   transform=transforms.Compose([
-                       transforms.ToTensor(),
-                       transforms.Normalize((0.1307,), (0.3081,))])),
-                   batch_size=minibatch_size,
-                   shuffle=True)
-
+# duplicate
+# data_loader = torch.utils.data.DataLoader(
+#     datasets.MNIST('/tmp/data',
+#                    train=True,     #def the dataset as training data
+#                    download=True,  #download if dataset not present on disk
+#                    transform=transforms.Compose([
+#                        transforms.ToTensor(),
+#                        transforms.Normalize((0.1307,), (0.3081,))])),
+#                    batch_size=minibatch_size,
+#                    shuffle=True)
+#
 
 ## Charger la matrice de certitude
 path = "MNIST_accuracy.npy"
