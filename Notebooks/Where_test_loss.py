@@ -22,13 +22,13 @@ verbose = 1
 
 
 data_loader = torch.utils.data.DataLoader(
-    datasets.MNIST('/tmp/data', 
-                   train=True,     #def the dataset as training data 
+    datasets.MNIST('/tmp/data',
+                   train=True,     #def the dataset as training data
                    download=True,  #download if dataset not present on disk
                    transform=transforms.Compose([
                        transforms.ToTensor(),
                        transforms.Normalize((0.1307,), (0.3081,))])),
-                   batch_size=minibatch_size, 
+                   batch_size=minibatch_size,
                    shuffle=True)
 
 
@@ -41,7 +41,7 @@ if os.path.isfile(path):
 else:
     print('No accuracy data found.')
 
-    
+
 ## Préparer l'apprentissage et les fonctions nécessaires au fonctionnement du script
 def vectorization(N_theta=N_theta, N_azimuth=N_azimuth, N_eccentricity=N_eccentricity, N_phase=N_phase, N_X=N_X, N_Y=N_Y, rho=rho, ecc_max=.8, B_sf=.4, B_theta=np.pi/N_theta/2, figure_type='', save=False):
     retina = np.zeros((N_theta, N_azimuth, N_eccentricity, N_phase, N_X*N_Y))
@@ -73,7 +73,7 @@ def vectorization(N_theta=N_theta, N_azimuth=N_azimuth, N_eccentricity=N_eccentr
                     retina[i_theta, i_azimuth, i_eccentricity, i_phase, :] = lg.normalize(
                         lg.invert(lg.loggabor(x, y, **params)*np.exp(-1j*phase))).ravel()
     if figure_type == 'retina':
-        FIG_WIDTH = 10 
+        FIG_WIDTH = 10
         fig, ax = plt.subplots(figsize=(FIG_WIDTH, FIG_WIDTH))
         for i_theta in range(N_theta):
             for i_azimuth in range(N_azimuth):
@@ -88,7 +88,7 @@ def vectorization(N_theta=N_theta, N_azimuth=N_azimuth, N_eccentricity=N_eccentr
         plt.tight_layout()
         return fig, ax
     elif figure_type == 'colliculus':
-        FIG_WIDTH = 10 
+        FIG_WIDTH = 10
         fig, ax = plt.subplots(figsize=(FIG_WIDTH, FIG_WIDTH))
         for i_azimuth in range(N_azimuth):
             for i_eccentricity in range(N_eccentricity):
@@ -123,7 +123,7 @@ def mnist_fullfield(data, i_offset, j_offset, N_pic=N_X, noise=0.,  mean=.25,  s
 
     data_fullfield = (data.min().numpy()) * np.ones((N_pic, N_pic))
     data_fullfield[int(center+i_offset):int(center+N_stim+i_offset), int(center+j_offset):int(center+N_stim+j_offset)] = data
-    
+
 
     if noise>0.:
         data_fullfield += noise * MotionCloudNoise()
@@ -142,7 +142,7 @@ def mnist_fullfield(data, i_offset, j_offset, N_pic=N_X, noise=0.,  mean=.25,  s
         fig.colorbar(cmap)
         if save: plt.savefig('mnist_128.pdf')
         return fig, ax
-    
+
     elif figure_type == 'cmap':
         image_hat = retina_inverse @ data_retina
         fig, ax = plt.subplots(figsize=(13, 10.725))
@@ -181,7 +181,7 @@ def accuracy_fullfield(accuracy, i_offset, j_offset, N_pic=N_X, figure_type='', 
                  int(center+j_offset):int(center+N_stim+j_offset)] = accuracy
 
     accuracy_colliculus = colliculus_vector @ np.ravel(accuracy_fullfield)
-    
+
     if figure_type == 'colliculus':
         image_hat = colliculus_inverse @ np.ravel(accuracy_colliculus)
         fig, ax = plt.subplots(figsize=(13, 10.725))
@@ -213,7 +213,7 @@ def MotionCloudNoise(sf_0=0.125, B_sf=3., figure_type='', save=False):
     env = mc.envelope_gabor(fx, fy, ft, sf_0=sf_0, B_sf=B_sf, B_theta=np.inf, V_X=0., V_Y=0., B_V=0, alpha=.5)
     z = mc.rectif(mc.random_cloud(env))
     z = z.reshape((mc.N_X, mc.N_Y))
-    
+
     if figure_type == 'cmap':
         fig, ax = plt.subplots(figsize=(13, 10.725))
         cmap = ax.pcolor(np.arange(-mc.N_X/2, mc.N_X/2), np.arange(-mc.N_X/2, mc.N_X/2), MotionCloudNoise(), cmap='Greys_r')
@@ -274,7 +274,7 @@ def train(net, minibatch_size, optimizer=optimizer, vsize=N_theta*N_azimuth*N_ec
         input_ = np.zeros((minibatch_size, 1, vsize))
         a_data = np.zeros((minibatch_size, 1, asize))
         #target = np.zeros((minibatch_size, asize))
-        
+
         for idx in range(minibatch_size):
 
             i_offset = minmax(np.random.randn()*offset_std, offset_max)
