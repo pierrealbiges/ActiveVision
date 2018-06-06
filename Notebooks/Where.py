@@ -16,6 +16,7 @@ minibatch_size = 100  # quantity of examples that'll be processed
 lr = 0.016
 n_hidden1 = int(((N_theta*N_azimuth*N_eccentricity*N_phase)/4)*3)
 n_hidden2 = int(((N_theta*N_azimuth*N_eccentricity*N_phase)/4))
+print('n_hidden1', n_hidden1, ' / n_hidden2', n_hidden2)
 verbose = 1
 mean = .2
 std = .5
@@ -45,7 +46,7 @@ class Net(torch.nn.Module):
         self.hidden2 = torch.nn.Linear(n_hidden1, n_hidden2)
         self.predict = torch.nn.Linear(n_hidden2, n_output)
 
-    def forward(self, data, do_leaky_relu=True):
+    def forward(self, data, do_leaky_relu=False):
         if not do_leaky_relu:
             data = F.relu(self.hidden1(data))
             data = F.relu(self.hidden2(data))
@@ -158,22 +159,6 @@ def eval_sacc(vsize=N_theta*N_azimuth*N_eccentricity*N_phase, asize=N_azimuth*N_
                                 plt.axhline(i_hat, c='r')
                             break
 
-                # # check if number of saccades is beyond threshold
-                # if sacc_count == sacc_lim:
-                #     print('Stimulus position not found, break')
-                #     break
-                #
-                # # saccades
-                # i_offset, j_offset = (i_offset - i_hat), (j_offset - j_hat)
-                # sacc_count += 1
-                # print('Stimulus position after saccade: ({}, {})'.format(i_offset, j_offset))
-                #
-                # # check if the image position is predicted within the fovea
-                # if i_hat <= (fovea_size/2) and j_hat <= (fovea_size/2):
-                #     if i_hat >= -(fovea_size/2) and j_hat >= -(fovea_size/2):
-                #         a_data_in_fovea = True
-                #         print('a_data predicted in fovea, stopping the saccadic exploration')
-
             if fig_type == 'log':
                 # print(pred_data.shape)
                 print('Loading pred_data... min, max=', pred_data.min(), pred_data.max())
@@ -198,14 +183,7 @@ def eval_sacc(vsize=N_theta*N_azimuth*N_eccentricity*N_phase, asize=N_azimuth*N_
                 cmap = ax.pcolor(log_r, azimuth, global_colliculus)
                 ax.plot(azimuth_a_data, log_r_a_data, 'r+')
                 fig.colorbar(cmap)
-                #
-                # for i_azimuth in range(N_azimuth):
-                #     for i_eccentricity in range(N_eccentricity):
-                #         if global_colliculus[i_azimuth][i_eccentricity] == np.max(global_colliculus):
-                #             print('Position prediction (orient, scale) = ({},{})'.format(
-                #                 i_azimuth, i_eccentricity))
 
-                # a_data_in_fovea = True
 
 
         print('*' * 50)

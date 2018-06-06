@@ -93,7 +93,7 @@ colliculus_vector = colliculus.reshape((N_azimuth*N_eccentricity, N_X*N_Y))
 colliculus_inverse = np.linalg.pinv(colliculus_vector)
 
 
-def mnist_fullfield(data, i_offset, j_offset, N_pic=N_X, noise=0.,  mean=.25,  std=.25, figure_type='', save=False):
+def mnist_fullfield(data, i_offset, j_offset, N_pic=N_X, noise=0.,  contrast=1., figure_type='', save=False):
     N_stim = data.shape[0]
     center = (N_pic-N_stim)//2
 
@@ -106,10 +106,12 @@ def mnist_fullfield(data, i_offset, j_offset, N_pic=N_X, noise=0.,  mean=.25,  s
     data_retina = retina_vector @ np.ravel(data_fullfield)
 
     # data normalization
-    #data_retina -= data_retina.mean()
-    #data_retina /= data_retina.std()
-    #data_retina *= std
-    #data_retina += mean
+    # data_retina -= data_retina.mean()
+    # data_retina /= data_retina.std()
+    # data_retina *= std
+    # data_retina += mean
+    data_retina = (data_retina - data_retina.min())/(data_retina.max() - data_retina.min())
+    data_retina *= contrast
 
     if figure_type == '128':
         fig, ax = plt.subplots(figsize=(13, 10.725))
