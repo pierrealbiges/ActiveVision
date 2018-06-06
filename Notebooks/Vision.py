@@ -48,7 +48,7 @@ def vectorization(N_theta=N_theta, N_azimuth=N_azimuth, N_eccentricity=N_eccentr
 
                     retina[i_theta, i_azimuth, i_eccentricity, i_phase, :] = lg.normalize(
                         lg.invert(lg.loggabor(x, y, **params)*np.exp(-1j*phase))).ravel()
-    
+
     if figure_type == 'retina':
         FIG_WIDTH = 10
         fig, ax = plt.subplots(figsize=(FIG_WIDTH, FIG_WIDTH))
@@ -174,9 +174,9 @@ def accuracy_fullfield(accuracy, i_offset, j_offset, N_pic=N_X, figure_type='', 
         return accuracy_colliculus
 
 
-def couples(data, i_offset, j_offset): #, device):
+def couples(data, i_offset, j_offset, contrast=1.): #, device):
     #data = data.to(device)
-    v = mnist_fullfield(data, i_offset, j_offset, figure_type='')
+    v = mnist_fullfield(data, i_offset, j_offset, contrast=contrast, figure_type='')
     a = accuracy_fullfield(accuracy, i_offset, j_offset, figure_type='')
     return (v, a)
 

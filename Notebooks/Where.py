@@ -13,13 +13,17 @@ from torch.autograd import Variable
 from Vision import *
 
 minibatch_size = 100  # quantity of examples that'll be processed
-lr = 0.016
+lr = 0.05
 n_hidden1 = int(((N_theta*N_azimuth*N_eccentricity*N_phase)/4)*3)
 n_hidden2 = int(((N_theta*N_azimuth*N_eccentricity*N_phase)/4))
+
+n_hidden1 = 2500
+n_hidden2 = 1200
+
 print('n_hidden1', n_hidden1, ' / n_hidden2', n_hidden2)
 verbose = 1
-mean = .2
-std = .5
+mean, std = 0.13,  .3
+mean, std = 0.,  .3
 
 
 do_cuda = False # torch.cuda.is_available()
@@ -33,7 +37,8 @@ def get_data_loader(mean=mean, std=std, minibatch_size=minibatch_size):
                        download=True,  # download if dataset not present on disk
                        transform=transforms.Compose([
                            transforms.ToTensor(),
-                           transforms.Normalize(mean=[mean]*3, std=[std]*3)])),
+                           #transforms.Normalize(mean=(mean,), std=(std,))])),
+                           transforms.Normalize((0.1307,), (0.3081,))])),
                        batch_size=minibatch_size,
                        shuffle=True, **kwargs)
     return data_loader
@@ -46,7 +51,7 @@ class Net(torch.nn.Module):
         self.hidden2 = torch.nn.Linear(n_hidden1, n_hidden2)
         self.predict = torch.nn.Linear(n_hidden2, n_output)
 
-    def forward(self, data, do_leaky_relu=False):
+    def forward(self, data, do_leaky_relu=True):
         if not do_leaky_relu:
             data = F.relu(self.hidden1(data))
             data = F.relu(self.hidden2(data))
@@ -64,7 +69,8 @@ optimizer = torch.optim.SGD(net.parameters(), lr=lr)
 loss_func = torch.nn.BCEWithLogitsLoss()
 
 
-def train(net, minibatch_size, optimizer=optimizer, vsize=N_theta*N_azimuth*N_eccentricity*N_phase, asize=N_azimuth*N_eccentricity, offset_std=10, offset_max=25, verbose=1):
+def train(net, minibatch_size, optimizer=optimizer, vsize=N_theta*N_azimuth*N_eccentricity*N_phase,
+            asize=N_azimuth*N_eccentricity, offset_std=10, offset_max=25, verbose=1, contrast=std):
     t_start = time.time()
     if verbose: print('Starting training...')
     for batch_idx, (data, label) in enumerate(data_loader):
@@ -77,7 +83,7 @@ def train(net, minibatch_size, optimizer=optimizer, vsize=N_theta*N_azimuth*N_ec
 
             i_offset = minmax(np.random.randn()*offset_std, offset_max)
             j_offset = minmax(np.random.randn()*offset_std, offset_max)
-            input_[idx, 0, :], a_data[idx, 0, :] = couples(data[idx, 0, :, :], i_offset, j_offset)
+            input_[idx, 0, :], a_data[idx, 0, :] = couples(data[idx, 0, :, :], i_offset, j_offset, contrast=contrast)
             target[idx, :] = a_data[idx, 0, :]
 
         input_, target = Variable(torch.FloatTensor(input_)), Variable(torch.FloatTensor(a_data))
