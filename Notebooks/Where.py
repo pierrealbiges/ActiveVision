@@ -63,7 +63,7 @@ class Net(torch.nn.Module):
 
 #print(device)
 net = Net(n_feature=N_theta*N_azimuth*N_eccentricity*N_phase, n_hidden1=n_hidden1, n_hidden2=n_hidden2, n_output=N_azimuth*N_eccentricity)
-#net = net.to(device)
+net = net.to(device)
 optimizer = torch.optim.SGD(net.parameters(), lr=lr)
 # https://pytorch.org/docs/master/nn.html?highlight=bcewithlogitsloss#torch.nn.BCEWithLogitsLoss
 loss_func = torch.nn.BCEWithLogitsLoss()
@@ -74,24 +74,34 @@ def train(net, minibatch_size, optimizer=optimizer, vsize=N_theta*N_azimuth*N_ec
     t_start = time.time()
     if verbose: print('Starting training...')
     for batch_idx, (data, label) in enumerate(data_loader):
+        optimizer.zero_grad()
 
         input_ = np.zeros((minibatch_size, 1, vsize))
         a_data = np.zeros((minibatch_size, 1, asize))
-        target = np.zeros((minibatch_size, asize))
+        # target = np.zeros((minibatch_size, asize))
 
         for idx in range(minibatch_size):
-
             i_offset = minmax(np.random.randn()*offset_std, offset_max)
             j_offset = minmax(np.random.randn()*offset_std, offset_max)
+            # input_[idx, 0, :], a_data[idx, 0, :] = couples(data[idx, 0, :, :], i_offset, j_offset, contrast=contrast)
+            # target[idx, :] = a_data[idx, 0, :]
             input_[idx, 0, :], a_data[idx, 0, :] = couples(data[idx, 0, :, :], i_offset, j_offset, contrast=contrast)
-            target[idx, :] = a_data[idx, 0, :]
+            #target[idx, :] = a_data[idx, 0, :]
 
-        input_, target = Variable(torch.FloatTensor(input_)), Variable(torch.FloatTensor(a_data))
-
+        #input_, target = Variable(torch.FloatTensor(input_)), Variable(torch.FloatTensor(a_data))
+        input_, a_data = Variable(torch.FloatTensor(input_)), Variable(torch.FloatTensor(a_data))
         prediction = net(input_)
-        loss = loss_func(prediction, target)
+        #loss = loss_func(prediction, target)
+        loss = loss_func(prediction, a_data)
 
-        optimizer.zero_grad()
+
+        #input_, target = Variable(torch.FloatTensor(input_)), Variable(torch.FloatTensor(a_data))
+        # input_, target = Variable(torch.FloatTensor(input_)), Variable(torch.FloatTensor(target))
+        # data, target = data.to(self.device), target.to(self.device)
+
+        # prediction = net(input_)
+        # loss = loss_func(prediction, target)
+
         loss.backward()
         optimizer.step()
 
