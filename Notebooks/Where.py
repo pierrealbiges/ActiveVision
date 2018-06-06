@@ -17,8 +17,8 @@ lr = 0.05
 n_hidden1 = int(((N_theta*N_azimuth*N_eccentricity*N_phase)/4)*3)
 n_hidden2 = int(((N_theta*N_azimuth*N_eccentricity*N_phase)/4))
 
-n_hidden1 = 2500
-n_hidden2 = 1200
+n_hidden1 = 80
+n_hidden2 = 200
 
 print('n_hidden1', n_hidden1, ' / n_hidden2', n_hidden2)
 verbose = 1
@@ -58,15 +58,16 @@ class Net(torch.nn.Module):
         else:
             data = F.leaky_relu(self.hidden1(data))
             data = F.leaky_relu(self.hidden2(data))
-        data = self.predict(data)
+        data =  F.sigmoid(self.predict(data))
         return data
 
 #print(device)
 net = Net(n_feature=N_theta*N_azimuth*N_eccentricity*N_phase, n_hidden1=n_hidden1, n_hidden2=n_hidden2, n_output=N_azimuth*N_eccentricity)
-net = net.to(device)
+# net = net.to(device)
 optimizer = torch.optim.SGD(net.parameters(), lr=lr)
 # https://pytorch.org/docs/master/nn.html?highlight=bcewithlogitsloss#torch.nn.BCEWithLogitsLoss
-loss_func = torch.nn.BCEWithLogitsLoss()
+#loss_func = torch.nn.BCEWithLogitsLoss()
+loss_func = torch.nn.BCELoss()
 
 
 def train(net, minibatch_size, optimizer=optimizer, vsize=N_theta*N_azimuth*N_eccentricity*N_phase,
@@ -90,6 +91,9 @@ def train(net, minibatch_size, optimizer=optimizer, vsize=N_theta*N_azimuth*N_ec
 
         #input_, target = Variable(torch.FloatTensor(input_)), Variable(torch.FloatTensor(a_data))
         input_, a_data = Variable(torch.FloatTensor(input_)), Variable(torch.FloatTensor(a_data))
+        #input_, a_data = input_.to(device), a_data.to(device)
+        #print('a_data.numpy()', a_data.numpy().shape)
+        #print('... min, max=', a_data.numpy().min(), a_data.numpy().max())
         prediction = net(input_)
         #loss = loss_func(prediction, target)
         loss = loss_func(prediction, a_data)
