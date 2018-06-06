@@ -1,5 +1,5 @@
 % $ biblatex auxiliary file $
-% $ biblatex bbl format version 2.9 $
+% $ biblatex bbl format version 2.8 $
 % Do not modify the above lines!
 %
 % This is an auxiliary file used by the 'biblatex' package.
@@ -16,7 +16,40 @@
   {}
 \endgroup
 
-\datalist[entry]{nty/global//global/global}
+\sortlist[entry]{nty/global/}
+  \entry{Butko2010}{article}{}
+    \name{author}{2}{}{%
+      {{hash=BNJ}{%
+         family={Butko},
+         familyi={B\bibinitperiod},
+         given={Nicholas\bibnamedelima J},
+         giveni={N\bibinitperiod\bibinitdelim J\bibinitperiod},
+      }}%
+      {{hash=MJR}{%
+         family={Movellan},
+         familyi={M\bibinitperiod},
+         given={Javier\bibnamedelima R},
+         giveni={J\bibinitperiod\bibinitdelim R\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{BNJMJR1}
+    \strng{fullhash}{BNJMJR1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{sortinit}{B}
+    \field{sortinithash}{B}
+    \field{number}{2}
+    \field{pages}{91\bibrangedash 107}
+    \field{title}{{Infomax control of eye movements}}
+    \field{volume}{2}
+    \verb{file}
+    \verb :home/albert/.local/share/data/Mendeley Ltd./Mendeley Desktop/Downloa
+    \verb ded/Butko, Movellan - 2010 - Infomax control of eye movements.pdf:pdf
+    \endverb
+    \field{journaltitle}{Autonomous Mental Development, IEEE Transactions on}
+    \field{year}{2010}
+  \endentry
+
   \entry{Freeman2011}{article}{}
     \name{author}{2}{}{%
       {{hash=FJ}{%
@@ -405,5 +438,5 @@
     \field{title}{{Understanding vision : theory, models and data}}
     \field{year}{2014}
   \endentry
-\enddatalist
+\endsortlist
 \endinput

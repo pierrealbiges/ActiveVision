@@ -14,16 +14,29 @@
 %----------------------------------------------------------------------------------------
 
 -> Complexification de la tache avec des inputs de plus en plus écologiques jusqu'à une prise de vue en direct via caméra \\
--> Possibilité d'intégrer un second input (top-down) correspondant à cible à recherche dans l'environnement \\
+-> Pour aller au delà de l'utilisation d'une caméra : migrer vers un système markovien en vu d'une intégration robotique
 -> Possibilité d'intégrer ces développements dans un projet de thèse \\
 
 Malgré le stade de développement peu avancé de notre modèle, nous avons dès aujourd'hui identifié de nombreuses étapes de développement que nous devrons probablement réaliser dans le futur pour complexifier son comportement et améliorer ses performances. \\
 La première étape sera certainement d'étudier la robustesse du modèle en lui soumettant lors de l'étape d'évaluation des images vides mais pouvant être bruitées.
-Dans son état actuel, le modèle ne devrait pas être capable relever la différence avec le reste des images qu'on lui fournit et devrait donc tenter de réaliser une détection, puis une classification malgré l'absence de stimulus.
-En réponse à ce phénomène, il sera possible d'ajouter une couche de neurones artificiels précédent notre réseau actuel et détectant la présence ou l'absence de stimulus dans le champs visuel, modifiant en fonction le comportement de la suite du réseau. \\
-Nous savons que les systèmes biologiques n'accèdent pas nécessairement à leur cible en une seule saccade et qu'une fois qu'ils l'ont atteinte ils réalisent autour d'elle des micro-saccades.
+Dans son état actuel, le modèle ne devrait pas être capable relever la différence avec les images que nous lui fournissons actuellement et devrait donc tenter de réaliser une détection, puis une classification malgré l'absence de stimulus.
+En réponse à ce problème, il sera possible d'ajouter une couche de neurones artificiels précédent notre réseau actuel et détectant la présence ou l'absence de stimulus dans le champs visuel, modifiant en fonction le comportement de la suite du réseau. 
+Une solution alternative serait d'entraîner le classifieur avec une catégorie de label supplémentaire, représentant une entrée sans stimulus, et donc de lui donner la possibilité d'appréhender ce type de situations. \\
+Nous savons que les systèmes biologiques n'accèdent pas nécessairement à leurs cibles en une seule saccade et qu'une fois qu'ils les ont atteinte ils réalisent autour d'elles des micro-saccades.
 De même, nous avons pu observer la présence d'erreurs lorsque le modèle réalise une prédiction, et donc lors de la saccade vers sa cible, entraînant un rapprochement incomplet de la fovéa.
 Ainsi une seconde étape nous semblant primordiale est l'intégration au modèle de la possibilité de réaliser plusieurs saccades à la suite, séparées par une re-évaluation de son environnement, pour lui permettre de diminuer les conséquences d'une prédiction imprécise. \autocite{Najemnik2005, Werner2014}\\
 Mais cette série de prédictions ne peut se faire sans mémoire ou l'on risque de voir le modèle osciller continuellement entre les mêmes points de son environnement visuel.
 Ainsi dans un même temps, il sera nécessaire d'insérer dans le modèle une forme simple de mémoire de son environnement et de ce qu'il en a exploré.
-Cette mémoire pourrait prendre la forme d'une carte de probabilité mise à jour au fil de l'exploration, via l'addition de la prédiction lors de sa réalisation afin de définir le lieu présentant la probabilité la plus haute de contenir la cible, puis en la soustraction d'une valeur pré-determinée autour de la région fovéale après chaque tentative de classification, afin de fortement réduire la valeur de probabilité de cette région et ainsi inhiber sa visite dans le futur (inhibition de retour). \autocite{Najemnik2005, Werner2014, Zhaoping2014} \\
+Cette mémoire pourrait prendre la forme d'une carte de probabilité mise à jour au fil de l'exploration.
+Ainsi lorsque le modèle réaliserait une prédiction de la position de sa cible, elle irait se superposer à cette carte mnésique, laquelle serait lu pour définir le lieu présentant la plus haute probabilité de contenir cette cible.
+Ensuite lorsqu'une région aura été explorée, sa représentation sur la carte mnésique subira la soustraction d'une valeur pré-déterminée afin de fortement réduire la probabilité que cette région soit à nouveau explorée durant les saccades suivantes, créant une inhibition de retour (le modèle considéreras que pendant quelques itérations cette région ne peut plus lui apporter d'information supplémentaire). \autocite{Najemnik2005, Werner2014, Zhaoping2014} \\
+A ce stade, notre modèle devrait être capable de rechercher et de détecter une cible dans son environnement visuel, puis de réaliser la ou les saccade(s) nécessaires pour la placer au plus proche de sa fovea.
+Mais un environnement visuel ne contenant qu'un seul stimulus, même bruité, ne représente qu'une version très artificielle de ce que peuvent observer continuellement les systèmes biologiques.
+Ainsi pour passer un nouveau stade de développement, il nous semble nécessaire d'intégrer à notre modèle une forme d'influence \textit{top-down}.
+Cette composante permettra à notre modèle de s'approcher du comportement biologique en mimant la sélection attentionnelle et motrice de la cible à décrire.
+Elle influera le modèle en définissant quelle type de cible il devra rechercher dans son environnement, et pourra prendre la forme d'une matrice de poids spécifique à une classe de cibles, voir à une cible unique, qui sera implantée dans le réseau nerveux artificiel pour influencer son comportement. \autocite{Werner2014} \\
+L'intégration de cette influence \textit{top-down} est cruciale car elle permettra au modèle d'appréhender des environnements écologiques, et précède son intégration dans un agent physique.
+L'insertion du modèle d'abord dans une caméra mobile, puis dans un agent autonome, permettra notamment d'ajouter tout un panel d'actions que l'agent pourra réaliser : saccades oculaires réelles dans un premier temps, puis déplacements dans l'environnement et autour de la cible.
+Cette nouvelle échelle de complexité perceptif et comportementale pourra être appréhendée par le développement, à partir de notre modèle, d'un agent markovien.
+Les processus de décision markoviens permettent l'intégration de la perception de l'agent, de ses connaissances sur son environnement et des actions qu'il peut réaliser pour décider quelle sera l'action la plus à même d'aider l'agent à accomplir son objectif (dans nos travaux, détecter et reconnaitre la cible).
+On peut par exemple imaginer une situation où l'agent, observant une tête de dos, décider de façon autonome que la meilleure action à réaliser pour identifier l'individu sera de tourner autour de celle-ci puis de repérer son visage. \autocite{Butko2010, Najemnik2005, Zhaoping2014} \\
