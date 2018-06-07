@@ -11,9 +11,22 @@
 
 \label{Discussion} % For referencing this chapter elsewhere, use \ref{Discussion}
 
-%----------------------------------------------------------------------------------------
+%%%%%% Discussion des résultats %%%%%
+
+Lors de l'écriture de ce rapport, aucune analyse quantitative n'a encore été réalisée pour vérifier les résultats et leur robustesse.
+Malgré cela, il nous a été possible d'observer lors des évaluations une majorité de prédictions correctes (mais pas exactes; qui se rapprochent suffisamment de la véritable position de la cible pour ne pas être considérées comme des explorations hasardeuses).
+Un certain nombre d'erreurs ont tout de même été observées, ce qui révèle la nécessité d'optimiser le modèle si nous voulons obtenir des performances à la fois élevées et robustes. 
+Au moins une partie des erreurs que l'on observe peut être imputée à la simplicité du réseau nerveux que nous avons construit.
+Cependant le fait que l'on observe une majorité de prédictions correctes malgré cette simplicité est encourageant concernant les performances que pourra montrer le modèle dans des stades développement plus avancés. \\
+La simplicité du modèle s'accompagne d'une forte adaptabilité.
+En effet, l'implémentation du modèle et notamment de la production des entrées à partir d'images est actuellement adaptée à la base de données MNIST mais a été réalisée de sorte qu'utiliser une autre base de données peut se faire sans aucune modification du code, hormis le chargement des données, et surtout de sorte que le réseaux nerveux artificiel s'adapte automatiquement pour pouvoir réaliser apprentissage et évaluation sans travail supplémentaire.
+L'association d'une simplicité et d'une forte adaptabilité sont deux avantages importants pour notre modèle et ces caractéristiques seront primordiales dans les prochaines stade de développement, notamment lors de l'intégration dans un agent physique. \\
+Bien que la réalisation d'une saccade pour se rapprocher de la position détectée de la cible ainsi que la classification de la région nouvellement observée soient exposées dans la partie~\ref{result_escompt}, ces fonctionnalités n'ont pas encore été implantées lors de l'écriture de ce rapport. \\
+
+%%%%%% Perspectives %%%%%
 
 Malgré le stade de développement peu avancé de notre modèle, nous avons dès aujourd'hui identifié de nombreuses étapes de développement que nous devrons probablement réaliser dans le futur pour complexifier son comportement et améliorer ses performances. 
+Ces étapes iront compléter les optimisations que doit recevoir notre modèle à ce stade.
 Ce travail futur, permettant notamment de passer d'un modèle exploratoire à une application physique en plus de continuer de répondre aux objectifs actuels, semble pouvoir être intégré au sein d'un sujet de thèse.\\
 La première étape sera certainement d'étudier la robustesse du modèle en lui soumettant lors de l'étape d'évaluation des images vides mais pouvant être bruitées.
 Dans son état actuel, le modèle ne devrait pas être capable relever la différence avec les images que nous lui fournissons actuellement et devrait donc tenter de réaliser une détection, puis une classification malgré l'absence de stimulus.
@@ -37,3 +50,7 @@ L'insertion du modèle d'abord dans une caméra mobile, puis dans un agent auton
 Cette nouvelle échelle de complexité perceptif et comportementale pourra être appréhendée par le développement, à partir de notre modèle, d'un agent markovien.
 Les processus de décision markoviens permettent l'intégration de la perception de l'agent, de ses connaissances sur son environnement et des actions qu'il peut réaliser pour décider quelle sera l'action la plus à même d'aider l'agent à accomplir son objectif (dans nos travaux, détecter et reconnaitre la cible).
 On peut par exemple imaginer une situation où l'agent, observant un individu de dos, décider de façon autonome que la meilleure action à réaliser pour l'identifier sera de tourner autour de celui-ci puis de repérer son visage. \autocite{Butko2010, Najemnik2005, Zhaoping2014} \\
+
+En conclusion, ce travail exploratoire nous aura permis de construire un modèle de localisation de cible mettant en avant la simplicité et l'adaptabilité.
+Celui-ci n'est pour l'instant qu'aux premiers stades de son développement mais de nombreuses avancées pourront y être implantées dans le futur, influançants à la fois ses performances et son fonctionnement.
+Malgré des performances non-quantifiées, nous pensons que ce travail pourra servir de preuve de concept pour ces développement futurs.

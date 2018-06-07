@@ -32,8 +32,6 @@ Il est possible d'observer sur la figure~\ref{fig:prediction} une diminution de 
 Une diminution de cette valeur est le signe que l'apprentissage a bien lieu et plus elle est importante, plus l'apprentissage devrait être efficace.
 Notons qu'après une décroissance rapide (itérations 0-200) de cette valeur, nous pouvons rapidement observer (itérations 200-500) un ralentissement de celle-ci, phénomène couramment observé dans les modèles d'apprentissage automatique. \\
 Lorsque, durant la phase d'évaluation, nous fournissons à notre modèle une image bruitée et observée au travers d'un filtre rétinien, celui-ci est capable de l'intégrer pour produire un vecteur contenant un ensemble de valeurs comprises dans l'intervalle $[0,1]$.
-Ce vecteur, à partir duquel il est possible de réaliser par reconstruction un graphique (figure~\ref{fig:prediction}), présente une ou plusieurs zones chaudes où sont rassemblées les valeurs les plus importantes. 
-Notons que la reconstruction graphique que nous utilisons modifie les valeurs des données, entraînant la perte de l'intervalité $[0,1]$ de celles-ci.
-Bien que lors de l'écriture de ce rapport, aucune analyse quantitative n'ait été réalisée, la position de ces zones chaudes semble concorder avec la position réelle de la cible dans l'image fournie en entrée.
-Il a toutefois été observé des erreurs importantes de prédictions lors de certains essais. \\
-De même, bien que la réalisation d'une saccade pour se rapprocher de la position détectée de la cible ainsi que la classification de la région nouvellement observée soient exposées dans la partie~\ref{result_escompt}, ces fonctionnalités ne sont pas implantées lors de l'écriture de ce rapport.
+Ce vecteur, à partir duquel il est possible de réaliser par reconstruction un graphique (figure~\ref{fig:prediction}), présente une ou plusieurs zones chaudes où sont rassemblées les valeurs les plus élevées. 
+La position de ces zones chaudes semble concorder avec la position réelle de la cible dans l'image fournie en entrée.
+Notons que la reconstruction graphique que nous utilisons modifie les valeurs des données, entraînant la perte de l'intervalité $[0,1]$ de celles-ci. \\
