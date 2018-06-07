@@ -84,10 +84,7 @@ def train(net, minibatch_size, optimizer=optimizer, vsize=N_theta*N_azimuth*N_ec
         for idx in range(minibatch_size):
             i_offset = minmax(np.random.randn()*offset_std, offset_max)
             j_offset = minmax(np.random.randn()*offset_std, offset_max)
-            # input_[idx, 0, :], a_data[idx, 0, :] = couples(data[idx, 0, :, :], i_offset, j_offset, contrast=contrast)
-            # target[idx, :] = a_data[idx, 0, :]
             input_[idx, 0, :], a_data[idx, 0, :] = couples(data[idx, 0, :, :], i_offset, j_offset, contrast=contrast)
-            #target[idx, :] = a_data[idx, 0, :]
 
         #input_, target = Variable(torch.FloatTensor(input_)), Variable(torch.FloatTensor(a_data))
         input_, a_data = Variable(torch.FloatTensor(input_)), Variable(torch.FloatTensor(a_data))
@@ -116,13 +113,14 @@ def train(net, minibatch_size, optimizer=optimizer, vsize=N_theta*N_azimuth*N_ec
     return net
 
 
-def test(net, minibatch_size, optimizer=optimizer, vsize=N_theta*N_azimuth*N_eccentricity*N_phase, asize=N_azimuth*N_eccentricity, offset_std=10, offset_max=25):
+def test(net, minibatch_size, optimizer=optimizer,
+         vsize=N_theta*N_azimuth*N_eccentricity*N_phase,
+         asize=N_azimuth*N_eccentricity, offset_std=10, offset_max=25):
     for batch_idx, (data, label) in enumerate(data_loader):
         input_, a_data = np.zeros((minibatch_size, 1, vsize)), np.zeros(
             (minibatch_size, 1, asize))
         target = np.zeros((minibatch_size, asize))
         for idx in range(minibatch_size):
-
             i_offset, j_offset = minmax(np.random.randn()*offset_std, offset_max), minmax(np.random.randn()*offset_std, offset_max)
             input_[idx, 0, :], a_data[idx, 0, :] = couples(data[idx, 0, :], i_offset, j_offset)
             target[idx, :] = a_data[idx, 0, :]
@@ -137,7 +135,8 @@ def test(net, minibatch_size, optimizer=optimizer, vsize=N_theta*N_azimuth*N_ecc
 
 
 def eval_sacc(vsize=N_theta*N_azimuth*N_eccentricity*N_phase, asize=N_azimuth*N_eccentricity,
-             N_pic=N_X, sacc_lim=5, fovea_size=10, offset_std=10, offset_max=25, fig_type='cmap'):
+             N_pic=N_X, sacc_lim=5, fovea_size=10,
+             offset_std=10, offset_max=25, fig_type='cmap'):
     for batch_idx, (data, label) in enumerate(data_loader):
         #data = data.to(device)
         i_offset = minmax(np.random.randn()*offset_std, offset_max)
