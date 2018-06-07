@@ -105,7 +105,7 @@ Ubuntu 16.04.4 & Intel Xeon E5-1607 (3,1GHz) &
 \centering
 \includegraphics[scale=0.4]{Figures/mnist_log_nonoise}
 \decoRule
-\caption[Figure]{Reconstruction en graphique logarithmique d'un stimulus non-bruité après passage dans le filtre rétinien LogPolaire}
+\caption[Figure]{Reconstruction en graphique logarithmique d'un stimulus non-bruité après passage dans le filtre rétinien LogPolaire. La croix rouge représente la position du stimulus}
 \label{fig:mnist_log_nonoise}
 \end{figure}
 
@@ -113,7 +113,7 @@ Ubuntu 16.04.4 & Intel Xeon E5-1607 (3,1GHz) &
 \centering
 \includegraphics[scale=0.4]{Figures/mnist_log_motioncloud}
 \decoRule
-\caption[Figure]{Reconstruction en graphique logarithmique d'un stimulus bruité par la méthode MotionCloud après passage dans le filtre rétinien LogPolaire}
+\caption[Figure]{Reconstruction en graphique logarithmique d'un stimulus bruité par la méthode MotionCloud après passage dans le filtre rétinien LogPolaire. La croix rouge représente la position du stimulus}
 \label{fig:mnist_log_motioncloud}
 \end{figure}
 
@@ -142,3 +142,19 @@ Ubuntu 16.04.4 & Intel Xeon E5-1607 (3,1GHz) &
 \end{figure}
 
 %%%%% Résultats %%%%%
+
+\begin{figure}[th]
+\centering
+\includegraphics[scale=0.8]{Figures/losses}
+\decoRule
+\caption[Figure]{Variations de la valeur de coût du modèle au cours de la première époque d'apprentissage, pour un paramètre d'apprentissage alpha$=0.05$}
+\label{fig:losses}
+\end{figure}
+
+\begin{figure}[th]
+\centering
+\includegraphics[scale=0.325]{Figures/prediction}
+\decoRule
+\caption[Figure]{Reconstructions en carte de chaleur ($128\times 128$ pixels) de la sortie du modèle lors de la phase d'évaluation. Chaque figure représente un essai différent. Les croix jaunes représentent la position réelle de la cible dans l'environnement visuel, tandis que les croix rouges représentent sa position prédite par le modèle}
+\label{fig:prediction}
+\end{figure}

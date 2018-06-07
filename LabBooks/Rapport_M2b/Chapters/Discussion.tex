@@ -13,11 +13,8 @@
 
 %----------------------------------------------------------------------------------------
 
--> Complexification de la tache avec des inputs de plus en plus écologiques jusqu'à une prise de vue en direct via caméra \\
--> Pour aller au delà de l'utilisation d'une caméra : migrer vers un système markovien en vu d'une intégration robotique
--> Possibilité d'intégrer ces développements dans un projet de thèse \\
-
-Malgré le stade de développement peu avancé de notre modèle, nous avons dès aujourd'hui identifié de nombreuses étapes de développement que nous devrons probablement réaliser dans le futur pour complexifier son comportement et améliorer ses performances. \\
+Malgré le stade de développement peu avancé de notre modèle, nous avons dès aujourd'hui identifié de nombreuses étapes de développement que nous devrons probablement réaliser dans le futur pour complexifier son comportement et améliorer ses performances. 
+Ce travail futur, permettant notamment de passer d'un modèle exploratoire à une application physique en plus de continuer de répondre aux objectifs actuels, semble pouvoir être intégré au sein d'un sujet de thèse.\\
 La première étape sera certainement d'étudier la robustesse du modèle en lui soumettant lors de l'étape d'évaluation des images vides mais pouvant être bruitées.
 Dans son état actuel, le modèle ne devrait pas être capable relever la différence avec les images que nous lui fournissons actuellement et devrait donc tenter de réaliser une détection, puis une classification malgré l'absence de stimulus.
 En réponse à ce problème, il sera possible d'ajouter une couche de neurones artificiels précédent notre réseau actuel et détectant la présence ou l'absence de stimulus dans le champs visuel, modifiant en fonction le comportement de la suite du réseau. 
@@ -39,4 +36,4 @@ L'intégration de cette influence \textit{top-down} est cruciale car elle permet
 L'insertion du modèle d'abord dans une caméra mobile, puis dans un agent autonome, permettra notamment d'ajouter tout un panel d'actions que l'agent pourra réaliser : saccades oculaires réelles dans un premier temps, puis déplacements dans l'environnement et autour de la cible.
 Cette nouvelle échelle de complexité perceptif et comportementale pourra être appréhendée par le développement, à partir de notre modèle, d'un agent markovien.
 Les processus de décision markoviens permettent l'intégration de la perception de l'agent, de ses connaissances sur son environnement et des actions qu'il peut réaliser pour décider quelle sera l'action la plus à même d'aider l'agent à accomplir son objectif (dans nos travaux, détecter et reconnaitre la cible).
-On peut par exemple imaginer une situation où l'agent, observant une tête de dos, décider de façon autonome que la meilleure action à réaliser pour identifier l'individu sera de tourner autour de celle-ci puis de repérer son visage. \autocite{Butko2010, Najemnik2005, Zhaoping2014} \\
+On peut par exemple imaginer une situation où l'agent, observant un individu de dos, décider de façon autonome que la meilleure action à réaliser pour l'identifier sera de tourner autour de celui-ci puis de repérer son visage. \autocite{Butko2010, Najemnik2005, Zhaoping2014} \\
