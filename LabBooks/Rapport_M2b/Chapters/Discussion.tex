@@ -14,42 +14,44 @@
 %%%%%% Discussion des résultats %%%%%
 
 Lors de l'écriture de ce rapport, aucune analyse quantitative n'a encore été réalisée pour vérifier les résultats et leur robustesse.
-Malgré cela, il nous a été possible d'observer lors des évaluations une majorité de prédictions correctes (mais pas exactes; qui se rapprochent suffisamment de la véritable position de la cible pour ne pas être considérées comme des explorations hasardeuses).
-Un certain nombre d'erreurs ont tout de même été observées, ce qui révèle la nécessité d'optimiser le modèle si nous voulons obtenir des performances à la fois élevées et robustes. 
-Au moins une partie des erreurs que l'on observe peut être imputée à la simplicité du réseau nerveux que nous avons construit.
+Malgré cela, il nous a été possible d'observer lors des évaluations une majorité de prédictions correctes (mais pas exactes), c'est à dire qui se rapprochent suffisamment de la véritable position de la cible pour ne pas être considérées comme des explorations hasardeuses.
+Dans ces prédictions correctes, la zone de chaleur contenant les probabilités les plus élevées englobe la position réelle du stimulus. \\
+Un certain nombre d'erreurs ont tout de même été observées lors des prédictions du modèle, ce qui révèle la nécessité d'optimiser celui-ci si nous voulons obtenir des performances à la fois élevées et robustes. 
+Au moins une partie des erreurs que l'on observe peut être imputée à la courte durée de notre phase d'apprentissage et à la simplicité du réseau nerveux artificiel que nous avons construit.
 Cependant le fait que l'on observe une majorité de prédictions correctes malgré cette simplicité est encourageant concernant les performances que pourra montrer le modèle dans des stades développement plus avancés. \\
-La simplicité du modèle s'accompagne d'une forte adaptabilité.
-En effet, l'implémentation du modèle et notamment de la production des entrées à partir d'images est actuellement adaptée à la base de données MNIST mais a été réalisée de sorte qu'utiliser une autre base de données peut se faire sans aucune modification du code, hormis le chargement des données, et surtout de sorte que le réseaux nerveux artificiel s'adapte automatiquement pour pouvoir réaliser apprentissage et évaluation sans travail supplémentaire.
+La simplicité de notre modèle s'accompagne d'une forte adaptabilité.
+En effet, l'implémentation du modèle et notamment de la production des entrées à partir d'images est actuellement adaptée à la base de données MNIST mais a été réalisée de sorte qu'utiliser une autre base de données peut se faire sans aucune modification du code, hormis le chargement des données, et surtout de sorte que le réseaux nerveux artificiel s'adapte automatiquement pour pouvoir réaliser apprentissage et évaluations sans travail supplémentaire.
 L'association d'une simplicité et d'une forte adaptabilité sont deux avantages importants pour notre modèle et ces caractéristiques seront primordiales dans les prochaines stade de développement, notamment lors de l'intégration dans un agent physique. \\
 Bien que la réalisation d'une saccade pour se rapprocher de la position détectée de la cible ainsi que la classification de la région nouvellement observée soient exposées dans la partie~\ref{result_escompt}, ces fonctionnalités n'ont pas encore été implantées lors de l'écriture de ce rapport. \\
 
 %%%%%% Perspectives %%%%%
 
-Malgré le stade de développement peu avancé de notre modèle, nous avons dès aujourd'hui identifié de nombreuses étapes de développement que nous devrons probablement réaliser dans le futur pour complexifier son comportement et améliorer ses performances. 
+Malgré le stade de développement peu avancé de notre modèle, nous avons dès aujourd'hui identifié de nombreuses étapes de développement qui devront être réalisées dans le futur pour complexifier son comportement et améliorer ses performances. 
 Ces étapes iront compléter les optimisations que doit recevoir notre modèle à ce stade.
 Ce travail futur, permettant notamment de passer d'un modèle exploratoire à une application physique en plus de continuer de répondre aux objectifs actuels, semble pouvoir être intégré au sein d'un sujet de thèse.\\
 La première étape sera certainement d'étudier la robustesse du modèle en lui soumettant lors de l'étape d'évaluation des images vides mais pouvant être bruitées.
 Dans son état actuel, le modèle ne devrait pas être capable relever la différence avec les images que nous lui fournissons actuellement et devrait donc tenter de réaliser une détection, puis une classification malgré l'absence de stimulus.
-En réponse à ce problème, il sera possible d'ajouter une couche de neurones artificiels précédent notre réseau actuel et détectant la présence ou l'absence de stimulus dans le champs visuel, modifiant en fonction le comportement de la suite du réseau. 
+En réponse à ce problème, il sera possible d'ajouter une couche de neurones artificiels en amont de notre réseau actuel et détectant la présence ou l'absence d'un stimulus dans le champs visuel, modifiant en fonction le comportement de la suite du réseau. 
 Une solution alternative serait d'entraîner le classifieur avec une catégorie de label supplémentaire, représentant une entrée sans stimulus, et donc de lui donner la possibilité d'appréhender ce type de situations. \\
 Nous savons que les systèmes biologiques n'accèdent pas nécessairement à leurs cibles en une seule saccade et qu'une fois qu'ils les ont atteinte ils réalisent autour d'elles des micro-saccades.
 De même, nous avons pu observer la présence d'erreurs lorsque le modèle réalise une prédiction, et donc lors de la saccade vers sa cible, entraînant un rapprochement incomplet de la fovéa.
-Ainsi une seconde étape nous semblant primordiale est l'intégration au modèle de la possibilité de réaliser plusieurs saccades à la suite, séparées par une re-évaluation de son environnement, pour lui permettre de diminuer les conséquences d'une prédiction imprécise. \autocite{Najemnik2005, Werner2014}\\
+Ainsi une seconde étape nous semblant primordiale est l'intégration au modèle de la possibilité de réaliser plusieurs saccades à la suite, séparées par une re-évaluation de son environnement, pour lui permettre de diminuer les conséquences d'une prédiction imprécise.
+Cette fonctionnalité ouvrirait aussi la possibilité d'intégrer le suivi de cibles en mouvements \autocite{Najemnik2005, Werner2014}\\
 Mais cette série de prédictions ne peut se faire sans mémoire ou l'on risque de voir le modèle osciller continuellement entre les mêmes points de son environnement visuel.
 Ainsi dans un même temps, il sera nécessaire d'insérer dans le modèle une forme simple de mémoire de son environnement et de ce qu'il en a exploré.
-Cette mémoire pourrait prendre la forme d'une carte de probabilité mise à jour au fil de l'exploration.
-Ainsi lorsque le modèle réaliserait une prédiction de la position de sa cible, elle irait se superposer à cette carte mnésique, laquelle serait lu pour définir le lieu présentant la plus haute probabilité de contenir cette cible.
+Cette mémoire pourrait prendre la forme d'une carte de probabilités mise à jour au fil de l'exploration.
+Ainsi lorsque le modèle réaliserait une prédiction de la position de sa cible, le résultat de cette prédiction irait se superposer à sa carte mnésique, laquelle serait lu pour définir le lieu présentant la plus haute probabilité de contenir cette cible.
 Ensuite lorsqu'une région aura été explorée, sa représentation sur la carte mnésique subira la soustraction d'une valeur pré-déterminée afin de fortement réduire la probabilité que cette région soit à nouveau explorée durant les saccades suivantes, créant une inhibition de retour (le modèle considéreras que pendant quelques itérations cette région ne peut plus lui apporter d'information supplémentaire). \autocite{Najemnik2005, Werner2014, Zhaoping2014} \\
 A ce stade, notre modèle devrait être capable de rechercher et de détecter une cible dans son environnement visuel, puis de réaliser la ou les saccade(s) nécessaires pour la placer au plus proche de sa fovea.
 Mais un environnement visuel ne contenant qu'un seul stimulus, même bruité, ne représente qu'une version très artificielle de ce que peuvent observer continuellement les systèmes biologiques.
 Ainsi pour passer un nouveau stade de développement, il nous semble nécessaire d'intégrer à notre modèle une forme d'influence \textit{top-down}.
 Cette composante permettra à notre modèle de s'approcher du comportement biologique en mimant la sélection attentionnelle et motrice de la cible à décrire.
 Elle influera le modèle en définissant quelle type de cible il devra rechercher dans son environnement, et pourra prendre la forme d'une matrice de poids spécifique à une classe de cibles, voir à une cible unique, qui sera implantée dans le réseau nerveux artificiel pour influencer son comportement. \autocite{Werner2014} \\
-L'intégration de cette influence \textit{top-down} est cruciale car elle permettra au modèle d'appréhender des environnements écologiques, et précède son intégration dans un agent physique.
+L'intégration de cette influence \textit{top-down} est cruciale car elle permettra au modèle d'appréhender des environnements écologiques, et précède donc son intégration dans un agent physique.
 L'insertion du modèle d'abord dans une caméra mobile, puis dans un agent autonome, permettra notamment d'ajouter tout un panel d'actions que l'agent pourra réaliser : saccades oculaires réelles dans un premier temps, puis déplacements dans l'environnement et autour de la cible.
-Cette nouvelle échelle de complexité perceptif et comportementale pourra être appréhendée par le développement, à partir de notre modèle, d'un agent markovien.
+Cette nouvelle échelle de complexité perceptive et comportementale pourra être appréhendée par le développement, à partir de notre modèle, d'un agent markovien.
 Les processus de décision markoviens permettent l'intégration de la perception de l'agent, de ses connaissances sur son environnement et des actions qu'il peut réaliser pour décider quelle sera l'action la plus à même d'aider l'agent à accomplir son objectif (dans nos travaux, détecter et reconnaitre la cible).
-On peut par exemple imaginer une situation où l'agent, observant un individu de dos, décider de façon autonome que la meilleure action à réaliser pour l'identifier sera de tourner autour de celui-ci puis de repérer son visage. \autocite{Butko2010, Najemnik2005, Zhaoping2014} \\
+On peut par exemple imaginer une situation où l'agent, observant un individu de dos, puisse décider de façon autonome que la meilleure action à réaliser pour l'identifier sera de tourner autour de celui-ci puis de repérer son visage. \autocite{Butko2010, Najemnik2005, Zhaoping2014} \\
 
 En conclusion, ce travail exploratoire nous aura permis de construire un modèle de localisation de cible mettant en avant la simplicité et l'adaptabilité.
 Celui-ci n'est pour l'instant qu'aux premiers stades de son développement mais de nombreuses avancées pourront y être implantées dans le futur, influançants à la fois ses performances et son fonctionnement.

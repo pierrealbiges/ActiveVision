@@ -28,10 +28,10 @@ Si la prédiction de la position de la cible a été correcte et donc que la bon
 
 \section{Résultats préliminaires}
 
-Il est possible d'observer sur la figure~\ref{fig:prediction} une diminution de la valeur du coût d'environ 50\% lors des itérations de l'apprentissage automatisé. 
+Durant les itérations de la phase d'apprentissage, il est possible d'observer une diminution de la valeur du coût d'environ 50\% (figure~\ref{fig:losses}). 
 Une diminution de cette valeur est le signe que l'apprentissage a bien lieu et plus elle est importante, plus l'apprentissage devrait être efficace.
 Notons qu'après une décroissance rapide (itérations 0-200) de cette valeur, nous pouvons rapidement observer (itérations 200-500) un ralentissement de celle-ci, phénomène couramment observé dans les modèles d'apprentissage automatique. \\
 Lorsque, durant la phase d'évaluation, nous fournissons à notre modèle une image bruitée et observée au travers d'un filtre rétinien, celui-ci est capable de l'intégrer pour produire un vecteur contenant un ensemble de valeurs comprises dans l'intervalle $[0,1]$.
-Ce vecteur, à partir duquel il est possible de réaliser par reconstruction un graphique (figure~\ref{fig:prediction}), présente une ou plusieurs zones chaudes où sont rassemblées les valeurs les plus élevées. 
+Ce vecteur, à partir duquel il est possible de réaliser par reconstruction un graphique (figure~\ref{fig:prediction}), présente comme escompté une ou plusieurs zones chaudes où sont rassemblées les valeurs les plus élevées. 
 La position de ces zones chaudes semble concorder avec la position réelle de la cible dans l'image fournie en entrée.
 Notons que la reconstruction graphique que nous utilisons modifie les valeurs des données, entraînant la perte de l'intervalité $[0,1]$ de celles-ci. \\
