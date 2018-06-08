@@ -38,12 +38,37 @@ Ce changement semble avoir un effet fortement bénéfique sur l'apprentissage :
     [40000/60000] Loss: 0.07907275855541229 Time: 21.54 mn
 
 
-# 2018-06-05
+# 2018-06-06
 ---
 
 Notes temporaires de Laurent:
 - je teste la normalisation de l'entrée sur l'apprentissage
 - un autre Loss est un MSELoss entre le label=position true et la moyenne de la carte colliculaire (ce que tu as fait en stage A)
+
+Quelques liens sur la possibilité de transformer les données dans le data loader :
+- https://github.com/utkuozbulak/pytorch-custom-dataset-examples#custom-dataset-fundamentals
+- https://pytorch.org/tutorials/beginner/data_loading_tutorial.html#transforms
+- https://pytorch.org/docs/stable/_modules/torchvision/transforms/transforms.html#Normalize
+
+# 2018-06-07
+---
+Quelques liens sur la possibilité de créer et charger des données custom :
+- https://stackoverflow.com/questions/41924453/pytorch-how-to-use-dataloaders-for-custom-datasets
+- https://pytorch.org/docs/stable/torch.html?highlight=save#torch.save
+
+Laurent a trouvé une solution concernant les performances très faibles du modèle. Alors que nos couches étaient de taille décroissante, 
+
+    input = n
+    layer1 = (n/4)*3
+    layer2 = (n/4)
+    output = m < (n/4)
+    
+Les performances augmentent énormément losque les tailles sont en accordéon :
+
+    input = n
+    layer1 = x << n
+    layer2 = y > x
+    output = m < y
 
 ---
 # To Do
@@ -53,24 +78,27 @@ Notes temporaires de Laurent:
 + Réaliser des benchmarking pour choisir les paramètres optimaux pour le modèle
     + learning rate
 + Ne garder que N_pic ou N_X/N_Y (doublon)
-+ Adapter Regard.py à notre modèle
++ ~~Adapter Regard.py à notre modèle~~
 + ~~Normaliser les données après transformations 128+noise+logpol~~ -> Normalisation retirée, mauvaise intégration endommageant le modèle
     + ~~Réaliser le benchmarking des paramètres mean et std~~ -> cf parent
 + Corriger le calcul de la nouvelle position du stimulus avec saccade -> (max(a,b) - min(a,b)) ?
 + ~~Modifer la figure model.odg pour s'adapter aux notes manuscrites~~
 + ~~Intégrer la possibilité de créer les figures dans Where.py et réaliser un cleanup de LogPol_figures.ipynb pour ne faire qu'appeler ses fonctions~~
-+ ~~Debug: créer input = 1 point~~
-    + ~~Debug: créer input = blob~~
-+ Debug : créer database avant train
++ ~~Debug: créer input = 1 point~~ -> Aucune convergence
+    + ~~Debug: créer input = blob~~ -> Faible convergence et performances faibles
++ ~~Debug : créer database avant train~~
 + Debug : changer le calcul de la perte
-    + ~~MSELoss~~ -> Apprentissage en cours
-    + ~~SmoothL1Loss~~ -> Apprentissage en cours
+    + ~~MSELoss~~ -> Bonne convergence mais performances faibles
+    + ~~SmoothL1Loss~~ -> Bonne convergence mais performances faibles
++ ~~Debug : transformer les données dans le data loader~~ -> A voir plus tard
 
 ### Rapport de stage
-+ **Ecrire une ébauche de Résultats**
-    + ~~Ecrire une ébauche de Résultats escomptés~~
-    + Ecrire une ébauche de Résultats préliminaires
++ ~~Ecrire une ébauche de Résultats~~
+    + ~~Résultats escomptés~~
+    + ~~Résultats préliminaires~~
 + Ecrire une ébauche de Discussion
+    + **Discussions**
+    + ~~Perspectives~~
 + Ecrire une ébauche de Résumé
 
 ---
